@@ -12,13 +12,13 @@
         <a routerLink="/play" routerLinkActive="active" (click)="checkDisActivated()">Jouer</a>
       </li>
       <li>
-        <a href="#pageSubmenu" (click)="checkDisActivated()">Profile</a>
+        <a routerLink="/profile" routerLinkActive="active" (click)="checkDisActivated()">Profile</a>
       </li>
       <li>
-        <a href="#pageSubmenu2" (click)="checkDisActivated()">A Propos</a>
+        <a routerLink="/about" routerLinkActive="active" (click)="checkDisActivated()">A Propos</a>
       </li>
       <li>
-        <a routerLink="/contact" (click)="checkDisActivated()">Contact</a>
+        <a routerLink="/contact" routerLinkActive="active" (click)="checkDisActivated()">Contact</a>
       </li>
     </ul>
   </nav>
@@ -26,7 +26,7 @@
   <!-- Page Content  -->
   <div id="content">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light d-md-none">
 
       <div class="container-fluid">
 
@@ -39,23 +39,10 @@
           <i class="fas fa-user"></i>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="nav navbar-nav ml-auto">
-
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Profil</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#">Jouer</a>
-            </li>
-
-          </ul>
-        </div>
       </div>
     </nav>
 
-    <div>
+    <div class="page-content">
       <router-outlet></router-outlet>
     </div>
 

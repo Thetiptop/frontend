@@ -9,6 +9,7 @@ import { ProfilComponent } from './views/pages/profil/profil.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
 import { PlayComponent } from './views/pages/play/play.component';
+import { AboutComponent } from './views/pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PlayComponent } from './views/pages/play/play.component';
     ProfilComponent,
     LoginComponent,
     RegisterComponent,
-    PlayComponent
+    PlayComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
