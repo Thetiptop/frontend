@@ -1,0 +1,43 @@
+//@import '@core/scss/base/pages/page-profile';
+
+
+// .content-wrapper{
+//     background: url('./../../../../assets/images/Tea-image-bg.png') center
+// }
+
+.row-header-profile{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-history{
+    width: fit-content !important;
+    background-color: #A0039A;
+    color: white !important;
+}
+
+.btn-primary{
+    background-color: green !important;
+}
+
+#tbl-history{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tbl-history td, #tbl-history th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+#tbl-history tr:nth-child(even){background-color: #f2f2f2;}
+
+#tbl-history tr:hover {background-color: #ddd;}
+
+#tbl-history th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: gray;
+    color: white;
+  }
