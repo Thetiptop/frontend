@@ -1,3 +1,4 @@
+
 <div class="content-wrapper">
   <div class="content-body">
     <!-- content-header component -->
@@ -75,5 +76,48 @@
       </tbody>
     </table>
 
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Lot</th>
+        <!-- (sort)="onSort($event)" -->
+        <th scope="col">Date de gain</th>
+        <th scope="col">Status</th>
+        <th scope="col">Date de retrait</th>
+        <th scope="col">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let gain of gains | async">
+        <!-- <th scope="row">{{ gain.id }}</th> -->
+        <td>{{gain.id}}</td>
+        <td>
+          <!-- {{gain.lot}} -->
+          {{gain.id}}
+          <!-- <ngb-highlight [result]="gain.lot" [term]="service.searchTerm"></ngb-highlight> -->
+        </td>
+        <td>
+          <!-- {{gain.gaindate}} -->
+          {{gain.id}}
+        </td>
+        <td>
+          {{gain.id}}
+          <!-- {{gain.status}} -->
+        </td>
+        <!-- <ngb-highlight [result]="gain.gaindate" [term]="service.searchTerm"> </ngb-highlight>-->
+        <td>
+          {{gain.id}}
+          <!-- {{ gain.pickupdate}} -->
+        </td>
+        <td>
+          {{gain.id}}
+          <!-- {{ gain.pickupdate}} -->
+        </td>
+        <!-- <ngb-highlight [result]="gain.pickupdate" [term]="service.searchTerm" ></ngb-highlight>-->
+        <!-- <ngb-highlight [result]="gain.status" [term]="service.searchTerm" ></ngb-highlight>-->
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
