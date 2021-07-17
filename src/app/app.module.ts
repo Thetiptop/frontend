@@ -10,6 +10,8 @@ import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
 import { PlayComponent } from './views/pages/play/play.component';
 import { AboutComponent } from './views/pages/about/about.component';
+import { SidebarComponent } from './views/components/sidebar/sidebar.component';
+import { BaseComponent } from './views/components/base/base.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AboutComponent } from './views/pages/about/about.component';
     LoginComponent,
     RegisterComponent,
     PlayComponent,
-    AboutComponent
+    AboutComponent,
+    SidebarComponent,
+    BaseComponent
   ],
   imports: [
     BrowserModule,

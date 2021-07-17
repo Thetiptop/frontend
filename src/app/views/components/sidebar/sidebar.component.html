@@ -1,0 +1,22 @@
+<nav id="sidebar" class="bg-animated vh-100" [class.active]="isActivated==true">
+  <div class="sidebar-header d-flex justify-content-center align-items-center">
+    <img id="ttt-logo" src="../assets/images/ttt-logo.png">
+  </div>
+  <ul class="list-unstyled components">
+    <li>
+      <a routerLink="/accueil" routerLinkActive="active" (click)="checkDisActivated()">Accueil</a>
+    </li>
+    <li>
+      <a routerLink="/play" routerLinkActive="active" (click)="checkDisActivated()">Jouer</a>
+    </li>
+    <li>
+      <a routerLink="/profile" routerLinkActive="active" (click)="checkDisActivated()">Profile</a>
+    </li>
+    <li>
+      <a routerLink="/about" routerLinkActive="active" (click)="checkDisActivated()">A Propos</a>
+    </li>
+    <li>
+      <a routerLink="/contact" routerLinkActive="active" (click)="checkDisActivated()">Contact</a>
+    </li>
+  </ul>
+</nav>
