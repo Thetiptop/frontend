@@ -1,1 +1,79 @@
-<p>profil works!</p>
+<div class="content-wrapper">
+  <div class="content-body">
+    <!-- content-header component -->
+    <!-- <app-content-header [contentHeader]="contentHeader"></app-content-header> -->
+    <h1>Mon profil</h1>
+
+    <div class="row-header-profile">
+      <div class="col">
+        <button class="btn btn-history">
+          <i data-feather="rotate-ccw"></i>Historique
+        </button>
+      </div>
+      <div class="col">
+        <button class="btn btn-primary" rippleEffect>
+          <i data-feather="file-text"></i>
+          Mes données
+        </button>
+      </div>
+
+      <div class="col">
+        <button class="btn btn-primary" rippleEffect>
+          <i data-feather="shopping-cart"></i>
+          Réclamer un gain
+        </button>
+      </div>
+
+      <div class="col">
+        <button class="btn btn-primary" rippleEffect>
+          <i data-feather="log-out"></i>
+          Se déconnecter
+        </button>
+      </div>
+    </div>
+
+    <br/>
+    <table id="tbl-history">
+      <thead>
+      <tr>
+        <th>Lot</th>
+        <th>Date de gain</th>
+        <th>Statut</th>
+        <th>Date de retrait</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Thé infusion -Bio</td>
+        <td>01/03/2021</td>
+        <td>Non réclamé</td>
+        <td> - </td>
+        <td><button class="btn">Réclamer</button></td>
+      </tr>
+      <tr>
+        <td>Thé infusion -Bio</td>
+        <td>01/03/2021</td>
+        <td>Non réclamé</td>
+        <td> - </td>
+        <td><button class="btn">Réclamer</button></td>
+      </tr>
+      <tr>
+        <td>Thé infusion -Bio</td>
+        <td>01/03/2021</td>
+        <td>Non réclamé</td>
+        <td> - </td>
+        <td><button class="btn">Réclamer</button></td>
+      </tr>
+      <tr>
+        <td>Thé infusion -Bio</td>
+        <td>01/03/2021</td>
+        <td>Non réclamé</td>
+        <td> - </td>
+        <td><button class="btn">Réclamer</button></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
