@@ -7,6 +7,9 @@ $theme-colors: (
 
 // $border-radius: 2.5rem;
 
+body {
+  overflow-x: hidden;
+}
 .px-10 {
   padding-left: 6rem !important;
   padding-right: 6rem !important;
