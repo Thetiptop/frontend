@@ -42,10 +42,9 @@
 ----------------------------------------------------- */
 
 #sidebar {
-  min-width: 17vw;
-  transition: all 0.3s;
-  position: sticky;
-  top: 0;
+  min-width: 200px;
+  width: 70vw;
+  position: fixed;
   a {
     color: white !important;
   }
@@ -92,6 +91,21 @@ ul ul a {
   padding-left: 30px !important;
 }
 
+#sidebar.active {
+  margin-left: 0;
+}
+
+#sidebarCollapse span {
+  display: none;
+}
+
+.uk-offcanvas-bar {
+  background: none;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
+
 
 
 
@@ -100,34 +114,47 @@ ul ul a {
 ----------------------------------------------------- */
 
 @media (max-width: 768px) {
+
+}
+
+
+// iPad 1, 2, Mini and Air (Portrait and Landscape)
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
   #sidebar {
-    min-width: 200px;
-    width: 70vw;
-    position: fixed;
+    width: 20vw;
   }
+}
 
-  #sidebar.active {
-    margin-left: 0;
-  }
+// iPad Pro 10.5" - (Portrait and Landscape)
+@media only screen and (min-device-width: 834px) and (max-device-width: 1112px) and (-webkit-min-device-pixel-ratio: 2) {
 
-  #sidebarCollapse span {
-    display: none;
-  }
-
-  .uk-offcanvas-bar {
-    background: none;
-    height: 100%;
-    width: 100%;
-    padding: 0;
-  }
 }
 
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) { }
+@media (min-width: 576px) {
+
+}
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 769px) {
+@media (min-width: 768px) {
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .uk-offcanvas-close {
+    display: none;
+  }
+
+  #sidebar {
+    min-width: 220px;
+    width: 17vw;
+    transition: all 0.3s;
+    position: sticky;
+    top: 0;
+  }
+
   .uk-offcanvas {
     display: block;
     position: initial;
@@ -141,9 +168,6 @@ ul ul a {
     background: none;
   }
 }
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {  }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { }
