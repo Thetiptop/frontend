@@ -2,55 +2,20 @@
 
 $theme-colors: (
   "primary": #265D0C,
-  "danger": #ff4136
+  "secondary":#683C11,
 );
 
-// $border-radius: 2.5rem;
+$lipton-color: #f5FF3c;
 
 body {
   overflow-x: hidden;
-}
-.px-10 {
-  padding-left: 6rem !important;
-  padding-right: 6rem !important;
-}
-
-
-.bg-animated {
-  background: #265D0C;
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-
-body {
   font-family: 'Montserrat', sans-serif !important;
-}
-
-
-@import "../node_modules/bootstrap/scss/bootstrap";
-
-/*
-    DEMO STYLE
-*/
-
-@import "https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700";
-body {
-  font-family: 'Montserrat', sans-serif;
   background: #fafafa;
 }
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700";
+
 
 p {
   font-family: 'Montserrat', sans-serif;
