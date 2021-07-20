@@ -5,7 +5,11 @@ $theme-colors: (
   "secondary":#683C11,
 );
 
-$lipton-color: #f5FF3c;
+$lipton-color: #FF9A00;
+
+.lipton-color {
+  color: $lipton-color !important;
+}
 
 body {
   overflow-x: hidden;
