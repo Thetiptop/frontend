@@ -1,48 +1,5 @@
-.wrapper {
-  display: flex;
-  width: 100%;
-  align-items: stretch;
-}
-
-#content {
-  width: 100%;
-  min-height: 100vh;
-}
-
-#ttt-logo {
-  width: 150px;
-}
-
-.navbar {
-  padding: 15px 10px;
-  background: #fff;
-  border: none;
-  border-radius: 0;
-  margin-bottom: 40px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-btn {
-  box-shadow: none;
-  outline: none !important;
-  border: none;
-}
-
-.line {
-  width: 100%;
-  height: 1px;
-  border-bottom: 1px dashed #ddd;
-  margin: 40px 0;
-}
-
-
-
-/* ---------------------------------------------------
-    SIDEBAR STYLE
------------------------------------------------------ */
-
 #sidebar {
-  min-width: 220px;
+  min-width: 250px;
   position: fixed;
   a {
     color: white !important;
@@ -55,12 +12,19 @@
   }
 }
 
-#sidebar.active {
-  margin-left: -250px;
-}
-
 #sidebar .sidebar-header {
   padding: 20px;
+}
+
+#ttt-logo {
+  width: 150px;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 40px 0;
 }
 
 #sidebar ul.components {
@@ -85,19 +49,6 @@
   background: #ffffff24;
 }
 
-ul ul a {
-  font-size: 0.9em !important;
-  padding-left: 30px !important;
-}
-
-#sidebar.active {
-  margin-left: 0;
-}
-
-#sidebarCollapse span {
-  display: none;
-}
-
 .uk-offcanvas-bar {
   background: none;
   height: 100%;
@@ -105,40 +56,16 @@ ul ul a {
   padding: 0;
 }
 
-
-
-
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media (max-width: 768px) {
-
-}
-
-
-// iPad 1, 2, Mini and Air (Portrait and Landscape)
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
-  #sidebar {
-    width: 20vw;
-  }
-}
-
-// iPad Pro 10.5" - (Portrait and Landscape)
-@media only screen and (min-device-width: 834px) and (max-device-width: 1112px) and (-webkit-min-device-pixel-ratio: 2) {
-
-}
-
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-
-}
+@media (min-width: 576px) {}
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-
-}
+@media (min-width: 768px) {}
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
@@ -148,10 +75,14 @@ ul ul a {
 
   #sidebar {
     min-width: 220px;
-    width: 17vw;
-    transition: all 0.3s;
-    position: sticky;
+    bottom: 0;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    left: 0;
     top: 0;
+    transition: width .1s ease,margin .1s ease-out;
+    z-index: 999;
   }
 
   .uk-offcanvas {
@@ -169,6 +100,6 @@ ul ul a {
 }
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { }
+@media (min-width: 1200px) {}
 
 
