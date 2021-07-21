@@ -4,13 +4,13 @@ $theme-colors: (
   "primary": #265D0C,
   "secondary":#683C11,
   "lipton": #d98300,
+  "chocolate": #683C11,
+  "white": #fff
 );
-
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700";
 @import "https://fonts.googleapis.com/css2?family=Lobster+Two:wght@400;700&display=swap";
-
 
 body {
   overflow-x: hidden;
