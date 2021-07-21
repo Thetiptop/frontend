@@ -12,6 +12,7 @@ import { PlayComponent } from './views/pages/play/play.component';
 import { AboutComponent } from './views/pages/about/about.component';
 import { SidebarComponent } from './views/components/sidebar/sidebar.component';
 import { BaseComponent } from './views/components/base/base.component';
+import { ArchwizardModule } from 'angular-archwizard';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BaseComponent } from './views/components/base/base.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ArchwizardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
