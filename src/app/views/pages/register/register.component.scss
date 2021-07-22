@@ -1,3 +1,52 @@
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+
+.bg-img-login {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50%;
+  min-height: 100%;
+  padding: 10%;
+}
+
 .auth-form-wrapper {
   padding: 2rem 1rem;
 }
+
+.login-rs.google {
+  border-color: black !important;
+}
+
+.login-rs.facebook {
+  border-color: blue !important;
+}
+
+.login-rs .fa-google{
+  color: red !important;
+}
+
+.login-rs .fa-facebook{
+  color: blue !important;
+}
+
+.register-page .form-control {
+  height: 50px;
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .auth-form-wrapper {
+    padding: 3rem 8rem 8rem;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}
+
