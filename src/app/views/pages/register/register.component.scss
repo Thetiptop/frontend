@@ -1,12 +1,21 @@
 // Extra small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 
-.bg-img-login {
+.register-page .bg-img-register {
+  // background-image: url('/assets/images/teapot-cups-of-tea.jpg');
+  background-image: url('https://images.unsplash.com/photo-1598606687624-52889f76cf9e');
   background-repeat: no-repeat;
   background-size: cover;
-  width: 50%;
+  width: calc((100vw - 250px) / 2);;
   min-height: 100%;
   padding: 10%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+
+.form-container {
+  margin: 0;
 }
 
 .auth-form-wrapper {
@@ -33,7 +42,6 @@
   height: 50px;
 }
 
-
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {}
 
@@ -43,7 +51,12 @@
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .auth-form-wrapper {
-    padding: 3rem 8rem 8rem;
+    padding: 2rem 8rem 0rem 8rem;
+  }
+
+  .form-container {
+    margin-left: calc((100vw - 250px) / 2);
+    width: calc((100vw - 250px) / 2);
   }
 }
 
