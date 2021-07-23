@@ -1,0 +1,13 @@
+.about-page .nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 2rem;
+    list-style: none;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.about-page .nav-tabs {
+  border-bottom: 0;
+}

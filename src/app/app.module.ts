@@ -14,6 +14,9 @@ import { SidebarComponent } from './views/components/sidebar/sidebar.component';
 import { BaseComponent } from './views/components/base/base.component';
 import { ArchwizardModule } from 'angular-archwizard';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,14 +28,18 @@ import { ArchwizardModule } from 'angular-archwizard';
     PlayComponent,
     AboutComponent,
     SidebarComponent,
-    BaseComponent
+    BaseComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ArchwizardModule
+    ArchwizardModule,
+    NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent,
+  ]
+
 })
 export class AppModule { }
