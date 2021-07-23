@@ -17,12 +17,24 @@ body {
   background: #fafafa;
 }
 
-p {
+p, ul li {
   font-size: 1.1em;
   font-weight: 300;
   line-height: 1.7em;
   color: #3F3844;
 }
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: 1.60rem;
+}
+
+
 
 a,
 a:hover,
