@@ -14,6 +14,12 @@ import { BaseComponent } from './views/components/base/base.component';
 import { ArchwizardModule } from 'angular-archwizard';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './core/auth.interceptor';
+import { AuthGuard } from './core/auth.guard';
+
 
 
 @NgModule({
@@ -32,9 +38,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     AppRoutingModule,
     ArchwizardModule,
-    NgbModule
+    NgbModule,
+    RouterModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [
     AppComponent,
   ]
