@@ -13,6 +13,25 @@
 
     <div class="auth-form-wrapper">
 
+      <div *ngIf="display">
+        <!-- Errors -->
+        <div *ngIf="errors?.name" class="alert alert-danger mt-3">
+          {{ errors?.name }}
+        </div>
+        <div *ngIf="errors?.email" class="alert alert-danger mt-3">
+          {{ errors.email }}
+        </div>
+        <div *ngIf="errors?.password" class="alert alert-danger mt-3">
+          {{ errors?.password }}
+        </div>
+        <div *ngIf="errors?.password_confirmation" class="alert alert-danger mt-3">
+          {{ errors?.password_confirmation }}
+        </div>
+        <div *ngIf="errors" class="alert alert-danger mt-3">
+          {{ errors }}
+        </div>
+      </div>
+
       <aw-wizard #wizardForm>
 
         <aw-wizard-step stepTitle="étape 1">
@@ -94,8 +113,8 @@
             </div>
 
             <div class="d-flex justify-content-left mt-2">
-              <button awPreviousStep class="btn btn-light mr-2" type="button">Back</button>
-              <button class="btn btn-primary" type="submit">Continue</button>
+              <button awPreviousStep class="btn btn-light border mr-2" type="button">Back</button>
+              <button class="btn btn-lipton btn-block rounded text-bold py-3 mr-2 mb-2 mb-md-0">Continuer</button>
             </div>
           </form>
 
@@ -103,15 +122,14 @@
 
         <aw-wizard-step stepTitle="validé">
           <div class="text-center mt-5">
-            <i appFeatherIcon class="text-success mt-4 mb-2 icon-xxl" data-feather="check-circle"></i>
+            <i class="text-success mt-4 mb-2 fa fa-check icon-xxl"></i>
             <h3 class="text-muted mb-3">Création du compte réussi !</h3>
             <p class="w-75 mx-auto mb-4 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Integer ut nulla nunc. Maecenas arcu sem, hendrerit a tempor quis, sagittis accumsan tellus. In
               hac habitasse platea dictumst</p>
           </div>
           <div class="d-flex justify-content-center mt-2">
-            <!-- <button class="btn btn-light mr-2" type="button" awPreviousStep>Back</button> -->
-            <button (click)="goToLogin()" class="btn btn-success" type="button">Se connecter</button>
+            <button (click)="goToLogin()" type="button" class="btn btn-lipton btn-block rounded text-bold py-3 mr-2 mb-2 mb-md-0">Se connecter</button>
           </div>
         </aw-wizard-step>
 

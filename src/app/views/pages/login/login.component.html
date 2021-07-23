@@ -8,6 +8,16 @@
 
     <div class="auth-form-wrapper">
 
+      <div *ngIf="errors?.email" class="alert alert-danger mt-3">
+        {{ errors?.email }}
+      </div>
+      <div *ngIf="errors?.password" class="alert alert-danger mt-3">
+        {{ errors?.password }}
+      </div>
+      <div *ngIf="errors" class="alert alert-danger mt-3">
+        {{ errors }}
+      </div>
+
       <form class="form-signin forms-sample"[formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
         <div class="form-group">
