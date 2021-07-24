@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
+
 import { AuthService } from '../../../core/auth.service';
 import { TokenService } from '../../../core/token.service';
 import { AuthStateService } from '../../../core/auth-state.service';
@@ -11,14 +12,12 @@ import { AuthStateService } from '../../../core/auth-state.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup | undefined;
-  returnUrl: any;
   private success: any;
-  private errors: any;
+  errors: any;
   isFormSubmitted: boolean | undefined;
 
-
   constructor(
+    public loginForm: FormGroup,
     private router: Router,
     private route: ActivatedRoute,
     public authService: AuthService,
@@ -60,8 +59,6 @@ export class LoginComponent implements OnInit {
         },
         res => {
           this.errors = res.error.error;
-        }, () => {
-          this.router.navigate(['/habitats']);
         }
       );
     }

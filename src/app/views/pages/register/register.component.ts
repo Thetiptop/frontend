@@ -11,10 +11,6 @@ import { AuthService } from '../../../core/auth.service';
 })
 
 export class RegisterComponent implements OnInit {
-
-  validationForm1: FormGroup | undefined;
-  validationForm2: FormGroup | undefined;
-
   isForm1Submitted: boolean | undefined;
   isForm2Submitted: boolean | undefined;
 
@@ -24,6 +20,8 @@ export class RegisterComponent implements OnInit {
   display = true;
 
   constructor(
+    public validationForm1: FormGroup,
+    public validationForm2: FormGroup,
     public formBuilder: FormBuilder,
     public authService: AuthService,
     private router: Router) { }
