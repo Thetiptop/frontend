@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-import { AuthService } from '../../../core/auth.service';
-import { TokenService } from '../../../core/token.service';
-import { AuthStateService } from '../../../core/auth-state.service';
+import {AuthService} from '../../../core/auth.service';
+import {TokenService} from '../../../core/token.service';
+import {AuthStateService} from '../../../core/auth-state.service';
 
 @Component({
   selector: 'app-login',
@@ -12,29 +12,19 @@ import { AuthStateService } from '../../../core/auth-state.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  private success: any;
+  loginForm: FormGroup;
   errors: any;
   isFormSubmitted: boolean | undefined;
+  private success: any;
 
   constructor(
-    public loginForm: FormGroup,
     private router: Router,
     private route: ActivatedRoute,
     public authService: AuthService,
     private token: TokenService,
     private authState: AuthStateService,
-  ) { }
-
-  ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email,
-        Validators.pattern('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$')]),
-      password: new FormControl(null, Validators.required)
-    });
-
-    this.isFormSubmitted = false;
+  ) {
   }
-
 
   // tslint:disable-next-line:typedef
   get form() {
@@ -42,6 +32,15 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm.controls);
     // @ts-ignore
     return this.loginForm.controls;
+  }
+
+  ngOnInit(): void {
+    this.loginForm = new FormGroup({
+      email: new FormControl(null, [Validators.required, Validators.email,
+        Validators.pattern('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$')]),
+      password: new FormControl(null, Validators.required)
+    });
+    this.isFormSubmitted = false;
   }
 
   // tslint:disable-next-line:typedef
@@ -67,7 +66,7 @@ export class LoginComponent implements OnInit {
 
   // Handle response
   // tslint:disable-next-line:typedef
-  responseHandler(data: any){
+  responseHandler(data: any) {
     this.token.handleData(data);
   }
 
