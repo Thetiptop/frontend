@@ -20,10 +20,13 @@
     "@angular/platform-browser-dynamic": "~11.0.0",
     "@angular/router": "~11.0.0",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "@ngx-translate/core": "^13.0.0",
     "angular-archwizard": "^7.0.0",
     "bootstrap": "^4.5.3",
+    "cookieconsent": "^3.1.1",
     "jquery": "^3.6.0",
     "ngx-bootstrap": "^6.2.0",
+    "ngx-cookieconsent": "^2.2.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
