@@ -43,13 +43,13 @@ const cookieConfig: NgcCookieConsentConfig = {
       border: 'transparent'
     }
   },
-  type: 'opt-out',
+  type: 'info',
   content: {
     message: 'Ce site utilise des cookies pour vous garantir la meilleure expérience sur notre site.',
     dismiss: 'Fermer',
     deny: 'Refuser',
     link: 'En savoir plus',
-    href: '/about',
+    href: '/about/cookies',
     policy: 'Politique de cookies',
     header: 'Cookies used on the website!',
     allow: 'Autoriser'

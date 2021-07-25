@@ -19,7 +19,7 @@ const routes: Routes = [
       },
       {
         path : '',
-        redirectTo: 'accueil',
+        redirectTo: 'login',
         pathMatch: 'full' },
       {
         path : 'accueil',
@@ -35,7 +35,7 @@ const routes: Routes = [
       },
       {
         path : 'about',
-        component : AboutComponent
+        loadChildren: () => import('./views/pages/about/about.module').then(m => m.AboutModule)
       },
       {
         path : 'play',
