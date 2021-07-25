@@ -22,10 +22,9 @@ import { ArchwizardModule } from 'angular-archwizard';
 
 import { AuthInterceptor } from './core/auth.interceptor';
 import { AuthGuard } from './core/auth.guard';
-import {TranslateModule} from '@ngx-translate/core';
 import { HistoriqueComponent } from './views/pages/profil/historique/historique.component';
 import { MesInformationsComponent } from './views/pages/profil/mes-informations/mes-informations.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -75,12 +74,12 @@ const cookieConfig: NgcCookieConsentConfig = {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ArchwizardModule,
     NgbModule,
     RouterModule,
     ReactiveFormsModule,
-    TranslateModule,
     HttpClientModule,
     NgcCookieConsentModule.forRoot(cookieConfig)
   ],

@@ -1,23 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
 import {
   trigger,
   transition,
   style,
   query,
-  // group,
-  // animateChild,
+  group,
+  animateChild,
   animate,
-  // keyframes,
+  keyframes,
 } from '@angular/animations';
 
-
-@Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss'],
-  animations: [trigger('myAnimation', [
+export const fader =
+  trigger('myAnimation', [
     transition('* => *', [
       // The query function has three params.
       // First is the event, so this will apply on entering or when the element is added to the DOM.
@@ -37,26 +30,4 @@ import {
         { optional: true }
       )
     ])
-  ])]
-})
-export class AboutComponent implements OnInit {
-  links = [
-    { title: 'Conditions générales', fragment: 'cgu' },
-    { title: 'Mentions légales', fragment: 'mentions-legales' },
-    { title: 'Confidentialité', fragment: 'confidentiality' },
-    { title: 'Cookies', fragment: 'cookies' }
-  ];
-
-  public activeUrl: any;
-
-  constructor(public route: ActivatedRoute) {
-    route.url.subscribe(() => {
-      // @ts-ignore
-      this.activeUrl = route.snapshot.firstChild.url[0].path;
-      });
-  }
-
-  ngOnInit(): void {
-  }
-
-}
+  ]);

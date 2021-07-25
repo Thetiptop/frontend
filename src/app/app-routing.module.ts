@@ -4,8 +4,6 @@ import { HomeComponent } from './views/pages/home/home.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
 import { PlayComponent } from './views/pages/play/play.component';
-import { ProfilComponent } from './views/pages/profil/profil.component';
-import { AboutComponent } from './views/pages/about/about.component';
 import { BaseComponent } from './views/components/base/base.component';
 
 const routes: Routes = [

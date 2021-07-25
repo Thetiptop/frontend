@@ -11,6 +11,7 @@ const routes: Routes = [
   {
     path: '',
     component: AboutComponent,
+    data: { animation: 'isLeft'},
     children: [
       {
         path : '',
@@ -19,19 +20,23 @@ const routes: Routes = [
       },
       {
         path: 'cookies',
-        component: CookiesComponent
+        component: CookiesComponent,
+        data: { animation: 'isLeft'}
       },
       {
         path: 'confidentiality',
-        component: ConfidentialityComponent
+        component: ConfidentialityComponent,
+        data: { animation: 'isLeft'}
       },
       {
         path: 'cgu',
-        component: CguComponent
+        component: CguComponent,
+        data: { animation: 'isLeft'}
       },
       {
         path: 'mentions-legales',
-        component: MentionsLegalesComponent
+        component: MentionsLegalesComponent,
+        data: { animation: 'isLeft'}
       }
     ]
   }
