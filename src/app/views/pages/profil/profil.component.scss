@@ -2,12 +2,33 @@
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   list-style: none;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 #profile__page .nav-tabs {
   border-bottom: 0;
 }
+
+#profile__page .nav-tabs li {
+  width: 100% !important;
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  #profile__page .nav-tabs li {
+    width: 30% !important;
+  }
+
+  #profile__page .nav-tabs li a {
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+
+

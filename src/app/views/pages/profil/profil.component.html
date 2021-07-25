@@ -1,26 +1,11 @@
 <div id="profile__page" class="row p-5">
-  <ul #nav="ngbNav" class="nav-tabs" ngbNav>
-    <li [ngbNavItem]="1" class="col-12 col-xl-4 py-2 py-xl-0">
-      <a class="btn btn-lipton btn-block rounded px-2 px-xl-5 py-3" ngbNavLink>Historique</a>
-      <ng-template ngbNavContent>
-        <div class=""></div>
-      </ng-template>
-    </li>
-    <li [ngbNavItem]="2" class="col-12 col-xl-4 py-2 py-xl-0">
-      <a class="btn btn-lipton btn-block rounded px-2 px-xl-5 py-3" ngbNavLink>Mes données</a>
-      <ng-template ngbNavContent>
-        <div class=""></div>
-      </ng-template>
-    </li>
-    <li [ngbNavItem]="3" class="col-12 col-xl-4 py-2 py-xl-0">
-      <a class="btn btn-lipton btn-block rounded px-2 px-xl-5 py-3" ngbNavLink>Réclamer</a>
-      <ng-template ngbNavContent>
-        <div class=""></div>
-      </ng-template>
+  <ul ngbNav [activeId]="activeUrl" class="nav-tabs">
+    <li [ngbNavItem]="link.fragment" *ngFor="let link of links" class="nav2__li py-2 py-xl-0">
+      <a class="btn btn-outline-primary border btn-block rounded px-2 px-xl-5 py-3" ngbNavLink [routerLink]="link.fragment">{{ link.title }}</a>
     </li>
   </ul>
-
-  <div [ngbNavOutlet]="nav" class="mt-2"></div>
-
+  <!-- outlet -->
+  <router-outlet></router-outlet>
 </div>
+
 
