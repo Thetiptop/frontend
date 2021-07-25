@@ -3,8 +3,7 @@
   <app-sidebar></app-sidebar>
 
   <!-- Page Content  -->
-  <div id="content">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mobile-navbar">
+    <nav class="navbar navbar-expand-lg d-lg-none navbar-light bg-light mobile-navbar">
       <div class="container-fluid">
         <button type="button" id="sidebarCollapse" class="btn btn-info" uk-toggle="target: #sidebar">
           <i class="fas fa-align-left"></i>
@@ -16,9 +15,8 @@
       </div>
     </nav>
 
-    <div class="page-content">
-      <router-outlet></router-outlet>
+    <div [@myAnimation]="o.isActivated ? o.activatedRoute : ''" id="content">
+      <router-outlet #o="outlet"></router-outlet>
     </div>
-  </div>
 
 </div>

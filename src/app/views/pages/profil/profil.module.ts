@@ -25,15 +25,11 @@ const routes: Routes = [
         component: MesInformationsComponent
       }
     ]
-  },
-  {
-    path: 'play',
-    component: PlayComponent
   }
 ];
 
 @NgModule({
-  declarations: [PlayComponent],
+  declarations: [],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
