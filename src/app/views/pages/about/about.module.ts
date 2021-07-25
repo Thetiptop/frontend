@@ -14,7 +14,7 @@ const routes: Routes = [
     children: [
       {
         path : '',
-        redirectTo: 'confidentiality',
+        redirectTo: 'cgu',
         pathMatch: 'full',
       },
       {
