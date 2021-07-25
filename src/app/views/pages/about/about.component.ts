@@ -8,9 +8,9 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class AboutComponent implements OnInit {
   links = [
-    { title: 'Confidentialité', fragment: 'confidentiality' },
     { title: 'Conditions générales', fragment: 'cgu' },
     { title: 'Mentions légales', fragment: 'mentions-legales' },
+    { title: 'Confidentialité', fragment: 'confidentiality' },
     { title: 'Cookies', fragment: 'cookies' }
   ];
   public activeUrl: any;
