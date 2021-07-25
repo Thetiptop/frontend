@@ -8,11 +8,18 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class AboutComponent implements OnInit {
   links = [
-    { title: 'One', fragment: 'one' },
-    { title: 'Two', fragment: 'two' }
+    { title: 'Confidentialité', fragment: 'confidentiality' },
+    { title: 'Conditions générales', fragment: 'cgu' },
+    { title: 'Mentions légales', fragment: 'mentions-legales' },
+    { title: 'Cookies', fragment: 'cookies' }
   ];
-
-  constructor(public route: ActivatedRoute) { }
+  public activeUrl: any;
+  constructor(public route: ActivatedRoute) {
+    route.url.subscribe(() => {
+      // @ts-ignore
+      this.activeUrl = route.snapshot.firstChild.url[0].path;
+      });
+  }
 
   ngOnInit(): void {
   }
