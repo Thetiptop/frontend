@@ -6,6 +6,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/pages/home/home.component';
@@ -18,10 +20,41 @@ import { SidebarComponent } from './views/components/sidebar/sidebar.component';
 import { BaseComponent } from './views/components/base/base.component';
 import { ArchwizardModule } from 'angular-archwizard';
 
-
 import { AuthInterceptor } from './core/auth.interceptor';
 import { AuthGuard } from './core/auth.guard';
+import {TranslateModule} from '@ngx-translate/core';
 
+
+const cookieConfig: NgcCookieConsentConfig = {
+  cookie: {
+    domain: 'localhost'
+  },
+  position: 'bottom-right',
+  theme: 'classic',
+  palette: {
+    popup: {
+      background: '#000000',
+      text: '#ffffff',
+      link: '#ffffff'
+    },
+    button: {
+      background: '#d98300',
+      text: '#fff',
+      border: 'transparent'
+    }
+  },
+  type: 'opt-out',
+  content: {
+    message: 'Ce site utilise des cookies pour vous garantir la meilleure expérience sur notre site.',
+    dismiss: 'Fermer',
+    deny: 'Refuser',
+    link: 'En savoir plus',
+    href: '/about',
+    policy: 'Politique de cookies',
+    header: 'Cookies used on the website!',
+    allow: 'Autoriser'
+  }
+};
 
 
 @NgModule({
@@ -43,7 +76,9 @@ import { AuthGuard } from './core/auth.guard';
     NgbModule,
     RouterModule,
     ReactiveFormsModule,
+    TranslateModule,
     HttpClientModule,
+    NgcCookieConsentModule.forRoot(cookieConfig)
   ],
   providers: [
     AuthGuard,

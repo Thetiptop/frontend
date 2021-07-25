@@ -7,6 +7,7 @@ export const environment = {
   apiURL: 'http://127.0.0.1:8000/api/',
   loginApiURL : 'http://127.0.0.1:8000/api/login',
   registerApiUrl: 'http://127.0.0.1:8000/api/register',
+  cookieDomain: 'localhost'
 };
 
 /*
