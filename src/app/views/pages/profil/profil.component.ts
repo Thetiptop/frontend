@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class ProfilComponent implements OnInit {
   activeUrl: any;
   links = [
-    { title: 'Historique', fragment: 'cgu' },
-    { title: 'Mes informations', fragment: 'mentions-legales' },
-    { title: 'Réclamer', fragment: 'confidentiality' },
+    { title: 'Historique', fragment: 'historique' },
+    { title: 'Mes informations', fragment: 'informations' },
+    { title: 'Réclamer', fragment: 'reclamer' },
   ];
 
   constructor() { }

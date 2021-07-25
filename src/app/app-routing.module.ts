@@ -14,13 +14,19 @@ const routes: Routes = [
     component: BaseComponent,
     children: [
       {
-        path: 'profile',
-        component: ProfilComponent
-      },
-      {
         path : '',
         redirectTo: 'login',
-        pathMatch: 'full' },
+        pathMatch: 'full'
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('./views/pages/profil/profil.module').then(m => m.AboutModule)
+      },
+      {
+        path : 'profile/reclamer',
+        redirectTo: 'play',
+        pathMatch: 'full',
+      },
       {
         path : 'accueil',
         component : HomeComponent
