@@ -23,6 +23,8 @@ import { ArchwizardModule } from 'angular-archwizard';
 import { AuthInterceptor } from './core/auth.interceptor';
 import { AuthGuard } from './core/auth.guard';
 import {TranslateModule} from '@ngx-translate/core';
+import { HistoriqueComponent } from './views/pages/profil/historique/historique.component';
+import { MesInformationsComponent } from './views/pages/profil/mes-informations/mes-informations.component';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -68,6 +70,8 @@ const cookieConfig: NgcCookieConsentConfig = {
     AboutComponent,
     SidebarComponent,
     BaseComponent,
+    HistoriqueComponent,
+    MesInformationsComponent,
   ],
   imports: [
     BrowserModule,
