@@ -1,19 +1,22 @@
 #sidebar {
   min-width: 250px;
   position: fixed;
+
   a {
     color: white !important;
   }
-  a:hover{
+
+  a:hover {
     text-decoration: none !important;
   }
+
   ul {
     text-align: center;
   }
 }
 
 #sidebar .sidebar-header {
-  padding: 20px;
+  padding: 0 20px;
 }
 
 #ttt-logo {
@@ -42,9 +45,8 @@
   display: block;
 }
 
-#sidebar ul li>a.active,
-#sidebar ul li ul li>a.active
-{
+#sidebar ul li > a.active,
+#sidebar ul li ul li > a.active {
   color: #fff;
   background: #ffffff24;
 }
@@ -56,16 +58,163 @@
   padding: 0;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  background: #eeeeec;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  font-family: 'Open Sans', sans-serif;
+  font-size: 100%;
+}
+
+// ------------------------------------------------
+
+$purple-gradient: linear-gradient(45deg, rgba(87, 29, 146, 1) 0%, rgba(172, 25, 102, 1) 100%);
+$purple-gradient: linear-gradient(to bottom right, #C90A6D, #FF48A0);
+$blue1-gradient: linear-gradient(to bottom right, #5E5AEC, #3F9EFC);
+$blue2-gradient: linear-gradient(to bottom right, #6452E9, #639FF9);
+$shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
+
+// ------------------------------------------------
+
+.wrapper {
+  width: auto;
+  height: auto;
+  transition: background .6s ease;
+  border-radius: 10px;
+  padding: 20px 20px 20px 20px;
+
+  .profile {
+    margin-top: 1em;
+    position: relative;
+
+    &:after {
+      width: 100%;
+      height: 1px;
+      content: ' ';
+      display: block;
+      margin-top: 1.3em;
+      background: #E9EFF6;
+    }
+
+    .thumbnail {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 1.5em;
+      border-radius: 100%;
+      box-shadow: $shadow;
+    }
+
+    .name {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+
+    .btn {
+      color: #fff;
+      width: 130px;
+      height: 42px;
+      outline: none;
+      border: none;
+      display: block;
+      cursor: pointer;
+      font-weight: 300;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 70px;
+      box-shadow: 0 13px 26px rgba(#000, .16), 0 3px 6px rgba(#000, .16);
+      // background: $purple-gradient;
+    }
+  }
+
+  .social-icons {
+    display: flex;
+    margin-top: 1.2em;
+    justify-content: space-between;
+
+    .icon {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 30%;
+
+      a {
+        color: #fff;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        line-height: 60px;
+        text-align: center;
+        border-radius: 50%;
+        box-shadow: 0 13px 26px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &:nth-of-type(1) {
+        a {
+          // background: $purple-gradient;
+        }
+      }
+
+      &:nth-of-type(2) {
+        a {
+          // background: $blue1-gradient;
+        }
+      }
+
+      &:nth-of-type(3) {
+        a {
+         // background: $blue2-gradient;
+        }
+      }
+
+      h4 {
+        color: #080911;
+        font-size: 1em;
+        margin-top: 1.3em;
+        margin-bottom: .2em;
+      }
+
+      p {
+        color: #FFF;
+        font-size: 10px;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
 
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {}
+@media (min-width: 576px) {
+}
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+}
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
@@ -81,7 +230,7 @@
     position: fixed;
     left: 0;
     top: 0;
-    transition: width .1s ease,margin .1s ease-out;
+    transition: width .1s ease, margin .1s ease-out;
     z-index: 999;
   }
 
@@ -100,6 +249,7 @@
 }
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+}
 
 
