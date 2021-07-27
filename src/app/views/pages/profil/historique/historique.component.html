@@ -1,1 +1,25 @@
-<p>historique works!</p>
+<table datatable [dtOptions]="dtOptions" class="w-100 my-5 table table-striped table-bordered row-border hover">
+    <thead>
+    <tr>
+      <th scope="col">Lot</th>
+      <th scope="col">Date de gain</th>
+      <th scope="col">Statut</th>
+      <th scope="col">Date de retrait</th>
+      <th scope="col">Action</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of jsonData">
+      <td>{{item.playerName}}</td>
+      <td>{{item.playerBirthday}}</td>
+      <td>{{item.playerCountry}}</td>
+      <td>{{item.playerClub}}</td>
+      <td><a class="btn btn-primary" routerLink="/play:{{item.id}}">Reclamer</a></td>
+    </tr>
+    </tbody>
+  </table>
+
+<!--<div class="mt-5 bg-secondary">
+  <ngx-datatable class="table w-100" [rows]="rows" [columns]="columns"> </ngx-datatable>
+</div>-->
+
+
