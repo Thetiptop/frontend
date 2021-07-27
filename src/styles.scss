@@ -70,3 +70,16 @@ a:focus {
 .nav-link {
   padding: 1rem;
 }
+
+table.dataTable {
+  margin-top: 1rem !important;
+  margin-bottom: 2rem !important;
+  text-align: center;
+}
+
+.table {
+  th,
+  td {
+    vertical-align: center;
+  }
+}

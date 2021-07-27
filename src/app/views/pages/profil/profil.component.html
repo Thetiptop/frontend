@@ -11,9 +11,11 @@
 
   <ul ngbNav [activeId]="activeUrl" class="nav-tabs">
     <li [ngbNavItem]="link.fragment" *ngFor="let link of links" class="card nav2__li py-2 py-xl-0">
+
       <a class="btn btn-outline-primary border btn-block rounded px-2 px-xl-5 py-3"
-         ngbNavLink
-         [routerLink]="link.fragment">{{ link.title }}
+         ngbNavLink [routerLink]="link.fragment">
+        <i class="{{link.icon}} mr-2"></i>
+        {{ link.title }}
       </a>
     </li>
   </ul>

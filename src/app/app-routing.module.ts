@@ -21,11 +21,6 @@ const routes: Routes = [
         loadChildren: () => import('./views/pages/profil/profil.module').then(m => m.AboutModule)
       },
       {
-        path : 'profile/reclamer',
-        redirectTo: 'play',
-        pathMatch: 'full',
-      },
-      {
         path : 'accueil',
         component : HomeComponent
       },
