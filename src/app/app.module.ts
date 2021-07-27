@@ -25,6 +25,8 @@ import { AuthGuard } from './core/auth.guard';
 import { HistoriqueComponent } from './views/pages/profil/historique/historique.component';
 import { MesInformationsComponent } from './views/pages/profil/mes-informations/mes-informations.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DataTablesModule } from 'angular-datatables';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -57,7 +59,6 @@ const cookieConfig: NgcCookieConsentConfig = {
   }
 };
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,7 +82,8 @@ const cookieConfig: NgcCookieConsentConfig = {
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgcCookieConsentModule.forRoot(cookieConfig)
+    NgcCookieConsentModule.forRoot(cookieConfig),
+    DataTablesModule
   ],
   providers: [
     AuthGuard,
@@ -96,4 +98,5 @@ const cookieConfig: NgcCookieConsentConfig = {
   ]
 
 })
+
 export class AppModule { }

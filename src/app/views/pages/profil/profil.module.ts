@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { HistoriqueComponent } from './historique/historique.component';
 import { MesInformationsComponent } from './mes-informations/mes-informations.component';
 import { ProfilComponent } from './profil.component';
-import { PlayComponent } from '../play/play.component';
 
 const routes: Routes = [
   {
@@ -33,7 +32,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
   ]
 })
 export class AboutModule { }
