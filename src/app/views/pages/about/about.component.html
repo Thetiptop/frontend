@@ -1,6 +1,6 @@
 <div class="about-page row p-5" [@myAnimation]="o.isActivated ? o.activatedRoute : ''">
   <ul ngbNav [activeId]="activeUrl" class="nav-tabs">
-    <li [ngbNavItem]="link.fragment" *ngFor="let link of links" class="nav2__li py-2 py-xl-0">
+    <li [ngbNavItem]="link.fragment" *ngFor="let link of links" class="nav2__li card py-2 py-xl-0">
       <a class="btn btn-outline-primary border btn-block rounded px-2 px-xl-5 py-3" ngbNavLink [routerLink]="link.fragment">{{ link.title }}</a>
     </li>
   </ul>

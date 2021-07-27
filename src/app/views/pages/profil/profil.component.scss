@@ -15,8 +15,12 @@
 #profile__page .nav-tabs li {
   width: 100% !important;
 }
+.page-title {
+  font-weight: 800 !important;
+  letter-spacing: 3px;
+}
 
-.title-ligne {
+.page-title__ligne {
   height: 5px;
   background: #683C11;
   border: 0;
