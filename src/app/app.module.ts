@@ -26,7 +26,6 @@ import { HistoriqueComponent } from './views/pages/profil/historique/historique.
 import { MesInformationsComponent } from './views/pages/profil/mes-informations/mes-informations.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTablesModule } from 'angular-datatables';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
