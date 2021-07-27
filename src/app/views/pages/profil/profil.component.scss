@@ -16,6 +16,13 @@
   width: 100% !important;
 }
 
+.title-ligne {
+  height: 5px;
+  background: #683C11;
+  border: 0;
+  width: 90px;
+}
+
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   #profile__page .nav-tabs li {

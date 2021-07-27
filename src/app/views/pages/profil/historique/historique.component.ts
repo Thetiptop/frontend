@@ -124,8 +124,8 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
           last: 'Dernier'
         },
       },
-      lengthMenu : [5, 10, 25],
-      pageLength: 5
+      lengthMenu : [3, 5, 10, 25],
+      pageLength: 3
     };
   }
 

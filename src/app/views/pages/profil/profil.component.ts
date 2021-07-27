@@ -9,6 +9,7 @@ import {
   // group,
   // animateChild
 } from '@angular/animations';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-profil',
@@ -45,7 +46,12 @@ export class ProfilComponent implements OnInit {
     { title: 'Réclamer', fragment: 'reclamer' },
   ];
 
-  constructor() { }
+  constructor(public route: ActivatedRoute) {
+    route.url.subscribe(() => {
+      // @ts-ignore
+      this.activeUrl = route.snapshot.firstChild.url[0].path;
+    });
+  }
 
   ngOnInit(): void {
   }
