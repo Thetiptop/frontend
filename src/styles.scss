@@ -6,6 +6,7 @@ $theme-colors: (
   "chocolate": #683C11,
   "white": #fff
 );
+$chocolate: #683C11;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700";
@@ -17,7 +18,7 @@ body {
   background: #fafafa;
 }
 
-p, h2, h3, h4, h5, h6 {
+p, h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif !important;
 }
 

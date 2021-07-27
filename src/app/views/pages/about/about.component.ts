@@ -39,6 +39,7 @@ import {
     ])
   ])]
 })
+
 export class AboutComponent implements OnInit {
   links = [
     { title: 'Conditions générales', fragment: 'cgu' },
