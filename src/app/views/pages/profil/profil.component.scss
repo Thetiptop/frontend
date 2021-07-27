@@ -15,6 +15,15 @@
 #profile__page .nav-tabs li {
   width: 100% !important;
 }
+
+.form-control {
+  height: 50px;
+}
+
+.nav-link {
+  padding: 1rem;
+}
+
 .page-title {
   font-weight: 800 !important;
   letter-spacing: 3px;
@@ -30,7 +39,7 @@
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   #profile__page .nav-tabs li {
-    width: 30% !important;
+    width: 23% !important;
   }
 
   #profile__page .nav-tabs li a {

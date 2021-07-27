@@ -40,10 +40,12 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ProfilComponent implements OnInit {
   activeUrl: any;
+
   links = [
     { title: 'Historique', fragment: 'historique' },
-    { title: 'Mes informations', fragment: 'informations' },
-    { title: 'Réclamer', fragment: 'reclamer' },
+    { title: 'Mes informations', fragment: 'mes-informations' },
+    { title: 'Modifer le Profil', fragment: 'edit-profile' },
+    { title: 'Mot de Passe', fragment: 'mot-de-passe' },
   ];
 
   constructor(public route: ActivatedRoute) {
