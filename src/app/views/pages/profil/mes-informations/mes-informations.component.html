@@ -1,1 +1,103 @@
-<p>mes-informations works!</p>
+<div class="mes-information">
+  <div class="row gutters-sm">
+
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-body tab-content">
+          <div class="tab-pane active" id="profile">
+            <h6 class="text-uppercase">Informations de votre profil</h6>
+            <hr>
+            <form>
+              <div class="form-group">
+                <label for="fullName">Nom et Prénom</label>
+                <input aria-describedby="fullNameHelp" class="form-control" disabled
+                       type="text" value="Marjorie Dubois">
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" disabled type="text"
+                       value="marjorie.dubois@gmail.com">
+              </div>
+              <div class="form-group">
+                <label>Téléphone</label>
+                <input class="form-control" disabled type="text"
+                       value="0625256547">
+              </div>
+              <div class="form-group">
+                <label for="location">Adresse</label>
+                <input class="form-control" disabled type="text"
+                       value="24 rue des Soulliers, 7500, Paris">
+              </div>
+            </form>
+          </div>
+          <div class="tab-pane" id="account">
+            <h6 class="text-uppercase">Modifer vos informations</h6>
+            <hr>
+            <hr>
+            <form>
+              <div class="form-group">
+                <label for="fullName">Nom et Prénom</label>
+                <input aria-describedby="fullNameHelp" class="form-control" id="fullName" placeholder="Nom et Prénom"
+                       type="text" value="Marjorie Dubois">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" id="email" placeholder="Email" type="text"
+                       value="marjorie.dubois@gmail.com">
+              </div>
+              <div class="form-group">
+                <label for="number">Téléphone</label>
+                <input class="form-control" id="number" placeholder="Téléphone" type="text"
+                       value="0625256547">
+              </div>
+              <div class="form-group">
+                <label for="location">Adresse</label>
+                <input class="form-control" id="location" placeholder="Adresse" type="text"
+                       value="24 rue des Soulliers, 7500, Paris">
+              </div>
+              <button class="btn btn-primary" type="button">Modifier</button>
+            </form>
+          </div>
+          <div class="tab-pane" id="security">
+            <h6 class="text-uppercase">Paramètre de sécurité</h6>
+            <hr>
+            <form>
+              <div class="form-group">
+                <label class="d-block">Changer le mot de passe</label>
+                <input class="form-control" placeholder="Votre ancien mot de passe" type="text">
+                <input class="form-control mt-1" placeholder="Nouveau mot de passe" type="text">
+                <input class="form-control mt-1" placeholder="Confirmer le nouveau mot de passe" type="text">
+              </div>
+            </form>
+            <hr>
+            <button class="btn btn-primary">Modifier</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 d-none d-md-block">
+      <div class="card">
+        <div class="card-body">
+          <nav class="nav flex-column nav-pills nav-gap-y-1">
+            <a class="nav-item nav-link has-icon nav-link-faded active" data-toggle="tab" href="#profile">
+              <i class="fas fa-user-circle mr-1"></i>
+              Mon profile
+            </a>
+            <a class="nav-item nav-link has-icon nav-link-faded" data-toggle="tab" href="#account">
+              <i class="fas fa-user-edit mr-1"></i>
+              Modifier mes infos
+            </a>
+            <a class="nav-item nav-link has-icon nav-link-faded" data-toggle="tab" href="#security">
+              <i class="fas fa-fingerprint mr-1"></i>
+              Mot de passe
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
