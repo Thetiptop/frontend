@@ -41,11 +41,26 @@ import {
 })
 
 export class AboutComponent implements OnInit {
+  title = 'A Propos';
   links = [
-    { title: 'Conditions générales', fragment: 'cgu' },
-    { title: 'Mentions légales', fragment: 'mentions-legales' },
-    { title: 'Confidentialité', fragment: 'confidentiality' },
-    { title: 'Cookies', fragment: 'cookies' }
+    {
+      title: 'Conditions générales',
+      fragment: 'cgu',
+      icon: 'fas fa-scroll'
+    },
+    { title: 'Mentions légales',
+      fragment: 'mentions-legales',
+      icon: 'fas fa-gavel'
+    },
+    { title: 'Confidentialité',
+      fragment: 'confidentiality',
+      icon: 'fas fa-user-secret'
+    },
+    {
+      title: 'Cookies',
+      fragment: 'cookies',
+      icon: 'fas fa-cookie-bite'
+    }
   ];
 
   public activeUrl: any;

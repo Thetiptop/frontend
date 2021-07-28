@@ -60,7 +60,7 @@ a:focus {
 }
 
 .p-page {
-  padding: 2rem 3rem !important;
+  padding: 3rem 3rem 3rem 3rem !important;
 }
 
 .form-control {
@@ -82,4 +82,16 @@ table.dataTable {
   td {
     vertical-align: center;
   }
+}
+
+.page-title {
+  font-weight: 800 !important;
+  letter-spacing: 3px;
+}
+
+.page-title__ligne {
+  height: 5px;
+  background: $chocolate;
+  border: 0;
+  width: 90px;
 }

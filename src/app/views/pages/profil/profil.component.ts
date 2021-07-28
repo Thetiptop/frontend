@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-
-import {animate, query, style, transition, trigger,} from '@angular/animations';
+import {animate, query, style, transition, trigger} from '@angular/animations';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -28,9 +27,10 @@ import {ActivatedRoute} from '@angular/router';
       )
     ])
   ])]
-
 })
+
 export class ProfilComponent implements OnInit {
+  title = 'Mon Profil';
   activeUrl: any;
 
   links = [
@@ -42,12 +42,12 @@ export class ProfilComponent implements OnInit {
     {
       title: 'Mes informations',
       fragment: 'mes-informations',
-      icon: 'fas fa-user-edit'
+      icon: 'fas fa-user-circle'
     },
     {
       title: 'Modifer le Profil',
       fragment: 'edit-profile',
-      icon: 'fas fa-user-circle'
+      icon: 'fas fa-user-edit'
     },
     {
       title: 'Mot de Passe',
