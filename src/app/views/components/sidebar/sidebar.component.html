@@ -29,19 +29,29 @@
         </div>
 
         <div class="social-icons">
-          <div class="icon">
+          <div *ngIf="!isSignedIn" class="icon">
             <a class="btn btn-block btn-lipton" routerLink="/login"><i class="fas fa-sign-in-alt"></i></a>
-            <p>Connexion</p>
+<!--            <p>Connexion</p>-->
           </div>
 
-          <div class="icon">
+          <div *ngIf="!isSignedIn" class="icon">
             <a class="btn btn-block btn-lipton" routerLink="/register"><i class="fas fa-user-plus"></i></a>
-            <p>Inscription</p>
+<!--            <p>Inscription</p> -->
           </div>
 
           <div class="icon">
             <a class="btn btn-block btn-lipton" routerLink="/play"><i class="fas fa-shopping-cart"></i></a>
-            <p>Jouer</p>
+<!--            <p>Jouer</p>-->
+          </div>
+
+          <div *ngIf="isSignedIn" class="icon">
+            <a class="btn btn-block btn-lipton" routerLink="/profile"><i class="fas fa-user-circle"></i></a>
+<!--            <p>Profil</p>-->
+          </div>
+
+          <div *ngIf="isSignedIn" class="icon">
+            <a class="btn btn-block btn-lipton" (click)="onLogout($event)"><i class="fas fa-power-off"></i></a>
+<!--             <p>Déconnexion</p>-->
           </div>
         </div>
       </div>

@@ -13,9 +13,10 @@ import {AuthStateService} from '../../../core/auth-state.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  returnUrl: any;
+  success: any;
   errors: any;
-  isFormSubmitted: boolean | undefined;
-  private success: any;
+  isFormSubmitted: boolean;
 
   constructor(
     private router: Router,
@@ -23,41 +24,40 @@ export class LoginComponent implements OnInit {
     public authService: AuthService,
     private token: TokenService,
     private authState: AuthStateService,
-  ) {
-  }
+  ) { }
 
-  // tslint:disable-next-line:typedef
-  get form() {
-    // @ts-ignore
-    console.log(this.loginForm.controls);
-    // @ts-ignore
-    return this.loginForm.controls;
-  }
+  ngOnInit(): void{
 
-  ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email,
         Validators.pattern('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$')]),
       password: new FormControl(null, Validators.required)
     });
+
     this.isFormSubmitted = false;
+
   }
 
-  // tslint:disable-next-line:typedef
+  get form() {
+    console.log(this.loginForm.controls);
+    return this.loginForm.controls;
+  }
+
   onSubmit() {
-    // @ts-ignore
-    if (this.loginForm.valid) {
-      // @ts-ignore
+    if(this.loginForm.valid) {
       this.authService.signin(this.loginForm.value).subscribe(
         result => {
           this.success = result;
+          console.log(result);
           this.responseHandler(result.token);
           this.authState.setAuthState(true);
-          // @ts-ignore
+          console.log(this.token.isValidToken());
           this.loginForm.reset();
         },
         res => {
           this.errors = res.error.error;
+        }, () => {
+          this.router.navigate(['/accueil']);
         }
       );
     }
@@ -66,7 +66,8 @@ export class LoginComponent implements OnInit {
 
   // Handle response
   // tslint:disable-next-line:typedef
-  responseHandler(data: any) {
+  // @ts-ignore
+  responseHandler(data){
     this.token.handleData(data);
   }
 
