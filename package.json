@@ -25,7 +25,7 @@
     "angular-datatables": "^12.0.0",
     "bootstrap": "^4.5.3",
     "cookieconsent": "^3.1.1",
-    "datatables.net": "^1.10.20",
+    "datatables.net": "^1.10.25",
     "datatables.net-bs4": "^1.10.20",
     "jquery": "^3.6.0",
     "ngx-bootstrap": "^6.2.0",
