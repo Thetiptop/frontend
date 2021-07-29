@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -25,21 +26,31 @@ export class TokenService {
 
   protected baseUrl: string = environment.apiURL;
 
-  handleData(token: string) {
+
+  // tslint:disable-next-line:typedef
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  handleData(token) {
     localStorage.setItem('access_token', token);
   }
 
+  // tslint:disable-next-line:typedef
   getToken() {
     return localStorage.getItem('access_token');
   }
 
-  payload(token: string) {
+  // tslint:disable-next-line:typedef
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  payload(token) {
     const jwtPayload = token.split('.')[1];
     return JSON.parse(atob(jwtPayload));
   }
 
+  // Verify the token
   // tslint:disable-next-line:typedef
   // @ts-ignore
+  // tslint:disable-next-line:typedef
   isValidToken() {
     const token = this.getToken();
 
@@ -64,9 +75,12 @@ export class TokenService {
     }
   }
 
+
+  // User state based on valid token
+  // tslint:disable-next-line:typedef
   isLoggedIn() {
     // this.getUserId();
-     return this.isValidToken();
+    return this.isValidToken();
 
     /*if (localStorage.getItem("access_token")) {
       return true;
@@ -75,6 +89,8 @@ export class TokenService {
     }*/
   }
 
+  // Remove token
+  // tslint:disable-next-line:typedef
   removeToken() {
     localStorage.removeItem('access_token');
   }

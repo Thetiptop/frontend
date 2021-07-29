@@ -7,14 +7,12 @@ import { AuthStateService } from './auth-state.service';
 
 // User interface
 export class User {
-  // tslint:disable-next-line:ban-types
-  name: String | undefined;
-  // tslint:disable-next-line:ban-types
-  email: String | undefined;
+  name: String;
+  email: String;
+  password: String;
   telephone: any;
-  // tslint:disable-next-line:ban-types
-  adresse: String | undefined;
-  // tslint:disable-next-line:variable-name
+  adresse: String;
+  password_confirmation: String
 }
 
 @Injectable({
@@ -30,6 +28,7 @@ export class AuthService {
   ) { }
 
   protected  baseUrl: string = environment.apiURL;
+  protected  loginBaseUrl: string = environment.loginApiURL;
 
   // User registration
   // tslint:disable-next-line:no-shadowed-variable
@@ -39,19 +38,22 @@ export class AuthService {
 
   // Login
   signin(user: User): Observable<any> {
-    return this.http.post<any>(this.baseUrl + 'login', user);
+    return this.http.post<any>(this.loginBaseUrl, user);
   }
 
   /**
    * Logout
    */
   // tslint:disable-next-line:typedef
-  onLogout() {
+  onLogout(e: { preventDefault: () => void; }) {
+    e.preventDefault();
     this.authstate.setAuthState(false);
     localStorage.removeItem('access_token');
+
     if (!localStorage.getItem('access_token')) {
       this.router.navigate(['/']);
     }
+
   }
 
   // Access user profile
