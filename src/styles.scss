@@ -6,6 +6,7 @@ $theme-colors: (
   "chocolate": #683C11,
   "white": #fff
 );
+
 $chocolate: #683C11;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
@@ -71,6 +72,10 @@ a:focus {
   padding: 1rem;
 }
 
+#DataTables_Table_0_wrapper {
+  overflow-x: scroll !important;
+}
+
 table.dataTable {
   margin-top: 1rem !important;
   margin-bottom: 2rem !important;
@@ -99,4 +104,28 @@ table.dataTable {
 app-play{
   background-image:url('/assets/images/tea-cups-background.jpeg');
   background-size: 100%;
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) {}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) {
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #DataTables_Table_0_wrapper {
+    overflow-x: hidden !important;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  #DataTables_Table_0_wrapper {
+    overflow-x: hidden !important;
+  }
 }

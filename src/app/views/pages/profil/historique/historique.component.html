@@ -1,4 +1,4 @@
-<table datatable [dtOptions]="dtOptions" class="w-100 my-5 table table-striped table-bordered row-border hover">
+<table datatable [dtOptions]="dtOptions" class="historique-table w-100 my-5 table table-striped table-bordered row-border hover">
     <thead>
     <tr>
       <th scope="col">Lot</th>
@@ -13,7 +13,7 @@
       <td>{{item.playerBirthday}}</td>
       <td>{{item.playerCountry}}</td>
       <td>{{item.playerClub}}</td>
-      <td><a class="btn btn-outline-primary" routerLink="/play:{{item.id}}">Reclamer</a></td>
+      <td><a class="btn btn-outline-primary" (click)="open()">Reclamer</a></td>
     </tr>
     </tbody>
   </table>
