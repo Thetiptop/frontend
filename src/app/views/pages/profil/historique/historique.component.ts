@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
-import {ReclamerComponent} from './reclamer/reclamer.component';
+import {ReclamerComponent} from '../../play/reclamer/reclamer.component';
 
 @Component({
   selector: 'app-historique',
