@@ -5,10 +5,8 @@
   </button>
 </div>
 <div class="modal-body">
-  <p>Hello, {{name}}!</p>
-  <p>Votre Lot "The Bio à base de citron" sera livré.</p>
-  <p>Vous confirmez que votre lot vous sera livré a cette addresse ? :  " 2 bis avenue Arsitide Briand, 92000"</p>
-  <p (click)=toggleDisplay()><i><u>Envoyer le lot à une autre addresse</u></i></p>
+  <p>Votre Lot "The Bio à base de citron" sera livré a cette addresse ? :  "<span class="text-bold text-underline">2 bis avenue Arsitide Briand, 92000</span>"</p>
+  <a class="text-chocolate d-block mb-3" (click)=toggleDisplay()>Envoyer le lot à une autre addresse</a>
   <input [@inOutAnimation] *ngIf="isShowDivIf" class="form-control new-address" placeholder="Saisissez l'addresse de livraison">
 </div>
 <div class="modal-footer">
