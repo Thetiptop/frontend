@@ -4,12 +4,15 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class="modal-body">
-  <p>Votre Lot "The Bio à base de citron" sera livré a cette addresse ? :  "<span class="text-bold text-underline">2 bis avenue Arsitide Briand, 92000</span>"</p>
-  <a class="text-chocolate d-block mb-3" (click)=toggleDisplay()>Envoyer le lot à une autre addresse</a>
-  <input [@inOutAnimation] *ngIf="isShowDivIf" class="form-control new-address" placeholder="Saisissez l'addresse de livraison">
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Annuler</button>
-  <button type="button" class="btn btn-lipton">Confirmer</button>
-</div>
+<form>
+  <div class="modal-body">
+    <p>Votre Lot "The Bio à base de citron" (id = {{id}}) sera livré à cette addresse :</p>
+    <input [disabled]="!isShowDivIf" class="form-control new-address mb-2" placeholder="Nom et Prénom">
+    <input [disabled]="!isShowDivIf" class="form-control new-address mb-3" placeholder="Saisissez l'addresse de livraison">
+    <a class="text-chocolate d-block mb-3" (click)=toggleDisplay()>Modifer l'addresse</a>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Annuler</button>
+    <button type="button" routerLink="/reclamer:{{id}}" class="btn btn-lipton">Confirmer</button>
+  </div>
+</form>
