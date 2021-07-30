@@ -1,7 +1,8 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import {ReclamerComponent} from '../../play/reclamer/reclamer.component';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-historique',
@@ -12,7 +13,7 @@ import {ReclamerComponent} from '../../play/reclamer/reclamer.component';
 export class HistoriqueComponent implements OnInit, OnDestroy {
 
   dtOptions: DataTables.Settings = {};
-
+  editProfileForm: FormGroup;
   jsonData: any = [
     {
       playerName: 'Cristiano Ronaldo',
@@ -105,8 +106,32 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
       playerClub: 'Liverpool',
       id: 162
     }];
+  title = 'modal2';
+  userList = [
+    {
+      id: '1',
+      firstname: 'Aiman',
+      lastname: 'Rahmat',
+      username: 'aimanrahmat',
+      email: 'aimanrahmat@gmail.com'
+    },
+    {
+      id: '2',
+      firstname: 'Christiano',
+      lastname: 'Ronaldo',
+      username: 'ronaldo7',
+      email: 'ronaldo7@gmail.com'
+    },
+    {
+      id: '3',
+      firstname: 'Wayne',
+      lastname: 'Rooney',
+      username: 'rooney8',
+      email: 'rooney8@gmail.com'
+    }];
 
   constructor(private httpClient: HttpClient,
+              private fb: FormBuilder,
               config: NgbModalConfig,
               private modalService: NgbModal
   ) {
@@ -114,9 +139,10 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
     config.keyboard = false;
   }
 
-  open() {
-    const modalRef = this.modalService.open(ReclamerComponent, { centered: true });
+  open(item) {
+    const modalRef = this.modalService.open(ReclamerComponent, {centered: true} );
     modalRef.componentInstance.name = 'World';
+    modalRef.componentInstance.id = item.id;
   }
 
   ngOnInit(): void {
@@ -136,12 +162,18 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
           last: 'Dernier'
         },
       },
-      lengthMenu : [3, 5, 10, 25],
+      lengthMenu: [3, 5, 10, 25],
       pageLength: 3
     };
   }
 
   ngOnDestroy(): void {
   }
+
+  onSubmit() {
+    this.modalService.dismissAll();
+    console.log('res:', this.editProfileForm.getRawValue());
+  }
+
 
 }

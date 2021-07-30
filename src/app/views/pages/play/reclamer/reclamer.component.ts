@@ -33,6 +33,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class ReclamerComponent implements OnInit {
 
   @Input() name;
+  @Input() id;
   isShowDivIf = false;
 
   toggleDisplay() {
@@ -43,5 +44,6 @@ export class ReclamerComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }
