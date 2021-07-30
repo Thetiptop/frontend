@@ -1,41 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Subject} from 'rxjs';
-import {NgbActiveModal, NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
-
-@Component({
-  selector: 'ngbd-modal-content',
-  template: `
-    <div class="modal-header">
-      <h4 class="modal-title">Réclamation</h4>
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <p>Hello, {{name}}!</p>
-      <p>Votre Lot "The Bio à base de citron" sera livré.</p>
-      <p>Vous confirmez que votre lot vous sera livré a cette addresse ? :  " 2 bis avenue Arsitide Briand, 92000"</p>
-      <p (click)=toggleDisplay()><i><u>Envoyer le lot à une autre addresse</u></i></p>
-      <input [style.display]="isShowDivIf ? 'block' : 'none' " class="form-control new-address" placeholder="Saisissez l'addresse de livraison">
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Annuler</button>
-      <button type="button" class="btn btn-lipton">Confirmer</button>
-    </div>
-  `
-})
-
-export class NgbdModalContent {
-  @Input() name;
-  isShowDivIf = false;
-
-  toggleDisplay() {
-    this.isShowDivIf = !this.isShowDivIf;
-  }
-
-  constructor(public activeModal: NgbActiveModal) {}
-}
+import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
+import {ReclamerComponent} from './reclamer/reclamer.component';
 
 @Component({
   selector: 'app-historique',
@@ -149,7 +115,7 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
   }
 
   open() {
-    const modalRef = this.modalService.open(NgbdModalContent, { centered: true });
+    const modalRef = this.modalService.open(ReclamerComponent, { centered: true });
     modalRef.componentInstance.name = 'World';
   }
 

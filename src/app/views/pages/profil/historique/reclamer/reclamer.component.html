@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h4 class="modal-title">Réclamation</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>Hello, {{name}}!</p>
+  <p>Votre Lot "The Bio à base de citron" sera livré.</p>
+  <p>Vous confirmez que votre lot vous sera livré a cette addresse ? :  " 2 bis avenue Arsitide Briand, 92000"</p>
+  <p (click)=toggleDisplay()><i><u>Envoyer le lot à une autre addresse</u></i></p>
+  <input [@inOutAnimation] *ngIf="isShowDivIf" class="form-control new-address" placeholder="Saisissez l'addresse de livraison">
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Annuler</button>
+  <button type="button" class="btn btn-lipton">Confirmer</button>
+</div>
