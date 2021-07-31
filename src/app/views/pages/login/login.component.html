@@ -27,11 +27,13 @@
                  class="form-control"
                  id="email"
                  placeholder="Saisissez votre email">
-          <div *ngIf="isFormSubmitted && (form.email.errors?.required || form.email.invalid )"
+          <div *ngIf="isFormSubmitted && form.email.errors"
                class="invalid-feedback"
                [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}">
-            Requis
+            <span *ngIf="form.email.status">Champs invalide</span>
+            <span *ngIf="form.email.errors?.required"> | Requis</span>
           </div>
+
         </div>
 
         <div class="form-group">
