@@ -7,6 +7,7 @@ import { ProfilComponent } from './profil.component';
 import { ModifierInformationsComponent } from './modifier-informations/modifier-informations.component';
 import { MotDePasseComponent } from './mot-de-passe/mot-de-passe.component';
 import { ReclamerComponent } from '../play/reclamer/reclamer.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -40,10 +41,11 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [ModifierInformationsComponent, MotDePasseComponent, ReclamerComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    CommonModule,
-  ]
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        CommonModule,
+        ReactiveFormsModule,
+    ]
 })
 export class AboutModule { }
