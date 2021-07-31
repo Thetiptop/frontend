@@ -22,7 +22,7 @@
                id="fullName"
                placeholder="Nom et Prénom"
                type="text">
-        <div *ngIf="reclamerForm && form.name.errors?.required"
+        <div *ngIf="isFormSubmitted && form.name.errors?.required"
              [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
              class="invalid-feedback">
           Requis
@@ -36,10 +36,11 @@
                id="number"
                placeholder="Téléphone"
                type="text">
-        <div *ngIf="reclamerForm && form.telephone.errors?.required"
+        <div *ngIf="isFormSubmitted && form.telephone.errors"
              [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
              class="invalid-feedback">
-          Requis
+          <span *ngIf="form.telephone.status">Champs invalide</span>
+          <span *ngIf="form.telephone.errors?.required"> | Requis</span>
         </div>
       </div>
 
@@ -49,7 +50,7 @@
                formControlName="address"
                placeholder="Adresse"
                type="text">
-        <div *ngIf="reclamerForm && form.address.errors?.required"
+        <div *ngIf="isFormSubmitted && form.address.errors?.required"
              [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
              class="invalid-feedback">
           Requis
@@ -62,7 +63,7 @@
                formControlName="complement_address"
                placeholder="Complément d'addresse"
                type="text">
-        <div *ngIf="reclamerForm && form.complement_address.errors?.required"
+        <div *ngIf="isFormSubmitted && form.complement_address.errors?.required"
              [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
              class="invalid-feedback">
           Requis
@@ -76,10 +77,11 @@
                  formControlName="code_postal"
                  placeholder="Code postale"
                  type="text">
-          <div *ngIf="reclamerForm && form.code_postal.errors?.required"
+          <div *ngIf="isFormSubmitted && form.code_postal.errors"
                [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
                class="invalid-feedback">
-            Requis
+            <span *ngIf="form.code_postal.status">Champs invalide</span>
+            <span *ngIf="form.code_postal.errors?.required"> | Requis</span>
           </div>
         </div>
 
@@ -89,7 +91,7 @@
                  formControlName="ville"
                  placeholder="Ville"
                  type="text">
-          <div *ngIf="reclamerForm && form.ville.errors?.required"
+          <div *ngIf="isFormSubmitted && form.ville.errors?.required"
                [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
                class="invalid-feedback">
             Requis

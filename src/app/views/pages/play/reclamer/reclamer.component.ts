@@ -40,7 +40,9 @@ export class ReclamerComponent implements OnInit {
   @Input() id;
   showForm: boolean;
   wantToChangeAddress: boolean;
+
   reclamerForm: FormGroup;
+
   isFormSubmitted: boolean;
   formData: any;
 
@@ -60,7 +62,7 @@ export class ReclamerComponent implements OnInit {
   ngOnInit(): void {
     this.reclamerForm = new FormGroup({
       name: new FormControl(null, Validators.required),
-      telephone: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      telephone: new FormControl(null, [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]),
       address: new FormControl(null, Validators.required),
       complement_address: new FormControl(null, Validators.required),
       code_postal: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{5}$')]),
