@@ -44,6 +44,10 @@ h3 {
   font-size: 1.60rem;
 }
 
+.w-47 {
+  width: 47% !important;
+}
+
 a,
 a:hover,
 a:focus {
@@ -103,6 +107,10 @@ table.dataTable {
   background: $chocolate;
   border: 0;
   width: 90px;
+}
+
+.form-check .invalid-feedback {
+  display: block;
 }
 
 app-play{
