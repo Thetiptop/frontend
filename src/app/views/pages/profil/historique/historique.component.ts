@@ -16,91 +16,91 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
   editProfileForm: FormGroup;
   jsonData: any = [
     {
-      playerName: 'Cristiano Ronaldo',
+      playerName: 'Nom du lot 1',
       playerCountry: 'Pourtgal',
       playerBirthday: 1988,
       playerClub: 'Juventus',
       id: 151
     },
     {
-      playerName: 'Lionel Messi',
+      playerName: 'Nom du lot 2',
       playerCountry: 'Argentina',
       playerBirthday: 1989,
       playerClub: 'Barcelona',
       id: 152
     },
     {
-      playerName: 'Neymar Junior',
+      playerName: 'Nom du lot 3',
       playerCountry: 'Brazil',
       playerBirthday: 1990,
       playerClub: 'PSG',
       id: 153
     },
     {
-      playerName: 'Tonni Kroos',
+      playerName: 'Nom du lot 4',
       playerCountry: 'Germany',
       playerBirthday: 1991,
       playerClub: 'Real Madrid',
       id: 154
     },
     {
-      playerName: 'Paul Pogba',
+      playerName: 'Nom du lot 5',
       playerCountry: 'France',
       playerBirthday: 1992,
       playerClub: 'Manchester United',
       id: 155
     },
     {
-      playerName: 'Sergio Ramos',
+      playerName: 'Nom du lot 13',
       playerCountry: 'Spain',
       playerBirthday: 1993,
       playerClub: 'Real Madrid',
       id: 155
     },
     {
-      playerName: 'H. Kane',
+      playerName: 'Nom du lot 11',
       playerCountry: 'England',
       playerBirthday: 1994,
       playerClub: 'Tottanhum',
       id: 156
     },
     {
-      playerName: 'Luiz Suarez',
+      playerName: 'Nom du lot 10',
       playerCountry: 'Urgway',
       playerBirthday: 1995,
       playerClub: 'Atletico Madrid',
       id: 157
     },
     {
-      playerName: 'Eden Hazard',
+      playerName: 'Nom du lot 14',
       playerCountry: 'Belgium',
       playerBirthday: 1996,
       playerClub: 'Real Madrid',
       id: 158
     },
     {
-      playerName: 'Vinicious Junior',
+      playerName: 'Nom du lot 9',
       playerCountry: 'Brazil',
       playerBirthday: 1997,
       playerClub: 'Real Madrid',
       id: 159
     },
     {
-      playerName: 'Karim Benzema',
+      playerName: 'Nom du lot 8',
       playerCountry: 'France',
       playerBirthday: 1997,
       playerClub: 'Real Madrid',
       id: 160
     },
     {
-      playerName: 'Ant. Grizzeman',
+      playerName: 'Nom du lot 15',
       playerCountry: 'France',
       playerBirthday: 1998,
       playerClub: 'Barcelona',
       id: 161
     },
     {
-      playerName: 'Sadio Mane',
+      playerName: 'Nom du lot 7',
       playerCountry: 'Senegal',
       playerBirthday: 1999,
       playerClub: 'Liverpool',

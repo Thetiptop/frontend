@@ -14,11 +14,14 @@ export class RegisterComponent implements OnInit {
 
   validationForm1: FormGroup;
   validationForm2: FormGroup;
+  validationForm3: FormGroup;
   isForm1Submitted: boolean | undefined;
   isForm2Submitted: boolean | undefined;
+  isForm3Submitted: boolean | undefined;
   errors: any;
   success: any;
   display = true;
+
   @ViewChild('wizardForm') wizardForm: BaseWizardComponent | undefined;
 
   constructor(
@@ -27,30 +30,71 @@ export class RegisterComponent implements OnInit {
     private router: Router) {
   }
 
-  /**
-   * Returns form
-   */
-  // tslint:disable-next-line:typedef
+  // Returns form controls
   get form1() {
-    // @ts-ignore
-    console.log(this.validationForm1.controls);
-    // @ts-ignore
     return this.validationForm1.controls;
   }
 
-  /**
-   * Returns form
-   */
-  // tslint:disable-next-line:typedef
+  // Returns form controls
   get form2() {
-    // @ts-ignore
     return this.validationForm2.controls;
   }
 
-  // tslint:disable-next-line:typedef
+  // Returns form controls
+  get form3() {
+    return this.validationForm3.controls;
+  }
+
+  ngOnInit(): void {
+
+    /** form1 value validation */
+    this.validationForm1 = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      telephone: ['', Validators.required],
+    });
+
+    /** form2 value validation */
+    this.validationForm2 = this.formBuilder.group({
+      adresse: ['', Validators.required],
+      complement_address: ['', Validators.required],
+      code_postal: ['', Validators.required],
+      ville: ['', Validators.required],
+    });
+
+    /** form3 value validation */
+    this.validationForm3 = this.formBuilder.group({
+      password: ['', Validators.required],
+      password_confirmation: ['', Validators.required],
+      cgu: [false, Validators.requiredTrue],
+      major: [false, Validators.requiredTrue]
+    });
+
+    this.isForm1Submitted = false;
+    this.isForm2Submitted = false;
+    this.isForm3Submitted = false;
+  }
+
+  /**  Go to next step 2 while form value is valid */
+  form1Submit() {
+    if (this.validationForm1.valid) {
+      this.wizardForm.goToNextStep();
+    }
+    this.isForm1Submitted = true;
+  }
+
+  /** Go to next step 3 while form value is valid */
   form2Submit() {
-    // @ts-ignore
     if (this.validationForm2.valid) {
+      this.wizardForm.goToNextStep();
+    }
+    this.isForm2Submitted = true;
+  }
+
+  /** Go to register while form 3 value is valid */
+  form3Submit() {
+    console.log(this.validationForm3.controls);
+    if (this.validationForm3.valid) {
       this.authService.register(this.getData()).subscribe(
         result => {
           this.success = result.success;
@@ -61,63 +105,21 @@ export class RegisterComponent implements OnInit {
           console.log(this.errors);
         },
         () => {
-          // @ts-ignore
           this.wizardForm.goToNextStep();
         }
       );
     }
-    this.isForm2Submitted = true;
+    this.isForm3Submitted = true;
   }
 
-  ngOnInit(): void {
 
-    /**
-     * form1 value validation
-     */
-    this.validationForm1 = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      telephone: ['', Validators.required],
-    });
-
-    /**
-     * form value validation
-     */
-    this.validationForm2 = this.formBuilder.group({
-      adresse: ['', Validators.required],
-      password: ['', Validators.required],
-      password_confirmation: ['', Validators.required]
-    });
-    this.isForm1Submitted = false;
-    this.isForm2Submitted = false;
-  }
-
-  /**
-   * Go to next step 2 while form value is valid
-   */
-  // tslint:disable-next-line:typedef
-  form1Submit() {
-    // @ts-ignore
-    if (this.validationForm1.valid) {
-      // @ts-ignore
-      this.wizardForm.goToNextStep();
-    }
-    this.isForm1Submitted = true;
-  }
-
-  /**
-   * Get values from both forms and join them together
-   */
-  // tslint:disable-next-line:typedef
+  /** Get values from both forms and join them together */
   getData() {
-    // tslint:disable-next-line:prefer-const
-    // @ts-ignore
-    const merged = Object.assign(this.validationForm1.value, this.validationForm2.value);
+    const merged = Object.assign(this.validationForm1.value, this.validationForm2.value, this.validationForm3.value);
     console.log(merged);
     return merged;
   }
 
-  // tslint:disable-next-line:typedef
   goToLogin() {
     this.router.navigate(['/login']);
   }
