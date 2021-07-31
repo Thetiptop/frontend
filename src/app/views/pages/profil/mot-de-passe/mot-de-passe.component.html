@@ -7,18 +7,58 @@
         <div id="security">
           <h6 class="text-uppercase">Paramètre de sécurité</h6>
           <hr>
-          <form>
-            <div class="form-group">
-              <label class="d-block">Changer le mot de passe</label>
-              <input class="form-control" placeholder="Votre ancien mot de passe" type="text">
-              <input class="form-control mt-2" placeholder="Nouveau mot de passe" type="text">
-              <input class="form-control mt-2" placeholder="Confirmer le nouveau mot de passe" type="text">
-            </div>
-            <button class="btn btn-primary px-3 py-2">Modifier</button>
-          </form>
-        </div>
+          <form (ngSubmit)="onSubmit()" [formGroup]="modifierMotdepasseForm">
 
+            <div class="form-group">
+              <label for="old_password" class="d-block">Votre ancien mot de passe</label>
+              <input class="form-control"
+                     id="old_password"
+                     formControlName="old_password"
+                     placeholder="Votre ancien mot de passe"
+                     type="text">
+              <div *ngIf="isFormSubmitted && form.old_password.errors"
+                   [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
+                   class="invalid-feedback">
+                <span *ngIf="form.old_password.status">Champs invalide</span>
+                <span *ngIf="form.old_password.errors?.required"> | Requis</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="new_password" class="d-block">Votre ancien mot de passe</label>
+              <input class="form-control"
+                     id="new_password"
+                     formControlName="new_password"
+                     placeholder="Votre ancien mot de passe"
+                     type="text">
+              <div *ngIf="isFormSubmitted && form.new_password.errors"
+                   [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
+                   class="invalid-feedback">
+                <span *ngIf="form.new_password.status">Champs invalide</span>
+                <span *ngIf="form.new_password.errors?.required"> | Requis</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password_confirmation" class="d-block">Confirmer le nouveau mot de passe</label>
+              <input class="form-control"
+                     formControlName="password_confirmation"
+                     id="password_confirmation"
+                     placeholder="Confirmer le nouveau mot de passe"
+                     type="text">
+              <div *ngIf="isFormSubmitted && form.password_confirmation.errors"
+                   [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
+                   class="invalid-feedback">
+                <span *ngIf="form.password_confirmation.status">Champs invalide</span>
+                <span *ngIf="form.password_confirmation.errors?.required"> | Requis</span>
+              </div>
+            </div>
+
+        <button class="btn btn-primary px-3 py-2" type="submit">Modifier</button>
+        </form>
       </div>
+
     </div>
   </div>
+</div>
 </div>
