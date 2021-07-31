@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {WizardComponent as BaseWizardComponent} from 'angular-archwizard';
 import {AuthService} from '../../../core/auth.service';
+import {ConfirmedValidator} from '../../../core/confirm-validator';
 
 @Component({
   selector: 'app-register',
@@ -50,24 +51,26 @@ export class RegisterComponent implements OnInit {
     /** form1 value validation */
     this.validationForm1 = this.formBuilder.group({
       name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      telephone: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
+      telephone: ['',  [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
     });
 
     /** form2 value validation */
     this.validationForm2 = this.formBuilder.group({
       adresse: ['', Validators.required],
       complement_address: ['', Validators.required],
-      code_postal: ['', Validators.required],
+      code_postal: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
       ville: ['', Validators.required],
     });
 
     /** form3 value validation */
     this.validationForm3 = this.formBuilder.group({
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       password_confirmation: ['', Validators.required],
       cgu: [false, Validators.requiredTrue],
       major: [false, Validators.requiredTrue]
+    }, {
+      validator: ConfirmedValidator('password', 'password_confirmation')
     });
 
     this.isForm1Submitted = false;

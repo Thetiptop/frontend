@@ -55,8 +55,9 @@
                      id="email"
                      placeholder="Email"
                      type="email">
-              <div *ngIf="isForm1Submitted && form1.email.errors?.required" class="invalid-feedback">
-                Requis
+              <div *ngIf="isForm1Submitted && form1.email.errors" class="invalid-feedback">
+                <span *ngIf="form1.email.status">Champs invalide</span>
+                <span *ngIf="form1.email.errors?.required"> | Requis</span>
               </div>
             </div>
 
@@ -68,8 +69,9 @@
                      id="telephone"
                      placeholder="Téléphone"
                      type="text">
-              <div *ngIf="isForm1Submitted && form1.telephone.errors?.required" class="invalid-feedback">
-                Requis
+              <div *ngIf="isForm1Submitted && form1.telephone.errors" class="invalid-feedback">
+                <span *ngIf="form1.telephone.status">Champs invalide</span>
+                <span *ngIf="form1.telephone.errors?.required"> | Requis</span>
               </div>
             </div>
 
@@ -190,22 +192,28 @@
                      id="password"
                      placeholder="Mot de passe"
                      type="password">
-              <div *ngIf="isForm3Submitted && form3.password.errors?.required" class="invalid-feedback">
-                Requis
+              <div class="small text-secondary mt-2">
+                * Minimum 6 charactères
+              </div>
+              <div *ngIf="isForm3Submitted && form3.password.errors" class="invalid-feedback">
+                <span *ngIf="form3.password.status">Champs invalide</span>
+                <span *ngIf="form3.password.errors?.minlength"> | Minimum 6 charactères</span>
+                <span *ngIf="form3.password.errors?.required"> | Requis</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="password_confirmation">Confirmation MDP</label>
+              <label for="password_confirmation">Confirmation du mot de passe</label>
               <input [ngClass]="{'is-invalid': isForm3Submitted && form3.password_confirmation.errors}"
                      class="form-control"
                      formControlName="password_confirmation"
                      id="password_confirmation"
                      placeholder="Confirmation du mot de passe"
                      type="password">
-              <div *ngIf="isForm3Submitted && form3.password_confirmation.errors?.required"
-                   class="invalid-feedback">
-                Requis
+              <div *ngIf="isForm3Submitted && form3.password_confirmation.errors" class="invalid-feedback">
+                <span *ngIf="form3.password_confirmation.status">Champs invalide</span>
+                <span *ngIf="form3.password_confirmation.errors?.required"> | Requis</span>
+                <span *ngIf="form3.password_confirmation.errors?.confirmedValidator"> | Le mot de passe de correspond pas</span>
               </div>
             </div>
 
