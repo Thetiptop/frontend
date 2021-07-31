@@ -24,18 +24,7 @@ export class LoginComponent implements OnInit {
     public authService: AuthService,
     private token: TokenService,
     private authState: AuthStateService,
-  ) { }
-
-  ngOnInit(): void{
-
-    this.loginForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email,
-        Validators.pattern('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$')]),
-      password: new FormControl(null, Validators.required)
-    });
-
-    this.isFormSubmitted = false;
-
+  ) {
   }
 
   get form() {
@@ -43,8 +32,19 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
+  ngOnInit(): void {
+
+    this.loginForm = new FormGroup({
+      email: new FormControl(null, [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(6)])
+    });
+
+    this.isFormSubmitted = false;
+
+  }
+
   onSubmit() {
-    if(this.loginForm.valid) {
+    if (this.loginForm.valid) {
       this.authService.signin(this.loginForm.value).subscribe(
         result => {
           this.success = result;
@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
   // Handle response
   // tslint:disable-next-line:typedef
   // @ts-ignore
-  responseHandler(data){
+  responseHandler(data) {
     this.token.handleData(data);
   }
 
