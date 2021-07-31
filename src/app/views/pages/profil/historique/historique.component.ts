@@ -51,83 +51,60 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
       id: 155
     },
     {
-      playerName: 'Nom du lot 13',
+      playerName: 'Nom du lot 6',
       playerCountry: 'Spain',
       playerBirthday: 1993,
       playerClub: 'Real Madrid',
       id: 155
     },
     {
-      playerName: 'Nom du lot 11',
+      playerName: 'Nom du lot 7',
       playerCountry: 'England',
       playerBirthday: 1994,
       playerClub: 'Tottanhum',
       id: 156
     },
     {
-      playerName: 'Nom du lot 10',
+      playerName: 'Nom du lot 8',
       playerCountry: 'Urgway',
       playerBirthday: 1995,
       playerClub: 'Atletico Madrid',
       id: 157
     },
     {
-      playerName: 'Nom du lot 14',
+      playerName: 'Nom du lot 9',
       playerCountry: 'Belgium',
       playerBirthday: 1996,
       playerClub: 'Real Madrid',
       id: 158
     },
     {
-      playerName: 'Nom du lot 9',
+      playerName: 'Nom du lot 10',
       playerCountry: 'Brazil',
       playerBirthday: 1997,
       playerClub: 'Real Madrid',
       id: 159
     },
     {
-      playerName: 'Nom du lot 8',
+      playerName: 'Nom du lot 11',
       playerCountry: 'France',
       playerBirthday: 1997,
       playerClub: 'Real Madrid',
       id: 160
     },
     {
-      playerName: 'Nom du lot 15',
+      playerName: 'Nom du lot 12',
       playerCountry: 'France',
       playerBirthday: 1998,
       playerClub: 'Barcelona',
       id: 161
     },
     {
-      playerName: 'Nom du lot 7',
+      playerName: 'Nom du lot 13',
       playerCountry: 'Senegal',
       playerBirthday: 1999,
       playerClub: 'Liverpool',
       id: 162
-    }];
-  title = 'modal2';
-  userList = [
-    {
-      id: '1',
-      firstname: 'Aiman',
-      lastname: 'Rahmat',
-      username: 'aimanrahmat',
-      email: 'aimanrahmat@gmail.com'
-    },
-    {
-      id: '2',
-      firstname: 'Christiano',
-      lastname: 'Ronaldo',
-      username: 'ronaldo7',
-      email: 'ronaldo7@gmail.com'
-    },
-    {
-      id: '3',
-      firstname: 'Wayne',
-      lastname: 'Rooney',
-      username: 'rooney8',
-      email: 'rooney8@gmail.com'
     }];
 
   constructor(private httpClient: HttpClient,
@@ -141,7 +118,7 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
 
   open(item) {
     const modalRef = this.modalService.open(ReclamerComponent, {centered: true} );
-    modalRef.componentInstance.name = 'World';
+    modalRef.componentInstance.name = item.playerName;
     modalRef.componentInstance.id = item.id;
   }
 

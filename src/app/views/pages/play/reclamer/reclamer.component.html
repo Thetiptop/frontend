@@ -6,7 +6,7 @@
 </div>
 <form>
   <div class="modal-body">
-    <p>Votre Lot "Nom du lot 1" (id = {{id}}) sera livré à cette addresse :</p>
+    <p>Votre Lot "{{name}}" (id = {{id}}) sera livré à cette addresse :</p>
     <input [disabled]="!isShowDivIf" class="form-control new-address mb-2" placeholder="Marjorie Dubois">
     <input [disabled]="!isShowDivIf" class="form-control new-address mb-3" placeholder="24 rue des Soulliers, 75000, Paris">
     <a class="text-chocolate d-block mb-3" (click)=toggleDisplay()>Modifer l'addresse</a>
