@@ -6,3 +6,9 @@
 .cc-theme-classic .cc-btn:last-child {
   min-width: 100% !important;
 }
+
+.callhttp {
+  position: absolute;
+  top:0;
+  z-index: 99999999;
+}

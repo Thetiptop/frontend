@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
+import { DataTablesModule } from 'angular-datatables';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,12 +22,14 @@ import { SidebarComponent } from './views/components/sidebar/sidebar.component';
 import { BaseComponent } from './views/components/base/base.component';
 import { ArchwizardModule } from 'angular-archwizard';
 
-import { AuthInterceptor } from './core/auth.interceptor';
-import { AuthGuard } from './core/auth.guard';
 import { HistoriqueComponent } from './views/pages/profil/historique/historique.component';
 import { MesInformationsComponent } from './views/pages/profil/mes-informations/mes-informations.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DataTablesModule } from 'angular-datatables';
+import { MyLoaderComponent } from './views/components/my-loader/my-loader.component';
+import { LoaderService } from './core/loader/loader.service';
+import { LoaderInterceptor } from './core/interceptors/loader-interceptor.service';
+import { AuthInterceptor } from './core/authentification/auth.interceptor';
+import { AuthGuard } from './core/authentification/auth.guard';
+
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -71,6 +75,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     BaseComponent,
     HistoriqueComponent,
     MesInformationsComponent,
+    MyLoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,9 +91,15 @@ const cookieConfig: NgcCookieConsentConfig = {
   ],
   providers: [
     AuthGuard,
+    LoaderService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
       multi: true
     },
   ],

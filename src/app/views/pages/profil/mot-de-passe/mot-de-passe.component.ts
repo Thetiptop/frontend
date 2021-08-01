@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ConfirmedValidator} from '../../../../core/confirm-validator';
+import {ConfirmedValidator} from '../../../../core/authentification/confirm-validator';
 
 @Component({
   selector: 'app-mot-de-passe',

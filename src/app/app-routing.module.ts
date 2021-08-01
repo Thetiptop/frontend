@@ -5,7 +5,7 @@ import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
 import { PlayComponent } from './views/pages/play/play.component';
 import { BaseComponent } from './views/components/base/base.component';
-import {AuthGuard} from './core/auth.guard';
+import {AuthGuard} from './core/authentification/auth.guard';
 
 const routes: Routes = [
   {
