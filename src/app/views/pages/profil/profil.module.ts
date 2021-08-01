@@ -8,7 +8,7 @@ import { ModifierInformationsComponent } from './modifier-informations/modifier-
 import { MotDePasseComponent } from './mot-de-passe/mot-de-passe.component';
 import { ReclamerComponent } from '../play/reclamer/reclamer.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {AuthGuard} from '../../../core/auth.guard';
+import { AuthGuard } from '../../../core/authentification/auth.guard';
 
 const routes: Routes = [
   {

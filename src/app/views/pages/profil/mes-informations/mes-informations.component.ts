@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthStateService} from '../../../../core/auth-state.service';
-import {AuthService} from '../../../../core/auth.service';
+import {AuthStateService} from '../../../../core/authentification/auth-state.service';
+import {AuthService} from '../../../../core/authentification/auth.service';
 
 @Component({
   selector: 'app-mes-informations',

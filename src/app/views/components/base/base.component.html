@@ -15,8 +15,9 @@
       </div>
     </nav>
 
-    <div [@myAnimation]="o.isActivated ? o.activatedRoute : ''" id="content">
+    <div [@myAnimation]="o.isActivated ? o.activatedRoute : ''" id="content" class="relative">
       <router-outlet #o="outlet"></router-outlet>
+      <app-my-loader></app-my-loader>
     </div>
 
 </div>

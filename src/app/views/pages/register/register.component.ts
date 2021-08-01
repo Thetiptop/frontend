@@ -2,8 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {WizardComponent as BaseWizardComponent} from 'angular-archwizard';
-import {AuthService} from '../../../core/auth.service';
-import {ConfirmedValidator} from '../../../core/confirm-validator';
+import {AuthService} from '../../../core/authentification/auth.service';
+import {ConfirmedValidator} from '../../../core/authentification/confirm-validator';
 
 @Component({
   selector: 'app-register',
