@@ -11,41 +11,42 @@
             <form>
               <div class="form-group">
                 <label>Nom et Prénom</label>
+                <p>{{UserProfile?.name}}</p>
                 <input aria-describedby="fullNameHelp" class="form-control" disabled
-                       type="text" value="Marjorie Dubois">
+                       type="text" value="{{UserProfile?.name}}">
               </div>
               <div class="form-group">
                 <label>Email</label>
                 <input class="form-control" disabled type="text"
-                       value="marjorie.dubois@gmail.com">
+                       value="{{UserProfile?.email}}">
               </div>
               <div class="form-group">
                 <label>Téléphone</label>
                 <input class="form-control" disabled type="text"
-                       value="0625256547">
+                       value="{{UserProfile?.telephone}}">
               </div>
               <div class="form-group">
                 <label>Adresse</label>
                 <input class="form-control" disabled type="text"
-                       value="24 rue des Soulliers">
+                       value="{{UserProfile?.address}}">
               </div>
 
               <div class="form-group">
                 <label>Complément d'addresse</label>
                 <input class="form-control" disabled type="text"
-                       value="Appartement 45">
+                       value="{{UserProfile?.additional_address}}">
               </div>
 
               <div class="d-flex flex-wrap justify-content-between">
                 <div class="w-47 form-group">
                   <label>Code postale</label>
                   <input class="form-control" disabled type="text"
-                         value="75000">
+                         value="{{UserProfile?.postal_code}}">
                 </div>
                 <div class="w-47 form-group">
                   <label>Ville</label>
                   <input class="form-control" disabled type="text"
-                         value="Paris">
+                         value="{{UserProfile?.ville}}">
                 </div>
               </div>
 

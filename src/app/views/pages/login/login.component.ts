@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         result => {
           this.success = result;
           console.log(result);
-          this.responseHandler(result.token);
+          this.responseHandler(result.access_token);
           this.authState.setAuthState(true);
           console.log(this.token.isValidToken());
           this.loginForm.reset();

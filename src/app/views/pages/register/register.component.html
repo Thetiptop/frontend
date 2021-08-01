@@ -115,27 +115,27 @@
 
           <form (ngSubmit)="form2Submit()" [formGroup]="validationForm2" class='mt-4'>
             <div class="form-group">
-              <label for="adresse">Adresse</label>
-              <input [ngClass]="{'is-invalid': isForm2Submitted && form2.adresse.errors}"
+              <label for="address">Adresse</label>
+              <input [ngClass]="{'is-invalid': isForm2Submitted && form2.address.errors}"
                      class="form-control"
-                     formControlName="adresse"
-                     id="adresse"
+                     formControlName="address"
+                     id="address"
                      placeholder="Adresse"
                      type="text">
-              <div *ngIf="isForm2Submitted && form2.adresse.errors?.required" class="invalid-feedback">
+              <div *ngIf="isForm2Submitted && form2.address.errors?.required" class="invalid-feedback">
                 Requis
               </div>
             </div>
 
             <div class="form-group">
-              <label for="complement_address">Complément d'addresse</label>
-              <input [ngClass]="{'is-invalid': isForm2Submitted && form2.complement_address.errors}"
+              <label for="additional_address">Complément d'addresse</label>
+              <input [ngClass]="{'is-invalid': isForm2Submitted && form2.additional_address.errors}"
                      class="form-control"
-                     formControlName="complement_address"
-                     id="complement_address"
+                     formControlName="additional_address"
+                     id="additional_address"
                      placeholder="Complément d'addresse"
                      type="text">
-              <div *ngIf="isForm2Submitted && form2.complement_address.errors?.required"
+              <div *ngIf="isForm2Submitted && form2.additional_address.errors?.required"
                    class="invalid-feedback">
                 Requis
               </div>
@@ -143,14 +143,14 @@
 
             <div class="d-flex flex-wrap justify-content-between">
               <div class="w-47 form-group">
-                <label for="code_postal">Code Postale</label>
-                <input [ngClass]="{'is-invalid': isForm2Submitted && form2.code_postal.errors}"
+                <label for="postal_code">Code Postale</label>
+                <input [ngClass]="{'is-invalid': isForm2Submitted && form2.postal_code.errors}"
                        class="form-control"
-                       formControlName="code_postal"
-                       id="code_postal"
+                       formControlName="postal_code"
+                       id="postal_code"
                        placeholder="Code Postale"
                        type="text">
-                <div *ngIf="isForm2Submitted && form2.code_postal.errors?.required"
+                <div *ngIf="isForm2Submitted && form2.postal_code.errors?.required"
                      class="invalid-feedback">
                   Requis
                 </div>
@@ -256,8 +256,8 @@
 
         <aw-wizard-step stepTitle="validé">
           <div class="text-center mt-5">
-            <i class="text-success mt-4 mb-2 fa fa-check icon-xxl"></i>
-            <h3 class="text-muted mb-3">Création du compte réussi !</h3>
+          <!--  <i class="text-success mt-4 mb-2 fa fa-check icon-xxl"></i>-->
+            <p class="mb-4">Votre compte a bien été créé. <br> Vous allez recevoir un email de confirmation.</p>
           </div>
           <div class="d-flex justify-content-center mt-2">
             <button (click)="goToLogin()" class="btn btn-lipton btn-block rounded text-bold py-3 mr-2 mb-2 mb-md-0"
