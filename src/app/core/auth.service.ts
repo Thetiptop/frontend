@@ -7,12 +7,14 @@ import { AuthStateService } from './auth-state.service';
 
 // User interface
 export class User {
-  name: String;
-  email: String;
-  password: String;
+  name: string;
+  email: string;
   telephone: any;
-  adresse: String;
-  password_confirmation: String
+  adresse: string;
+  postal_code: any;
+  ville: string;
+  password: string;
+  password_confirmation: string;
 }
 
 @Injectable({
@@ -29,11 +31,12 @@ export class AuthService {
 
   protected  baseUrl: string = environment.apiURL;
   protected  loginBaseUrl: string = environment.loginApiURL;
+  protected  registerApiUrl: string = environment.registerApiUrl;
 
   // User registration
   // tslint:disable-next-line:no-shadowed-variable
   register(user: User): Observable<any> {
-    return this.http.post(this.baseUrl + 'register', user);
+    return this.http.post(this.registerApiUrl, user);
   }
 
   // Login
@@ -58,7 +61,7 @@ export class AuthService {
 
   // Access user profile
   profileUser(): Observable<any> {
-    return this.http.get(this.baseUrl + 'users/user-profile');
+    return this.http.get(this.baseUrl + '/user-profile');
   }
 
 }

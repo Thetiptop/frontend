@@ -32,7 +32,6 @@ import {ActivatedRoute} from '@angular/router';
 export class ProfilComponent implements OnInit {
   title = 'Mon Profil';
   activeUrl: any;
-
   links = [
     {
       title: 'Historique',
@@ -56,7 +55,9 @@ export class ProfilComponent implements OnInit {
     },
   ];
 
-  constructor(public route: ActivatedRoute) {
+
+  constructor(public route: ActivatedRoute
+  ) {
     route.url.subscribe(() => {
       // @ts-ignore
       this.activeUrl = route.snapshot.firstChild.url[0].path;
@@ -65,5 +66,4 @@ export class ProfilComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

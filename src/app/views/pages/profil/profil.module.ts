@@ -8,11 +8,13 @@ import { ModifierInformationsComponent } from './modifier-informations/modifier-
 import { MotDePasseComponent } from './mot-de-passe/mot-de-passe.component';
 import { ReclamerComponent } from '../play/reclamer/reclamer.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {AuthGuard} from '../../../core/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: ProfilComponent,
+    /*canActivate: [AuthGuard],*/
     children: [
       {
         path : '',

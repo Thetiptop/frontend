@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
   display = true;
 
   @ViewChild('wizardForm') wizardForm: BaseWizardComponent | undefined;
+  formData: FormData;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -57,9 +58,9 @@ export class RegisterComponent implements OnInit {
 
     /** form2 value validation */
     this.validationForm2 = this.formBuilder.group({
-      adresse: ['', Validators.required],
-      complement_address: ['', Validators.required],
-      code_postal: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
+      address: ['', Validators.required],
+      additional_address: ['', Validators.required],
+      postal_code: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
       ville: ['', Validators.required],
     });
 
@@ -97,6 +98,8 @@ export class RegisterComponent implements OnInit {
   /** Go to register while form 3 value is valid */
   form3Submit() {
     console.log(this.validationForm3.controls);
+    // @ts-ignore
+    console.log('this.validationForm3.password = ' + this.validationForm3.password);
     if (this.validationForm3.valid) {
       this.authService.register(this.getData()).subscribe(
         result => {
@@ -119,7 +122,6 @@ export class RegisterComponent implements OnInit {
   /** Get values from both forms and join them together */
   getData() {
     const merged = Object.assign(this.validationForm1.value, this.validationForm2.value, this.validationForm3.value);
-    console.log(merged);
     return merged;
   }
 
