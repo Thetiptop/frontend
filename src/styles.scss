@@ -6,6 +6,7 @@ $theme-colors: (
   "chocolate": #683C11,
   "white": #fff
 );
+
 $chocolate: #683C11;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
@@ -43,6 +44,10 @@ h3 {
   font-size: 1.60rem;
 }
 
+.w-47 {
+  width: 47% !important;
+}
+
 a,
 a:hover,
 a:focus {
@@ -59,6 +64,10 @@ a:focus {
   font-weight: bold !important;
 }
 
+.text-underline {
+  text-decoration: underline !important;
+}
+
 .p-page {
   padding: 3rem 3rem 3rem 3rem !important;
 }
@@ -69,6 +78,10 @@ a:focus {
 
 .nav-link {
   padding: 1rem;
+}
+
+#DataTables_Table_0_wrapper {
+  overflow-x: scroll !important;
 }
 
 table.dataTable {
@@ -96,7 +109,35 @@ table.dataTable {
   width: 90px;
 }
 
+.form-check .invalid-feedback {
+  display: block;
+}
+
 app-play{
   background-image:url('/assets/images/tea-cups-background.jpeg');
   background-size: 100%;
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) {}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) {
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #DataTables_Table_0_wrapper {
+    overflow-x: hidden !important;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  #DataTables_Table_0_wrapper {
+    overflow-x: hidden !important;
+  }
 }

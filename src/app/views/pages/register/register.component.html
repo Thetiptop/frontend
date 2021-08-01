@@ -1,11 +1,6 @@
 <div class="d-flex flex-wrap vh-100 row register-page">
   <div class="d-none d-xl-block vh-100 bg-img-register">
-    <!--
-    <div class="mt-4">
-       <button type="submit" class="btn btn-lipton btn-block rounded text-bold py-3 mr-2 mb-2 mb-md-0">Continuer</button>
-    </div>
-    <a routerLink="/login" class="d-block mt-3 text-muted text-right">Vous êtes inscrit ? <span class="text-lipton">Se connecter</span></a>
-    -->
+    <!--IMG-->
   </div>
   <div class="form-container col-12 col-xl-6 py-5">
     <p class="text-center text-uppercase text-bold">Thé tip top</p>
@@ -13,6 +8,7 @@
 
     <div class="auth-form-wrapper">
 
+      <!--Errors-->
       <div *ngIf="display">
         <!-- Errors -->
         <div *ngIf="errors?.name" class="alert alert-danger mt-3">
@@ -44,7 +40,8 @@
                      class="form-control"
                      formControlName="name"
                      id="name"
-                     placeholder="Nom et Prénom" type="text">
+                     placeholder="Nom et Prénom"
+                     type="text">
               <div *ngIf="isForm1Submitted && form1.name.errors?.required" class="invalid-feedback">
                 Requis
               </div>
@@ -52,27 +49,63 @@
 
             <div class="form-group">
               <label for="email">Email</label>
-              <input [ngClass]="{'is-invalid': isForm1Submitted && form1.email.errors}" class="form-control" formControlName="email" id="email"
-                     placeholder="Email" type="email">
-              <div *ngIf="isForm1Submitted && form1.email.errors?.required" class="invalid-feedback">
-                Requis
+              <input [ngClass]="{'is-invalid': isForm1Submitted && form1.email.errors}"
+                     class="form-control"
+                     formControlName="email"
+                     id="email"
+                     placeholder="Email"
+                     type="email">
+              <div *ngIf="isForm1Submitted && form1.email.errors" class="invalid-feedback">
+                <span *ngIf="form1.email.status">Champs invalide</span>
+                <span *ngIf="form1.email.errors?.required"> | Requis</span>
               </div>
             </div>
 
             <div class="form-group">
               <label for="telephone">Téléphone</label>
-              <input [ngClass]="{'is-invalid': isForm1Submitted && form1.telephone.errors}" class="form-control" formControlName="telephone" id="telephone"
-                     placeholder="Téléphone" type="text">
-              <div *ngIf="isForm1Submitted && form1.telephone.errors?.required" class="invalid-feedback">
-                Requis
+              <input [ngClass]="{'is-invalid': isForm1Submitted && form1.telephone.errors}"
+                     class="form-control"
+                     formControlName="telephone"
+                     id="telephone"
+                     placeholder="Téléphone"
+                     type="text">
+              <div *ngIf="isForm1Submitted && form1.telephone.errors" class="invalid-feedback">
+                <span *ngIf="form1.telephone.status">Champs invalide</span>
+                <span *ngIf="form1.telephone.errors?.required"> | Requis</span>
               </div>
             </div>
 
             <div class="mt-4">
-              <button type="submit" class="btn btn-lipton btn-block rounded text-bold py-3 mr-2 mb-2 mb-md-0">Continuer</button>
+              <button class="btn btn-lipton btn-block rounded text-bold py-3 mr-2 mb-2 mb-md-0" type="submit">
+                Continuer
+              </button>
             </div>
 
-            <a routerLink="/login" class="d-block mt-3 text-muted text-right">Vous êtes inscrit ? <span class="text-lipton">Se connecter</span></a>
+            <div class="col-12 p-0 d-flex align-content-center justify-content-center flex-wrap">
+              <div class="col-5 p-0 d-flex align-content-center justify-content-center">
+                <hr class="w-100 m-auto">
+              </div>
+              <div class="col-2 d-flex align-content-center justify-content-center">
+                <span class="text-center py-3 d-block m-auto">OU</span>
+              </div>
+              <div class="col-5 p-0 d-flex align-content-center justify-content-center">
+                <hr class="w-100 m-auto">
+              </div>
+            </div>
+
+            <div class="d-flex">
+              <button class="login-rs google btn btn-white border w-50 py-3 mr-2 mb-2 mb-md-0" type="submit">
+                <i class="fab fa-google mr-1"></i>
+                Google
+              </button>
+              <button class="login-rs facebook btn btn-white border w-50 py-3 mb-2 mb-md-0" type="submit">
+                <i class="fab fa-facebook mr-1"></i>
+                Facebook
+              </button>
+            </div>
+
+            <a class="d-block mt-3 text-muted text-right" routerLink="/login">Vous êtes inscrit ? <span
+              class="text-lipton">Se connecter</span></a>
 
           </form>
 
@@ -83,38 +116,139 @@
           <form (ngSubmit)="form2Submit()" [formGroup]="validationForm2" class='mt-4'>
             <div class="form-group">
               <label for="adresse">Adresse</label>
-              <input [ngClass]="{'is-invalid': isForm2Submitted && form2.adresse.errors}" class="form-control" formControlName="adresse" id="adresse"
-                     placeholder="Adresse" type="text">
+              <input [ngClass]="{'is-invalid': isForm2Submitted && form2.adresse.errors}"
+                     class="form-control"
+                     formControlName="adresse"
+                     id="adresse"
+                     placeholder="Adresse"
+                     type="text">
               <div *ngIf="isForm2Submitted && form2.adresse.errors?.required" class="invalid-feedback">
                 Requis
               </div>
             </div>
 
-
             <div class="form-group">
-              <label for="password">Mot de passe</label>
-              <input [ngClass]="{'is-invalid': isForm2Submitted && form2.password.errors}" class="form-control" formControlName="password" id="password"
-                     placeholder="Password" type="password">
-              <div *ngIf="isForm2Submitted && form2.password.errors?.required" class="invalid-feedback">
-                Requis
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="password_confirmation">Confirmation MDP</label>
-              <input [ngClass]="{'is-invalid': isForm2Submitted && form2.password_confirmation.errors}" class="form-control" formControlName="password_confirmation"
-                     id="password_confirmation"
-                     placeholder="Password"
-                     type="password">
-              <div *ngIf="isForm2Submitted && form2.password_confirmation.errors?.required"
+              <label for="complement_address">Complément d'addresse</label>
+              <input [ngClass]="{'is-invalid': isForm2Submitted && form2.complement_address.errors}"
+                     class="form-control"
+                     formControlName="complement_address"
+                     id="complement_address"
+                     placeholder="Complément d'addresse"
+                     type="text">
+              <div *ngIf="isForm2Submitted && form2.complement_address.errors?.required"
                    class="invalid-feedback">
                 Requis
               </div>
             </div>
 
+            <div class="d-flex flex-wrap justify-content-between">
+              <div class="w-47 form-group">
+                <label for="code_postal">Code Postale</label>
+                <input [ngClass]="{'is-invalid': isForm2Submitted && form2.code_postal.errors}"
+                       class="form-control"
+                       formControlName="code_postal"
+                       id="code_postal"
+                       placeholder="Code Postale"
+                       type="text">
+                <div *ngIf="isForm2Submitted && form2.code_postal.errors?.required"
+                     class="invalid-feedback">
+                  Requis
+                </div>
+              </div>
+
+              <div class="w-47 form-group">
+                <label for="ville">Ville</label>
+                <input [ngClass]="{'is-invalid': isForm2Submitted && form2.ville.errors}"
+                       class="form-control"
+                       formControlName="ville"
+                       id="ville"
+                       placeholder="Ville"
+                       type="text">
+                <div *ngIf="isForm2Submitted && form2.ville.errors?.required"
+                     class="invalid-feedback">
+                  Requis
+                </div>
+              </div>
+            </div>
+
+
             <div class="d-flex justify-content-left mt-2">
-              <button awPreviousStep class="btn btn-light border mr-2" type="button">Back</button>
-              <button class="btn btn-lipton btn-block rounded text-bold py-3 mr-2 mb-2 mb-md-0">Continuer</button>
+              <button awPreviousStep class="btn btn-light border mr-2" type="button">Retour</button>
+              <button class="btn btn-lipton btn-block rounded text-bold py-3 mr-2 mb-2 mb-md-0" type="submit">Continuer</button>
+            </div>
+          </form>
+
+        </aw-wizard-step>
+
+        <aw-wizard-step stepTitle="étape 3">
+
+          <form (ngSubmit)="form3Submit()" [formGroup]="validationForm3" class='mt-4'>
+
+            <div class="form-group">
+              <label for="password">Mot de passe</label>
+              <input [ngClass]="{'is-invalid': isForm3Submitted && form3.password.errors}"
+                     class="form-control"
+                     formControlName="password"
+                     id="password"
+                     placeholder="Mot de passe"
+                     type="password">
+              <div class="small text-secondary mt-2">
+                * Minimum 6 charactères
+              </div>
+              <div *ngIf="isForm3Submitted && form3.password.errors" class="invalid-feedback">
+                <span *ngIf="form3.password.status">Champs invalide</span>
+                <span *ngIf="form3.password.errors?.minlength"> | Minimum 6 charactères</span>
+                <span *ngIf="form3.password.errors?.required"> | Requis</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password_confirmation">Confirmation du mot de passe</label>
+              <input [ngClass]="{'is-invalid': isForm3Submitted && form3.password_confirmation.errors}"
+                     class="form-control"
+                     formControlName="password_confirmation"
+                     id="password_confirmation"
+                     placeholder="Confirmation du mot de passe"
+                     type="password">
+              <div *ngIf="isForm3Submitted && form3.password_confirmation.errors" class="invalid-feedback">
+                <span *ngIf="form3.password_confirmation.status">Champs invalide</span>
+                <span *ngIf="form3.password_confirmation.errors?.required"> | Requis</span>
+                <span *ngIf="form3.password_confirmation.errors?.confirmedValidator"> | Le mot de passe de correspond pas</span>
+              </div>
+            </div>
+
+            <div class="form-check mb-1">
+              <input type="checkbox"
+                     class="form-check-input"
+                     formControlName="major"
+                     id="major">
+              <label class="form-check-label" for="major">J'atteste avoir au moins 18 ans</label>
+              <div *ngIf="isForm3Submitted && form3.major.errors?.required"
+                   class="invalid-feedback">
+                Requis
+              </div>
+            </div>
+
+            <div class="form-group form-check mb-1">
+              <input type="checkbox"
+                     class="form-check-input"
+                     formControlName="cgu"
+                     id="cgu">
+              <label class="form-check-label" for="cgu">J'accepte les <a class="text-underline" target="_blank" routerLink="/about/cgu">conditions dénérales d'utilisations</a></label>
+              <div *ngIf="isForm3Submitted && form3.cgu.errors?.required"
+                   class="invalid-feedback">
+                Requis
+              </div>
+            </div>
+
+            <div class="form-check mb-3">
+              <input type="checkbox" class="form-check-input" id="check3">
+              <label class="form-check-label" for="check3">Je souhaite m'inscrire à la newsletter</label>
+            </div>
+
+            <div class="d-flex justify-content-left mt-2">
+              <button awPreviousStep class="btn btn-light border mr-2" type="button">Retour</button>
+              <button class="btn btn-lipton btn-block rounded text-bold py-3 mr-2 mb-2 mb-md-0" type="submit">S'inscrire</button>
             </div>
           </form>
 
@@ -124,12 +258,11 @@
           <div class="text-center mt-5">
             <i class="text-success mt-4 mb-2 fa fa-check icon-xxl"></i>
             <h3 class="text-muted mb-3">Création du compte réussi !</h3>
-            <p class="w-75 mx-auto mb-4 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Integer ut nulla nunc. Maecenas arcu sem, hendrerit a tempor quis, sagittis accumsan tellus. In
-              hac habitasse platea dictumst</p>
           </div>
           <div class="d-flex justify-content-center mt-2">
-            <button (click)="goToLogin()" type="button" class="btn btn-lipton btn-block rounded text-bold py-3 mr-2 mb-2 mb-md-0">Se connecter</button>
+            <button (click)="goToLogin()" class="btn btn-lipton btn-block rounded text-bold py-3 mr-2 mb-2 mb-md-0"
+                    type="button">Se connecter
+            </button>
           </div>
         </aw-wizard-step>
 

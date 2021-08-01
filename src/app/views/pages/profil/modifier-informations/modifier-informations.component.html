@@ -1,39 +1,111 @@
 <div class="row gutters-sm">
 
-    <div class="col-md-12">
-      <div class="card bg-light">
-        <div class="card-body">
+  <div class="col-md-12">
+    <div class="card bg-light">
+      <div class="card-body">
 
-          <div id="account">
-            <h6 class="text-uppercase">Modifer vos informations</h6>
-            <hr>
-            <form>
-              <div class="form-group">
-                <label for="fullName">Nom et Prénom</label>
-                <input aria-describedby="fullNameHelp" class="form-control" id="fullName" placeholder="Nom et Prénom"
-                       type="text" value="Marjorie Dubois">
+        <div id="account">
+          <h6 class="text-uppercase">Modifer vos informations</h6>
+          <hr>
+          <form [formGroup]="modifierProfileForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="fullName">Nom et Prénom</label>
+              <input aria-describedby="fullNameHelp"
+                     class="form-control"
+                     id="fullName"
+                     placeholder="Nom et Prénom"
+                     type="text">
+              <div *ngIf="isFormSubmitted && form.name.errors"
+                   [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
+                   class="invalid-feedback">
+                <span *ngIf="form.name.status">Champs invalide</span>
+                <span *ngIf="form.name.errors?.required"> | Requis</span>
               </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input class="form-control" id="email" placeholder="Email" type="text"
-                       value="marjorie.dubois@gmail.com">
-              </div>
-              <div class="form-group">
-                <label for="number">Téléphone</label>
-                <input class="form-control" id="number" placeholder="Téléphone" type="text"
-                       value="0625256547">
-              </div>
-              <div class="form-group">
-                <label for="location">Adresse</label>
-                <input class="form-control" id="location" placeholder="Adresse" type="text"
-                       value="24 rue des Soulliers, 7500, Paris">
-              </div>
-              <button class="btn btn-primary px-3 py-2" type="button">Modifier</button>
-            </form>
-          </div>
+            </div>
 
+            <div class="form-group">
+              <label for="telephone">Téléphone</label>
+              <input class="form-control"
+                     formControlName="telephone"
+                     id="telephone"
+                     placeholder="Téléphone"
+                     type="text">
+              <div *ngIf="isFormSubmitted && form.telephone.errors"
+                   [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
+                   class="invalid-feedback">
+                <span *ngIf="form.telephone.status">Champs invalide</span>
+                <span *ngIf="form.telephone.errors?.required"> | Requis</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="address">Adresse</label>
+              <input class="form-control"
+                     formControlName="address"
+                     placeholder="Adresse"
+                     id="address"
+                     type="text">
+              <div *ngIf="isFormSubmitted && form.address.errors"
+                   [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
+                   class="invalid-feedback">
+                <span *ngIf="form.address.status">Champs invalide</span>
+                <span *ngIf="form.address.errors?.required"> | Requis</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="complement_address">Complément d'addresse</label>
+              <input class="form-control"
+                     formControlName="complement_address"
+                     placeholder="Complément d'addresse"
+                     id="complement_address"
+                     type="text">
+              <div *ngIf="isFormSubmitted && form.complement_address.errors"
+                   [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
+                   class="invalid-feedback">
+                <span *ngIf="form.complement_address.status">Champs invalide</span>
+                <span *ngIf="form.complement_address.errors?.required"> | Requis</span>
+              </div>
+            </div>
+
+            <div class="d-flex flex-wrap justify-content-between">
+              <div class="w-47 form-group">
+                <label for="code_postal">Code postale</label>
+                <input class="form-control"
+                       placeholder="Code Postale"
+                       formControlName="code_postal"
+                       id="code_postal"
+                       type="text">
+                <div *ngIf="isFormSubmitted && form.code_postal.errors"
+                     [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
+                     class="invalid-feedback">
+                  <span *ngIf="form.code_postal.status">Champs invalide</span>
+                  <span *ngIf="form.code_postal.errors?.required"> | Requis</span>
+                </div>
+              </div>
+
+              <div class="w-47 form-group">
+                <label for="ville">Ville</label>
+                <input class="form-control"
+                       formControlName="ville"
+                       placeholder="Ville"
+                       id="ville"
+                       type="text">
+                <div *ngIf="isFormSubmitted && form.ville.errors"
+                     [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
+                     class="invalid-feedback">
+                  <span *ngIf="form.ville.status">Champs invalide</span>
+                  <span *ngIf="form.ville.errors?.required"> | Requis</span>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-primary px-3 py-2" type="submit">Modifier</button>
+          </form>
         </div>
+
       </div>
     </div>
   </div>
+</div>
 
