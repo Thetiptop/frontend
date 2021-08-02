@@ -34,15 +34,14 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
     )
   ]
 })
+
 export class ReclamerComponent implements OnInit {
 
   @Input() name;
   @Input() id;
   showForm: boolean;
   wantToChangeAddress: boolean;
-
   reclamerForm: FormGroup;
-
   isFormSubmitted: boolean;
   formData: any;
 

@@ -1,19 +1,18 @@
 <div class="row gutters-sm">
-
   <div class="col-md-12">
     <div class="card bg-light">
       <div class="card-body">
-
         <div id="account">
           <h6 class="text-uppercase">Modifer vos informations</h6>
           <hr>
           <form [formGroup]="modifierProfileForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-              <label for="fullName">Nom et Prénom</label>
-              <input aria-describedby="fullNameHelp"
+              <label for="name">Nom et Prénom</label>
+              <input formControlName="name"
                      class="form-control"
-                     id="fullName"
+                     id="name"
                      placeholder="Nom et Prénom"
+                     value="{{UserProfile?.name}}"
                      type="text">
               <div *ngIf="isFormSubmitted && form.name.errors"
                    [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
@@ -29,6 +28,8 @@
                      formControlName="telephone"
                      id="telephone"
                      placeholder="Téléphone"
+                     value="{{UserProfile?.telephone}}"
+
                      type="text">
               <div *ngIf="isFormSubmitted && form.telephone.errors"
                    [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
@@ -43,6 +44,7 @@
               <input class="form-control"
                      formControlName="address"
                      placeholder="Adresse"
+                     value="{{UserProfile?.address}}"
                      id="address"
                      type="text">
               <div *ngIf="isFormSubmitted && form.address.errors"
@@ -54,33 +56,35 @@
             </div>
 
             <div class="form-group">
-              <label for="complement_address">Complément d'addresse</label>
+              <label for="additional_address">Complément d'addresse</label>
               <input class="form-control"
-                     formControlName="complement_address"
+                     formControlName="additional_address"
                      placeholder="Complément d'addresse"
-                     id="complement_address"
+                     value="{{UserProfile?.additional_address}}"
+                     id="additional_address"
                      type="text">
-              <div *ngIf="isFormSubmitted && form.complement_address.errors"
+              <div *ngIf="isFormSubmitted && form.additional_address.errors"
                    [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
                    class="invalid-feedback">
-                <span *ngIf="form.complement_address.status">Champs invalide</span>
-                <span *ngIf="form.complement_address.errors?.required"> | Requis</span>
+                <span *ngIf="form.additional_address.status">Champs invalide</span>
+                <span *ngIf="form.additional_address.errors?.required"> | Requis</span>
               </div>
             </div>
 
             <div class="d-flex flex-wrap justify-content-between">
               <div class="w-47 form-group">
-                <label for="code_postal">Code postale</label>
+                <label for="postal_code">Code postale</label>
                 <input class="form-control"
                        placeholder="Code Postale"
-                       formControlName="code_postal"
-                       id="code_postal"
+                       formControlName="postal_code"
+                       id="postal_code"
+                       value="{{UserProfile?.postal_code}}"
                        type="text">
-                <div *ngIf="isFormSubmitted && form.code_postal.errors"
+                <div *ngIf="isFormSubmitted && form.postal_code.errors"
                      [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
                      class="invalid-feedback">
-                  <span *ngIf="form.code_postal.status">Champs invalide</span>
-                  <span *ngIf="form.code_postal.errors?.required"> | Requis</span>
+                  <span *ngIf="form.postal_code.status">Champs invalide</span>
+                  <span *ngIf="form.postal_code.errors?.required"> | Requis</span>
                 </div>
               </div>
 
@@ -89,6 +93,7 @@
                 <input class="form-control"
                        formControlName="ville"
                        placeholder="Ville"
+                       value="{{UserProfile?.ville}}"
                        id="ville"
                        type="text">
                 <div *ngIf="isFormSubmitted && form.ville.errors"
@@ -99,11 +104,9 @@
                 </div>
               </div>
             </div>
-
             <button class="btn btn-primary px-3 py-2" type="submit">Modifier</button>
           </form>
         </div>
-
       </div>
     </div>
   </div>
