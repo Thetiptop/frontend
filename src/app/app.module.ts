@@ -29,8 +29,12 @@ import { LoaderService } from './core/loader/loader.service';
 import { LoaderInterceptor } from './core/interceptors/loader-interceptor.service';
 import { AuthInterceptor } from './core/authentification/auth.interceptor';
 import { AuthGuard } from './core/authentification/auth.guard';
-import {AuthService} from './core/authentification/auth.service';
+import { AuthService } from './core/authentification/auth.service';
+import { PlayService } from './core/play/play.service';
+
 import { NotificationComponent } from './views/components/notification/notification.component';
+import { FelicitationsComponent } from './views/components/felicitations/felicitations.component';
+import {UserDataService} from './core/authentification/userdata.service';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -79,6 +83,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     MesInformationsComponent,
     MyLoaderComponent,
     NotificationComponent,
+    FelicitationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,9 +98,6 @@ const cookieConfig: NgcCookieConsentConfig = {
     DataTablesModule
   ],
   providers: [
-    AuthGuard,
-    AuthService,
-    LoaderService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
@@ -106,6 +108,11 @@ const cookieConfig: NgcCookieConsentConfig = {
       useClass: LoaderInterceptor,
       multi: true
     },
+    AuthGuard,
+    AuthService,
+    LoaderService,
+    PlayService,
+    UserDataService,
   ],
   bootstrap: [
     AppComponent,

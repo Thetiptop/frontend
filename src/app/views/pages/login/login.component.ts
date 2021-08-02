@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   get form() {
-    console.log(this.loginForm.controls);
+    // console.log(this.loginForm.controls);
     return this.loginForm.controls;
   }
 
@@ -48,10 +48,10 @@ export class LoginComponent implements OnInit {
       this.authService.signin(this.loginForm.value).subscribe(
         result => {
           this.success = result;
-          console.log(result);
+          // console.log(result);
           this.responseHandler(result.access_token);
           this.authState.setAuthState(true);
-          console.log(this.token.isValidToken());
+          // console.log(this.token.isValidToken());
           this.loginForm.reset();
         },
         res => {

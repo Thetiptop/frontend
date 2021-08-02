@@ -21,7 +21,7 @@ export class SidebarComponent implements OnInit {
      */
     this.authstate.userAuthState.subscribe(val => {
       this.isSignedIn = val;
-      console.log(val);
+      // console.log(val);
     });
   }
 

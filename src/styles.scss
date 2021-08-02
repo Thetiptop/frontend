@@ -118,6 +118,10 @@ app-play{
   background-size: 100%;
 }
 
+.page-item.active .page-link {
+  z-index: 0;
+}
+
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) {}
 

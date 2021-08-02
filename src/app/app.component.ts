@@ -26,11 +26,4 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
   }
 
-  // tslint:disable-next-line:typedef
-  makeHttpCall() {
-    this.http.get('https://jsonplaceholder.typicode.com/comments')
-      .subscribe((r) => {
-        console.log(r);
-      });
-  }
 }

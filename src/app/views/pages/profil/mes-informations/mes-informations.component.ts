@@ -20,7 +20,7 @@ export class MesInformationsComponent implements OnInit {
   ngOnInit(): void {
    /* this.authService.userProfileDetails();
     this.UserProfile = this.authService.userProfileDetails();
-    console.log(this.UserProfile);*/
+    // console.log(this.UserProfile);*/
 
     /**
      * Checking the authentication State of the user. (True or False)

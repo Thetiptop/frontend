@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../../core/authentification/auth.service';
-import {AuthStateService} from '../../../../core/authentification/auth-state.service';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../../../../environments/environment';
-import {NotificationComponent} from '../../../components/notification/notification.component';
-import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
+import { AuthStateService } from '../../../../core/authentification/auth-state.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../../environments/environment';
+import { NotificationComponent } from '../../../components/notification/notification.component';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -43,7 +43,7 @@ export class ModifierInformationsComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   get form() {
-    console.log(this.modifierProfileForm.controls);
+    // console.log(this.modifierProfileForm.controls);
     return this.modifierProfileForm.controls;
   }
 
@@ -94,7 +94,7 @@ export class ModifierInformationsComponent implements OnInit {
       this.http.post((this.baseUrl + '/user/update/' + this.UserProfile.id), this.modifierProfileForm.value).subscribe(
         result => {
           this.success = result;
-          this.popUpMessage = 'Les modificcations ont bien été pris en compte';
+          this.popUpMessage = 'Les modifications ont bien été pris en compte';
         },
         error => {
           this.errors = error.error.error;
