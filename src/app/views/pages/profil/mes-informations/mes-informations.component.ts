@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../../core/authentification/auth.service';
 import {AuthStateService} from '../../../../core/authentification/auth-state.service';
-import {AuthService} from '../../../../core/authentification/auth.service';
 
 @Component({
   selector: 'app-mes-informations',
@@ -8,21 +8,24 @@ import {AuthService} from '../../../../core/authentification/auth.service';
   styleUrls: ['./mes-informations.component.scss']
 })
 export class MesInformationsComponent implements OnInit {
-  activeUrl: any;
+  isSignedIn: any;
   UserProfile: any;
-  isSignedIn: boolean;
   error: any;
 
   constructor(
-    private authstate: AuthStateService,
-    private authService: AuthService
+    private authService: AuthService,
+    private authState: AuthStateService,
   ) { }
 
   ngOnInit(): void {
+   /* this.authService.userProfileDetails();
+    this.UserProfile = this.authService.userProfileDetails();
+    console.log(this.UserProfile);*/
+
     /**
      * Checking the authentication State of the user. (True or False)
      */
-    this.authstate.userAuthState.subscribe(val => {
+    this.authState.userAuthState.subscribe(val => {
       this.isSignedIn = val;
     });
 
@@ -36,13 +39,8 @@ export class MesInformationsComponent implements OnInit {
         },
         err => {
           this.error = err.status;
-          this.onLogout(event);
+          this.authService.onLogout(event);
         });
     }
   }
-  onLogout(e) {
-    this.authstate.setAuthState(false);
-    this.authService.onLogout(e);
-  }
-
 }

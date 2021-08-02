@@ -29,6 +29,8 @@ import { LoaderService } from './core/loader/loader.service';
 import { LoaderInterceptor } from './core/interceptors/loader-interceptor.service';
 import { AuthInterceptor } from './core/authentification/auth.interceptor';
 import { AuthGuard } from './core/authentification/auth.guard';
+import {AuthService} from './core/authentification/auth.service';
+import { NotificationComponent } from './views/components/notification/notification.component';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -76,6 +78,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     HistoriqueComponent,
     MesInformationsComponent,
     MyLoaderComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,6 +94,7 @@ const cookieConfig: NgcCookieConsentConfig = {
   ],
   providers: [
     AuthGuard,
+    AuthService,
     LoaderService,
     {
       provide: HTTP_INTERCEPTORS,

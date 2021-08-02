@@ -117,7 +117,7 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
   }
 
   open(item) {
-    const modalRef = this.modalService.open(ReclamerComponent, {centered: true} );
+    const modalRef = this.modalService.open(ReclamerComponent, {centered: true, size: 'lg'} );
     modalRef.componentInstance.name = item.playerName;
     modalRef.componentInstance.id = item.id;
   }
