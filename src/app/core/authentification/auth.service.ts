@@ -61,36 +61,5 @@ export class AuthService {
     return this.http.get(this.baseUrl + '/user-profile');
   }
 
-  userProfileDetails(): void {
-    /**
-     * Checking the authentication State of the user. (True or False)
-     */
-    this.authstate.userAuthState.subscribe(val => {
-      this.isSignedIn = val;
-    });
-
-    /**
-     * User profile data . If can't retrieve data : logout.
-     */
-    if (this.isSignedIn){
-      this.profileUser().subscribe(
-        data => {
-          this.UserProfile = data.detail;
-        },
-        err => {
-          this.error = err.status;
-          this.onLogout(event);
-        });
-    }
-
-    return this.UserProfile;
-  }
-
-  updateProfile(user: User): Observable<any> {
-    return this.http.post((this.baseUrl + '/user/update/' + this.UserProfile.id), user);
-  }
-
-
-
 }
 

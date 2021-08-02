@@ -1,0 +1,23 @@
+<div class="felicitation-popup">
+  <div class="modal-header">
+    <h4 class="modal-title">Notification</h4>
+    <button (click)="activeModal.dismiss('Cross click')" aria-label="Close" class="close" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p class="text-center">{{message}}</p>
+    <p class="text-center">Vous avez gagné <span class="text-underline">{{lotName}}</span></p>
+
+    <div class="col text-center mb-4">
+      <button (click)="activeModal.close('Close click')" routerLink="profile/historique" class="btn btn-outline-dark mx-1" type="button">Historique des gains</button>
+      <button class="btn btn-lipton text-center mx-1">Réclamer votre lot</button>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button (click)="activeModal.close('Close click')" class="btn btn-outline-dark" type="button">Fermer</button>
+  </div>
+</div>
+
+

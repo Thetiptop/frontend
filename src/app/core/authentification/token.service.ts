@@ -70,7 +70,7 @@ export class TokenService {
     if (token) {
       const payload = this.payload(token);
       if (payload) {
-        console.log(payload.sub);
+        // console.log(payload.sub);
       }
     }
   }

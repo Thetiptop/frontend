@@ -1,23 +1,25 @@
 <div class="d-flex flex-wrap row vh-100">
-
   <div class="form-container col-12 col-xl-6 py-5">
     <p class="text-center text-uppercase text-bold">Thé tip top</p>
     <h1 class="text-center text-lobster mb-0 display-4">Valider votre ticket</h1>
-
     <div class="play-form-wrapper">
-
-      <form class="forms-sample">
-
+      <form (ngSubmit)="onSubmit()" [formGroup]="playForm" class="forms-sample">
         <div class="form-group">
-          <label for="exampleInputEmail1">Numéro de ticket</label>
-          <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail1" placeholder="Saissisez un numéro de ticket"
+          <label for="numberTicket">Numéro de ticket</label>
+          <input class="form-control"
+                 formControlName="numberTicket"
+                 id="numberTicket"
+                 placeholder="Saissisez un numéro de ticket"
                  type="text">
+          <div *ngIf="isFormSubmitted && form.numberTicket.errors"
+               [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
+               class="invalid-feedback">
+            <span *ngIf="form.numberTicket.status">Champs invalide</span>
+            <span *ngIf="form.numberTicket.errors?.required"> | Requis</span>
+          </div>
         </div>
-
         <button class="btn btn-lipton btn-block btn-lg" type="submit">Valider</button>
       </form>
-
     </div>
-
   </div>
 </div>

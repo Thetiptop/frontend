@@ -14,7 +14,7 @@ export class MotDePasseComponent implements OnInit {
   constructor() { }
 
   get form() {
-    console.log(this.modifierMotdepasseForm.controls);
+    // console.log(this.modifierMotdepasseForm.controls);
     return this.modifierMotdepasseForm.controls;
   }
 
@@ -33,10 +33,10 @@ export class MotDePasseComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   onSubmit() {
-    console.log(this.modifierMotdepasseForm.value);
-    console.log(this.modifierMotdepasseForm.controls);
+    // console.log(this.modifierMotdepasseForm.value);
+    // console.log(this.modifierMotdepasseForm.controls);
     if (this.modifierMotdepasseForm.valid) {
-      console.log(this.modifierMotdepasseForm.value);
+      // console.log(this.modifierMotdepasseForm.value);
     }
     this.isFormSubmitted = true;
   }

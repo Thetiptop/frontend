@@ -6,11 +6,17 @@
 </div>
 <form [formGroup]="reclamerForm" (ngSubmit)="onSubmit()">
   <div class="modal-body">
-    <p>Votre Lot "{{name}}" (id = {{id}}) sera livré cette addresse suivante :</p>
+    <p>Votre Lot "{{lotName}}" (id = {{lotId}}) sera livré cette addresse suivante :</p>
 
     <div *ngIf="!wantToChangeAddress" class="text-bold">
       <!-- Add here User Adresse from API -->
-      <p class="text-bold">24 rue des Soulliers, <br>Appart 601, étage 6, <br>75000, Paris</p>
+      <p class="text-bold">
+        {{address}}
+        <br>
+        {{additionalAddress}}
+        <br>
+        {{postalCode}}, {{ville}}
+      </p>
     </div>
 
     <div *ngIf="showForm">

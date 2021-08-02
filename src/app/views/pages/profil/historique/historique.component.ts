@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
-import {ReclamerComponent} from '../../play/reclamer/reclamer.component';
+import {NgbModal, NgbModalConfig, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {ReclamerComponent} from '../../../components/reclamer/reclamer.component';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {AuthService} from '../../../../core/authentification/auth.service';
 
 @Component({
   selector: 'app-historique',
@@ -11,6 +12,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 
 export class HistoriqueComponent implements OnInit, OnDestroy {
+  modalRef: any;
 
   dtOptions: DataTables.Settings = {};
   editProfileForm: FormGroup;
@@ -106,8 +108,11 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
       playerClub: 'Liverpool',
       id: 162
     }];
+  UserProfile: any;
+  UserAddress: any;
 
   constructor(private httpClient: HttpClient,
+              private authService: AuthService,
               private fb: FormBuilder,
               config: NgbModalConfig,
               private modalService: NgbModal
@@ -117,12 +122,27 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
   }
 
   open(item) {
-    const modalRef = this.modalService.open(ReclamerComponent, {centered: true, size: 'lg'} );
-    modalRef.componentInstance.name = item.playerName;
-    modalRef.componentInstance.id = item.id;
+    setTimeout(() => {
+    this.modalRef = this.modalService.open(ReclamerComponent, {centered: true, size: 'lg'} );
+    this.modalRef.componentInstance.lotName = item.playerName;
+    this.modalRef.componentInstance.lotId = item.id;
+    this.modalRef.componentInstance.userName = this.UserProfile.name;
+    this.modalRef.componentInstance.userId = this.UserProfile.id;
+    this.modalRef.componentInstance.phone = this.UserProfile.telephone;
+    this.modalRef.componentInstance.address = this.UserProfile.address;
+    this.modalRef.componentInstance.additionalAddress = this.UserProfile.additional_address;
+    this.modalRef.componentInstance.postalCode = this.UserProfile.postal_code;
+    this.modalRef.componentInstance.ville = this.UserProfile.ville;
+  }, 0);
   }
 
   ngOnInit(): void {
+    this.authService.profileUser().subscribe(
+      data => {
+        this.UserProfile = data.detail;
+        this.UserAddress = this.UserProfile.address;
+      });
+
     this.dtOptions = {
       language: {
         search: 'Rechercher : ',
@@ -130,7 +150,7 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
         lengthMenu: 'Afficher _MENU_ éléments',
         info: 'Affichage de _START_ à _END_ de _TOTAL_ éléments',
         // infoEmpty: 'Mostrando ningún elemento.',
-        // emptyTable: "No hay datos disponibles en la tabla",
+        // emptyTable: "Aucun lot gagngé.",
         // https://stackoverflow.com/questions/36849610/datatables-change-interface-language,
         paginate: {
           first: 'Premier',
@@ -149,7 +169,7 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.modalService.dismissAll();
-    console.log('res:', this.editProfileForm.getRawValue());
+    // console.log('res:', this.editProfileForm.getRawValue());
   }
 
 

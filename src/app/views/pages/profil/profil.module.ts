@@ -6,7 +6,7 @@ import { MesInformationsComponent } from './mes-informations/mes-informations.co
 import { ProfilComponent } from './profil.component';
 import { ModifierInformationsComponent } from './modifier-informations/modifier-informations.component';
 import { MotDePasseComponent } from './mot-de-passe/mot-de-passe.component';
-import { ReclamerComponent } from '../play/reclamer/reclamer.component';
+import { ReclamerComponent } from '../../components/reclamer/reclamer.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AuthGuard } from '../../../core/authentification/auth.guard';
 
