@@ -140,6 +140,9 @@ export class ReclamerComponent implements OnInit {
 
   onSubmit() {
     console.log(this.wantToChangeAddress);
+    for (const pair of this.formData.entries()) {
+      console.log(pair[0] + ', ' + pair[1]);
+    }
     // this.isFormSubmitted = true;
   }
 }

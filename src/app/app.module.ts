@@ -34,7 +34,6 @@ import { PlayService } from './core/play/play.service';
 
 import { NotificationComponent } from './views/components/notification/notification.component';
 import { FelicitationsComponent } from './views/components/felicitations/felicitations.component';
-import {UserDataService} from './core/authentification/userdata.service';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -112,7 +111,6 @@ const cookieConfig: NgcCookieConsentConfig = {
     AuthService,
     LoaderService,
     PlayService,
-    UserDataService,
   ],
   bootstrap: [
     AppComponent,
