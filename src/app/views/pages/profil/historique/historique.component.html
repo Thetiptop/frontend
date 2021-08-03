@@ -1,5 +1,4 @@
-<table [dtOptions]="dtOptions" class="historique-table w-100 my-5 table table-striped table-bordered row-border hover"
-       datatable>
+<table [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" datatable class="historique-table w-100 my-5 table table-striped table-bordered row-border hover">
   <thead>
   <tr>
     <th scope="col">Lot</th>
@@ -9,11 +8,11 @@
     <th scope="col">Action</th>
   </thead>
   <tbody>
-  <tr *ngFor="let item of jsonData">
-    <td>{{item.playerName}}</td>
-    <td>{{item.playerBirthday}}</td>
-    <td>{{item.playerCountry}}</td>
-    <td>{{item.playerClub}}</td>
+  <tr *ngFor="let item of historique">
+    <td>Hello</td>
+    <td>Hello</td>
+    <td>{{item.idTicket}}</td>
+    <td>{{item.idUser}}</td>
     <td><a (click)="open(item)" class="btn btn-outline-primary">Reclamer</a></td>
   </tr>
   </tbody>

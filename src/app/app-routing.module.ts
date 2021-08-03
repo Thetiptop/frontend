@@ -39,7 +39,7 @@ const routes: Routes = [
       },
       {
         path : 'play',
-        /*canActivate: [AuthGuard],*/
+        canActivate: [AuthGuard],
         component : PlayComponent
       },
     ]

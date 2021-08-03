@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PlayService } from '../../../core/play/play.service';
 import {AuthService} from '../../../core/authentification/auth.service';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
+import * as confetti from 'canvas-confetti';
 
 @Component({
   selector: 'app-play',
@@ -22,6 +23,7 @@ export class PlayComponent implements OnInit {
   success: any;
   lotName: any;
   lotId: any;
+  colors = ['#bb0000', '#ffffff'];
 
   constructor(config: NgbModalConfig,
               private authService: AuthService,
@@ -45,10 +47,19 @@ export class PlayComponent implements OnInit {
   }
 
   open() {
-    const modalRef = this.modalService.open(FelicitationsComponent, {centered: true} );
+    const modalRef = this.modalService.open(FelicitationsComponent, {centered: true, size: 'xl'} );
     modalRef.componentInstance.message = this.popUpMessage;
     modalRef.componentInstance.lotName = this.lotName;
     modalRef.componentInstance.lotId = this.lotId;
+    confetti.create()({
+      shapes: ['square'],
+      particleCount: 100,
+      spread: 90,
+      origin: {
+        y: (1),
+        x: (0.5)
+      }
+    });
   }
 
   onSubmit() {

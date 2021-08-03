@@ -1,9 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {NgbModal, NgbModalConfig, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
-import {ReclamerComponent} from '../../../components/reclamer/reclamer.component';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import {AuthService} from '../../../../core/authentification/auth.service';
+import {HistoriqueService} from '../../../../core/historique/historique.service';
+import {ReclamerComponent} from '../../../components/reclamer/reclamer.component';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-historique',
@@ -11,11 +13,14 @@ import {AuthService} from '../../../../core/authentification/auth.service';
   styleUrls: ['./historique.component.scss']
 })
 
-export class HistoriqueComponent implements OnInit, OnDestroy {
+export class HistoriqueComponent implements OnInit {
   modalRef: any;
-
   dtOptions: DataTables.Settings = {};
+
+  dtTrigger: Subject<any> = new Subject<any>();
+
   editProfileForm: FormGroup;
+
   jsonData: any = [
     {
       playerName: 'Nom du lot 1',
@@ -108,11 +113,92 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
       playerClub: 'Liverpool',
       id: 162
     }];
+
+  lotJsonData: any = [
+    {
+      idTicket: 311,
+      idUser: 2,
+      takenAt: null,
+      created_at: '2021-08-02T10:54:38.000000Z',
+      updated_at: '2021-08-02T10:54:38.000000Z',
+      id: 1,
+    },
+    {
+      idTicket: 328,
+      idUser: 2,
+      takenAt: null,
+      created_at: '2021-08-02T11:12:34.000000Z',
+      updated_at: '2021-08-02T11:12:34.000000Z',
+      id: 2,
+    },
+    {
+      idTicket: 329,
+      idUser: 2,
+      takenAt: null,
+      created_at: '2021-08-02T11:19:37.000000Z',
+      updated_at: '2021-08-02T11:19:37.000000Z',
+      id: 3,
+    },
+    {
+      idTicket: 333,
+      idUser: 2,
+      takenAt: null,
+      created_at: '2021-08-02T11:25:44.000000Z',
+      updated_at: '2021-08-02T11:25:44.000000Z',
+      id: 4,
+    },
+    {
+      idTicket: 334,
+      idUser: 2,
+      takenAt: null,
+      created_at: '2021-08-02T11:29:10.000000Z',
+      updated_at: '2021-08-02T11:29:10.000000Z',
+      id: 5,
+    },
+    {
+      idTicket: 335,
+      idUser: 2,
+      takenAt: null,
+      created_at: '2021-08-02T11:40:48.000000Z',
+      updated_at: '2021-08-02T11:40:48.000000Z',
+      id: 6,
+    },
+    {
+      idTicket: 336,
+      idUser: 2,
+      takenAt: null,
+      created_at: '2021-08-02T11:41:54.000000Z',
+      updated_at: '2021-08-02T11:41:54.000000Z',
+      id: 7,
+    },
+    {
+      idTicket: 338,
+      idUser: 2,
+      takenAt: null,
+      created_at: '2021-08-02T11:44:02.000000Z',
+      updated_at: '2021-08-02T11:44:02.000000Z',
+      id: 8,
+    },
+    {
+      idTicket: 339,
+      idUser: 2,
+      takenAt: null,
+      created_at: '2021-08-02T11:46:36.000000Z',
+      updated_at: '2021-08-02T11:46:36.000000Z',
+      id: 9,
+    }
+  ];
+
   UserProfile: any;
   UserAddress: any;
+  historique: any;
+  error: any;
+  posts: any;
 
   constructor(private httpClient: HttpClient,
               private authService: AuthService,
+              private http: HttpClient,
+              private historiqueService: HistoriqueService,
               private fb: FormBuilder,
               config: NgbModalConfig,
               private modalService: NgbModal
@@ -121,10 +207,10 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
     config.keyboard = false;
   }
 
+  // Open PopUp
   open(item) {
-    setTimeout(() => {
-    this.modalRef = this.modalService.open(ReclamerComponent, {centered: true, size: 'lg'} );
-    this.modalRef.componentInstance.lotName = item.playerName;
+    this.modalRef = this.modalService.open(ReclamerComponent, {centered: true, size: 'lg'});
+    this.modalRef.componentInstance.lotName = item.idTicket;
     this.modalRef.componentInstance.lotId = item.id;
     this.modalRef.componentInstance.userName = this.UserProfile.name;
     this.modalRef.componentInstance.userId = this.UserProfile.id;
@@ -133,16 +219,9 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
     this.modalRef.componentInstance.additionalAddress = this.UserProfile.additional_address;
     this.modalRef.componentInstance.postalCode = this.UserProfile.postal_code;
     this.modalRef.componentInstance.ville = this.UserProfile.ville;
-  }, 0);
   }
 
   ngOnInit(): void {
-    this.authService.profileUser().subscribe(
-      data => {
-        this.UserProfile = data.detail;
-        this.UserAddress = this.UserProfile.address;
-      });
-
     this.dtOptions = {
       language: {
         search: 'Rechercher : ',
@@ -162,15 +241,28 @@ export class HistoriqueComponent implements OnInit, OnDestroy {
       lengthMenu: [3, 5, 10, 25],
       pageLength: 3
     };
-  }
 
-  ngOnDestroy(): void {
-  }
+    this.authService.profileUser().subscribe(
+      data => {
+        this.UserProfile = data.detail;
+        this.UserAddress = this.UserProfile.address;
+      },
+      err => {
+        this.error = err.status;
+        this.authService.onLogout(event);
+      });
 
-  onSubmit() {
-    this.modalService.dismissAll();
-    // console.log('res:', this.editProfileForm.getRawValue());
-  }
+    this.http.get('http://jsonplaceholder.typicode.com/posts')
+      .subscribe(posts => {
+        this.posts = posts;
+      });
 
+    this.historiqueService.historique().subscribe(
+      data => {
+        this.historique = data.historical;
+        this.dtTrigger.next();
+      }
+    );
+  }
 
 }
