@@ -1,7 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {animate, style, transition, trigger} from '@angular/animations';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {environment} from '../../../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {NotificationComponent} from '../notification/notification.component';
 
 
 @Component({
@@ -52,8 +55,20 @@ export class ReclamerComponent implements OnInit {
   formData2: any;
   error: any;
   random: any;
+  success: any;
+  baseUrl: string = environment.apiURL;
+  errors: any;
+  popUpMessage: any;
 
-  constructor(public activeModal: NgbActiveModal) {
+  constructor(private http: HttpClient,
+              public activeModal: NgbActiveModal,
+              private modalService: NgbModal
+  ) {
+  }
+
+  open() {
+    const modalRef = this.modalService.open(NotificationComponent, {centered: true} );
+    modalRef.componentInstance.message = this.popUpMessage;
   }
 
   get form() {
@@ -85,14 +100,15 @@ export class ReclamerComponent implements OnInit {
    If don't want to change address ( if wanttochangeaddress = false ) , append values from user service to the form and send
    If want to change address ( if wanttochangeaddress = true ), then proceeds to a normal form completion from user
 */
-      if (this.wantToChangeAddress) {
+    if (this.wantToChangeAddress) {
         console.log(this.wantToChangeAddress + 'wantToChangeAddress');
 
         this.formData = new FormData();
         this.formData2 = new FormData();
 
         this.formData.append('user_id', this.userId); // ADD ID
-        this.formData.append('telephone', this.reclamerForm.value.telephone);
+        this.formData.append('phone', this.reclamerForm.value.telephone);
+        this.formData.append('date_livraison', '2021-08-07');
 
         this.formData2.append('complement_address', this.reclamerForm.value.complement_address);
         this.formData2.append('postal_code', this.reclamerForm.value.postal_code);
@@ -112,7 +128,8 @@ export class ReclamerComponent implements OnInit {
       this.formData2 = new FormData();
 
       this.formData.append('user_id', this.userId); // ADD ID
-      this.formData.append('telephone', this.phone);
+      this.formData.append('phone', this.phone);
+      this.formData.append('date_livraison', '2021-08-07');
 
       this.formData2.append('address', this.address);
       this.formData2.append('complement_address', this.additionalAddress);
@@ -139,11 +156,23 @@ export class ReclamerComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.wantToChangeAddress);
-    for (const pair of this.formData.entries()) {
-      console.log(pair[0] + ', ' + pair[1]);
-    }
-    // this.isFormSubmitted = true;
+    this.modalService.dismissAll();
+    this.http.post((this.baseUrl + '/reclamation/' + this.lotId), this.formData).subscribe(
+        result => {
+          this.success = result;
+          console.log(this.success);
+          this.popUpMessage = 'Votre lot vous sera envoyé !';
+        },
+        error => {
+          this.errors = error.error.error;
+          console.log(this.errors);
+          this.popUpMessage = 'Erreur';
+        },
+        () => {
+          this.open();
+        }
+      );
+      this.isFormSubmitted = true;
   }
 }
 

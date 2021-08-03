@@ -24,6 +24,7 @@ export class PlayComponent implements OnInit {
   lotName: any;
   lotId: any;
   colors = ['#bb0000', '#ffffff'];
+  modalRef: any;
 
   constructor(config: NgbModalConfig,
               private authService: AuthService,
@@ -47,10 +48,10 @@ export class PlayComponent implements OnInit {
   }
 
   open() {
-    const modalRef = this.modalService.open(FelicitationsComponent, {centered: true, size: 'xl'} );
-    modalRef.componentInstance.message = this.popUpMessage;
-    modalRef.componentInstance.lotName = this.lotName;
-    modalRef.componentInstance.lotId = this.lotId;
+    this.modalRef = this.modalService.open(FelicitationsComponent, {centered: true, size: 'xl'} );
+    this.modalRef.componentInstance.message = this.popUpMessage;
+    this.modalRef.componentInstance.lotName = this.lotName;
+    this.modalRef.componentInstance.lotId = this.lotId;
     confetti.create()({
       shapes: ['square'],
       particleCount: 100,
@@ -70,7 +71,6 @@ export class PlayComponent implements OnInit {
           // console.log(result);
           this.lotName = this.success.ticket.lot;
           this.lotId = this.success.ticket.id;
-          // console.log(this.lotId);
           this.popUpMessage = 'Vous avez gagné ! Woohoo !';
           this.playForm.reset();
         },
