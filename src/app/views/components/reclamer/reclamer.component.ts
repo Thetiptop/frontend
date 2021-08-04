@@ -142,16 +142,6 @@ export class ReclamerComponent implements OnInit {
       for (const pair of this.formData.entries()) {
         console.log(pair[0] + ', ' + pair[1]);
       }
-
-      /*this.reclamerService.reclameerSendForm(this.formData).subscribe(
-        result => {
-          this.success = result.success;
-        },
-        error => {
-          this.errors = error.error.error;
-          // console.log(this.errors);
-        }
-      );*/
     }
   }
 
@@ -172,7 +162,7 @@ export class ReclamerComponent implements OnInit {
           this.open();
         }
       );
-      this.isFormSubmitted = true;
+    this.isFormSubmitted = true;
   }
 }
 

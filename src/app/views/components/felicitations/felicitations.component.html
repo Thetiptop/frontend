@@ -1,4 +1,6 @@
 <div class="felicitation-popup">
+  <ng-particles [id]="id" [options]="particlesOptions" (particlesInit)="particlesInit($event)"></ng-particles>
+
   <div class="modal-header">
     <h4 class="modal-title">Notification</h4>
     <button (click)="activeModal.dismiss('Cross click')" aria-label="Close" class="close" type="button">
@@ -19,5 +21,4 @@
     <button (click)="activeModal.close('Close click')" class="btn btn-outline-dark" type="button">Fermer</button>
   </div>
 </div>
-
 
