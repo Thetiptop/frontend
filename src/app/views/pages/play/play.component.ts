@@ -5,7 +5,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PlayService } from '../../../core/play/play.service';
 import {AuthService} from '../../../core/authentification/auth.service';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
-import * as confetti from 'canvas-confetti';
 
 @Component({
   selector: 'app-play',
@@ -52,15 +51,6 @@ export class PlayComponent implements OnInit {
     this.modalRef.componentInstance.message = this.popUpMessage;
     this.modalRef.componentInstance.lotName = this.lotName;
     this.modalRef.componentInstance.lotId = this.lotId;
-    confetti.create()({
-      shapes: ['square'],
-      particleCount: 100,
-      spread: 90,
-      origin: {
-        y: (1),
-        x: (0.5)
-      }
-    });
   }
 
   onSubmit() {

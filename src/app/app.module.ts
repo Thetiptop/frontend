@@ -34,6 +34,7 @@ import { PlayService } from './core/play/play.service';
 
 import { NotificationComponent } from './views/components/notification/notification.component';
 import { FelicitationsComponent } from './views/components/felicitations/felicitations.component';
+import {NgParticlesModule} from 'ng-particles';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -93,6 +94,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgParticlesModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
     DataTablesModule
   ],
