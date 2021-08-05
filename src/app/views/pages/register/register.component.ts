@@ -97,9 +97,6 @@ export class RegisterComponent implements OnInit {
 
   /** Go to register while form 3 value is valid */
   form3Submit() {
-    // console.log(this.validationForm3.controls);
-    // @ts-ignore
-    // console.log('this.validationForm3.password = ' + this.validationForm3.password);
     if (this.validationForm3.valid) {
       this.authService.register(this.getData()).subscribe(
         result => {
@@ -108,7 +105,6 @@ export class RegisterComponent implements OnInit {
         },
         error => {
           this.errors = error.error.error;
-          // console.log(this.errors);
         },
         () => {
           this.wizardForm.goToNextStep();

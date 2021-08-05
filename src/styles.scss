@@ -114,8 +114,9 @@ table.dataTable {
 }
 
 app-play{
-  background-image:url('/assets/images/tea-cups-background.jpeg');
-  background-size: 100%;
+  background-position-x: 20rem !important;
+  background-size: cover !important;
+  background: #f5f6f8 url('/assets/images/asian-tea.jpg') no-repeat;
 }
 
 .page-item.active .page-link {

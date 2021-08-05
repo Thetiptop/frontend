@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  apiURL: 'https://admin.atypik-house.com/api/'
+  apiURL: 'https://preprod-admin.dsp-archiwebo20-mt-ma-ca-fd.fr/api/'
 };
 
