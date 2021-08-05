@@ -43,20 +43,14 @@ export class ModifierInformationsComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   get form() {
-    // console.log(this.modifierProfileForm.controls);
     return this.modifierProfileForm.controls;
   }
 
   ngOnInit(): void {
-    /**
-     * Checking the authentication State of the user. (True or False)
-     */
     this.authState.userAuthState.subscribe(val => {
       this.isSignedIn = val;
     });
-    /**
-     * User profile data . If can't retrieve data : logout.
-     */
+
     if (this.isSignedIn){
       this.authService.profileUser().subscribe(
         data => {
@@ -64,10 +58,10 @@ export class ModifierInformationsComponent implements OnInit {
           this.modifierProfileForm.patchValue({
             name: this.UserProfile.name,
             telephone: this.UserProfile.telephone,
-             address: this.UserProfile.address,
-             additional_address: this.UserProfile.additional_address,
+            address: this.UserProfile.address,
+            additional_address: this.UserProfile.additional_address,
             postal_code: this.UserProfile.postal_code,
-             ville: this.UserProfile.ville
+            ville: this.UserProfile.ville
           });
         },
         err => {
@@ -86,7 +80,6 @@ export class ModifierInformationsComponent implements OnInit {
     });
     this.isFormSubmitted = false;
   }
-
 
   // tslint:disable-next-line:typedef
   onSubmit() {

@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  apiURL: 'http://127.0.0.1:8000/api',
-  loginApiURL : 'http://127.0.0.1:8000/api/login',
-  registerApiUrl: 'http://127.0.0.1:8000/api/register',
+  apiURL: 'https://preprod-admin.dsp-archiwebo20-mt-ma-ca-fd.fr/api',
+  loginApiURL : 'https://preprod-admin.dsp-archiwebo20-mt-ma-ca-fd.fr/api/login',
+  registerApiUrl: 'https://preprod-admin.dsp-archiwebo20-mt-ma-ca-fd.fr/api/register',
   cookieDomain: 'http://127.0.0.1:8000'
 };
 

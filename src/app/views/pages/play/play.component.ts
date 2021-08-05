@@ -58,7 +58,6 @@ export class PlayComponent implements OnInit {
       this.playService.play(this.playForm.value).subscribe(
         result => {
           this.success = result;
-          // console.log(result);
           this.lotName = this.success.ticket.lot;
           this.lotId = this.success.ticket.id;
           this.popUpMessage = 'Vous avez gagné ! Woohoo !';

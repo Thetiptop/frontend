@@ -13,7 +13,6 @@ import {AuthStateService} from '../../../core/authentification/auth-state.servic
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  returnUrl: any;
   success: any;
   errors: any;
   isFormSubmitted: boolean;
@@ -28,7 +27,6 @@ export class LoginComponent implements OnInit {
   }
 
   get form() {
-    // console.log(this.loginForm.controls);
     return this.loginForm.controls;
   }
 
@@ -48,10 +46,8 @@ export class LoginComponent implements OnInit {
       this.authService.signin(this.loginForm.value).subscribe(
         result => {
           this.success = result;
-          // console.log(result);
-          this.responseHandler(result.access_token);
+          this.token.handleData(result.access_token);
           this.authState.setAuthState(true);
-          // console.log(this.token.isValidToken());
           this.loginForm.reset();
         },
         res => {
@@ -62,13 +58,6 @@ export class LoginComponent implements OnInit {
       );
     }
     this.isFormSubmitted = true;
-  }
-
-  // Handle response
-  // tslint:disable-next-line:typedef
-  // @ts-ignore
-  responseHandler(data) {
-    this.token.handleData(data);
   }
 
 }
