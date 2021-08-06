@@ -52,7 +52,6 @@ export class ReclamerComponent implements OnInit {
   isFormSubmitted: boolean;
   formData: any;
   queryString: string;
-  formData2: any;
   error: any;
   random: any;
   success: any;
@@ -66,7 +65,7 @@ export class ReclamerComponent implements OnInit {
   ) {
   }
 
-  open() {
+  open(): void {
     const modalRef = this.modalService.open(NotificationComponent, {centered: true} );
     modalRef.componentInstance.message = this.popUpMessage;
   }
@@ -75,13 +74,12 @@ export class ReclamerComponent implements OnInit {
     return this.reclamerForm.controls;
   }
 
-  toggleDisplay() {
+  toggleDisplay(): void {
     this.showForm = !this.showForm;
     this.wantToChangeAddress = !this.wantToChangeAddress;
   }
 
   ngOnInit(): void {
-
     this.reclamerForm = new FormGroup({
       name: new FormControl(null, Validators.required),
       telephone: new FormControl(null, [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]),
@@ -95,57 +93,34 @@ export class ReclamerComponent implements OnInit {
     this.wantToChangeAddress = false;
     this.isFormSubmitted = false;
 
-    /*
-   Import User data service
-   If don't want to change address ( if wanttochangeaddress = false ) , append values from user service to the form and send
-   If want to change address ( if wanttochangeaddress = true ), then proceeds to a normal form completion from user
-*/
     if (this.wantToChangeAddress) {
-        console.log(this.wantToChangeAddress + 'wantToChangeAddress');
-
         this.formData = new FormData();
-        this.formData2 = new FormData();
-
-        this.formData.append('user_id', this.userId); // ADD ID
+        this.formData.append('user_id', this.userId);
         this.formData.append('phone', this.reclamerForm.value.telephone);
         this.formData.append('date_livraison', '2021-08-07');
-
-        this.formData2.append('complement_address', this.reclamerForm.value.complement_address);
-        this.formData2.append('postal_code', this.reclamerForm.value.postal_code);
-        this.formData2.append('ville', this.reclamerForm.value.ville);
-        this.queryString = new URLSearchParams(this.formData2).toString();
-
-        this.formData.append('lieu_livraison', this.queryString);
-
-        for (const pair of this.formData.entries()) {
-          console.log(pair[0] + ', ' + pair[1]);
-        }
+        this.formData.append('lieu_livraison',
+            'Addresse = ' + this.reclamerForm.value.address + '?' +
+            'Complément addresse = ' + this.reclamerForm.value.complement_address + '?' +
+            'Code postal = ' + this.reclamerForm.value.postal_code + '?' +
+            'Ville =' + this.reclamerForm.value.ville
+        );
     }
-      else {
-      console.log(this.wantToChangeAddress + ' Dont wantToChangeAddress');
-
+    else {
       this.formData = new FormData();
-      this.formData2 = new FormData();
-
-      this.formData.append('user_id', this.userId); // ADD ID
+      this.formData.append('user_id', this.userId);
       this.formData.append('phone', this.phone);
       this.formData.append('date_livraison', '2021-08-07');
-
-      this.formData2.append('address', this.address);
-      this.formData2.append('complement_address', this.additionalAddress);
-      this.formData2.append('postal_code', this.postalCode);
-      this.formData2.append('ville', this.ville);
-      this.queryString = new URLSearchParams(this.formData2).toString();
-
-      this.formData.append('lieu_livraison', this.queryString);
-
-      for (const pair of this.formData.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
-      }
+      this.formData.append('lieu_livraison',
+        'Addresse = ' + this.address + '?' +
+        'Complément addresse = ' + this.additionalAddress + '?' +
+        'Code postal = ' + this.postalCode + '?' +
+        'Ville = ' + this.ville
+      );
     }
+
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.modalService.dismissAll();
     this.http.post((this.baseUrl + '/reclamation/' + this.lotId), this.formData).subscribe(
         result => {
