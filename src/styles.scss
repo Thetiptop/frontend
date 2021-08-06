@@ -76,10 +76,6 @@ a:focus {
   height: 50px;
 }
 
-.nav-link {
-  padding: 1rem;
-}
-
 #DataTables_Table_0_wrapper {
   overflow-x: scroll !important;
 }
@@ -118,11 +114,6 @@ app-play{
   background-size: cover !important;
   background: #f5f6f8 url('/assets/images/asian-tea.jpg') no-repeat;
 }
-
-.page-item.active .page-link {
-  z-index: 0;
-}
-
 
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) {}

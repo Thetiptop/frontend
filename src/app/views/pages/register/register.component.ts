@@ -102,12 +102,10 @@ export class RegisterComponent implements OnInit {
         result => {
           this.success = result.success;
           this.display = false;
+          this.wizardForm.goToNextStep();
         },
         error => {
           this.errors = error.error.error;
-        },
-        () => {
-          this.wizardForm.goToNextStep();
         }
       );
     }

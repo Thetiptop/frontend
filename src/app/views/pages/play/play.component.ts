@@ -13,7 +13,6 @@ import {AuthStateService} from '../../../core/authentification/auth-state.servic
 })
 export class PlayComponent implements OnInit {
   isSignedIn: any;
-  UserProfile: any;
   error: any;
   popUpMessage: any;
   playForm: FormGroup;
@@ -22,8 +21,9 @@ export class PlayComponent implements OnInit {
   success: any;
   lotName: any;
   lotId: any;
-  colors = ['#bb0000', '#ffffff'];
   modalRef: any;
+  userName : any;
+  UserProfile: any;
 
   constructor(config: NgbModalConfig,
               private authService: AuthService,
@@ -40,6 +40,23 @@ export class PlayComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.authState.userAuthState.subscribe(val => {
+      this.isSignedIn = val;
+    });
+
+    if (this.isSignedIn){
+      this.authService.profileUser().subscribe(
+        data => {
+          this.UserProfile = data.detail;
+          this.userName = this.UserProfile.name;
+        },
+        err => {
+          this.error = err.status;
+          this.authService.onLogout(event);
+        });
+    }
+
     this.playForm = new FormGroup({
       numberTicket: new FormControl(null, [Validators.required])
     });
@@ -51,6 +68,7 @@ export class PlayComponent implements OnInit {
     this.modalRef.componentInstance.message = this.popUpMessage;
     this.modalRef.componentInstance.lotName = this.lotName;
     this.modalRef.componentInstance.lotId = this.lotId;
+    this.modalRef.componentInstance.userName = this.userName;
   }
 
   onSubmit() {

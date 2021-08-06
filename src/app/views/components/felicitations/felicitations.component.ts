@@ -14,6 +14,7 @@ export class FelicitationsComponent implements OnInit {
   @Input() message;
   @Input() lotId;
   @Input() lotName;
+  @Input() userName;
   constructor(public activeModal: NgbActiveModal) { }
 
   id = 'tsparticles';

@@ -1,3 +1,26 @@
 .felicitation-popup {
  // background-image: url("/assets/images/confetti-bg.svg") ;
 }
+
+.card-congratulations {
+  background: linear-gradient(118deg, #7367f0, rgba(115, 103, 240, 0.7));
+  color: #fff;
+}
+
+.card-congratulations .congratulations-img-left {
+  width: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.card-congratulations .congratulations-img-right {
+  width: 175px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.avatar-content i {
+  font-size: 4rem;
+}
