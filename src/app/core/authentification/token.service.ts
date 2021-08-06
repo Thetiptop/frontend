@@ -19,10 +19,7 @@ export class TokenService {
   error: any;
   UserProfile: any;
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) { }
+  constructor() { }
 
   protected baseUrl: string = environment.apiURL;
 
@@ -63,18 +60,6 @@ export class TokenService {
       return false;
     }
   }
-
-  getUserId() {
-    const token = this.getToken();
-
-    if (token) {
-      const payload = this.payload(token);
-      if (payload) {
-        // console.log(payload.sub);
-      }
-    }
-  }
-
 
   // User state based on valid token
   // tslint:disable-next-line:typedef

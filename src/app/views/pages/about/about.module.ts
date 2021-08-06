@@ -43,7 +43,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [CookiesComponent, CguComponent, MentionsLegalesComponent],
+  declarations: [CookiesComponent, CguComponent, MentionsLegalesComponent, ConfidentialityComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

@@ -1,24 +1,34 @@
-<div class="felicitation-popup">
-  <ng-particles [id]="id" [options]="particlesOptions" (particlesInit)="particlesInit($event)"></ng-particles>
+<div class="felicitation-popup card card-congratulations">
+  <ng-particles (particlesInit)="particlesInit($event)" [id]="id" [options]="particlesOptions"></ng-particles>
 
-  <div class="modal-header">
-    <h4 class="modal-title">Notification</h4>
-    <button (click)="activeModal.dismiss('Cross click')" aria-label="Close" class="close" type="button">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p class="text-center">{{message}}</p>
-    <p class="text-center">Vous avez gagné <span class="text-underline">{{lotName}}</span></p>
+  <div class="modal-body card-body text-center py-5">
+    <img alt="card-img-left" class="congratulations-img-left" src="assets/images/decore-left.png">
+    <img alt="card-img-right" class="congratulations-img-right" src="assets/images/decore-right.png">
+
+    <div class="avatar">
+      <div class="avatar-content">
+        <i class="fas fa-medal"></i>
+      </div>
+    </div>
+
+
+    <div class="text-center">
+      <h1 class="my-3 text-white">Félécitations {{userName}},</h1>
+      <p class="text-center text-white h5 mb-4">Vous avez gagné <span class="text-underline">{{lotName}}</span></p>
+    </div>
+
+
 
     <div class="col text-center mb-4">
-      <button (click)="activeModal.close('Close click')" routerLink="profile/historique" class="btn btn-outline-dark mx-1" type="button">Voir tous mes gains</button>
-      <button (click)="activeModal.close('Close click')" routerLink="/play" class="btn btn-lipton text-center mx-1">Jouer encore</button>
+      <button (click)="activeModal.close('Close click')" class="btn btn-outline-white btn-lg mx-1"
+              routerLink="profile/historique" type="button">Voir tous mes gains
+      </button>
+      <button (click)="activeModal.close('Close click')" class="btn btn-lipton btn-lg text-center mx-1" routerLink="/play">
+        Jouer encore
+      </button>
     </div>
 
   </div>
-  <div class="modal-footer">
-    <button (click)="activeModal.close('Close click')" class="btn btn-outline-dark" type="button">Fermer</button>
-  </div>
+
 </div>
 

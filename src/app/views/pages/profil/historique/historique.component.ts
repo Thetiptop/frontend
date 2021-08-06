@@ -1,6 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {FormBuilder, FormGroup} from '@angular/forms';
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import {AuthService} from '../../../../core/authentification/auth.service';
 import {HistoriqueService} from '../../../../core/historique/historique.service';
@@ -29,7 +28,6 @@ export class HistoriqueComponent implements OnInit {
               private authService: AuthService,
               private http: HttpClient,
               private historiqueService: HistoriqueService,
-              private fb: FormBuilder,
               config: NgbModalConfig,
               private modalService: NgbModal
   ) {

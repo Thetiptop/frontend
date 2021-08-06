@@ -25,7 +25,6 @@ export class User {
 
 export class AuthService {
   activeUrl: any;
-  UserProfile: any;
   isSignedIn: boolean;
   error: any;
 
