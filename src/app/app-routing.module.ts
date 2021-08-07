@@ -5,7 +5,8 @@ import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
 import { PlayComponent } from './views/pages/play/play.component';
 import { BaseComponent } from './views/components/base/base.component';
-import {AuthGuard} from './core/authentification/auth.guard';
+import { AuthGuard } from './core/authentification/auth.guard';
+import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,18 @@ const routes: Routes = [
       },
     ]
   },
+  { path: 'error',
+    component: ErrorPageComponent,
+    data: {
+      type: 404,
+      title: 'Page Not Found',
+      desc: 'Oopps!! The page you were looking for doesn\'t exist.'
+    }
+  },
+  { path: 'error/:type',
+    component: ErrorPageComponent
+  },
+  { path: '**', redirectTo: 'error', pathMatch: 'full' }
 ];
 
 @NgModule({

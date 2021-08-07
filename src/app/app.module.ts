@@ -35,6 +35,7 @@ import { PlayService } from './core/play/play.service';
 import { NotificationComponent } from './views/components/notification/notification.component';
 import { FelicitationsComponent } from './views/components/felicitations/felicitations.component';
 import {NgParticlesModule} from 'ng-particles';
+import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -84,6 +85,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     MyLoaderComponent,
     NotificationComponent,
     FelicitationsComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
