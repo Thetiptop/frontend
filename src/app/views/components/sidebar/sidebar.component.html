@@ -1,24 +1,45 @@
 <nav class="bg-primary vh-100" id="sidebar" uk-offcanvas>
   <div class="uk-offcanvas-bar px-2">
-
     <button class="uk-offcanvas-close" type="button" uk-close></button>
     <div class="sidebar-header d-flex justify-content-center align-items-center">
       <a routerLink="/accueil"><img id="ttt-logo" src="../assets/images/logo-white.png"></a>
     </div>
+
     <ul class="list-unstyled components">
       <li>
-        <a routerLink="/accueil" routerLinkActive="active">Accueil</a>
+        <a routerLink="/accueil"
+           class=""
+           routerLinkActive="active">
+          Accueil
+        </a>
       </li>
       <li>
-        <a routerLink="/play" routerLinkActive="active">Jouer</a>
+        <a routerLink="/play"
+           placement="right"
+           [className]="isSignedIn ? null : 'text-muted'"
+           [ngbPopover]="isSignedIn ? null : 'Veuillez vous identifier'"
+           routerLinkActive="active">
+          Jouer
+        </a>
       </li>
       <li>
-        <a routerLink="/profile" routerLinkActive="active">Profile</a>
+        <a routerLink="/profile"
+           placement="right"
+           [ngbPopover]="isSignedIn ? null : 'Veuillez vous identifier'"
+           [className]="isSignedIn ? null : 'text-muted'"
+           routerLinkActive="active">
+          Profil
+        </a>
       </li>
       <li>
-        <a routerLink="/about" routerLinkActive="active">A Propos</a>
+        <a routerLink="/about"
+           class="/profile"
+           routerLinkActive="active">
+          A Propos
+        </a>
       </li>
     </ul>
+
     <div class="profile-menu-wrapper">
       <div class="wrapper">
         <div class="profile">
@@ -30,28 +51,38 @@
 
         <div class="social-icons">
           <div *ngIf="!isSignedIn" class="icon">
-            <a class="btn btn-block btn-lipton" routerLink="/login"><i class="fas fa-sign-in-alt"></i></a>
-<!--            <p>Connexion</p>-->
+            <a class="btn btn-block btn-lipton"
+               routerLink="/login">
+              <i class="fas fa-sign-in-alt"></i>
+            </a>
           </div>
 
           <div *ngIf="!isSignedIn" class="icon">
-            <a class="btn btn-block btn-lipton" routerLink="/register"><i class="fas fa-user-plus"></i></a>
-<!--            <p>Inscription</p> -->
+            <a class="btn btn-block btn-lipton"
+               routerLink="/register">
+              <i class="fas fa-user-plus"></i>
+            </a>
           </div>
 
           <div class="icon">
-            <a class="btn btn-block btn-lipton" routerLink="/play"><i class="fas fa-shopping-cart"></i></a>
-<!--            <p>Jouer</p>-->
+            <a class="btn btn-block btn-lipton"
+               routerLink="/play">
+              <i class="fas fa-shopping-cart"></i>
+            </a>
           </div>
 
           <div *ngIf="isSignedIn" class="icon">
-            <a class="btn btn-block btn-lipton" routerLink="/profile"><i class="fas fa-user-circle"></i></a>
-<!--            <p>Profil</p>-->
+            <a class="btn btn-block btn-lipton"
+               routerLink="/profile">
+              <i class="fas fa-user-circle"></i>
+            </a>
           </div>
 
           <div *ngIf="isSignedIn" class="icon">
-            <a class="btn btn-block btn-lipton" (click)="onLogout($event)"><i class="fas fa-power-off"></i></a>
-<!--             <p>Déconnexion</p>-->
+            <a class="btn btn-block btn-lipton"
+               (click)="onLogout($event)">
+              <i class="fas fa-power-off"></i>
+            </a>
           </div>
         </div>
       </div>
