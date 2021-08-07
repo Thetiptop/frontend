@@ -15,21 +15,63 @@ export class SidebarComponent implements OnInit {
     private authService: AuthService
   ) { }
 
+  menu = [
+    {
+      name: 'Accueil',
+      link: '/accueil',
+    },
+    {
+      name: 'Jouer',
+      link: '/play',
+      class: 'text-muted',
+      placement: 'right',
+      ngbPopover: 'Veuillez vous identifier'
+    },
+    {
+      name: 'Profile',
+      link: '/profile',
+      class: 'text-muted',
+      placement: 'right',
+      ngbPopover: 'Veuillez vous identifier',
+    },
+    {
+      name: 'A Propos',
+      link: '/about',
+    }
+  ];
+
+  menu2 = [
+    {
+      name: 'S\'identifier',
+      link: '/login',
+      class: 'fas fa-sign-in-alt',
+    },
+    {
+      name: 'Jouer',
+      link: '/play',
+      class: 'fas fa-shopping-cart',
+    },
+/*    {
+      name: 'S\'inscrire',
+      link: '/register',
+      class: 'fas fa-user-plus',
+    },
+    {
+      name: 'Profile',
+      link: '/profile',
+      class2: 'fas fa-user-circle',
+    }*/
+  ];
+
+
   ngOnInit(): void {
-    /**
-     * Checking the authentication State of the user. (True or False)
-     */
     this.authstate.userAuthState.subscribe(val => {
       this.isSignedIn = val;
-      // console.log(val);
+      console.log(val);
     });
   }
 
-  /**
-   * Logout
-   */
-  // tslint:disable-next-line:typedef
-  onLogout(e: any) {
+  onLogout(e: any): void {
     this.authstate.setAuthState(false);
     this.authService.onLogout(e);
   }

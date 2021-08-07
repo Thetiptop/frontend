@@ -86,7 +86,7 @@ export class HistoriqueComponent implements OnInit {
         this.error = err;
         // tslint:disable-next-line:no-conditional-assignment
         if (this.error.status = 401) {
-          this.popUpMessage = 'Token Expiré. Veuillez vous reconnecter.';
+          this.popUpMessage = 'Veuillez vous reconnecter.';
           this.openNotification();
         }
         this.authService.onLogout(event);
