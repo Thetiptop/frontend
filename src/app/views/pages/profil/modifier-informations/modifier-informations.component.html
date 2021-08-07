@@ -6,6 +6,7 @@
           <h6 class="text-uppercase">Modifer vos informations</h6>
           <hr>
           <form [formGroup]="modifierProfileForm" (ngSubmit)="onSubmit()">
+
             <div class="form-group">
               <label for="name">Nom et Prénom</label>
               <input formControlName="name"
@@ -29,7 +30,6 @@
                      id="telephone"
                      placeholder="Téléphone"
                      value="{{UserProfile?.telephone}}"
-
                      type="text">
               <div *ngIf="isFormSubmitted && form.telephone.errors"
                    [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
@@ -104,8 +104,11 @@
                 </div>
               </div>
             </div>
+
             <button class="btn btn-primary px-3 py-2" type="submit">Modifier</button>
+
           </form>
+
         </div>
       </div>
     </div>

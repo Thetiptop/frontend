@@ -5,6 +5,7 @@ import {AuthService} from '../../../../core/authentification/auth.service';
 import {HistoriqueService} from '../../../../core/historique/historique.service';
 import {ReclamerComponent} from '../../../components/reclamer/reclamer.component';
 import {Subject} from 'rxjs';
+import {NotificationComponent} from '../../../components/notification/notification.component';
 
 @Component({
   selector: 'app-historique',
@@ -23,6 +24,7 @@ export class HistoriqueComponent implements OnInit {
   historique: any;
   error: any;
   posts: any;
+  private popUpMessage: any;
 
   constructor(private httpClient: HttpClient,
               private authService: AuthService,
@@ -47,6 +49,11 @@ export class HistoriqueComponent implements OnInit {
     this.modalRef.componentInstance.additionalAddress = this.UserProfile.additional_address;
     this.modalRef.componentInstance.postalCode = this.UserProfile.postal_code;
     this.modalRef.componentInstance.ville = this.UserProfile.ville;
+  }
+
+  openNotification(): void {
+    const modalRef = this.modalService.open(NotificationComponent, {centered: true} );
+    modalRef.componentInstance.message = this.popUpMessage;
   }
 
   ngOnInit(): void {
@@ -76,7 +83,12 @@ export class HistoriqueComponent implements OnInit {
         this.UserAddress = this.UserProfile.address;
       },
       err => {
-        this.error = err.status;
+        this.error = err;
+        // tslint:disable-next-line:no-conditional-assignment
+        if (this.error.status = 401) {
+          this.popUpMessage = 'Token Expiré. Veuillez vous reconnecter.';
+          this.openNotification();
+        }
         this.authService.onLogout(event);
       });
 

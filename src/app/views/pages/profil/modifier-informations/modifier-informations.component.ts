@@ -24,7 +24,6 @@ export class ModifierInformationsComponent implements OnInit {
   protected  baseUrl: string = environment.apiURL;
   popUpMessage: string;
 
-
   constructor(
     private http: HttpClient,
     private authService: AuthService,
@@ -81,8 +80,7 @@ export class ModifierInformationsComponent implements OnInit {
     this.isFormSubmitted = false;
   }
 
-  // tslint:disable-next-line:typedef
-  onSubmit() {
+  onSubmit(): void {
     if (this.modifierProfileForm.valid) {
       this.http.post((this.baseUrl + '/user/update/' + this.UserProfile.id), this.modifierProfileForm.value).subscribe(
         result => {

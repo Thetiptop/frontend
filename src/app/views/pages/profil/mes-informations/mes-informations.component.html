@@ -1,51 +1,67 @@
 <div class="mes-information">
   <div class="row gutters-sm">
-
     <div class="col-md-12">
       <div class="card bg-light">
         <div class="card-body tab-content">
-
           <div class="tab-pane active" id="profile">
             <h6 class="text-uppercase">Informations de votre profil</h6>
             <hr>
-
             <form>
               <div class="form-group">
                 <label>Nom et Prénom</label>
-                <input aria-describedby="fullNameHelp" class="form-control" disabled
-                       type="text" value="{{UserProfile?.name}}">
+                <input class="form-control"
+                       disabled
+                       readonly
+                       type="text"
+                       value="{{UserProfile?.name}}">
               </div>
               <div class="form-group">
                 <label>Email</label>
-                <input class="form-control" disabled type="text"
+                <input class="form-control"
+                       disabled
+                       readonly
+                       type="text"
                        value="{{UserProfile?.email}}">
               </div>
               <div class="form-group">
                 <label>Téléphone</label>
-                <input class="form-control" disabled type="text"
+                <input class="form-control"
+                       disabled
+                       readonly
+                       type="text"
                        value="{{UserProfile?.telephone}}">
               </div>
               <div class="form-group">
                 <label>Adresse</label>
-                <input class="form-control" disabled type="text"
+                <input class="form-control"
+                       disabled
+                       readonly
+                       type="text"
                        value="{{UserProfile?.address}}">
               </div>
-
               <div class="form-group">
                 <label>Complément d'addresse</label>
-                <input class="form-control" disabled type="text"
+                <input class="form-control"
+                       disabled
+                       readonly
+                       type="text"
                        value="{{UserProfile?.additional_address}}">
               </div>
-
               <div class="d-flex flex-wrap justify-content-between">
                 <div class="w-47 form-group">
                   <label>Code postale</label>
-                  <input class="form-control" disabled type="text"
+                  <input class="form-control"
+                         disabled
+                         readonly
+                         type="text"
                          value="{{UserProfile?.postal_code}}">
                 </div>
                 <div class="w-47 form-group">
                   <label>Ville</label>
-                  <input class="form-control" disabled type="text"
+                  <input class="form-control"
+                         disabled
+                         readonly
+                         type="text"
                          value="{{UserProfile?.ville}}">
                 </div>
               </div>
@@ -54,7 +70,5 @@
         </div>
       </div>
     </div>
-
   </div>
-
 </div>
