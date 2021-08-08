@@ -40,7 +40,7 @@ export class HistoriqueComponent implements OnInit {
   // Open PopUp
   open(item) {
     this.modalRef = this.modalService.open(ReclamerComponent, {centered: true, size: 'lg'});
-    this.modalRef.componentInstance.lotName = item.idTicket;
+    this.modalRef.componentInstance.lotName = item.name_lot;
     this.modalRef.componentInstance.lotId = item.id;
     this.modalRef.componentInstance.userName = this.UserProfile.name;
     this.modalRef.componentInstance.userId = this.UserProfile.id;

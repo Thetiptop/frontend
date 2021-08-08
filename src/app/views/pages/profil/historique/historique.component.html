@@ -9,13 +9,33 @@
   </thead>
   <tbody>
   <tr *ngFor="let item of historique">
-    <td>{{item.id}}</td>
+    <td>{{item.name_lot}}</td>
     <td>{{item.created_at | date: 'dd/MM/yyyy'}}</td>
-    <td>{{item.lotStatut}}</td>
-    <td>{{item.lotDateRetrait}}</td>
-    <td><a (click)="open(item)" class="btn btn-outline-primary">Reclamer</a></td>
-    <!--<td class="text-info">En traitement <i class="fas fa-clock ml-2"></i></td>-->
-    <!--<td>Envoyé <i class="fas fa-check ml-2"></i></td>-->
+    <td>
+      <span *ngIf="!item.takenAt">Non Retiré</span>
+      <span *ngIf="item.takenAt">Déja Retiré</span>
+    </td>
+    <td>
+      <span *ngIf="!item.takenAt">-</span>
+      <span *ngIf="item.takenAt">{{item.takenAt | date: 'dd/MM/yyyy'}}</span>
+    </td>
+    <td>
+      <!--
+           Non reçu
+           Non réclamé
+      -->
+      <a *ngIf="!item.reclamation" (click)="open(item)" class="btn btn-outline-primary">Reclamer</a>
+      <!--
+          Réclamé
+          Non reçu
+      -->
+      <span *ngIf="(item.reclamation && !item.takenAt)">En traitement <i class="fas fa-clock ml-2"></i></span>
+      <!--
+          Réclamé
+          Reçu
+      -->
+      <span *ngIf="item.takenAt">Envoyé <i class="fas fa-check ml-2"></i></span>
+    </td>
   </tr>
   </tbody>
 </table>
