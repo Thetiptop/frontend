@@ -89,8 +89,12 @@ table.dataTable {
 .table {
   th,
   td {
-    vertical-align: center;
+    vertical-align: middle;
   }
+}
+
+.table th, .table td {
+  vertical-align: middle;
 }
 
 .page-title {
@@ -122,7 +126,7 @@ app-home{
   // background: linear-gradient(#f5f6f8, pink), url('/assets/images/photo-birds-and-tea.jpeg') no-repeat;
   // background: #fafaf8;
   background:  url('/assets/images/photo-birds-and-tea.jpeg') no-repeat; /* W3C */
-  
+
 }
 
 // Extra small devices (portrait phones, less than 576px)
