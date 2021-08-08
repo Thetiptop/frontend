@@ -96,8 +96,8 @@ export class ReclamerComponent implements OnInit {
     if (this.wantToChangeAddress) {
         this.formData = new FormData();
         this.formData.append('user_id', this.userId);
+        this.formData.append('history_id', this.lotId);
         this.formData.append('phone', this.reclamerForm.value.telephone);
-        this.formData.append('date_livraison', '2021-08-07');
         this.formData.append('lieu_livraison',
             'Addresse = ' + this.reclamerForm.value.address + '?' +
             'Complément addresse = ' + this.reclamerForm.value.complement_address + '?' +
@@ -108,8 +108,8 @@ export class ReclamerComponent implements OnInit {
     else {
       this.formData = new FormData();
       this.formData.append('user_id', this.userId);
+      this.formData.append('history_id', this.lotId);
       this.formData.append('phone', this.phone);
-      this.formData.append('date_livraison', '2021-08-07');
       this.formData.append('lieu_livraison',
         'Addresse = ' + this.address + '?' +
         'Complément addresse = ' + this.additionalAddress + '?' +
@@ -122,16 +122,16 @@ export class ReclamerComponent implements OnInit {
 
   onSubmit(): void {
     this.modalService.dismissAll();
-    this.http.post((this.baseUrl + '/reclamation/' + this.lotId), this.formData).subscribe(
+    this.http.post((this.baseUrl + '/reclamation/'), this.formData).subscribe(
         result => {
           this.success = result;
           console.log(this.success);
           this.popUpMessage = 'Votre lot vous sera envoyé !';
         },
         error => {
-          this.errors = error.error.error;
-          console.log(this.errors);
-          this.popUpMessage = 'Erreur';
+          this.errors = error.error.message;
+          console.log('Hello ' + error.error.message);
+          this.popUpMessage = this.errors;
         },
         () => {
           this.open();
