@@ -5,6 +5,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {environment} from '../../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {NotificationComponent} from '../notification/notification.component';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -60,6 +61,7 @@ export class ReclamerComponent implements OnInit {
   popUpMessage: any;
 
   constructor(private http: HttpClient,
+              private router: Router,
               public activeModal: NgbActiveModal,
               private modalService: NgbModal
   ) {
@@ -120,6 +122,13 @@ export class ReclamerComponent implements OnInit {
 
   }
 
+  reloadCurrentRoute(): void {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate([currentUrl]);
+    });
+  }
+
   onSubmit(): void {
     this.modalService.dismissAll();
     this.http.post((this.baseUrl + '/reclamation/'), this.formData).subscribe(
@@ -127,6 +136,7 @@ export class ReclamerComponent implements OnInit {
           this.success = result;
           console.log(this.success);
           this.popUpMessage = 'Votre lot vous sera envoyé !';
+          this.reloadCurrentRoute();
         },
         error => {
           this.errors = error.error.message;
@@ -140,4 +150,6 @@ export class ReclamerComponent implements OnInit {
     this.isFormSubmitted = true;
   }
 }
+
+
 
