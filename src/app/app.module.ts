@@ -10,6 +10,9 @@ import { RouterModule } from '@angular/router';
 import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
 import { DataTablesModule } from 'angular-datatables';
 
+import { FacebookLoginProvider, SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/pages/home/home.component';
@@ -98,7 +101,8 @@ const cookieConfig: NgcCookieConsentConfig = {
     HttpClientModule,
     NgParticlesModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
-    DataTablesModule
+    DataTablesModule,
+    SocialLoginModule
   ],
   providers: [
     {
@@ -110,6 +114,34 @@ const cookieConfig: NgcCookieConsentConfig = {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
       multi: true
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '227935309349-dlugjd7h0nt7304up88v2ctks7fmkrg7.apps.googleusercontent.com'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider(
+              '4229057453809194'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
     },
     AuthGuard,
     AuthService,

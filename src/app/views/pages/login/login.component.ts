@@ -5,6 +5,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../../core/authentification/auth.service';
 import {TokenService} from '../../../core/authentification/token.service';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
+import {SocialAuthService, GoogleLoginProvider, SocialUser, FacebookLoginProvider} from 'angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,8 @@ export class LoginComponent implements OnInit {
   success: any;
   errors: any;
   isFormSubmitted: boolean;
+  socialUser: SocialUser;
+  isLoggedin: boolean;
 
   constructor(
     private router: Router,
@@ -23,6 +26,7 @@ export class LoginComponent implements OnInit {
     public authService: AuthService,
     private token: TokenService,
     private authState: AuthStateService,
+    private socialAuthService: SocialAuthService
   ) {
   }
 
@@ -39,9 +43,22 @@ export class LoginComponent implements OnInit {
 
     this.isFormSubmitted = false;
 
+    this.socialAuthService.authState.subscribe(
+      (user) => {
+      this.socialUser = user;
+      this.isLoggedin = (user != null);
+      console.log(this.socialUser);
+      this.authState.setAuthState(true);
+      this.token.handleData(this.socialUser.idToken);
+      this.router.navigate(['/accueil']);
+      });
+
+    if (-1) {
+      console.log('NOOOOO');
+    }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.loginForm.valid) {
       this.authService.signin(this.loginForm.value).subscribe(
         result => {
@@ -58,6 +75,14 @@ export class LoginComponent implements OnInit {
       );
     }
     this.isFormSubmitted = true;
+  }
+
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  loginWithFaceBook(): void {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
 }

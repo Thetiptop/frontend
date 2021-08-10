@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +14,10 @@ export class TokenService {
   };
 
   error: any;
-  UserProfile: any;
 
   constructor() { }
 
   protected baseUrl: string = environment.apiURL;
-
 
   // tslint:disable-next-line:typedef
   // @ts-ignore
@@ -50,7 +45,6 @@ export class TokenService {
   // tslint:disable-next-line:typedef
   isValidToken() {
     const token = this.getToken();
-
     if (token) {
       const payload = this.payload(token);
       if (payload) {
@@ -61,17 +55,24 @@ export class TokenService {
     }
   }
 
-  // User state based on valid token
-  // tslint:disable-next-line:typedef
-  isLoggedIn() {
-    // this.getUserId();
-    return this.isValidToken();
 
-    /*if (localStorage.getItem("access_token")) {
+  // tslint:disable-next-line:typedef
+  isValidSocialToken() {
+    const token = this.getToken();
+    const decoded = jwt_decode(token);
+    // @ts-ignore
+    if (Object.values(this.issuer).indexOf(decoded.iss)) {
       return true;
     } else {
       return false;
-    }*/
+    }
+  }
+
+
+  // User state based on valid token
+  // tslint:disable-next-line:typedef
+  isLoggedIn() {
+    return this.isValidToken();
   }
 
   // Remove token
