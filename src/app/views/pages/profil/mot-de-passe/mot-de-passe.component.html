@@ -12,8 +12,8 @@
               <input class="form-control"
                      id="old_password"
                      formControlName="old_password"
-                     placeholder="Votre ancien mot de passe"
-                     type="text">
+                     placeholder="Entrer l'ancien mot de passe"
+                     type="password">
               <div *ngIf="isFormSubmitted && form.old_password.errors"
                    [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
                    class="invalid-feedback">
@@ -23,12 +23,12 @@
             </div>
 
             <div class="form-group">
-              <label for="new_password" class="d-block">Votre ancien mot de passe</label>
+              <label for="new_password" class="d-block">Votre nouveau mot de passe</label>
               <input class="form-control"
                      id="new_password"
                      formControlName="new_password"
-                     placeholder="Votre ancien mot de passe"
-                     type="text">
+                     placeholder="Entrer le nouveau mot de passe"
+                     type="password">
               <div *ngIf="isFormSubmitted && form.new_password.errors"
                    [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
                    class="invalid-feedback">
@@ -43,7 +43,7 @@
                      formControlName="password_confirmation"
                      id="password_confirmation"
                      placeholder="Confirmer le nouveau mot de passe"
-                     type="text">
+                     type="password">
               <div *ngIf="isFormSubmitted && form.password_confirmation.errors"
                    [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
                    class="invalid-feedback">
