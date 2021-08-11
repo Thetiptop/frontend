@@ -23,7 +23,7 @@ export class MotDePasseComponent implements OnInit {
     this.modifierMotdepasseForm = new FormGroup({
       old_password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
       new_password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
-      password_confirmation: new FormControl(null, Validators.required),
+      new_password_confirmation: new FormControl(null, Validators.required),
     }, {
       // @ts-ignore
         validator: ConfirmedValidator('new_password', 'password_confirmation')

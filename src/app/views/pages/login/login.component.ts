@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
+import { HttpClient, HttpParams } from '@angular/common/http';
+
 import {AuthService} from '../../../core/authentification/auth.service';
 import {TokenService} from '../../../core/authentification/token.service';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
@@ -30,7 +32,7 @@ export class LoginComponent implements OnInit {
   ) {
   }
 
-  get form() {
+  get form(): any {
     return this.loginForm.controls;
   }
 
@@ -46,16 +48,16 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.authState.subscribe(
       (user) => {
       this.socialUser = user;
+      /*this.loginForm.patchValue({
+        email: this.socialUser.name,
+        socialToken: this.socialUser.authToken,
+       });*/
       this.isLoggedin = (user != null);
       console.log(this.socialUser);
-      this.authState.setAuthState(true);
+      // this.authState.setAuthState(true);
       this.token.handleData(this.socialUser.idToken);
-      this.router.navigate(['/accueil']);
+      // this.router.navigate(['/accueil']);
       });
-
-    if (-1) {
-      console.log('NOOOOO');
-    }
   }
 
   onSubmit(): void {
@@ -64,6 +66,7 @@ export class LoginComponent implements OnInit {
         result => {
           this.success = result;
           this.token.handleData(result.access_token);
+          console.log(result.access_token);
           this.authState.setAuthState(true);
           this.loginForm.reset();
         },

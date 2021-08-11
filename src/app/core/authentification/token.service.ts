@@ -56,8 +56,7 @@ export class TokenService {
   }
 
 
-  // tslint:disable-next-line:typedef
-  isValidSocialToken() {
+  isValidSocialToken(): boolean {
     const token = this.getToken();
     const decoded = jwt_decode(token);
     // @ts-ignore

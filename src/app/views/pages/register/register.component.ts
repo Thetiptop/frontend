@@ -4,6 +4,12 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {WizardComponent as BaseWizardComponent} from 'angular-archwizard';
 import {AuthService} from '../../../core/authentification/auth.service';
 import {ConfirmedValidator} from '../../../core/authentification/confirm-validator';
+import {HttpClient, HttpParams} from '@angular/common/http';
+
+interface MailChimpResponse {
+  result: string;
+  msg: string;
+}
 
 @Component({
   selector: 'app-register',
@@ -22,6 +28,8 @@ export class RegisterComponent implements OnInit {
   errors: any;
   success: any;
   display = true;
+  mailChimpEndpoint = 'https://christaime.us7.list-manage.com/subscribe/post-json?u=c789d045d87cc22bd9756a879&amp;id=cf5d252aa7';
+
 
   @ViewChild('wizardForm') wizardForm: BaseWizardComponent | undefined;
   formData: FormData;
@@ -29,21 +37,22 @@ export class RegisterComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     public authService: AuthService,
+    private http: HttpClient,
     private router: Router) {
   }
 
   // Returns form controls
-  get form1() {
+  get form1(): any {
     return this.validationForm1.controls;
   }
 
   // Returns form controls
-  get form2() {
+  get form2(): any {
     return this.validationForm2.controls;
   }
 
   // Returns form controls
-  get form3() {
+  get form3(): any {
     return this.validationForm3.controls;
   }
 
@@ -53,7 +62,7 @@ export class RegisterComponent implements OnInit {
     this.validationForm1 = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
-      telephone: ['',  [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
+      telephone: ['', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
     });
 
     /** form2 value validation */
@@ -69,7 +78,8 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       password_confirmation: ['', Validators.required],
       cgu: [false, Validators.requiredTrue],
-      major: [false, Validators.requiredTrue]
+      major: [false, Validators.requiredTrue],
+      newsletter: [false]
     }, {
       validator: ConfirmedValidator('password', 'password_confirmation')
     });
@@ -80,7 +90,10 @@ export class RegisterComponent implements OnInit {
   }
 
   /**  Go to next step 2 while form value is valid */
-  form1Submit() {
+  form1Submit(): void {
+    console.log(this.validationForm1.controls);
+    console.log(this.validationForm1.status);
+    console.log(this.validationForm1.value);
     if (this.validationForm1.valid) {
       this.wizardForm.goToNextStep();
     }
@@ -88,7 +101,10 @@ export class RegisterComponent implements OnInit {
   }
 
   /** Go to next step 3 while form value is valid */
-  form2Submit() {
+  form2Submit(): void {
+    console.log(this.validationForm2.controls);
+    console.log(this.validationForm2.status);
+    console.log(this.validationForm2.value);
     if (this.validationForm2.valid) {
       this.wizardForm.goToNextStep();
     }
@@ -96,7 +112,11 @@ export class RegisterComponent implements OnInit {
   }
 
   /** Go to register while form 3 value is valid */
-  form3Submit() {
+  form3Submit(): void {
+    console.log(this.validationForm3.controls);
+    console.log(this.validationForm3.status);
+    console.log(this.validationForm3.value);
+    console.log('this.validationForm3 ' + this.validationForm3);
     if (this.validationForm3.valid) {
       this.authService.register(this.getData()).subscribe(
         result => {
@@ -109,17 +129,45 @@ export class RegisterComponent implements OnInit {
         }
       );
     }
+
+    // Mailchimp
+    if (this.validationForm1.valid && this.validationForm3.value.newsletter === true) {
+      this.errors = '';
+
+      const params = new HttpParams()
+        .set('NAME', this.validationForm1.value.name)
+        .set('EMAIL', this.validationForm1.value.email);
+      console.log(params);
+
+      const mailChimpUrl = this.mailChimpEndpoint + params.toString();
+
+      // 'c' refers to the jsonp callback param key. This is specific to Mailchimp
+      this.http.jsonp<MailChimpResponse>(mailChimpUrl, 'c').subscribe(
+        response => {
+        if (response.result && response.result !== 'error') {
+        } else {
+          this.errors = response.msg;
+          console.log(this.errors);
+        }
+      }, error => {
+        console.error(error);
+        this.errors = 'Sorry, an error occurred.';
+        console.log(this.errors);
+        console.log(error);
+      });
+    }
+
     this.isForm3Submitted = true;
   }
 
 
   /** Get values from both forms and join them together */
-  getData() {
+  getData(): any {
     const merged = Object.assign(this.validationForm1.value, this.validationForm2.value, this.validationForm3.value);
     return merged;
   }
 
-  goToLogin() {
+  goToLogin(): void {
     this.router.navigate(['/login']);
   }
 
