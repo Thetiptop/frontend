@@ -7,6 +7,7 @@ import { PlayComponent } from './views/pages/play/play.component';
 import { BaseComponent } from './views/components/base/base.component';
 import { AuthGuard } from './core/authentification/auth.guard';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
+import { ForgotPasswordComponent } from './views/pages/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
       {
         path : 'register',
         component : RegisterComponent
+      },
+      {
+        path : 'forgot-password',
+        component : ForgotPasswordComponent
       },
       {
         path : 'about',
