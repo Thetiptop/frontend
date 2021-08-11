@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
   errors: any;
   success: any;
   display = true;
-  mailChimpEndpoint = 'https://christaime.us7.list-manage.com/subscribe/post-json?u=c789d045d87cc22bd9756a879&amp;id=cf5d252aa7';
+  mailChimpEndpoint = 'https://christaime.us7.list-manage.com/subscribe/post-json?u=c789d045d87cc22bd9756a879&amp;id=cf5d252aa7&';
 
 
   @ViewChild('wizardForm') wizardForm: BaseWizardComponent | undefined;
@@ -136,7 +136,8 @@ export class RegisterComponent implements OnInit {
 
       const params = new HttpParams()
         .set('NAME', this.validationForm1.value.name)
-        .set('EMAIL', this.validationForm1.value.email);
+        .set('EMAIL', this.validationForm1.value.email)
+        .set('b_c789d045d87cc22bd9756a879_cf5d252aa7', '');
       console.log(params);
 
       const mailChimpUrl = this.mailChimpEndpoint + params.toString();
