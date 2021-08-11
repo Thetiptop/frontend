@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -99,10 +99,11 @@ const cookieConfig: NgcCookieConsentConfig = {
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     NgParticlesModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
     DataTablesModule,
-    SocialLoginModule
+    SocialLoginModule,
   ],
   providers: [
     {
@@ -125,15 +126,7 @@ const cookieConfig: NgcCookieConsentConfig = {
             provider: new GoogleLoginProvider(
               '227935309349-dlugjd7h0nt7304up88v2ctks7fmkrg7.apps.googleusercontent.com'
             )
-          }
-        ]
-      } as SocialAuthServiceConfig,
-    },
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
+          },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
             provider: new FacebookLoginProvider(
