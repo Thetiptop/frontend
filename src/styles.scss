@@ -123,11 +123,7 @@ app-home{
   background-position-x: right !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
-  background: linear-gradient(
-      to left,
-      rgba(0, 0, 0, 0.2),
-      rgba(255, 255, 255, 0.9)
-  ),url('/assets/images/mango-bg.jpg');
+  background: linear-gradient(90deg, rgba(255,255,255,1) 20%, rgba(0,0,0,0.2) 70%),url('/assets/images/mango-bg.jpg');
 }
 
 // Extra small devices (portrait phones, less than 576px)
