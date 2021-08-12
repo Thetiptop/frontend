@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
+import {catchError} from 'rxjs/operators';
 
 
 export class Ticket {
@@ -21,6 +22,12 @@ export class PlayService {
   ) { }
 
   play(ticket: Ticket): Observable<any> {
-    return this.http.post(this.baseUrl + '/search-lot', ticket);
+    return this.http.post(this.baseUrl + '/search-lot', ticket)
+      .pipe(
+      catchError((err) => {
+        console.log('error caught in service');
+        console.error(err);
+        return throwError(err);
+      }));
   }
 }

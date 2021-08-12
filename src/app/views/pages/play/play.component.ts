@@ -5,6 +5,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PlayService } from '../../../core/play/play.service';
 import {AuthService} from '../../../core/authentification/auth.service';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
+import {catchError} from 'rxjs/operators';
+import {of, throwError} from 'rxjs';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-play',
@@ -22,7 +25,7 @@ export class PlayComponent implements OnInit {
   lotName: any;
   lotId: any;
   modalRef: any;
-  userName : any;
+  userName: any;
   UserProfile: any;
 
   constructor(config: NgbModalConfig,
@@ -78,11 +81,12 @@ export class PlayComponent implements OnInit {
           this.success = result;
           this.lotName = this.success.ticket.lot;
           this.lotId = this.success.ticket.id;
-          this.popUpMessage = 'Vous avez gagné ! Woohoo !';
           this.playForm.reset();
         },
         res => {
-          this.errors = res.error.error;
+          console.log(res);
+          this.errors = res.error.message;
+          console.log(this.errors.error.message);
         }, () => {
           this.open();
         }
