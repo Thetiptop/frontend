@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-import { HttpClient, HttpParams } from '@angular/common/http';
-
 import {AuthService} from '../../../core/authentification/auth.service';
 import {TokenService} from '../../../core/authentification/token.service';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
@@ -73,7 +71,7 @@ export class LoginComponent implements OnInit {
         res => {
           this.errors = res.error.error;
         }, () => {
-          this.router.navigate(['/accueil']);
+          this.router.navigate(['/play']);
         }
       );
     }
