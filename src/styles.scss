@@ -119,14 +119,15 @@ app-play{
   background: #f5f6f8 url('/assets/images/asian-tea.jpg') no-repeat;
 }
 
-
 app-home{
-  background-position-x: 20rem !important;
+  background-position-x: right !important;
   background-size: cover !important;
-  // background: linear-gradient(#f5f6f8, pink), url('/assets/images/photo-birds-and-tea.jpeg') no-repeat;
-  // background: #fafaf8;
-  background:  url('/assets/images/photo-birds-and-tea.jpeg') no-repeat; /* W3C */
-
+  background-repeat: no-repeat !important;
+  background: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0.2),
+      rgba(255, 255, 255, 0.9)
+  ),url('/assets/images/mango-bg.jpg');
 }
 
 // Extra small devices (portrait phones, less than 576px)

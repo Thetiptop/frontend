@@ -39,6 +39,7 @@ import { NotificationComponent } from './views/components/notification/notificat
 import { FelicitationsComponent } from './views/components/felicitations/felicitations.component';
 import {NgParticlesModule} from 'ng-particles';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
+import {GlobalHttpInterceptorService} from './core/interceptors/global-http-interecptor.service';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -116,6 +117,11 @@ const cookieConfig: NgcCookieConsentConfig = {
       useClass: LoaderInterceptor,
       multi: true
     },
+   /* {
+      provide: HTTP_INTERCEPTORS,
+      useClass: GlobalHttpInterceptorService,
+      multi: true
+    },*/
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

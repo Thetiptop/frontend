@@ -3,6 +3,11 @@
     <p class="text-center text-uppercase text-bold">Thé tip top</p>
     <h1 class="text-center text-lobster mb-0 display-4">Valider votre ticket</h1>
     <div class="play-form-wrapper">
+      
+      <div *ngIf="errors" class="alert alert-danger mt-3">
+        {{ errors }}
+      </div>
+
       <form (ngSubmit)="onSubmit()" [formGroup]="playForm" class="forms-sample">
         <div class="form-group">
           <label for="numberTicket">Numéro de ticket</label>
