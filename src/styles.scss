@@ -7,6 +7,8 @@ $theme-colors: (
   "white": #fff
 );
 
+$enable-responsive-font-sizes: true;
+
 $chocolate: #683C11;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
@@ -124,6 +126,11 @@ app-home{
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background: linear-gradient(90deg, rgba(255,255,255,0.88) 20%, rgba(0,0,0,0.2) 70%),url('/assets/images/mango-bg.jpg');
+}
+
+// Popover "Veuillez-vous connecter"
+#ngb-popover-0 {
+  position: fixed !important;
 }
 
 // Extra small devices (portrait phones, less than 576px)

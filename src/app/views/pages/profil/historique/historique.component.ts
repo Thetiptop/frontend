@@ -63,9 +63,7 @@ export class HistoriqueComponent implements OnInit {
         processing: 'Chargement...',
         lengthMenu: 'Afficher _MENU_ éléments',
         info: 'Affichage de _START_ à _END_ de _TOTAL_ éléments',
-        // infoEmpty: 'Mostrando ningún elemento.',
         emptyTable: 'Aucun lot gagné.',
-        // https://stackoverflow.com/questions/36849610/datatables-change-interface-language,
         paginate: {
           first: 'Premier',
           previous: 'Précédent',
@@ -101,4 +99,10 @@ export class HistoriqueComponent implements OnInit {
     );
   }
 
+
+  // If User address = null ? Afficher text
+  // "Veuillez ajouter votre addresse pouvoir réclamer. Nous avons besoin de votre addresse pour vous le faire parvenir
+  // and afficher just below that "Ajouter votre adresse" button that redirectionner sur "Modifier Profil Component
+  //
+  // add variale haveAddress: boolean
 }
