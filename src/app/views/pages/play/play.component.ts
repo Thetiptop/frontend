@@ -5,9 +5,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PlayService } from '../../../core/play/play.service';
 import {AuthService} from '../../../core/authentification/auth.service';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
-import {catchError} from 'rxjs/operators';
-import {of, throwError} from 'rxjs';
-import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-play',
@@ -74,7 +71,7 @@ export class PlayComponent implements OnInit {
     this.modalRef.componentInstance.userName = this.userName;
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.playForm.valid) {
       this.playService.play(this.playForm.value).subscribe(
         result => {
