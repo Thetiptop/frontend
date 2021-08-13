@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { timeUntil } from '@tobynatooor/countdown';
 import {Router} from '@angular/router';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
+import {ReclamerComponent} from '../../components/reclamer/reclamer.component';
+import {HowToPlayComponent} from '../../components/how-to-play/how-to-play.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +12,7 @@ import {AuthStateService} from '../../../core/authentification/auth-state.servic
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  modalRef: any;
   isSignedIn: any;
   x: any;
   days: number;
@@ -19,6 +23,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private authState: AuthStateService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -41,7 +46,11 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/play']);
     } else {
       this.router.navigate(['/login']);
-
     }
   }
+
+  open(): void {
+      this.modalRef = this.modalService.open(HowToPlayComponent, {centered: true, size: 'md'});
+  }
 }
+

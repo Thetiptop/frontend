@@ -40,6 +40,7 @@ import { FelicitationsComponent } from './views/components/felicitations/felicit
 import {NgParticlesModule} from 'ng-particles';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 import {GlobalHttpInterceptorService} from './core/interceptors/global-http-interecptor.service';
+import { HowToPlayComponent } from './views/components/how-to-play/how-to-play.component';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -90,6 +91,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     NotificationComponent,
     FelicitationsComponent,
     ErrorPageComponent,
+    HowToPlayComponent,
   ],
   imports: [
     BrowserModule,
