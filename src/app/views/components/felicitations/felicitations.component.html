@@ -6,21 +6,21 @@
     <img alt="card-img-right" class="congratulations-img-right" src="assets/images/decore-right.png">
 
     <div class="avatar">
-      <div class="avatar-content">
+      <div class="avatar-content mb-4" >
         <i class="fas fa-medal"></i>
       </div>
     </div>
 
 
     <div class="text-center">
-      <h1 class="my-3 text-white">Félicitations {{userName}},</h1>
-      <p class="text-center text-white h5 mb-4">Vous avez gagné <span class="text-underline">{{lotName}}</span></p>
+      <h1 class="my-3 text-lipton">Félicitations {{userName}},</h1>
+      <p class="text-center text-lipton h5 mb-4">Vous avez gagné <span class="text-underline">{{lotName}}</span></p>
     </div>
 
 
 
     <div class="col text-center mb-4">
-      <button (click)="activeModal.close('Close click')" class="btn btn-outline-white btn-lg mx-1"
+      <button (click)="activeModal.close('Close click')" class="btn btn-white text-chocolate btn-lg mx-1"
               routerLink="profile/historique" type="button">Voir tous mes gains
       </button>
       <button (click)="activeModal.close('Close click')" class="btn btn-lipton btn-lg text-center mx-1" routerLink="/play">
