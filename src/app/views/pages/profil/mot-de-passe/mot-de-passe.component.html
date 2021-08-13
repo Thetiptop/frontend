@@ -40,15 +40,15 @@
             <div class="form-group">
               <label for="password_confirmation" class="d-block">Confirmer le nouveau mot de passe</label>
               <input class="form-control"
-                     formControlName="password_confirmation"
+                     formControlName="new_password_confirmation"
                      id="password_confirmation"
                      placeholder="Confirmer le nouveau mot de passe"
                      type="password">
-              <div *ngIf="isFormSubmitted && form.password_confirmation.errors"
+              <div *ngIf="isFormSubmitted && form.new_password_confirmation.errors"
                    [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
                    class="invalid-feedback">
-                <span *ngIf="form.password_confirmation.status">Champs invalide</span>
-                <span *ngIf="form.password_confirmation.errors?.required"> | Requis</span>
+                <span *ngIf="form.new_password_confirmation.status">Champs invalide</span>
+                <span *ngIf="form.new_password_confirmation.errors?.required"> | Requis</span>
               </div>
             </div>
 

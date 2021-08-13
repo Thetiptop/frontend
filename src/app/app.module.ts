@@ -41,6 +41,7 @@ import {NgParticlesModule} from 'ng-particles';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 import {GlobalHttpInterceptorService} from './core/interceptors/global-http-interecptor.service';
 import { HowToPlayComponent } from './views/components/how-to-play/how-to-play.component';
+import {ChangePasswordService} from './core/password/change-password.service';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -149,6 +150,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     AuthService,
     LoaderService,
     PlayService,
+    ChangePasswordService,
   ],
   bootstrap: [
     AppComponent,
