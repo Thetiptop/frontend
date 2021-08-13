@@ -46,7 +46,7 @@ export class AuthService {
     return this.http.post<any>(this.loginBaseUrl, user);
   }
 
-  onLogout(e: { preventDefault: () => void; }) {
+  onLogout(e): void {
     e.preventDefault();
     this.authstate.setAuthState(false);
     localStorage.removeItem('access_token');

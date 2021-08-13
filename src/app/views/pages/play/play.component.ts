@@ -35,7 +35,7 @@ export class PlayComponent implements OnInit {
     config.keyboard = false;
   }
 
-  get form() {
+  get form(): any {
     return this.playForm.controls;
   }
 
@@ -63,7 +63,7 @@ export class PlayComponent implements OnInit {
     this.isFormSubmitted = false;
   }
 
-  open() {
+  open(): void {
     this.modalRef = this.modalService.open(FelicitationsComponent, {centered: true, size: 'xl'} );
     this.modalRef.componentInstance.message = this.popUpMessage;
     this.modalRef.componentInstance.lotName = this.lotName;
