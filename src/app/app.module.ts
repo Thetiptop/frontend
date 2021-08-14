@@ -41,6 +41,7 @@ import {ErrorPageComponent} from './views/pages/error-page/error-page.component'
 import {GlobalHttpInterceptorService} from './core/interceptors/global-http-interecptor.service';
 import {HowToPlayComponent} from './views/components/how-to-play/how-to-play.component';
 import {ChangePasswordService} from './core/password/change-password.service';
+import {ForgotPasswordComponent} from './views/pages/forgot-password/forgot-password.component';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -92,6 +93,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     FelicitationsComponent,
     ErrorPageComponent,
     HowToPlayComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
