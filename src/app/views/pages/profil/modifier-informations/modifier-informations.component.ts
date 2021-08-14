@@ -7,7 +7,6 @@ import { environment } from '../../../../../environments/environment';
 import { NotificationComponent } from '../../../components/notification/notification.component';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
-
 @Component({
   selector: 'app-modifier-informations',
   templateUrl: './modifier-informations.component.html',
@@ -35,13 +34,12 @@ export class ModifierInformationsComponent implements OnInit {
     config.keyboard = false;
   }
 
-  open() {
+  open(): any {
     const modalRef = this.modalService.open(NotificationComponent, {centered: true} );
     modalRef.componentInstance.message = this.popUpMessage;
   }
 
-  // tslint:disable-next-line:typedef
-  get form() {
+  get form(): any {
     return this.modifierProfileForm.controls;
   }
 

@@ -59,10 +59,6 @@ export class AuthService {
   profileUser(): Observable<any> {
     return this.http.get(this.baseUrl + '/user-profile');
   }
-/*
-  updatePassword(): Observable<any> {
-
-  }*/
 
 }
 
