@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PlayService } from '../../../core/play/play.service';
 import {AuthService} from '../../../core/authentification/auth.service';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
+import {HowToPlayComponent} from '../../components/how-to-play/how-to-play.component';
 
 @Component({
   selector: 'app-play',
@@ -69,6 +70,10 @@ export class PlayComponent implements OnInit {
     this.modalRef.componentInstance.lotName = this.lotName;
     this.modalRef.componentInstance.lotId = this.lotId;
     this.modalRef.componentInstance.userName = this.userName;
+  }
+
+  open2(): void {
+    this.modalRef = this.modalService.open(HowToPlayComponent, {centered: true} );
   }
 
   onSubmit(): void {
