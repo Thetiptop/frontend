@@ -71,7 +71,7 @@ export class HistoriqueComponent implements OnInit {
           last: 'Dernier'
         },
       },
-      lengthMenu: [3, 5, 10, 25],
+      lengthMenu: [3, 10, 20, 30],
       pageLength: 3,
     };
 
