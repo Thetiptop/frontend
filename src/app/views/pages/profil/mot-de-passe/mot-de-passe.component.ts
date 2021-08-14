@@ -4,6 +4,8 @@ import {ConfirmedValidator} from '../../../../core/authentification/confirm-vali
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../../../environments/environment';
 import {ChangePasswordService} from '../../../../core/password/change-password.service';
+import {NotificationComponent} from '../../../components/notification/notification.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-mot-de-passe',
@@ -18,16 +20,22 @@ export class MotDePasseComponent implements OnInit {
   modifierMotdepasseForm: FormGroup;
   isFormSubmitted: boolean;
   protected  baseUrl: string = environment.apiURL;
+  popUpMessage: any;
 
 
   constructor(
     private http: HttpClient,
     private changePasswordService: ChangePasswordService,
+    private modalService: NgbModal
   ) { }
 
   get form(): any {
-    // console.log(this.modifierMotdepasseForm.controls);
     return this.modifierMotdepasseForm.controls;
+  }
+
+  open(): any {
+    const modalRef = this.modalService.open(NotificationComponent, {centered: true} );
+    modalRef.componentInstance.message = this.popUpMessage;
   }
 
 
@@ -44,20 +52,23 @@ export class MotDePasseComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // console.log(this.modifierMotdepasseForm.value);
-    // console.log(this.modifierMotdepasseForm.controls);
     if (this.modifierMotdepasseForm.valid) {
-      // console.log(this.modifierMotdepasseForm.value);
       this.changePasswordService.changePassword(this.modifierMotdepasseForm.value).subscribe(
         result => {
           this.success = result;
-          console.log(this.success.message);
+          this.popUpMessage = this.success.message;
+          this.open();
         },
         error => {
-          this.errors = error.error;
-          console.log(this.errors);
-
-        }
+          this.errors = error;
+          this.popUpMessage = this.errors.error.message;
+          console.log('oops', error);
+          console.log(this.popUpMessage);
+          this.open();
+        }/*,
+        () => {
+          this.open();
+        }*/
       );
     }
     this.isFormSubmitted = true;
