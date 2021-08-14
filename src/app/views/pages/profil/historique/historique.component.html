@@ -18,7 +18,7 @@
     <td>
       <span class="text-secondary" *ngIf="!item.takenAt && !item.reclamation">Non Retiré</span>
       <span class="text-warning" *ngIf="(item.reclamation && !item.takenAt)">En traitement <i class="fas fa-clock ml-2"></i></span>
-      <span *ngIf="item.takenAt">Envoyé <i class="fas fa-check ml-2"></i></span>
+      <span class="text-success" *ngIf="item.takenAt">Envoyé <i class="fas fa-check ml-2"></i></span>
     </td>
     <td>
       <span *ngIf="!item.takenAt">-</span>
