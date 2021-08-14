@@ -72,7 +72,7 @@ export class ReclamerComponent implements OnInit {
     modalRef.componentInstance.message = this.popUpMessage;
   }
 
-  get form() {
+  get form(): any {
     return this.reclamerForm.controls;
   }
 
@@ -130,8 +130,29 @@ export class ReclamerComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.modalService.dismissAll();
-    this.http.post((this.baseUrl + '/reclamation/'), this.formData).subscribe(
+    if (this.wantToChangeAddress){
+      if (this.reclamerForm.valid){
+        this.http.post((this.baseUrl + '/reclamation/'), this.formData).subscribe(
+          result => {
+            this.success = result;
+            console.log(this.success);
+            this.popUpMessage = 'Votre lot vous sera envoyé !';
+            this.reloadCurrentRoute();
+          },
+          error => {
+            this.errors = error.error.message;
+            console.log('Hello ' + error.error.message);
+            this.popUpMessage = this.errors;
+          },
+          () => {
+            this.open();
+          }
+        );
+        this.modalService.dismissAll();
+      }
+    }
+    if (!this.wantToChangeAddress){
+      this.http.post((this.baseUrl + '/reclamation/'), this.formData).subscribe(
         result => {
           this.success = result;
           console.log(this.success);
@@ -147,6 +168,8 @@ export class ReclamerComponent implements OnInit {
           this.open();
         }
       );
+      this.modalService.dismissAll();
+    }
     this.isFormSubmitted = true;
   }
 }
