@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {SocialAuthService, GoogleLoginProvider, SocialUser, FacebookLoginProvider} from 'angularx-social-login';
 
 import {AuthService} from '../../../core/authentification/auth.service';
 import {TokenService} from '../../../core/authentification/token.service';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
-import {SocialAuthService, GoogleLoginProvider, SocialUser, FacebookLoginProvider} from 'angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -68,9 +68,10 @@ export class LoginComponent implements OnInit {
           this.authState.setAuthState(true);
           this.loginForm.reset();
         },
-        res => {
-          this.errors = res.error.error;
-        }, () => {
+        error => {
+          this.errors = error.error.error;
+        },
+        () => {
           this.router.navigate(['/play']);
         }
       );
