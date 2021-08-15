@@ -1,15 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ResetPasswordService} from '../../../core/password/reset-password.service';
+import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-forgot-password',
-  templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss']
+  selector: 'app-reset-password',
+  templateUrl: './reset-password.component.html',
+  styleUrls: ['./reset-password.component.scss']
 })
-
-export class ForgotPasswordComponent implements OnInit {
+export class ResetPasswordComponent implements OnInit {
   resetForm: FormGroup;
   errors: any;
   success: any;
