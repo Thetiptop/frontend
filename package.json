@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~11.0.0",
     "@angular/router": "~11.0.0",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "@ng-toolkit/universal": "^1.1.21",
     "@ngx-translate/core": "^13.0.0",
     "@tobynatooor/countdown": "^1.2.5",
     "angular-archwizard": "^7.0.0",

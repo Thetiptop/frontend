@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
 import {HowToPlayComponent} from '../../components/how-to-play/how-to-play.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -20,12 +21,14 @@ export class HomeComponent implements OnInit {
   minutes: any;
 
   constructor(
+    private title: Title,
     private router: Router,
     private authState: AuthStateService,
     private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
+    this.title.setTitle('Jeu concours - ThéTipTop');
 
     this.authState.userAuthState.subscribe(val => {
       this.isSignedIn = val;
