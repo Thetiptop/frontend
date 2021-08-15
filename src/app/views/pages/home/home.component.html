@@ -1,24 +1,43 @@
 <div class="d-flex home flex-wrap row vh-100">
   <div class="form-container col-12 col-xl-6 py-5 offset-1">
+
     <h1 class="text-lobster mb-5 display-3 title">Participer au jeu<br> de concours pour<br> gagner des lots</h1>
+
     <p class="text-dark text-b-600 mb-4">
       Envie de gagner des cadeaux ?<br>
       Plus de 700 lots à gagner. <br>
       Tous les tickets sont gagnants !
     </p>
+
     <button (click)="redirect()" class="btn btn-lipton mb-4 py-3 btn-block btn-lg text-uppercase" type="submit">
       <a>Jouer </a>
       <i class="fas ml-3 fa-arrow-right"></i>
     </button>
+
     <p class="mb-2">
       <a (click)="open()" class="text-chocolate text-underline text-b-600">Comment jouer ?</a>
       <br>
-      <span class="mb-0 text-b-600">Le jeu concours se termine dans <br>
-        <span>{{days}}</span> jours,
-        <span>{{hours}}</span> heures
-        <span>{{minutes}}</span>, minutes,
-        <span>{{seconds}}</span> secondes
-      </span>
+      <span class="mb-0 text-b-600">Le jeu concours se termine dans : </span>
     </p>
+
+    <div class="countdown mt-3 d-flex">
+      <div class="counter bg-secondary text-white text-center mr-4 raduis ">
+        <div>{{days}}</div>
+        <div>jrs</div>
+      </div>
+      <div class="counter bg-secondary text-white text-center mr-4 raduis ">
+        <div>{{hours}}</div>
+        <div>hrs</div>
+      </div>
+      <div class="counter bg-secondary text-white text-center mr-4 raduis ">
+        <div>{{minutes}}</div>
+        <div>mins</div>
+      </div>
+      <div class="counter bg-secondary text-white text-center mr-4 raduis ">
+        <div>{{seconds}}</div>
+        <div>secs</div>
+      </div>
+    </div>
+
   </div>
 </div>

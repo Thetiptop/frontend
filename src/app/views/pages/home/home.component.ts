@@ -31,6 +31,12 @@ export class HomeComponent implements OnInit {
       this.isSignedIn = val;
     });
 
+    const x = timeUntil('2021-09-13T20:20:20');
+    this.days = `${x.days % 365}`;
+    this.hours = `${x.hours % 24}`;
+    this.minutes = `${x.minutes % 60}`;
+    this.seconds = `${x.seconds % 60}`;
+
     setInterval(() => {
       const x = timeUntil('2021-09-13T20:20:20');
       this.days = `${x.days % 365}`;
