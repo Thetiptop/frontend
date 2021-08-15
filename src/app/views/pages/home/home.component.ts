@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
 import {HowToPlayComponent} from '../../components/how-to-play/how-to-play.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {Title} from '@angular/platform-browser';
+import {Title, Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -22,13 +22,18 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private title: Title,
+    private metaTagService: Meta,
     private router: Router,
     private authState: AuthStateService,
     private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
+    // SEO
     this.title.setTitle('Jeu concours - ThéTipTop');
+    this.metaTagService.updateTag(
+      { name: 'description', content: 'Description' }
+    );
 
     this.authState.userAuthState.subscribe(val => {
       this.isSignedIn = val;
