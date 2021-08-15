@@ -11,9 +11,9 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  finalDate = '2021-09-13T00:00:00';
   modalRef: any;
   isSignedIn: any;
-  x: any;
   days: any;
   hours: any;
   seconds: any;
@@ -31,18 +31,18 @@ export class HomeComponent implements OnInit {
       this.isSignedIn = val;
     });
 
-    const x = timeUntil('2021-09-13T20:20:20');
+    const x = timeUntil(this.finalDate);
     this.days = `${x.days % 365}`;
     this.hours = `${x.hours % 24}`;
     this.minutes = `${x.minutes % 60}`;
     this.seconds = `${x.seconds % 60}`;
 
     setInterval(() => {
-      const x = timeUntil('2021-09-13T20:20:20');
-      this.days = `${x.days % 365}`;
-      this.hours = `${x.hours % 24}`;
-      this.minutes = `${x.minutes % 60}`;
-      this.seconds = `${x.seconds % 60}`;
+      const y = timeUntil(this.finalDate);
+      this.days = `${y.days % 365}`;
+      this.hours = `${y.hours % 24}`;
+      this.minutes = `${y.minutes % 60}`;
+      this.seconds = `${y.seconds % 60}`;
     }, 1000);
   }
 
@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
   }
 
   open(): void {
-      this.modalRef = this.modalService.open(HowToPlayComponent, {centered: true, size: 'md'});
+      this.modalRef = this.modalService.open(HowToPlayComponent, {centered: true});
   }
 }
 
