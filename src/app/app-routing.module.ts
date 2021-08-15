@@ -7,7 +7,7 @@ import { PlayComponent } from './views/pages/play/play.component';
 import { BaseComponent } from './views/components/base/base.component';
 import { AuthGuard } from './core/authentification/auth.guard';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
-import { ForgotPasswordComponent } from './views/pages/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './views/pages/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -36,8 +36,8 @@ const routes: Routes = [
         component : RegisterComponent
       },
       {
-        path : 'forgot-password',
-        component : ForgotPasswordComponent
+        path : 'reset-password',
+        component : ResetPasswordComponent
       },
       {
         path : 'about',
