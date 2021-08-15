@@ -37,7 +37,7 @@ export class ResetPasswordComponent implements OnInit {
     if (this.resetForm.valid) {
       this.resetPasswordService.resetPassword(this.resetForm.value).subscribe(
         result => {
-          this.success = result;
+          this.success = result.message;
           console.log(result);
           this.resetForm.reset();
         },
