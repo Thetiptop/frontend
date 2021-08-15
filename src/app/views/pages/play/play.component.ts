@@ -3,9 +3,9 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FelicitationsComponent } from '../../components/felicitations/felicitations.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PlayService } from '../../../core/play/play.service';
-import {AuthService} from '../../../core/authentification/auth.service';
-import {AuthStateService} from '../../../core/authentification/auth-state.service';
-import {HowToPlayComponent} from '../../components/how-to-play/how-to-play.component';
+import { AuthService } from '../../../core/authentification/auth.service';
+import { AuthStateService } from '../../../core/authentification/auth-state.service';
+import { HowToPlayComponent } from '../../components/how-to-play/how-to-play.component';
 
 @Component({
   selector: 'app-play',
