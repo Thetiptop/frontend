@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { timeUntil } from '@tobynatooor/countdown';
 import {Router} from '@angular/router';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
-import {ReclamerComponent} from '../../components/reclamer/reclamer.component';
 import {HowToPlayComponent} from '../../components/how-to-play/how-to-play.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
@@ -15,10 +14,10 @@ export class HomeComponent implements OnInit {
   modalRef: any;
   isSignedIn: any;
   x: any;
-  days: number;
-  hours: number;
-  seconds: number;
-  minutes: number;
+  days: any;
+  hours: any;
+  seconds: any;
+  minutes: any;
 
   constructor(
     private router: Router,
@@ -32,13 +31,13 @@ export class HomeComponent implements OnInit {
       this.isSignedIn = val;
     });
 
-    const x = timeUntil('2021-09-13T20:20:20');
-    console.log(`${x.years}:${x.days % 365}:${x.hours % 24}:${x.minutes % 60}:${x.seconds % 60}`);
-    this.days = x.days;
-    this.hours = x.hours;
-    this.minutes = x.hours;
-    this.seconds = x.seconds;
-
+    setInterval(() => {
+      const x = timeUntil('2021-09-13T20:20:20');
+      this.days = `${x.days % 365}`;
+      this.hours = `${x.hours % 24}`;
+      this.minutes = `${x.minutes % 60}`;
+      this.seconds = `${x.seconds % 60}`;
+    }, 1000);
   }
 
   redirect(): void {

@@ -84,13 +84,10 @@ export class PlayComponent implements OnInit {
           this.lotName = this.success.ticket.lot;
           this.lotId = this.success.ticket.id;
           this.playForm.reset();
+          this.open();
         },
         res => {
-          console.log(res);
           this.errors = res.error.message;
-          console.log(this.errors.error.message);
-        }, () => {
-          this.open();
         }
       );
     }

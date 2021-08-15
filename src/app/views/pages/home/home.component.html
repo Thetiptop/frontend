@@ -13,7 +13,12 @@
     <p class="mb-2">
       <a (click)="open()" class="text-chocolate text-underline text-b-600">Comment jouer ?</a>
       <br>
-      <span class="mb-0 text-b-600">Le jeu concours se termine dans {{days}} jours.</span>
+      <span class="mb-0 text-b-600">Le jeu concours se termine dans <br>
+        <span>{{days}}</span> jours,
+        <span>{{hours}}</span> heures
+        <span>{{minutes}}</span>, minutes,
+        <span>{{seconds}}</span> secondes
+      </span>
     </p>
   </div>
 </div>
