@@ -148,11 +148,21 @@ app-home{
   #DataTables_Table_0_wrapper {
     overflow-x: hidden !important;
   }
+
+  .modal {
+    left: 220px !important;
+    width: calc(100% - 220px) !important;
+  }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   #DataTables_Table_0_wrapper {
     overflow-x: hidden !important;
+  }
+
+  .modal {
+    left: 250px !important;
+    width: calc(100% - 250px) !important;
   }
 }
