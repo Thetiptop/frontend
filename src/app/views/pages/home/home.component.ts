@@ -11,10 +11,11 @@ import {Title, Meta} from '@angular/platform-browser';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
+
 export class HomeComponent implements OnInit {
-  finalDate = '2021-09-13T00:00:00';
   modalRef: any;
   isSignedIn: any;
+  finalDate = '2021-09-13T00:00:00';
   days: any;
   hours: any;
   seconds: any;
@@ -39,6 +40,7 @@ export class HomeComponent implements OnInit {
       this.isSignedIn = val;
     });
 
+    // Timer
     const x = timeUntil(this.finalDate);
     this.days = `${x.days % 365}`;
     this.hours = `${x.hours % 24}`;
