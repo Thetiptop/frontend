@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
 import { NotificationComponent } from '../../../components/notification/notification.component';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-modifier-informations',
@@ -13,6 +14,9 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modifier-informations.component.scss']
 })
 export class ModifierInformationsComponent implements OnInit {
+  // SEO variables
+  title = 'Modifier le profil - ThéTipTop';
+
   modifierProfileForm: FormGroup;
   isFormSubmitted: boolean;
   UserProfile: any;
@@ -24,6 +28,8 @@ export class ModifierInformationsComponent implements OnInit {
   popUpMessage: string;
 
   constructor(
+    private titleService: Title,
+    private metaTagService: Meta,
     private http: HttpClient,
     private authService: AuthService,
     private authState: AuthStateService,
@@ -44,6 +50,12 @@ export class ModifierInformationsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // SEO
+    this.titleService.setTitle(this.title);
+    this.metaTagService.updateTag(
+      {name: 'description', content: 'Description'}
+    );
+
     this.authState.userAuthState.subscribe(val => {
       this.isSignedIn = val;
     });

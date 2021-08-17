@@ -6,6 +6,7 @@ import {HistoriqueService} from '../../../../core/historique/historique.service'
 import {ReclamerComponent} from '../../../components/reclamer/reclamer.component';
 import {Subject} from 'rxjs';
 import {NotificationComponent} from '../../../components/notification/notification.component';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-historique',
@@ -14,6 +15,8 @@ import {NotificationComponent} from '../../../components/notification/notificati
 })
 
 export class HistoriqueComponent implements OnInit {
+  title = 'Hisorique des gains - ThéTipTop';
+
   modalRef: any;
   dtOptions: DataTables.Settings = {};
 
@@ -26,12 +29,15 @@ export class HistoriqueComponent implements OnInit {
   posts: any;
   private popUpMessage: any;
 
-  constructor(private httpClient: HttpClient,
-              private authService: AuthService,
-              private http: HttpClient,
-              private historiqueService: HistoriqueService,
-              config: NgbModalConfig,
-              private modalService: NgbModal
+  constructor(
+    private titleService: Title,
+    private metaTagService: Meta,
+    private httpClient: HttpClient,
+    private authService: AuthService,
+    private http: HttpClient,
+    private historiqueService: HistoriqueService,
+    config: NgbModalConfig,
+    private modalService: NgbModal
   ) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -52,11 +58,18 @@ export class HistoriqueComponent implements OnInit {
   }
 
   openNotification(): void {
-    const modalRef = this.modalService.open(NotificationComponent, {centered: true} );
+    const modalRef = this.modalService.open(NotificationComponent, {centered: true});
     modalRef.componentInstance.message = this.popUpMessage;
   }
 
   ngOnInit(): void {
+    // SEO
+    this.titleService.setTitle(this.title);
+    this.metaTagService.updateTag(
+      {name: 'description', content: 'Description'}
+    );
+
+    // Table Config
     this.dtOptions = {
       language: {
         search: 'Rechercher : ',
