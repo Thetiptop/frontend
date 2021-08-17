@@ -1,39 +1,54 @@
 import { Component, OnInit } from '@angular/core';
 import { timeUntil } from '@tobynatooor/countdown';
-import {Router} from '@angular/router';
-import {AuthStateService} from '../../../core/authentification/auth-state.service';
-import {HowToPlayComponent} from '../../components/how-to-play/how-to-play.component';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {Title} from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { AuthStateService } from '../../../core/authentification/auth-state.service';
+import { HowToPlayComponent } from '../../components/how-to-play/how-to-play.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
+
 export class HomeComponent implements OnInit {
-  finalDate = '2021-09-13T00:00:00';
+  // SEO variables
+  title = 'Jeu Concours - ThéTipTop';
+
   modalRef: any;
   isSignedIn: any;
+  finalDate = '2021-09-13T00:00:00';
   days: any;
   hours: any;
   seconds: any;
   minutes: any;
 
   constructor(
-    private title: Title,
+    private titleService: Title,
+    private metaTagService: Meta,
     private router: Router,
     private authState: AuthStateService,
     private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
-    this.title.setTitle('Jeu concours - ThéTipTop');
+    // SEO
+    this.titleService.setTitle(this.title);
+    this.metaTagService.updateTag({name: 'description', content: 'Description'});
+    this.metaTagService.updateTag({name: 'twitter:title', content: this.title});
+    this.metaTagService.updateTag({name: 'twitter:image:alt', content: this.title});
+    this.metaTagService.updateTag({property: 'og:image:alt', content: this.title});
+    this.metaTagService.updateTag({property: 'og:title', content: this.title});
+    this.metaTagService.updateTag({property: 'og:image', content: '/assets/mango-bg-.jpg'});
 
+
+    // User authentification state
     this.authState.userAuthState.subscribe(val => {
       this.isSignedIn = val;
     });
 
+    // Timer
     const x = timeUntil(this.finalDate);
     this.days = `${x.days % 365}`;
     this.hours = `${x.hours % 24}`;

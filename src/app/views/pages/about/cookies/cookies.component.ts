@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cookies',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cookies.component.scss']
 })
 export class CookiesComponent implements OnInit {
+  // SEO variables
+  title = 'Cookies - ThéTipTop';
 
-  constructor() { }
+  constructor(
+    private titleService: Title,
+    private metaTagService: Meta,
+  ) { }
 
   ngOnInit(): void {
+    // SEO
+    this.titleService.setTitle(this.title);
+    this.metaTagService.updateTag(
+      { name: 'description', content: 'Description' }
+    );
   }
 
 }

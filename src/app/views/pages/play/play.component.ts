@@ -3,9 +3,10 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FelicitationsComponent } from '../../components/felicitations/felicitations.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PlayService } from '../../../core/play/play.service';
-import {AuthService} from '../../../core/authentification/auth.service';
-import {AuthStateService} from '../../../core/authentification/auth-state.service';
-import {HowToPlayComponent} from '../../components/how-to-play/how-to-play.component';
+import { AuthService } from '../../../core/authentification/auth.service';
+import { AuthStateService } from '../../../core/authentification/auth-state.service';
+import { HowToPlayComponent } from '../../components/how-to-play/how-to-play.component';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-play',
@@ -13,6 +14,8 @@ import {HowToPlayComponent} from '../../components/how-to-play/how-to-play.compo
   styleUrls: ['./play.component.scss']
 })
 export class PlayComponent implements OnInit {
+  title = 'Jouer - ThéTipTop';
+
   isSignedIn: any;
   error: any;
   popUpMessage: any;
@@ -27,6 +30,8 @@ export class PlayComponent implements OnInit {
   UserProfile: any;
 
   constructor(config: NgbModalConfig,
+              private titleService: Title,
+              private metaTagService: Meta,
               private authService: AuthService,
               private authState: AuthStateService,
               private modalService: NgbModal,
@@ -41,6 +46,11 @@ export class PlayComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // SEO
+    this.titleService.setTitle(this.title);
+    this.metaTagService.updateTag(
+      { name: 'description', content: 'Description' }
+    );
 
     this.authState.userAuthState.subscribe(val => {
       this.isSignedIn = val;

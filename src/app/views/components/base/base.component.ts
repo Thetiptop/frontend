@@ -9,6 +9,7 @@ import {
   // group,
   // animateChild
 } from '@angular/animations';
+import {Meta} from '@angular/platform-browser';
 
 @Component({
 
@@ -41,9 +42,17 @@ import {
 
 export class BaseComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private metaTagService: Meta
+  ) { }
 
   ngOnInit(): void {
+    this.metaTagService.addTags([
+      { name: 'keywords', content: 'ThéTipTop, Jeu concours, Jeu, Thé' },
+      { name: 'robots', content: 'index, follow' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { charset: 'UTF-8' }
+    ]);
   }
 
 }

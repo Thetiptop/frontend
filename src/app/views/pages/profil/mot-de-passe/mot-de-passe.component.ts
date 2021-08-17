@@ -6,6 +6,7 @@ import {environment} from '../../../../../environments/environment';
 import {ChangePasswordService} from '../../../../core/password/change-password.service';
 import {NotificationComponent} from '../../../components/notification/notification.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mot-de-passe',
@@ -13,6 +14,9 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./mot-de-passe.component.scss']
 })
 export class MotDePasseComponent implements OnInit {
+  // SEO variables
+  title = 'Modifer le mot de passe - ThéTipTop';
+
   success: any;
   errors: any;
   isSignedIn: any;
@@ -24,6 +28,8 @@ export class MotDePasseComponent implements OnInit {
 
 
   constructor(
+    private titleService: Title,
+    private metaTagService: Meta,
     private http: HttpClient,
     private changePasswordService: ChangePasswordService,
     private modalService: NgbModal
@@ -40,6 +46,12 @@ export class MotDePasseComponent implements OnInit {
 
 
   ngOnInit(): void {
+    // SEO
+    this.titleService.setTitle(this.title);
+    this.metaTagService.updateTag(
+      {name: 'description', content: 'Description'}
+    );
+
     this.modifierMotdepasseForm = new FormGroup({
       old_password: new FormControl(null, Validators.required),
       new_password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
