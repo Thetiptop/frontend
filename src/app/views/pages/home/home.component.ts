@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { timeUntil } from '@tobynatooor/countdown';
-import {Router} from '@angular/router';
-import {AuthStateService} from '../../../core/authentification/auth-state.service';
-import {HowToPlayComponent} from '../../components/how-to-play/how-to-play.component';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {Title, Meta} from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { AuthStateService } from '../../../core/authentification/auth-state.service';
+import { HowToPlayComponent } from '../../components/how-to-play/how-to-play.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +13,9 @@ import {Title, Meta} from '@angular/platform-browser';
 })
 
 export class HomeComponent implements OnInit {
+  // SEO variables
+  title = 'Jeu Concours - ThéTipTop';
+
   modalRef: any;
   isSignedIn: any;
   finalDate = '2021-09-13T00:00:00';
@@ -22,7 +25,7 @@ export class HomeComponent implements OnInit {
   minutes: any;
 
   constructor(
-    private title: Title,
+    private titleService: Title,
     private metaTagService: Meta,
     private router: Router,
     private authState: AuthStateService,
@@ -31,11 +34,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     // SEO
-    this.title.setTitle('Jeu concours - ThéTipTop');
+    this.titleService.setTitle(this.title);
     this.metaTagService.updateTag(
       { name: 'description', content: 'Description' }
     );
 
+    // User authentification state
     this.authState.userAuthState.subscribe(val => {
       this.isSignedIn = val;
     });

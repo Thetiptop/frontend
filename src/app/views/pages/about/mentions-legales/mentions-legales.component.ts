@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mentions-legales',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mentions-legales.component.scss']
 })
 export class MentionsLegalesComponent implements OnInit {
+  title = 'Mentions légales - ThéTipTop';
 
-  constructor() { }
+  constructor(
+    private titleService: Title,
+    private metaTagService: Meta,
+  ) { }
 
   ngOnInit(): void {
+    // SEO
+    this.titleService.setTitle(this.title);
+    this.metaTagService.updateTag(
+      { name: 'description', content: 'Description' }
+    );
   }
 
 }

@@ -6,6 +6,7 @@ import {SocialAuthService, GoogleLoginProvider, SocialUser, FacebookLoginProvide
 import {AuthService} from '../../../core/authentification/auth.service';
 import {TokenService} from '../../../core/authentification/token.service';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,9 @@ import {AuthStateService} from '../../../core/authentification/auth-state.servic
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  // SEO variables
+  title = 'Connexion - ThéTipTop';
+
   loginForm: FormGroup;
   success: any;
   errors: any;
@@ -21,6 +25,8 @@ export class LoginComponent implements OnInit {
   isLoggedin: boolean;
 
   constructor(
+    private titleService: Title,
+    private metaTagService: Meta,
     private router: Router,
     private route: ActivatedRoute,
     public authService: AuthService,
@@ -35,6 +41,11 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // SEO
+    this.titleService.setTitle(this.title);
+    this.metaTagService.updateTag(
+      { name: 'description', content: 'Description' }
+    );
 
     this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]),
@@ -72,7 +83,8 @@ export class LoginComponent implements OnInit {
           this.errors = error.error.error;
         },
         () => {
-          this.router.navigate(['/play']);
+          const currentUrl = this.router.url;
+          this.router.navigateByUrl('/play');
         }
       );
     }
