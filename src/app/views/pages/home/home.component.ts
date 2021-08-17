@@ -35,9 +35,13 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // SEO
     this.titleService.setTitle(this.title);
-    this.metaTagService.updateTag(
-      { name: 'description', content: 'Description' }
-    );
+    this.metaTagService.updateTag({name: 'description', content: 'Description'});
+    this.metaTagService.updateTag({name: 'twitter:title', content: this.title});
+    this.metaTagService.updateTag({name: 'twitter:image:alt', content: this.title});
+    this.metaTagService.updateTag({property: 'og:image:alt', content: this.title});
+    this.metaTagService.updateTag({property: 'og:title', content: this.title});
+    this.metaTagService.updateTag({property: 'og:image', content: '/assets/mango-bg-.jpg'});
+
 
     // User authentification state
     this.authState.userAuthState.subscribe(val => {
