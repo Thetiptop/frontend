@@ -5,6 +5,7 @@ import {WizardComponent as BaseWizardComponent} from 'angular-archwizard';
 import {AuthService} from '../../../core/authentification/auth.service';
 import {ConfirmedValidator} from '../../../core/authentification/confirm-validator';
 import {HttpClient, HttpParams} from '@angular/common/http';
+import {Meta, Title} from '@angular/platform-browser';
 
 interface MailChimpResponse {
   result: string;
@@ -28,14 +29,18 @@ export class RegisterComponent implements OnInit {
   errors: any;
   success: any;
   display = true;
-  mailChimpEndpoint = 'https://christaime.us7.list-manage.com/subscribe/post-json?u=c789d045d87cc22bd9756a879&amp;id=cf5d252aa7&';
+  private mailChimpEndpoint = 'https://christaime.us7.list-manage.com/subscribe/post-json?u=c789d045d87cc22bd9756a879&amp;id=cf5d252aa7&';
 
 
   @ViewChild('wizardForm') wizardForm: BaseWizardComponent | undefined;
   formData: FormData;
+  title: string;
+  description: string;
 
   constructor(
     public formBuilder: FormBuilder,
+    private titleService: Title,
+    private metaTagService: Meta,
     public authService: AuthService,
     private http: HttpClient,
     private router: Router) {
@@ -57,6 +62,13 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // SEO
+    this.titleService.setTitle(this.title);
+    this.metaTagService.updateTag({name: 'description', content: this.description});
+    this.metaTagService.updateTag({property: 'og:title', content: this.title});
+    this.metaTagService.updateTag({name: 'og:description', content: this.description});
+    this.metaTagService.updateTag({property: 'og:image', content: '/assets/mango-bg-.jpg'});
+    this.metaTagService.updateTag({property: 'og:image:alt', content: this.title});
 
     /** form1 value validation */
     this.validationForm1 = this.formBuilder.group({

@@ -28,6 +28,7 @@ export class PlayComponent implements OnInit {
   modalRef: any;
   userName: any;
   UserProfile: any;
+  description: string;
 
   constructor(config: NgbModalConfig,
               private titleService: Title,
@@ -48,9 +49,11 @@ export class PlayComponent implements OnInit {
   ngOnInit(): void {
     // SEO
     this.titleService.setTitle(this.title);
-    this.metaTagService.updateTag(
-      { name: 'description', content: 'Description' }
-    );
+    this.metaTagService.updateTag({name: 'description', content: this.description});
+    this.metaTagService.updateTag({property: 'og:title', content: this.title});
+    this.metaTagService.updateTag({name: 'og:description', content: this.description});
+    this.metaTagService.updateTag({property: 'og:image', content: '/assets/mango-bg-.jpg'});
+    this.metaTagService.updateTag({property: 'og:image:alt', content: this.title});
 
     this.authState.userAuthState.subscribe(val => {
       this.isSignedIn = val;

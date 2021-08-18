@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://dsp-archiwebo20-mt-ma-ca-fd.fr/sitemap.xml

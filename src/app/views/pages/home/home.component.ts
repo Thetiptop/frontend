@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   hours: any;
   seconds: any;
   minutes: any;
+  description: string;
 
   constructor(
     private titleService: Title,
@@ -35,12 +36,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // SEO
     this.titleService.setTitle(this.title);
-    this.metaTagService.updateTag({name: 'description', content: 'Description'});
-    this.metaTagService.updateTag({name: 'twitter:title', content: this.title});
-    this.metaTagService.updateTag({name: 'twitter:image:alt', content: this.title});
-    this.metaTagService.updateTag({property: 'og:image:alt', content: this.title});
+    this.metaTagService.updateTag({name: 'description', content: this.description});
     this.metaTagService.updateTag({property: 'og:title', content: this.title});
+    this.metaTagService.updateTag({name: 'og:description', content: this.description});
     this.metaTagService.updateTag({property: 'og:image', content: '/assets/mango-bg-.jpg'});
+    this.metaTagService.updateTag({property: 'og:image:alt', content: this.title});
 
 
     // User authentification state
