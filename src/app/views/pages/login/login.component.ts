@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {SocialAuthService, GoogleLoginProvider, SocialUser, FacebookLoginProvider} from 'angularx-social-login';
+import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser} from 'angularx-social-login';
 
 import {AuthService} from '../../../core/authentification/auth.service';
 import {TokenService} from '../../../core/authentification/token.service';
@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   isFormSubmitted: boolean;
   socialUser: SocialUser;
   isLoggedin: boolean;
+  description = 'Connectez-vous à votre compte ThéTipTop et jouez pour gagner des cadeaux à coup sûrs !';
 
   constructor(
     private titleService: Title,
@@ -43,9 +44,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     // SEO
     this.titleService.setTitle(this.title);
-    this.metaTagService.updateTag(
-      { name: 'description', content: 'Description' }
-    );
+    this.metaTagService.updateTag({name: 'description', content: this.description});
+    this.metaTagService.updateTag({property: 'og:title', content: this.title});
+    this.metaTagService.updateTag({name: 'og:description', content: this.description});
+    this.metaTagService.updateTag({property: 'og:image', content: '/assets/mango-bg-.jpg'});
+    this.metaTagService.updateTag({property: 'og:image:alt', content: this.title});
 
     this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]),
@@ -56,16 +59,16 @@ export class LoginComponent implements OnInit {
 
     this.socialAuthService.authState.subscribe(
       (user) => {
-      this.socialUser = user;
-      /*this.loginForm.patchValue({
-        email: this.socialUser.name,
-        socialToken: this.socialUser.authToken,
-       });*/
-      this.isLoggedin = (user != null);
-      console.log(this.socialUser);
-      // this.authState.setAuthState(true);
-      this.token.handleData(this.socialUser.idToken);
-      // this.router.navigate(['/accueil']);
+        this.socialUser = user;
+        /*this.loginForm.patchValue({
+          email: this.socialUser.name,
+          socialToken: this.socialUser.authToken,
+         });*/
+        this.isLoggedin = (user != null);
+        console.log(this.socialUser);
+        // this.authState.setAuthState(true);
+        this.token.handleData(this.socialUser.idToken);
+        // this.router.navigate(['/accueil']);
       });
   }
 
