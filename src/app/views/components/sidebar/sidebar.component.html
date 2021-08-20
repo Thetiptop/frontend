@@ -51,38 +51,39 @@
         </div>
 
         <div class="profile-icons">
-          <div *ngIf="!isSignedIn" class="icon">
-            <a class="btn btn-block btn-lipton"
-               routerLink="/login">
-              <i class="fas fa-sign-in-alt"></i>
+          <div *ngIf="!isSignedIn" class="icon mb-2">
+            <a class="btn btn-block rounded btn-primary border-secondary" routerLink="/login">
+              S'identifier
+              <i class="fas fa-sign-in-alt ml-2"></i>
             </a>
           </div>
 
           <div *ngIf="!isSignedIn" class="icon">
-            <a class="btn btn-block btn-lipton"
-               routerLink="/register">
-              <i class="fas fa-user-plus"></i>
+            <a class="btn btn-block rounded btn-primary border-secondary" routerLink="/register">
+              S'inscrire
+              <i class="fas fa-user-plus ml-2"></i>
             </a>
           </div>
 
-          <div class="icon">
+          <!--<div class="icon">
             <a class="btn btn-block btn-lipton"
                routerLink="/play">
               <i class="fas fa-gamepad"></i>
             </a>
-          </div>
+          </div>-->
 
-          <div *ngIf="isSignedIn" class="icon">
+          <!--<div *ngIf="isSignedIn" class="icon">
             <a class="btn btn-block btn-lipton"
                routerLink="/profile">
               <i class="fas fa-user-circle"></i>
             </a>
-          </div>
+          </div>-->
 
           <div *ngIf="isSignedIn" class="icon">
-            <a class="btn btn-block btn-lipton"
+            <a class="btn btn-block rounded btn-primary border-secondary"
                (click)="onLogout($event)">
-              <i class="fas fa-power-off"></i>
+              Se déconnecter
+              <i class="fas fa-power-off ml-2"></i>
             </a>
           </div>
         </div>

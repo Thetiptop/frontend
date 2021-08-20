@@ -116,23 +116,20 @@
     .profile-icons {
       display: flex;
       margin-top: 1.2em;
-      justify-content: space-between;
+      justify-content: center;
+      flex-wrap: wrap;
 
       .icon {
         display: flex;
         align-items: center;
         flex-direction: column;
-        width: 30%;
-
+        width: 100%;
 
         a {
           color: #fff;
-          width: 45px;
           height: 45px;
-          font-size: 20px;
           line-height: 60px;
           text-align: center;
-          border-radius: 50%;
           display: flex;
           justify-content: center;
           align-items: center;
