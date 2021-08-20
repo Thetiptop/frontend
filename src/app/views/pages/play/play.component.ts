@@ -15,6 +15,7 @@ import {Meta, Title} from '@angular/platform-browser';
 })
 export class PlayComponent implements OnInit {
   title = 'Jouer - ThéTipTop';
+  description: string;
 
   isSignedIn: any;
   error: any;
@@ -28,7 +29,6 @@ export class PlayComponent implements OnInit {
   modalRef: any;
   userName: any;
   UserProfile: any;
-  description: string;
 
   constructor(config: NgbModalConfig,
               private titleService: Title,
