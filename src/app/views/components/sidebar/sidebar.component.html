@@ -51,17 +51,18 @@
         </div>
 
         <div class="profile-icons">
+
+          <div *ngIf="!isSignedIn" class="icon mb-2">
+            <a class="btn btn-block rounded btn-primary" routerLink="/register">
+              S'inscrire
+              <i class="fas fa-user-plus ml-2"></i>
+            </a>
+          </div>
+
           <div *ngIf="!isSignedIn" class="icon mb-2">
             <a class="btn btn-block rounded btn-primary" routerLink="/login">
               S'identifier
               <i class="fas fa-sign-in-alt ml-2"></i>
-            </a>
-          </div>
-
-          <div *ngIf="!isSignedIn" class="icon">
-            <a class="btn btn-block rounded btn-primary" routerLink="/register">
-              S'inscrire
-              <i class="fas fa-user-plus ml-2"></i>
             </a>
           </div>
 

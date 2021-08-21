@@ -1,6 +1,17 @@
 .home {
-  min-height: 100vh;
+  min-height: calc(100vh);
+  z-index: 2;
 }
+
+.copyright {
+  z-index: 0;
+  position: sticky;
+  bottom: 0;
+  right: 0;
+  height: 30px;
+  width: 100%;
+}
+
 .title{
     color: #683C11;
     margin-top: 15px;
