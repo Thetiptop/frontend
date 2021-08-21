@@ -1,9 +1,15 @@
 app-play{
     background: #d98300 !important;
   }
+
 #play-page{
     width: 100%;
 }
+
+.play-page .form-container {
+  margin: initial;
+}
+
 .form-container {
     background: #fff;
     min-height: 400px;
@@ -16,11 +22,37 @@ app-play{
     background-color: chocolate;
 }
 
-.play-form-wrapper {
-    padding: 2rem 1rem;
-  }
+
 
 #play-form{
     max-width: 50% ;
     padding: 3rem 8rem 0 8rem
 }
+
+
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .play-page .form-container {
+    margin: auto;
+  }
+
+  .play-form-wrapper {
+    padding: 2rem 1rem;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}
+

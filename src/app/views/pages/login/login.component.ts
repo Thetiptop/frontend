@@ -81,13 +81,10 @@ export class LoginComponent implements OnInit {
           console.log(result.access_token);
           this.authState.setAuthState(true);
           this.loginForm.reset();
+          this.router.navigateByUrl('/play');
         },
         error => {
           this.errors = error.error.error;
-        },
-        () => {
-          const currentUrl = this.router.url;
-          this.router.navigateByUrl('/play');
         }
       );
     }
