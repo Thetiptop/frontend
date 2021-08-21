@@ -71,7 +71,7 @@ a:focus {
 }
 
 .p-page {
-  padding: 3rem 3rem 3rem 3rem !important;
+  padding: 3rem !important;
 }
 
 .form-control {
@@ -133,6 +133,10 @@ app-home{
   position: fixed !important;
 }
 
+.page-item.active .page-link {
+  z-index: 0
+}
+
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) {}
 
@@ -164,5 +168,9 @@ app-home{
   .modal {
     left: 250px !important;
     width: calc(100% - 250px) !important;
+  }
+
+  .p-page {
+    padding: 3rem 5rem 3rem 5rem !important;
   }
 }

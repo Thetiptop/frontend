@@ -18,7 +18,7 @@
 }
 
 .auth-form-wrapper {
-  padding: 2rem 1rem;
+  padding: 0;
 }
 
 .login-rs.google {
@@ -37,6 +37,10 @@
   color: blue !important;
 }
 
+.register-page {
+  padding: 3rem;
+}
+
 .register-page .form-control {
   height: 50px;
 }
@@ -45,12 +49,16 @@
 @media (min-width: 576px) {}
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+  .register-page {
+    padding: 0;
+  }
+}
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .auth-form-wrapper {
-    padding: 2rem 8rem 0 8rem;
+    padding: 3rem 5rem 0 5rem;
   }
 
   .form-container {
@@ -60,5 +68,9 @@
 }
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+  .auth-form-wrapper {
+    padding: 3rem 8rem 3rem 8rem;
+  }
+}
 

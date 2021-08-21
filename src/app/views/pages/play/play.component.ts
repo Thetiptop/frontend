@@ -7,6 +7,7 @@ import { AuthService } from '../../../core/authentification/auth.service';
 import { AuthStateService } from '../../../core/authentification/auth-state.service';
 import { HowToPlayComponent } from '../../components/how-to-play/how-to-play.component';
 import {Meta, Title} from '@angular/platform-browser';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-play',
@@ -32,6 +33,7 @@ export class PlayComponent implements OnInit {
 
   constructor(config: NgbModalConfig,
               private titleService: Title,
+              private router: Router,
               private metaTagService: Meta,
               private authService: AuthService,
               private authState: AuthStateService,
