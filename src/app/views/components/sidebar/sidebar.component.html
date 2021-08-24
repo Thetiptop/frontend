@@ -8,26 +8,25 @@
     <ul class="list-unstyled components">
       <li>
         <a routerLink="/accueil"
-           class=""
            routerLinkActive="active">
           Accueil
         </a>
       </li>
       <li>
         <a routerLink="/play"
+           routerLinkActive="active"
            placement="right"
-           [className]="isSignedIn ? null : 'text-muted'"
-           [ngbPopover]="isSignedIn ? null : 'Veuillez vous identifier'"
-           routerLinkActive="active">
+           [className]="isSignedIn ? '' : 'text-muted'"
+           [ngbPopover]="isSignedIn ? '' : 'Veuillez vous identifier'">
           Jouer
         </a>
       </li>
       <li>
         <a routerLink="/profile"
+           routerLinkActive="active"
            placement="right"
-           [ngbPopover]="isSignedIn ? null : 'Veuillez vous identifier'"
-           [className]="isSignedIn ? null : 'text-muted'"
-           routerLinkActive="active">
+           [ngbPopover]="isSignedIn ? '' : 'Veuillez vous identifier'"
+           [className]="isSignedIn ? '' : 'text-muted'">
           Profil
         </a>
       </li>
@@ -42,14 +41,6 @@
 
     <div class="profile-menu-wrapper">
       <div class="wrapper">
-        <div class="d-none profile">
-          <div routerLink="/profile">
-            <div class="thumbnail bg-lipton justify-content-center align-items-center">
-              <i class="far fa-user h2"></i>
-            </div>
-          </div>
-        </div>
-
         <div class="profile-icons">
 
           <div *ngIf="!isSignedIn" class="icon mb-2">
