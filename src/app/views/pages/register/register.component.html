@@ -112,9 +112,10 @@
                      id="additional_address"
                      placeholder="Complément d'adresse"
                      type="text">
-              <div *ngIf="isForm2Submitted && form2.additional_address.errors?.required"
+              <div *ngIf="isForm2Submitted && form2.additional_address.errors"
                    class="invalid-feedback">
-                Requis
+                <span *ngIf="form1.additional_address.status">Champ invalid</span>
+                <span *ngIf="form1.additional_address.errors?.required"> | Requis</span>
               </div>
             </div>
 
