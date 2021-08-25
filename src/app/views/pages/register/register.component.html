@@ -57,7 +57,7 @@
                      placeholder="Email"
                      type="email">
               <div *ngIf="isForm1Submitted && form1.email.errors" class="invalid-feedback">
-                <span *ngIf="form1.email.status">Champs invalide</span>
+                <span *ngIf="form1.email.status">Champ invalid</span>
                 <span *ngIf="form1.email.errors?.required"> | Requis</span>
               </div>
             </div>
@@ -71,7 +71,7 @@
                      placeholder="Téléphone"
                      type="text">
               <div *ngIf="isForm1Submitted && form1.telephone.errors" class="invalid-feedback">
-                <span *ngIf="form1.telephone.status">Champs invalide</span>
+                <span *ngIf="form1.telephone.status">Champ invalid</span>
                 <span *ngIf="form1.telephone.errors?.required"> | Requis</span>
               </div>
             </div>
