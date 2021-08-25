@@ -13,26 +13,26 @@
         </a>
       </li>
       <li>
-        <a routerLink="/play"
-           routerLinkActive="active"
+        <a [className]="isSignedIn ? '' : 'text-muted'"
+           [ngbPopover]="isSignedIn ? '' : 'Veuillez vous identifier'"
            placement="right"
-           [className]="isSignedIn ? '' : 'text-muted'"
-           [ngbPopover]="isSignedIn ? '' : 'Veuillez vous identifier'">
+           routerLink="/play"
+           routerLinkActive="active">
           Jouer
         </a>
       </li>
       <li>
-        <a routerLink="/profile"
-           routerLinkActive="active"
-           placement="right"
+        <a [className]="isSignedIn ? '' : 'text-muted'"
            [ngbPopover]="isSignedIn ? '' : 'Veuillez vous identifier'"
-           [className]="isSignedIn ? '' : 'text-muted'">
+           placement="right"
+           routerLink="/profile"
+           routerLinkActive="active">
           Profil
         </a>
       </li>
       <li>
-        <a routerLink="/about"
-           class="/profile"
+        <a class="/profile"
+           routerLink="/about"
            routerLinkActive="active">
           A Propos
         </a>
@@ -41,46 +41,25 @@
 
     <div class="profile-menu-wrapper">
       <div class="wrapper">
-        <div class="profile-icons">
 
-          <div *ngIf="!isSignedIn" class="icon mb-2">
-            <a class="btn btn-block rounded btn-primary" routerLink="/register">
-              S'inscrire
-              <i class="fas fa-user-plus ml-2"></i>
-            </a>
-          </div>
+        <a *ngIf="!isSignedIn" class="btn btn-block btn-primary rounded mb-2" routerLink="/register">
+          S'inscrire
+          <i class="fas fa-user-plus ml-2"></i>
+        </a>
 
-          <div *ngIf="!isSignedIn" class="icon mb-2">
-            <a class="btn btn-block rounded btn-primary" routerLink="/login">
-              S'identifier
-              <i class="fas fa-sign-in-alt ml-2"></i>
-            </a>
-          </div>
+        <a *ngIf="!isSignedIn" class="btn btn-block rounded btn-primary" routerLink="/login">
+          S'identifier
+          <i class="fas fa-sign-in-alt ml-2"></i>
+        </a>
 
-          <!--<div class="icon">
-            <a class="btn btn-block btn-lipton"
-               routerLink="/play">
-              <i class="fas fa-gamepad"></i>
-            </a>
-          </div>-->
+        <a (click)="onLogout($event)" *ngIf="isSignedIn"
+           class="btn btn-block rounded btn-primary">
+          Se déconnecter
+          <i class="fas fa-power-off ml-2"></i>
+        </a>
 
-          <!--<div *ngIf="isSignedIn" class="icon">
-            <a class="btn btn-block btn-lipton"
-               routerLink="/profile">
-              <i class="fas fa-user-circle"></i>
-            </a>
-          </div>-->
-
-          <div *ngIf="isSignedIn" class="icon">
-            <a class="btn btn-block rounded btn-primary"
-               (click)="onLogout($event)">
-              Se déconnecter
-              <i class="fas fa-power-off ml-2"></i>
-            </a>
-          </div>
-        </div>
       </div>
     </div>
-
   </div>
+
 </nav>
