@@ -98,8 +98,8 @@
                      placeholder="Adresse"
                      type="text">
               <div *ngIf="isForm2Submitted && form2.address.errors" class="invalid-feedback">
-                <span *ngIf="form1.address.status">Champ invalid</span>
-                <span *ngIf="form1.address.errors?.required"> | Requis</span>
+                <span *ngIf="form2.address.status">Champ invalid</span>
+                <span *ngIf="form2.address.errors?.required"> | Requis</span>
 
               </div>
             </div>
@@ -114,23 +114,24 @@
                      type="text">
               <div *ngIf="isForm2Submitted && form2.additional_address.errors"
                    class="invalid-feedback">
-                <span *ngIf="form1.additional_address.status">Champ invalid</span>
-                <span *ngIf="form1.additional_address.errors?.required"> | Requis</span>
+                <span *ngIf="form2.additional_address.status">Champ invalid</span>
+                <span *ngIf="form2.additional_address.errors?.required"> | Requis</span>
               </div>
             </div>
 
             <div class="d-flex flex-wrap justify-content-between">
               <div class="w-47 form-group">
-                <label for="postal_code">Code Postale</label>
+                <label for="postal_code">Code Postal</label>
                 <input [ngClass]="{'is-invalid': isForm2Submitted && form2.postal_code.errors}"
                        class="form-control"
                        formControlName="postal_code"
                        id="postal_code"
                        placeholder="Code Postal"
                        type="text">
-                <div *ngIf="isForm2Submitted && form2.postal_code.errors?.required"
+                <div *ngIf="isForm2Submitted && form2.postal_code.errors"
                      class="invalid-feedback">
-                  Requis
+                  <span *ngIf="form2.postal_code.status">Champ invalid</span>
+                  <span *ngIf="form2.postal_code.errors?.required"> | Requis</span>
                 </div>
               </div>
 
