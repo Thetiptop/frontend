@@ -189,7 +189,7 @@
                      placeholder="Confirmation du mot de passe"
                      type="password">
               <div *ngIf="isForm3Submitted && form3.password_confirmation.errors" class="invalid-feedback">
-                <span *ngIf="form3.password_confirmation.status">Champs invalide</span>
+                <span *ngIf="form3.password_confirmation.status">Champs invalid</span>
                 <span *ngIf="form3.password_confirmation.errors?.required"> | Requis</span>
                 <span *ngIf="form3.password_confirmation.errors?.confirmedValidator"> | Le mot de passe de correspond pas</span>
               </div>
