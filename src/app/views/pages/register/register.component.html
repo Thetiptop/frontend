@@ -42,8 +42,9 @@
                      id="name"
                      placeholder="Nom et Prénom"
                      type="text">
-              <div *ngIf="isForm1Submitted && form1.name.errors?.required" class="invalid-feedback">
-                Requis
+              <div *ngIf="isForm1Submitted && form1.name.errors" class="invalid-feedback">
+                <span *ngIf="form1.name.status">Champs invalide</span>
+                <span *ngIf="form1.name.errors?.required"> | Requis</span>
               </div>
             </div>
 
