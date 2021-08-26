@@ -92,7 +92,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     ResetPasswordComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     AppRoutingModule,
     ArchwizardModule,
