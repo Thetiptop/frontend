@@ -2,7 +2,7 @@
   <div class="d-none d-xl-block vh-100 bg-img-register">
     <!--IMG-->
   </div>
-  <div class="form-container col-12 col-xl-6 py-5">
+  <div class="form-container col-12 col-xl-6 p-0 py-lg-5">
     <p class="text-center text-uppercase text-bold">Thé tip top</p>
     <h1 class="text-center text-lobster mb-0 display-4">Inscrivez-vous</h1>
 
@@ -42,8 +42,9 @@
                      id="name"
                      placeholder="Nom et Prénom"
                      type="text">
-              <div *ngIf="isForm1Submitted && form1.name.errors?.required" class="invalid-feedback">
-                Requis
+              <div *ngIf="isForm1Submitted && form1.name.errors" class="invalid-feedback">
+                <span *ngIf="form1.name.status">Champs invalide</span>
+                <span *ngIf="form1.name.errors?.required"> | Requis</span>
               </div>
             </div>
 
@@ -56,7 +57,7 @@
                      placeholder="Email"
                      type="email">
               <div *ngIf="isForm1Submitted && form1.email.errors" class="invalid-feedback">
-                <span *ngIf="form1.email.status">Champs invalide</span>
+                <span *ngIf="form1.email.status">Champ invalid</span>
                 <span *ngIf="form1.email.errors?.required"> | Requis</span>
               </div>
             </div>
@@ -70,7 +71,7 @@
                      placeholder="Téléphone"
                      type="text">
               <div *ngIf="isForm1Submitted && form1.telephone.errors" class="invalid-feedback">
-                <span *ngIf="form1.telephone.status">Champs invalide</span>
+                <span *ngIf="form1.telephone.status">Champ invalid</span>
                 <span *ngIf="form1.telephone.errors?.required"> | Requis</span>
               </div>
             </div>
@@ -96,37 +97,41 @@
                      id="address"
                      placeholder="Adresse"
                      type="text">
-              <div *ngIf="isForm2Submitted && form2.address.errors?.required" class="invalid-feedback">
-                Requis
+              <div *ngIf="isForm2Submitted && form2.address.errors" class="invalid-feedback">
+                <span *ngIf="form2.address.status">Champ invalid</span>
+                <span *ngIf="form2.address.errors?.required"> | Requis</span>
+
               </div>
             </div>
 
             <div class="form-group">
-              <label for="additional_address">Complément d'addresse</label>
+              <label for="additional_address">Complément d'adresse</label>
               <input [ngClass]="{'is-invalid': isForm2Submitted && form2.additional_address.errors}"
                      class="form-control"
                      formControlName="additional_address"
                      id="additional_address"
-                     placeholder="Complément d'addresse"
+                     placeholder="Complément d'adresse"
                      type="text">
-              <div *ngIf="isForm2Submitted && form2.additional_address.errors?.required"
+              <div *ngIf="isForm2Submitted && form2.additional_address.errors"
                    class="invalid-feedback">
-                Requis
+                <span *ngIf="form2.additional_address.status">Champ invalid</span>
+                <span *ngIf="form2.additional_address.errors?.required"> | Requis</span>
               </div>
             </div>
 
             <div class="d-flex flex-wrap justify-content-between">
               <div class="w-47 form-group">
-                <label for="postal_code">Code Postale</label>
+                <label for="postal_code">Code Postal</label>
                 <input [ngClass]="{'is-invalid': isForm2Submitted && form2.postal_code.errors}"
                        class="form-control"
                        formControlName="postal_code"
                        id="postal_code"
-                       placeholder="Code Postale"
+                       placeholder="Code Postal"
                        type="text">
-                <div *ngIf="isForm2Submitted && form2.postal_code.errors?.required"
+                <div *ngIf="isForm2Submitted && form2.postal_code.errors"
                      class="invalid-feedback">
-                  Requis
+                  <span *ngIf="form2.postal_code.status">Champ invalid</span>
+                  <span *ngIf="form2.postal_code.errors?.required"> | Requis</span>
                 </div>
               </div>
 
@@ -138,9 +143,10 @@
                        id="ville"
                        placeholder="Ville"
                        type="text">
-                <div *ngIf="isForm2Submitted && form2.ville.errors?.required"
+                <div *ngIf="isForm2Submitted && form2.ville.errors"
                      class="invalid-feedback">
-                  Requis
+                  <span *ngIf="form2.ville.status">Champ invalid</span>
+                  <span *ngIf="form2.ville.errors?.required"> | Requis</span>
                 </div>
               </div>
             </div>
@@ -183,9 +189,9 @@
                      placeholder="Confirmation du mot de passe"
                      type="password">
               <div *ngIf="isForm3Submitted && form3.password_confirmation.errors" class="invalid-feedback">
-                <span *ngIf="form3.password_confirmation.status">Champs invalide</span>
+                <span *ngIf="form3.password_confirmation.status">Champs invalid</span>
                 <span *ngIf="form3.password_confirmation.errors?.required"> | Requis</span>
-                <span *ngIf="form3.password_confirmation.errors?.confirmedValidator"> | Le mot de passe de correspond pas</span>
+                <span *ngIf="form3.password_confirmation.errors?.confirmedValidator"> | Les mots de passe de correspondent pas</span>
               </div>
             </div>
 
@@ -194,7 +200,7 @@
                      class="form-check-input"
                      formControlName="major"
                      id="major">
-              <label class="form-check-label" for="major">J'atteste avoir au moins 18 ans</label>
+              <label class="form-check-label" for="major">J'atteste avoir au moins 18 ans ou avoir la permission de mes parents pour participer à ce jeu de concours.</label>
               <div *ngIf="isForm3Submitted && form3.major.errors?.required"
                    class="invalid-feedback">
                 Requis

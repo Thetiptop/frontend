@@ -13,7 +13,8 @@ $chocolate: #683C11;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700";
-@import "https://fonts.googleapis.com/css2?family=Lobster+Two:wght@400;700&display=swap";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css";
+@import "https://cdn.jsdelivr.net/npm/uikit@3.7.1/dist/css/uikit.min.css";
 
 body {
   overflow-x: hidden;
@@ -71,7 +72,7 @@ a:focus {
 }
 
 .p-page {
-  padding: 3rem 3rem 3rem 3rem !important;
+  padding: 3rem !important;
 }
 
 .form-control {
@@ -121,7 +122,7 @@ app-play{
   background: #f5f6f8 url('/assets/images/asian-tea.jpg') no-repeat;
 }
 
-app-home{
+.home{
   background-position-x: right !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
@@ -131,6 +132,10 @@ app-home{
 // Popover "Veuillez-vous connecter"
 #ngb-popover-0 {
   position: fixed !important;
+}
+
+.page-item.active .page-link {
+  z-index: 0
 }
 
 // Extra small devices (portrait phones, less than 576px)
@@ -164,5 +169,9 @@ app-home{
   .modal {
     left: 250px !important;
     width: calc(100% - 250px) !important;
+  }
+
+  .p-page {
+    padding: 3rem 5rem 3rem 5rem !important;
   }
 }

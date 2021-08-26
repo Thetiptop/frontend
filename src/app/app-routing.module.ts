@@ -8,6 +8,7 @@ import { BaseComponent } from './views/components/base/base.component';
 import { AuthGuard } from './core/authentification/auth.guard';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 import { ResetPasswordComponent } from './views/pages/reset-password/reset-password.component';
+import {HowToPlayComponent} from './views/components/how-to-play/how-to-play.component';
 
 const routes: Routes = [
   {
@@ -58,9 +59,7 @@ const routes: Routes = [
       desc: 'Oopps!! The page you were looking for doesn\'t exist.'
     }
   },
-  { path: 'error/:type',
-    component: ErrorPageComponent
-  },
+  { path: 'error/:type', component: ErrorPageComponent },
   { path: '**', redirectTo: 'error', pathMatch: 'full' }
 ];
 

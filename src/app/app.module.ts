@@ -61,7 +61,7 @@ const cookieConfig: NgcCookieConsentConfig = {
   type: 'info',
   content: {
     message: 'Ce site utilise des cookies pour vous garantir la meilleure expérience sur notre site.',
-    dismiss: 'Fermer',
+    dismiss: 'OK',
     deny: 'Refuser',
     link: 'En savoir plus',
     href: '/about/cookies',

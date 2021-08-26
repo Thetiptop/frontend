@@ -78,16 +78,14 @@ export class LoginComponent implements OnInit {
         result => {
           this.success = result;
           this.token.handleData(result.access_token);
-          console.log(result.access_token);
           this.authState.setAuthState(true);
-          this.loginForm.reset();
         },
         error => {
           this.errors = error.error.error;
         },
         () => {
-          const currentUrl = this.router.url;
-          this.router.navigateByUrl('/play');
+          this.loginForm.reset();
+          this.goToPlay();
         }
       );
     }
@@ -100,6 +98,10 @@ export class LoginComponent implements OnInit {
 
   loginWithFaceBook(): void {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  goToPlay(): void {
+    this.router.navigate(['/play']);
   }
 
 }

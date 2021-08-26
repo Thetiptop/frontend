@@ -72,17 +72,17 @@ export class RegisterComponent implements OnInit {
 
     /** form1 value validation */
     this.validationForm1 = this.formBuilder.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ]+(([',. -][a-zA-ZÀ-ÿ])?[a-zA-ZÀ-ÿ]*)*$/)]],
       email: ['', [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
       telephone: ['', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
     });
 
     /** form2 value validation */
     this.validationForm2 = this.formBuilder.group({
-      address: ['', Validators.required],
-      additional_address: ['', Validators.required],
+      address: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9À-ÿ]+(([',. -][a-zA-Z0-9À-ÿ])?[a-zA-Z0-9À-ÿ]*)*$/)]],
+      additional_address: ['', [Validators.pattern(/^[a-zA-Z0-9À-ÿ]+(([',. -][a-zA-Z0-9À-ÿ])?[a-zA-Z0-9À-ÿ]*)*$/)]],
       postal_code: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
-      ville: ['', Validators.required],
+      ville: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ]+(([',. -][a-zA-ZÀ-ÿ])?[a-zA-ZÀ-ÿ]*)*$/)]]
     });
 
     /** form3 value validation */
