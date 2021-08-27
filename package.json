@@ -1,5 +1,5 @@
 {
-  "name": "ttt",
+  "name": "thetiptop",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,10 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run TTT:serve-ssr",
-    "serve:ssr": "node dist/TTT/server/main.js",
-    "build:ssr": "ng build && ng run TTT:server",
-    "prerender": "ng run TTT:prerender"
+    "dev:ssr": "ng run thetiptop:serve-ssr",
+    "serve:ssr": "node dist/thetiptop/server/main.js",
+    "build:ssr": "ng build && ng run thetiptop:server",
+    "prerender": "ng run thetiptop:prerender"
   },
   "private": true,
   "dependencies": {
