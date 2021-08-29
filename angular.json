@@ -148,7 +148,7 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/thetiptop/server",
+            "outputPath": "dist/functions/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
             "optimization": false,
