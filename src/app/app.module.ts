@@ -39,6 +39,7 @@ import {FelicitationsComponent} from './views/components/felicitations/felicitat
 import {ErrorPageComponent} from './views/pages/error-page/error-page.component';
 import {HowToPlayComponent} from './views/components/how-to-play/how-to-play.component';
 import { ResetPasswordComponent } from './views/pages/reset-password/reset-password.component';
+import { RulesComponent } from './views/pages/rules/rules.component';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -90,6 +91,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     ErrorPageComponent,
     HowToPlayComponent,
     ResetPasswordComponent,
+    RulesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -9,6 +9,7 @@ import { AuthGuard } from './core/authentification/auth.guard';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 import { ResetPasswordComponent } from './views/pages/reset-password/reset-password.component';
 import {HowToPlayComponent} from './views/components/how-to-play/how-to-play.component';
+import { RulesComponent } from './views/pages/rules/rules.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
       {
         path : 'about',
         loadChildren: () => import('./views/pages/about/about.module').then(m => m.AboutModule)
+      },
+      {
+        path : 'rules',
+        component: RulesComponent
       },
       {
         path : 'play',

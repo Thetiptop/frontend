@@ -43,11 +43,6 @@ import {
 export class AboutComponent implements OnInit {
   title = 'A Propos';
   links = [
-    {
-      title: 'Conditions générales',
-      fragment: 'cgu',
-      icon: 'fas fa-scroll'
-    },
     { title: 'Mentions légales',
       fragment: 'mentions-legales',
       icon: 'fas fa-gavel'

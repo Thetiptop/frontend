@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about.component';
 import { CookiesComponent } from './cookies/cookies.component';
 import { ConfidentialityComponent } from './confidentiality/confidentiality.component';
-import { CguComponent } from './cgu/cgu.component';
 import { MentionsLegalesComponent } from './mentions-legales/mentions-legales.component';
 
 const routes: Routes = [
@@ -15,7 +14,7 @@ const routes: Routes = [
     children: [
       {
         path : '',
-        redirectTo: 'cgu',
+        redirectTo: 'mentions-legales',
         pathMatch: 'full',
       },
       {
@@ -29,11 +28,6 @@ const routes: Routes = [
         data: { animation: 'isLeft'}
       },
       {
-        path: 'cgu',
-        component: CguComponent,
-        data: { animation: 'isLeft'}
-      },
-      {
         path: 'mentions-legales',
         component: MentionsLegalesComponent,
         data: { animation: 'isLeft'}
@@ -43,7 +37,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [CookiesComponent, CguComponent, MentionsLegalesComponent, ConfidentialityComponent],
+  declarations: [CookiesComponent, MentionsLegalesComponent, ConfidentialityComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

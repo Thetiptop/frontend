@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-cgu',
-  templateUrl: './cgu.component.html',
-  styleUrls: ['./cgu.component.scss']
+  selector: 'app-rules',
+  templateUrl: './rules.component.html',
+  styleUrls: ['./rules.component.scss']
 })
-export class CguComponent implements OnInit {
-  title = 'Conditions générales - ThéTipTop';
+export class RulesComponent implements OnInit {
+  title = 'Règles du jeu concours - ThéTipTop';
 
   constructor(
     private titleService: Title,
