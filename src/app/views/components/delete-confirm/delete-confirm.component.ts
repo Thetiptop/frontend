@@ -42,7 +42,6 @@ export class DeleteConfirmComponent implements OnInit {
       },
   
       error=>{
-        console.log(error)
         this.errors = error.error.message || "Une erreur s'est produite. Veuillez contacter l'administrateur.";
         this.popUpMessage='Erreur';
       },
