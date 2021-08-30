@@ -6,17 +6,18 @@
       </div>
 
       <div class="col text-center">
-        <button (click)="activeModal.dismiss('Cross click')" class="btn btn-white border border-lipton text-chocolate mx-1"
-                routerLink="profile/historique" type="button">Annuler
+        <button (click)="activeModal.dismiss('Cross click')" class="btn btn-white border border-lipton text-chocolate mx-1" type="button">
+          Annuler
         </button>
-        <button (click)="activeModal.close('Close click')" class="btn btn-lipton text-center mx-1">
+        <button (click)="deleteAccount()" class="btn btn-lipton text-center mx-1">
           Supprimer
         </button>
       </div>
+    
+      <div class="text-lipton text-center mt-3">{{errors}}</div>
 </div>
 
 
 
 
 
- 
