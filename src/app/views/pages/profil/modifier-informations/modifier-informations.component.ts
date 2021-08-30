@@ -7,6 +7,7 @@ import { environment } from '../../../../../environments/environment';
 import { NotificationComponent } from '../../../components/notification/notification.component';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import {Meta, Title} from '@angular/platform-browser';
+import { DeleteConfirmComponent } from 'src/app/views/components/delete-confirm/delete-confirm.component';
 
 @Component({
   selector: 'app-modifier-informations',
@@ -24,6 +25,7 @@ export class ModifierInformationsComponent implements OnInit {
   errors: any;
   isSignedIn: any;
   error: any;
+  modalRef: any;
   protected  baseUrl: string = environment.apiURL;
   popUpMessage: string;
 
@@ -43,6 +45,10 @@ export class ModifierInformationsComponent implements OnInit {
   open(): any {
     const modalRef = this.modalService.open(NotificationComponent, {centered: true} );
     modalRef.componentInstance.message = this.popUpMessage;
+  }
+
+  open2(): void {
+    this.modalRef = this.modalService.open(DeleteConfirmComponent, {centered: true} );
   }
 
   get form(): any {
