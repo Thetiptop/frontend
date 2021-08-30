@@ -135,13 +135,11 @@ export class ReclamerComponent implements OnInit {
         this.http.post((this.baseUrl + '/reclamation/'), this.formData).subscribe(
           result => {
             this.success = result;
-            console.log(this.success);
             this.popUpMessage = 'Votre lot vous sera envoyé !';
             this.reloadCurrentRoute();
           },
           error => {
             this.errors = error.error.message;
-            console.log('Hello ' + error.error.message);
             this.popUpMessage = this.errors;
           },
           () => {
@@ -155,13 +153,11 @@ export class ReclamerComponent implements OnInit {
       this.http.post((this.baseUrl + '/reclamation/'), this.formData).subscribe(
         result => {
           this.success = result;
-          console.log(this.success);
           this.popUpMessage = 'Votre lot vous sera envoyé !';
           this.reloadCurrentRoute();
         },
         error => {
           this.errors = error.error.message;
-          console.log('Hello ' + error.error.message);
           this.popUpMessage = this.errors;
         },
         () => {
