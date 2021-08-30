@@ -110,7 +110,6 @@ export class HistoriqueComponent implements OnInit {
     this.historiqueService.historique().subscribe(
       data => {
         this.historique = data.historical;
-        console.log(this.historique);
         this.dtTrigger.next();
       }
     );
