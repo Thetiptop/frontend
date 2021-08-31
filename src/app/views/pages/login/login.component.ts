@@ -65,6 +65,7 @@ export class LoginComponent implements OnInit {
           socialToken: this.socialUser.authToken,
          });*/
         this.isLoggedin = (user != null);
+        console.log(this.socialUser);
         // this.authState.setAuthState(true);
         this.token.handleData(this.socialUser.idToken);
         // this.router.navigate(['/accueil']);

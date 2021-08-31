@@ -25,20 +25,8 @@
       <span *ngIf="item.takenAt">{{item.takenAt | date: 'dd/MM/yyyy'}}</span>
     </td>
     <td>
-      <!--
-           Non reçu
-           Non réclamé
-      -->
       <a *ngIf="!item.reclamation" (click)="open(item)" class="btn btn-outline-primary">Reclamer</a>
-      <!--
-          Réclamé
-          Non reçu
-      -->
       <span *ngIf="(item.reclamation && !item.takenAt)">-</span>
-      <!--
-          Réclamé
-          Reçu
-      -->
       <span *ngIf="item.takenAt">-</span>
     </td>
   </tr>

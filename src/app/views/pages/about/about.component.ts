@@ -6,10 +6,7 @@ import {
   transition,
   style,
   query,
-  // group,
-  // animateChild,
   animate,
-  // keyframes,
 } from '@angular/animations';
 
 
@@ -43,6 +40,11 @@ import {
 export class AboutComponent implements OnInit {
   title = 'A Propos';
   links = [
+    {
+      title: 'Conditions générales',
+      fragment: 'cgu',
+      icon: 'fas fa-scroll'
+    },
     { title: 'Mentions légales',
       fragment: 'mentions-legales',
       icon: 'fas fa-gavel'
@@ -62,9 +64,8 @@ export class AboutComponent implements OnInit {
 
   constructor(public route: ActivatedRoute) {
     route.url.subscribe(() => {
-      // @ts-ignore
       this.activeUrl = route.snapshot.firstChild.url[0].path;
-      });
+    });
   }
 
   ngOnInit(): void {

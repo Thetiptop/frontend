@@ -24,22 +24,14 @@ import {ResetPasswordService} from './core/password/reset-password.service';
 
 import {AppComponent} from './app.component';
 import {HomeComponent} from './views/pages/home/home.component';
-import {ProfilComponent} from './views/pages/profil/profil.component';
-import {LoginComponent} from './views/pages/login/login.component';
-import {RegisterComponent} from './views/pages/register/register.component';
-import {PlayComponent} from './views/pages/play/play.component';
-import {AboutComponent} from './views/pages/about/about.component';
 import {SidebarComponent} from './views/components/sidebar/sidebar.component';
-import {BaseComponent} from './views/components/base/base.component';
-import {HistoriqueComponent} from './views/pages/profil/historique/historique.component';
-import {MesInformationsComponent} from './views/pages/profil/mes-informations/mes-informations.component';
 import {MyLoaderComponent} from './views/components/my-loader/my-loader.component';
 import {NotificationComponent} from './views/components/notification/notification.component';
 import {FelicitationsComponent} from './views/components/felicitations/felicitations.component';
 import {ErrorPageComponent} from './views/pages/error-page/error-page.component';
 import {HowToPlayComponent} from './views/components/how-to-play/how-to-play.component';
-import { ResetPasswordComponent } from './views/pages/reset-password/reset-password.component';
-import { RulesComponent } from './views/pages/rules/rules.component';
+import {ReclamerModule} from "./views/components/reclamer/reclamer.module";
+import {CommonModule} from "@angular/common";
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -75,39 +67,31 @@ const cookieConfig: NgcCookieConsentConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    ProfilComponent,
-    LoginComponent,
-    RegisterComponent,
-    PlayComponent,
-    AboutComponent,
     SidebarComponent,
-    BaseComponent,
-    HistoriqueComponent,
-    MesInformationsComponent,
+    HomeComponent,
     MyLoaderComponent,
     NotificationComponent,
     FelicitationsComponent,
     ErrorPageComponent,
     HowToPlayComponent,
-    ResetPasswordComponent,
-    RulesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    NgcCookieConsentModule.forRoot(cookieConfig),
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     ArchwizardModule,
     NgbModule,
     RouterModule,
-    ReactiveFormsModule,
     HttpClientModule,
     HttpClientJsonpModule,
     NgParticlesModule,
-    NgcCookieConsentModule.forRoot(cookieConfig),
     DataTablesModule,
     SocialLoginModule,
-    FormsModule,
+    ReclamerModule,
   ],
   providers: [
     {

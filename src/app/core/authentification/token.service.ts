@@ -23,12 +23,12 @@ export class TokenService {
   // @ts-ignore
   // tslint:disable-next-line:typedef
   handleData(token) {
-    localStorage.setItem('access_token', token);
+   localStorage.setItem('access_token', token);
   }
 
   // tslint:disable-next-line:typedef
   getToken() {
-    return localStorage.getItem('access_token');
+   return localStorage.getItem('access_token');
   }
 
   // tslint:disable-next-line:typedef
@@ -49,7 +49,7 @@ export class TokenService {
       const payload = this.payload(token);
       if (payload) {
         return Object.values(this.issuer).indexOf(payload.iss) > -1;
-      }
+    }
     } else {
       return false;
     }
@@ -58,7 +58,7 @@ export class TokenService {
 
   isValidSocialToken(): boolean {
     const token = this.getToken();
-    const decoded = jwt_decode(token);
+   const decoded = jwt_decode(token);
     // @ts-ignore
     if (Object.values(this.issuer).indexOf(decoded.iss)) {
       return true;

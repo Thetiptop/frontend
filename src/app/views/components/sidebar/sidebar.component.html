@@ -25,25 +25,18 @@
         <a [className]="isSignedIn ? '' : 'text-muted'"
            [ngbPopover]="isSignedIn ? '' : 'Veuillez vous identifier'"
            placement="right"
-           routerLink="/profile"
+           routerLink="/profil"
            routerLinkActive="active">
           Profil
         </a>
       </li>
       <li>
         <a class="/profile"
-        routerLink="/rules"
-        routerLinkActive="active">
-        Règles concours
-      </a>
-    </li>
-    <li>
-      <a class="/profile"
-         routerLink="/about"
-         routerLinkActive="active">
-        Mentions légales
-      </a>
-    </li>
+           routerLink="/about"
+           routerLinkActive="active">
+          A Propos
+        </a>
+      </li>
     </ul>
 
     <div class="profile-menu-wrapper">

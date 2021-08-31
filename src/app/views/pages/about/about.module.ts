@@ -1,47 +1,30 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Routes, RouterModule } from '@angular/router';
-import { AboutComponent } from './about.component';
-import { CookiesComponent } from './cookies/cookies.component';
-import { ConfidentialityComponent } from './confidentiality/confidentiality.component';
-import { MentionsLegalesComponent } from './mentions-legales/mentions-legales.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {AboutRoutingModule} from "./about-routing.module";
 
-const routes: Routes = [
-  {
-    path: '',
-    component: AboutComponent,
-    data: { animation: 'isLeft'},
-    children: [
-      {
-        path : '',
-        redirectTo: 'mentions-legales',
-        pathMatch: 'full',
-      },
-      {
-        path: 'cookies',
-        component: CookiesComponent,
-        data: { animation: 'isLeft'}
-      },
-      {
-        path: 'confidentiality',
-        component: ConfidentialityComponent,
-        data: { animation: 'isLeft'}
-      },
-      {
-        path: 'mentions-legales',
-        component: MentionsLegalesComponent,
-        data: { animation: 'isLeft'}
-      }
-    ]
-  }
-];
+import {AboutComponent} from './about.component';
+import {CookiesComponent} from './cookies/cookies.component';
+import {ConfidentialityComponent} from './confidentiality/confidentiality.component';
+import {CguComponent} from './cgu/cgu.component';
+import {MentionsLegalesComponent} from './mentions-legales/mentions-legales.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {BrowserModule} from "@angular/platform-browser";
+
 
 @NgModule({
-  declarations: [CookiesComponent, MentionsLegalesComponent, ConfidentialityComponent],
+  declarations: [
+    AboutComponent,
+    CookiesComponent,
+    CguComponent,
+    MentionsLegalesComponent,
+    ConfidentialityComponent
+  ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
-    CommonModule
+    NgbModule,
+    AboutRoutingModule,
   ]
 })
-export class AboutModule { }
+export class AboutModule {
+}

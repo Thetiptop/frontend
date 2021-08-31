@@ -100,16 +100,15 @@ export class HistoriqueComponent implements OnInit {
       err => {
         this.error = err;
         // tslint:disable-next-line:no-conditional-assignment
-        if (this.error.status = 401) {
-          this.popUpMessage = 'Veuillez vous reconnecter.';
-          this.openNotification();
-        }
-        this.authService.onLogout(event);
+        this.popUpMessage = 'Veuillez vous reconnecter.';
+        this.openNotification();
+       // this.authService.onLogout(event);
       });
 
     this.historiqueService.historique().subscribe(
       data => {
         this.historique = data.historical;
+        console.log(this.historique);
         this.dtTrigger.next();
       }
     );
