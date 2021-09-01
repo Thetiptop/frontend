@@ -39,7 +39,7 @@ export class SidebarComponent implements OnInit {
       link: '/about',
     },
     {
-      name: 'Règles concours',
+      name: 'Règlement de jeu',
       link: '/rules',
     }
   ];

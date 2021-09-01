@@ -5,6 +5,7 @@ import { AboutComponent } from './about.component';
 import { CookiesComponent } from './cookies/cookies.component';
 import { ConfidentialityComponent } from './confidentiality/confidentiality.component';
 import { MentionsLegalesComponent } from './mentions-legales/mentions-legales.component';
+import { CguComponent } from './cgu/cgu.component';
 
 const routes: Routes = [
   {
@@ -14,8 +15,13 @@ const routes: Routes = [
     children: [
       {
         path : '',
-        redirectTo: 'mentions-legales',
+        redirectTo: 'cgu',
         pathMatch: 'full',
+      },
+      {
+        path: 'cgu',
+        component: CguComponent,
+        data: { animation: 'isLeft'}
       },
       {
         path: 'cookies',
