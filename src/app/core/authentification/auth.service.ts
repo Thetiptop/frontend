@@ -4,9 +4,10 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { AuthStateService } from './auth-state.service';
+import {SocialAuthService} from "angularx-social-login";
 
-// User interface
-export class User {
+// Interface
+export interface User {
   id: number;
   name: string;
   email: string;
@@ -18,6 +19,23 @@ export class User {
   password: string;
   password_confirmation: string;
 }
+
+export interface UserSocialLogin {
+  id: number;
+  name: string;
+  email: string;
+  provider: string;
+}
+
+export interface UserSocialRegister {
+  id: number;
+  name: string;
+  email: string;
+  provider: string;
+  canLegalyPlay: string;
+}
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +50,7 @@ export class AuthService {
     private http: HttpClient,
     private authstate: AuthStateService,
     private router: Router,
+    private authService: SocialAuthService
   ) { }
 
   protected  baseUrl: string = environment.apiURL;
@@ -46,9 +65,18 @@ export class AuthService {
     return this.http.post<any>(this.loginBaseUrl, user);
   }
 
+  socialAuthLogin(User: FormData): Observable<any> {
+    return this.http.post<any>(this.baseUrl + '/login_with_socialite', User);
+  }
+
+  socialAuthRegister(User: FormData): Observable<any> {
+    return this.http.post<any>(this.baseUrl + '/register_with_socialite', User);
+  }
+
   onLogout(e): void {
     e.preventDefault();
     this.authstate.setAuthState(false);
+    this.authService.signOut()
     localStorage.removeItem('access_token');
 
     if (!localStorage.getItem('access_token')) {

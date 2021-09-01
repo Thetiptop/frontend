@@ -8,7 +8,7 @@
         {{ errors }}
       </div>
 
-      <form [formGroup]="playForm" class="forms-sample">
+      <form [formGroup]="playForm" (click)="onSubmit()" class="forms-sample">
         <div class="form-group">
           <label for="numberTicket">Numéro de ticket</label>
           <input class="form-control"
@@ -16,11 +16,14 @@
                  id="numberTicket"
                  placeholder="Saissisez un numéro de ticket"
                  type="text">
+
           <div *ngIf="isFormSubmitted && form.numberTicket.errors"
-               class="invalid-feedback">
+               class="invalid-feedback"
+               [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}">
             <span *ngIf="form.numberTicket.status">Champs invalide</span>
             <span *ngIf="form.numberTicket.errors?.required"> | Requis</span>
           </div>
+
         </div>
         <button class="btn btn-lipton btn-block btn-lg" type="submit">Valider</button>
       </form>

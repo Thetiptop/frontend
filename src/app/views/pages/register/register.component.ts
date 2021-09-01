@@ -6,6 +6,9 @@ import {AuthService} from '../../../core/authentification/auth.service';
 import {ConfirmedValidator} from '../../../core/authentification/confirm-validator';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Meta, Title} from '@angular/platform-browser';
+import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser} from "angularx-social-login";
+import {AuthStateService} from "../../../core/authentification/auth-state.service";
+import {TokenService} from "../../../core/authentification/token.service";
 
 interface MailChimpResponse {
   result: string;
@@ -29,19 +32,28 @@ export class RegisterComponent implements OnInit {
   errors: any;
   success: any;
   display = true;
-  private mailChimpEndpoint = 'https://christaime.us7.list-manage.com/subscribe/post-json?u=c789d045d87cc22bd9756a879&amp;id=cf5d252aa7&';
 
+  private mailChimpEndpoint = 'https://christaime.us7.list-manage.com/subscribe/post-json?u=c789d045d87cc22bd9756a879&amp;id=cf5d252aa7&';
 
   @ViewChild('wizardForm') wizardForm: BaseWizardComponent | undefined;
   formData: FormData;
+
   title: string;
   description: string;
+
+  socialUser: SocialUser;
+  isLoggedin: boolean;
+  canLegalyPlay = 1;
+  socialResult: any;
 
   constructor(
     public formBuilder: FormBuilder,
     private titleService: Title,
     private metaTagService: Meta,
     public authService: AuthService,
+    private socialAuthService: SocialAuthService,
+    private authState: AuthStateService,
+    private token: TokenService,
     private http: HttpClient,
     private router: Router) {
   }
@@ -70,6 +82,36 @@ export class RegisterComponent implements OnInit {
     this.metaTagService.updateTag({property: 'og:image', content: '/assets/mango-bg-.jpg'});
     this.metaTagService.updateTag({property: 'og:image:alt', content: this.title});
 
+    /** Social Register */
+    this.socialAuthService.authState.subscribe(
+      (user) => {
+        this.socialUser = user;
+        const formData = new FormData();
+        formData.append('name', this.socialUser.name);
+        formData.append('email', this.socialUser.email);
+        formData.append('id', this.socialUser.id);
+        formData.append('provider', this.socialUser.provider);
+        formData.append('canLegalyPlay', '1');
+
+        this.authService.socialAuthRegister(formData).subscribe(
+          (res) => {
+            this.socialResult = res;
+            console.log(this.socialResult);
+            this.authState.setAuthState(true);
+            this.token.handleData(this.socialResult.token);
+            this.router.navigate(['/accueil']);
+          },
+          (err) => {
+            console.log(err)
+          },
+          () => {
+          }
+        );
+
+        console.log(this.socialUser);
+
+      });
+
     /** form1 value validation */
     this.validationForm1 = this.formBuilder.group({
       name: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ]+(([',. -][a-zA-ZÀ-ÿ])?[a-zA-ZÀ-ÿ]*)*$/)]],
@@ -90,7 +132,7 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       password_confirmation: ['', Validators.required],
       cgu: [false, Validators.requiredTrue],
-      major: [false, Validators.requiredTrue],
+      canLegalyPlay: [false, Validators.requiredTrue],
       newsletter: [false]
     }, {
       validator: ConfirmedValidator('password', 'password_confirmation')
@@ -160,6 +202,14 @@ export class RegisterComponent implements OnInit {
   /** Get values from both forms and join them together */
   getData(): any {
     return Object.assign(this.validationForm1.value, this.validationForm2.value, this.validationForm3.value);
+  }
+
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  loginWithFaceBook(): void {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
   goToLogin(): void {

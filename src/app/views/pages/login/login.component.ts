@@ -18,12 +18,14 @@ export class LoginComponent implements OnInit {
   title = 'Connexion - ThéTipTop';
 
   loginForm: FormGroup;
+  socilaLoginForm: FormGroup;
+  socialUser: SocialUser;
   success: any;
   errors: any;
   isFormSubmitted: boolean;
-  socialUser: SocialUser;
-  isLoggedin: boolean;
+  isLoggedin: any;
   description = 'Connectez-vous à votre compte ThéTipTop et jouez pour gagner des cadeaux à coup sûrs !';
+  socialResult: any;
 
   constructor(
     private titleService: Title,
@@ -60,16 +62,36 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.authState.subscribe(
       (user) => {
         this.socialUser = user;
-        /*this.loginForm.patchValue({
-          email: this.socialUser.name,
-          socialToken: this.socialUser.authToken,
-         });*/
-        this.isLoggedin = (user != null);
         console.log(this.socialUser);
-        // this.authState.setAuthState(true);
-        this.token.handleData(this.socialUser.idToken);
-        // this.router.navigate(['/accueil']);
-      });
+
+        const formData = new FormData();
+        formData.append('name', this.socialUser.name);
+        formData.append('email', this.socialUser.email);
+        formData.append('id', this.socialUser.id);
+        formData.append('provider', this.socialUser.provider);
+
+        this.authService.socialAuthLogin(formData).subscribe(
+          (res) => {
+            this.socialResult = res;
+            console.log(res);
+            this.token.handleData(this.socialResult.token);
+            this.authState.setAuthState(true);
+            this.router.navigate(['/accueil']);
+          },
+          (err) => {
+            console.log(err)
+          },
+          () => {
+          }
+        );
+
+
+
+      },
+      (err)=> {
+        console.log(err)
+      }
+      );
   }
 
   onSubmit(): void {
@@ -79,13 +101,13 @@ export class LoginComponent implements OnInit {
           this.success = result;
           this.token.handleData(result.access_token);
           this.authState.setAuthState(true);
+          this.goToPlay();
         },
         error => {
           this.errors = error.error.error;
         },
         () => {
           this.loginForm.reset();
-          this.goToPlay();
         }
       );
     }
