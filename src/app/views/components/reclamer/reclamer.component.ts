@@ -7,7 +7,6 @@ import {HttpClient} from '@angular/common/http';
 import {NotificationComponent} from '../notification/notification.component';
 import {Router} from '@angular/router';
 
-
 @Component({
   selector: 'app-reclamer',
   templateUrl: './reclamer.component.html',
@@ -59,7 +58,6 @@ export class ReclamerComponent implements OnInit {
   baseUrl: string = environment.apiURL;
   errors: any;
   popUpMessage: any;
-  AddressIsMissing: boolean;
 
   constructor(private http: HttpClient,
               private router: Router,
@@ -87,16 +85,10 @@ export class ReclamerComponent implements OnInit {
       name: new FormControl(null, Validators.required),
       telephone: new FormControl(null, [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]),
       address: new FormControl(null, Validators.required),
-      complement_address: new FormControl(null, Validators.required),
+      complement_address: new FormControl(null),
       code_postal: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{5}$')]),
       ville: new FormControl(null, Validators.required),
     });
-
-    if(this.address && this.phone){
-      this.AddressIsMissing = false;
-    } else {
-      this.AddressIsMissing = true;
-    }
 
     this.showForm = false;
     this.wantToChangeAddress = false;

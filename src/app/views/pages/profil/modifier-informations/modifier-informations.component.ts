@@ -85,7 +85,7 @@ export class ModifierInformationsComponent implements OnInit {
       name: new FormControl(null, Validators.required),
       telephone: new FormControl(null, [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]),
       address: new FormControl(null, Validators.required),
-      additional_address: new FormControl(null, Validators.required),
+      additional_address: new FormControl(null),
       postal_code: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{5}$')]),
       ville: new FormControl(null),
     });

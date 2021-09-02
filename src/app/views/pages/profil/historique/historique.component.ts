@@ -16,10 +16,11 @@ import {Meta, Title} from '@angular/platform-browser';
 
 export class HistoriqueComponent implements OnInit {
   title = 'Hisorique des gains - ThéTipTop';
+  description: 'Description';
 
   modalRef: any;
-  dtOptions: DataTables.Settings = {};
 
+  dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
   UserProfile: any;
@@ -27,9 +28,8 @@ export class HistoriqueComponent implements OnInit {
   historique: any;
   error: any;
   posts: any;
+
   popUpMessage: any;
-  description: string;
-  AddressIsMissing: boolean;
 
   constructor(
     private titleService: Title,
@@ -47,16 +47,25 @@ export class HistoriqueComponent implements OnInit {
 
   // Open PopUp
   open(item) {
-    this.modalRef = this.modalService.open(ReclamerComponent, {centered: true, size: 'lg'});
-    this.modalRef.componentInstance.lotName = item.name_lot;
-    this.modalRef.componentInstance.lotId = item.id;
-    this.modalRef.componentInstance.userName = this.UserProfile.name;
-    this.modalRef.componentInstance.userId = this.UserProfile.id;
-    this.modalRef.componentInstance.phone = this.UserProfile.telephone;
-    this.modalRef.componentInstance.address = this.UserProfile.address;
-    this.modalRef.componentInstance.additionalAddress = this.UserProfile.additional_address;
-    this.modalRef.componentInstance.postalCode = this.UserProfile.postal_code;
-    this.modalRef.componentInstance.ville = this.UserProfile.ville;
+    if (this.UserProfile.address && this.UserProfile.telephone) {
+      this.modalRef = this.modalService.open(ReclamerComponent, {centered: true, size: 'lg'});
+      this.modalRef.componentInstance.lotName = item.name_lot;
+      this.modalRef.componentInstance.lotId = item.id;
+      this.modalRef.componentInstance.userName = this.UserProfile.name;
+      this.modalRef.componentInstance.userId = this.UserProfile.id;
+      this.modalRef.componentInstance.phone = this.UserProfile.telephone;
+      this.modalRef.componentInstance.address = this.UserProfile.address;
+      this.modalRef.componentInstance.additionalAddress = this.UserProfile.additional_address;
+      this.modalRef.componentInstance.postalCode = this.UserProfile.postal_code;
+      this.modalRef.componentInstance.ville = this.UserProfile.ville;
+    }
+    else {
+      const modalRef = this.modalService.open(NotificationComponent, {centered: true, size: 'lg'});
+      this.popUpMessage =
+        "<p>Veuillez renseignez votre addresse complète et votre numero de téléphone avant de pouvoir réclamer votre gain.</p>" +
+        "<p><u><a href='/profil/modifier-informations'>Modifier mes informations</a></u></p>";
+      modalRef.componentInstance.message = this.popUpMessage;
+    }
   }
 
   openNotification(): void {
@@ -72,7 +81,6 @@ export class HistoriqueComponent implements OnInit {
     this.metaTagService.updateTag({name: 'og:description', content: this.description});
     this.metaTagService.updateTag({property: 'og:image', content: '/assets/mango-bg-.jpg'});
     this.metaTagService.updateTag({property: 'og:image:alt', content: this.title});
-
 
     // Table Config
     this.dtOptions = {
