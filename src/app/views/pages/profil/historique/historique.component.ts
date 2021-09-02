@@ -27,8 +27,9 @@ export class HistoriqueComponent implements OnInit {
   historique: any;
   error: any;
   posts: any;
-  private popUpMessage: any;
+  popUpMessage: any;
   description: string;
+  AddressIsMissing: boolean;
 
   constructor(
     private titleService: Title,

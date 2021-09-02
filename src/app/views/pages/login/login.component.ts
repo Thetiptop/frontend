@@ -62,8 +62,6 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.authState.subscribe(
       (user) => {
         this.socialUser = user;
-        console.log(this.socialUser);
-
         const formData = new FormData();
         formData.append('name', this.socialUser.name);
         formData.append('email', this.socialUser.email);
@@ -73,20 +71,15 @@ export class LoginComponent implements OnInit {
         this.authService.socialAuthLogin(formData).subscribe(
           (res) => {
             this.socialResult = res;
-            console.log(res);
             this.token.handleData(this.socialResult.token);
             this.authState.setAuthState(true);
             this.router.navigate(['/accueil']);
           },
           (err) => {
-            console.log(err)
-          },
-          () => {
+            this.socialResult = err;
+            alert(this.socialResult.error.error)
           }
         );
-
-
-
       },
       (err)=> {
         console.log(err)

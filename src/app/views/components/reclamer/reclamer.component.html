@@ -4,7 +4,12 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<form [formGroup]="reclamerForm" (ngSubmit)="onSubmit()">
+
+<div class="modal-body" *ngIf="AddressIsMissing">
+  <p>Veuillez renseignez votre addresse complète et votre numero de téléphone avant de pouvoir réclamer votre gain.</p>
+</div>
+
+<form *ngIf="!AddressIsMissing" [formGroup]="reclamerForm" (ngSubmit)="onSubmit()">
   <div class="modal-body">
     <p>Votre Lot "{{lotName}}" sera livré cette addresse suivante :</p>
 

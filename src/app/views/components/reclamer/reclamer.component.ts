@@ -59,6 +59,7 @@ export class ReclamerComponent implements OnInit {
   baseUrl: string = environment.apiURL;
   errors: any;
   popUpMessage: any;
+  AddressIsMissing: boolean;
 
   constructor(private http: HttpClient,
               private router: Router,
@@ -90,6 +91,12 @@ export class ReclamerComponent implements OnInit {
       code_postal: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{5}$')]),
       ville: new FormControl(null, Validators.required),
     });
+
+    if(this.address && this.phone){
+      this.AddressIsMissing = false;
+    } else {
+      this.AddressIsMissing = true;
+    }
 
     this.showForm = false;
     this.wantToChangeAddress = false;
@@ -151,6 +158,7 @@ export class ReclamerComponent implements OnInit {
         this.modalService.dismissAll();
       }
     }
+
     if (!this.wantToChangeAddress){
       this.http.post((this.baseUrl + '/reclamation/'), this.formData).subscribe(
         result => {
@@ -172,6 +180,7 @@ export class ReclamerComponent implements OnInit {
     }
     this.isFormSubmitted = true;
   }
+
 }
 
 

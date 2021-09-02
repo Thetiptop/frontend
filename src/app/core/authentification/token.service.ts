@@ -12,6 +12,7 @@ export class TokenService {
     login: environment.loginApiURL,
     register: environment.registerApiUrl,
     googleIss: environment.googleIss,
+    googleIss2: environment.googleIss2,
   };
 
   error: any;

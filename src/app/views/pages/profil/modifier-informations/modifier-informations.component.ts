@@ -7,6 +7,7 @@ import { environment } from '../../../../../environments/environment';
 import { NotificationComponent } from '../../../components/notification/notification.component';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import {Meta, Title} from '@angular/platform-browser';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-modifier-informations',
@@ -31,6 +32,7 @@ export class ModifierInformationsComponent implements OnInit {
     private titleService: Title,
     private metaTagService: Meta,
     private http: HttpClient,
+    private router: Router,
     private authService: AuthService,
     private authState: AuthStateService,
     config: NgbModalConfig,
