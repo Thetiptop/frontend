@@ -16,7 +16,7 @@ import {Router} from '@angular/router';
 })
 export class PlayComponent implements OnInit {
   title = 'Jouer - ThéTipTop';
-  description: string;
+  description= 'Tentez vos changes de gagner un infuseur à thé, un thé detox, un thé signature ou un coffret découverte !';
 
   isSignedIn: any;
   error: any;
