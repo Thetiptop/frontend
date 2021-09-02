@@ -11,11 +11,13 @@
 
     <div *ngIf="!wantToChangeAddress" class="text-bold">
       <!--User Address-->
-      <p class="text-bold">
+      <p class="text-bold mb-0">
         {{address}}
-        <br>
+      </p>
+      <p *ngIf="additionalAddress" class="text-bold mb-0">
         {{additionalAddress}}
-        <br>
+      </p>
+      <p class="text-bold">
         {{postalCode}}, {{ville}}
       </p>
     </div>
