@@ -33,8 +33,8 @@ import {CanonicalService} from "./core/shared/canonical.service";
   ])]
 })
 export class AppComponent implements OnInit, OnDestroy {
-  description: any | string;
-  title: any | string;
+  description: 'Tentez vos chances et gagnez un infuseur à thé, un thé detox, un thé signature ou un coffret découverte! 1 500 000 tickets disponibles!';
+  title: 'Jeu Concours - ThéTipTop';
 
   constructor(private ccService: NgcCookieConsentService,
               private metaTagService: Meta,
