@@ -111,7 +111,7 @@ export class HistoriqueComponent implements OnInit {
         // tslint:disable-next-line:no-conditional-assignment
         this.popUpMessage = 'Veuillez vous reconnecter.';
         this.openNotification();
-        this.authService.onLogout(event);
+        this.authService.onLogout();
       });
 
     this.historiqueService.historique().subscribe(

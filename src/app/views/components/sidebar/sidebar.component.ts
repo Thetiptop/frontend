@@ -22,8 +22,8 @@ export class SidebarComponent implements OnInit {
     });
   }
 
-  onLogout(e: any): void {
+  onLogout(): void {
     this.authstate.setAuthState(false);
-    this.authService.onLogout(e);
+    this.authService.onLogout();
   }
 }

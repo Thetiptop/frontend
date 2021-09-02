@@ -77,7 +77,7 @@ export class ModifierInformationsComponent implements OnInit {
         },
         err => {
           this.error = err.status;
-          this.authService.onLogout(event);
+          this.authService.onLogout();
         });
     }
 
