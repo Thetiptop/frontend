@@ -34,8 +34,8 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('wizardForm') wizardForm: BaseWizardComponent | undefined;
   formData: FormData;
-  title: string;
-  description: string;
+  title= 'Inscription - ThéTipTop';
+  description = 'Inscrivez-vous pour gagner des nombreux cadeaux: infuseurs, thés detox, thés signature ou coffrets découverte!';
 
   constructor(
     public formBuilder: FormBuilder,
