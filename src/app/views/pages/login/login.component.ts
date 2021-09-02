@@ -73,11 +73,11 @@ export class LoginComponent implements OnInit {
             this.socialResult = res;
             this.token.handleData(this.socialResult.token);
             this.authState.setAuthState(true);
-            this.router.navigate(['/accueil']);
+            this.router.navigate(['/play']);
           },
           (err) => {
             this.socialResult = err;
-            alert(this.socialResult.error.error)
+            console.log(this.socialResult)
           }
         );
       },

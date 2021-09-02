@@ -35,8 +35,6 @@ export interface UserSocialRegister {
   canLegalyPlay: string;
 }
 
-
-
 @Injectable({
   providedIn: 'root'
 })
