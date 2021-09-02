@@ -98,18 +98,17 @@ export class RegisterComponent implements OnInit {
             this.socialResult = res;
             this.authState.setAuthState(true);
             this.token.handleData(this.socialResult.token);
-            this.router.navigate(['/']);
+            this.router.navigate(['/accueil']);
           },
           (err) => {
             this.socialResult = err;
-            console.log(this.socialResult)
+            alert(this.socialResult.error.error)
           }
         );
       },
       (err)=> {
         console.log(err)
       });
-    /*********** Social Register END */
 
     /** form1 value validation */
     this.validationForm1 = this.formBuilder.group({

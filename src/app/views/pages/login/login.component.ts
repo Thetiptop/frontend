@@ -7,6 +7,8 @@ import {AuthService} from '../../../core/authentification/auth.service';
 import {TokenService} from '../../../core/authentification/token.service';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
 import {Meta, Title} from '@angular/platform-browser';
+import {NotificationComponent} from "../../components/notification/notification.component";
+import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-login',
@@ -16,16 +18,21 @@ import {Meta, Title} from '@angular/platform-browser';
 export class LoginComponent implements OnInit {
   // SEO variables
   title = 'Connexion - ThéTipTop';
+  description = 'Connectez-vous à votre compte ThéTipTop et jouez pour gagner des cadeaux à coup sûrs !';
 
   loginForm: FormGroup;
-  socilaLoginForm: FormGroup;
-  socialUser: SocialUser;
   success: any;
   errors: any;
   isFormSubmitted: boolean;
+
   isLoggedin: any;
-  description = 'Connectez-vous à votre compte ThéTipTop et jouez pour gagner des cadeaux à coup sûrs !';
+
+  socilaLoginForm: FormGroup;
+  socialUser: SocialUser;
   socialResult: any;
+  socialError: any;
+
+  popUpMessage: any;
 
   constructor(
     private titleService: Title,
@@ -35,13 +42,23 @@ export class LoginComponent implements OnInit {
     public authService: AuthService,
     private token: TokenService,
     private authState: AuthStateService,
-    private socialAuthService: SocialAuthService
+    private socialAuthService: SocialAuthService,
+    config: NgbModalConfig,
+    private modalService: NgbModal
   ) {
+    config.backdrop = 'static';
+    config.keyboard = false;
   }
 
   get form(): any {
     return this.loginForm.controls;
   }
+
+  open() {
+    const modalRef = this.modalService.open(NotificationComponent, {centered: true, size: 'lg'});
+    modalRef.componentInstance.message = this.popUpMessage;
+  }
+
 
   ngOnInit(): void {
     // SEO
@@ -71,20 +88,24 @@ export class LoginComponent implements OnInit {
         this.authService.socialAuthLogin(formData).subscribe(
           (res) => {
             this.socialResult = res;
+            console.log(res);
             this.token.handleData(this.socialResult.token);
             this.authState.setAuthState(true);
             this.router.navigate(['/play']);
-          },
-          (err) => {
-            this.socialResult = err;
-            console.log(this.socialResult)
+          },(err) => {
+            console.log(err);
+            this.socialError = err;
+            this.popUpMessage =
+              "<p>Compte inexistant. Veuillez vous identifiez avec Google/Facebook sur la page d'inscription</p>" +
+              "<p><u><a href='/register'>Aller à la page d'inscription</a></u></p>";
+            this.open()
           }
         );
       },
-      (err)=> {
+      (err) => {
         console.log(err)
       }
-      );
+    );
   }
 
   onSubmit(): void {
@@ -94,7 +115,7 @@ export class LoginComponent implements OnInit {
           this.success = result;
           this.token.handleData(result.access_token);
           this.authState.setAuthState(true);
-          this.goToPlay();
+          this.router.navigate(['/play']);
         },
         error => {
           this.errors = error.error.error;
@@ -113,10 +134,6 @@ export class LoginComponent implements OnInit {
 
   loginWithFaceBook(): void {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
-  }
-
-  goToPlay(): void {
-    this.router.navigate(['/play']);
   }
 
 }
