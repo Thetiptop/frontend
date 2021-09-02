@@ -15,8 +15,8 @@ export class ResetPasswordComponent implements OnInit {
   success: any;
   display = true;
   isFormSubmitted: boolean;
-  title = 'Changer votre mot de passe - ThéTipTop';
-  description: string;
+  title = 'Mise à jour mot de passe - ThéTipTop';
+  description = 'Vous avez oublier votre mot de passe ? Rien n\'est pas perdu ! Reinitialisez-le en cliquant sur le lien';
 
   constructor(
     public formBuilder: FormBuilder,
@@ -51,11 +51,9 @@ export class ResetPasswordComponent implements OnInit {
       this.resetPasswordService.resetPassword(this.resetForm.value).subscribe(
         result => {
           this.success = result.message;
-          console.log(result);
         },
         error => {
           this.errors = error.error.message;
-          console.log(error);
         }
       );
     }
