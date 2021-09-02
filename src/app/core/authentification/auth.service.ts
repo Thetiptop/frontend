@@ -76,6 +76,7 @@ export class AuthService {
   }
 
   onLogout(): void {
+    this.authstate.setAuthState(false);
 
     this.authService.authState.subscribe((user) => {
       this.user = user;
@@ -87,12 +88,9 @@ export class AuthService {
       sessionStorage.clear();
     }
 
-    localStorage.removeItem('access_token');
-
-    this.authstate.setAuthState(false);
-
-    this.router.navigate(['/']);
     window.location.reload();
+   // this.router.navigate(['/']);
+    localStorage.removeItem('access_token');
   }
 
   profileUser(): Observable<any> {

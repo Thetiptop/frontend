@@ -47,7 +47,6 @@ export class PlayComponent implements OnInit {
 
   get form(): any {
     return this.playForm.controls;
-    console.log(this.playForm.controls)
   }
 
   ngOnInit(): void {
