@@ -19,7 +19,7 @@ export class CookiesComponent implements OnInit {
     // SEO
     this.titleService.setTitle(this.title);
     this.metaTagService.updateTag(
-      { name: 'description', content: 'Description' }
+      { name: 'description', content: 'Information sur l\'utilisattion des cookies par le site de jeu concours ThéTipTop' }
     );
   }
 
