@@ -17,7 +17,8 @@ import { PLATFORM_ID } from "@angular/core";
 export class HomeComponent implements OnInit {
   // SEO variables
   title = 'Jeu Concours - ThéTipTop';
-
+  description = 'Un jeu de concours auquel tout le monde est gagnant ! 1 500 000 cadeaux vous attends: des infuseurs à thé, thé détox ou infusion, thé signature, ou des coffrets découverte.';
+  
   modalRef: any;
   isSignedIn: any;
   finalDate = '2021-09-13T00:00:00';
@@ -25,7 +26,6 @@ export class HomeComponent implements OnInit {
   hours: any;
   seconds: any;
   minutes: any;
-  description: string;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
