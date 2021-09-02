@@ -16,6 +16,7 @@ import {Meta, Title} from '@angular/platform-browser';
 
 export class HistoriqueComponent implements OnInit {
   title = 'Hisorique des gains - ThéTipTop';
+  description = 'Retouvez ici la liste des tickets que vous avez gagné';
 
   modalRef: any;
   dtOptions: DataTables.Settings = {};
@@ -28,7 +29,6 @@ export class HistoriqueComponent implements OnInit {
   error: any;
   posts: any;
   private popUpMessage: any;
-  description: string;
 
   constructor(
     private titleService: Title,

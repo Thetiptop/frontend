@@ -53,7 +53,7 @@ export class ModifierInformationsComponent implements OnInit {
     // SEO
     this.titleService.setTitle(this.title);
     this.metaTagService.updateTag(
-      {name: 'description', content: 'Description'}
+      {name: 'description', content: 'Mise à jour des informations personnelles de l\'utilisateur'}
     );
 
     this.authState.userAuthState.subscribe(val => {

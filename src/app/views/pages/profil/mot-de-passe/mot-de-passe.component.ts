@@ -49,7 +49,7 @@ export class MotDePasseComponent implements OnInit {
     // SEO
     this.titleService.setTitle(this.title);
     this.metaTagService.updateTag(
-      {name: 'description', content: 'Description'}
+      {name: 'description', content: 'Mise à jour du mot de passe de l\'utilisateur'}
     );
 
     this.modifierMotdepasseForm = new FormGroup({
@@ -77,10 +77,7 @@ export class MotDePasseComponent implements OnInit {
           console.log('oops', error);
           console.log(this.popUpMessage);
           this.open();
-        }/*,
-        () => {
-          this.open();
-        }*/
+        }
       );
     }
     this.isFormSubmitted = true;

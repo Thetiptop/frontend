@@ -27,7 +27,7 @@ export class MesInformationsComponent implements OnInit {
     // SEO
     this.titleService.setTitle(this.title);
     this.metaTagService.updateTag(
-      {name: 'description', content: 'Description'}
+      {name: 'description', content: 'Retrouvez ici vos coordonées'}
     );
 
     this.authState.userAuthState.subscribe(val => {
