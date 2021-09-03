@@ -7,6 +7,7 @@ import { environment } from '../../../../../environments/environment';
 import { NotificationComponent } from '../../../components/notification/notification.component';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import {Meta, Title} from '@angular/platform-browser';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-modifier-informations',
@@ -31,6 +32,7 @@ export class ModifierInformationsComponent implements OnInit {
     private titleService: Title,
     private metaTagService: Meta,
     private http: HttpClient,
+    private router: Router,
     private authService: AuthService,
     private authState: AuthStateService,
     config: NgbModalConfig,
@@ -75,7 +77,7 @@ export class ModifierInformationsComponent implements OnInit {
         },
         err => {
           this.error = err.status;
-          this.authService.onLogout(event);
+          this.authService.onLogout();
         });
     }
 
@@ -83,7 +85,7 @@ export class ModifierInformationsComponent implements OnInit {
       name: new FormControl(null, Validators.required),
       telephone: new FormControl(null, [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]),
       address: new FormControl(null, Validators.required),
-      additional_address: new FormControl(null, Validators.required),
+      additional_address: new FormControl(null),
       postal_code: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{5}$')]),
       ville: new FormControl(null),
     });

@@ -4,17 +4,20 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
+
 <form [formGroup]="reclamerForm" (ngSubmit)="onSubmit()">
   <div class="modal-body">
     <p>Votre Lot "{{lotName}}" sera livré cette addresse suivante :</p>
 
     <div *ngIf="!wantToChangeAddress" class="text-bold">
-      <!-- Add here User Adresse from API -->
-      <p class="text-bold">
+      <!--User Address-->
+      <p class="text-bold mb-0">
         {{address}}
-        <br>
+      </p>
+      <p *ngIf="additionalAddress" class="text-bold mb-0">
         {{additionalAddress}}
-        <br>
+      </p>
+      <p class="text-bold">
         {{postalCode}}, {{ville}}
       </p>
     </div>
@@ -117,3 +120,4 @@
     <button class="btn btn-lipton" type="submit">Confirmer</button>
   </div>
 </form>
+

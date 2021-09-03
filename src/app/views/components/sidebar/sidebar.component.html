@@ -2,7 +2,8 @@
   <div class="uk-offcanvas-bar px-2">
     <button class="uk-offcanvas-close" type="button" uk-close></button>
     <div class="sidebar-header d-flex justify-content-center align-items-center">
-      <a routerLink="/accueil"><img id="ttt-logo" src="../assets/images/logo-white.png"></a>
+      <a routerLink="/accueil">
+        <img id="ttt-logo" src="../assets/images/logo-white.png"></a>
     </div>
 
     <ul class="list-unstyled components">
@@ -25,7 +26,7 @@
         <a [className]="isSignedIn ? '' : 'text-muted'"
            [ngbPopover]="isSignedIn ? '' : 'Veuillez vous identifier'"
            placement="right"
-           routerLink="/profil"
+           routerLink='/profil'
            routerLinkActive="active">
           Profil
         </a>
@@ -52,7 +53,7 @@
           <i class="fas fa-sign-in-alt ml-2"></i>
         </a>
 
-        <a (click)="onLogout($event)" *ngIf="isSignedIn"
+        <a (click)="onLogout()" *ngIf="isSignedIn"
            class="btn btn-block rounded btn-primary">
           Se déconnecter
           <i class="fas fa-power-off ml-2"></i>

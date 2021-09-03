@@ -74,8 +74,6 @@ export class MotDePasseComponent implements OnInit {
         error => {
           this.errors = error;
           this.popUpMessage = this.errors.error.message;
-          console.log('oops', error);
-          console.log(this.popUpMessage);
           this.open();
         }
       );

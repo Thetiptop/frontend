@@ -7,7 +7,6 @@ import {HttpClient} from '@angular/common/http';
 import {NotificationComponent} from '../notification/notification.component';
 import {Router} from '@angular/router';
 
-
 @Component({
   selector: 'app-reclamer',
   templateUrl: './reclamer.component.html',
@@ -49,6 +48,7 @@ export class ReclamerComponent implements OnInit {
   @Input() ville;
   showForm: boolean;
   wantToChangeAddress: boolean;
+
   reclamerForm: FormGroup;
   isFormSubmitted: boolean;
   formData: any;
@@ -86,7 +86,7 @@ export class ReclamerComponent implements OnInit {
       name: new FormControl(null, Validators.required),
       telephone: new FormControl(null, [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]),
       address: new FormControl(null, Validators.required),
-      complement_address: new FormControl(null, Validators.required),
+      complement_address: new FormControl(null),
       code_postal: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{5}$')]),
       ville: new FormControl(null, Validators.required),
     });
@@ -135,13 +135,11 @@ export class ReclamerComponent implements OnInit {
         this.http.post((this.baseUrl + '/reclamation/'), this.formData).subscribe(
           result => {
             this.success = result;
-            console.log(this.success);
             this.popUpMessage = 'Votre lot vous sera envoyé !';
             this.reloadCurrentRoute();
           },
           error => {
             this.errors = error.error.message;
-            console.log('Hello ' + error.error.message);
             this.popUpMessage = this.errors;
           },
           () => {
@@ -151,17 +149,16 @@ export class ReclamerComponent implements OnInit {
         this.modalService.dismissAll();
       }
     }
+
     if (!this.wantToChangeAddress){
       this.http.post((this.baseUrl + '/reclamation/'), this.formData).subscribe(
         result => {
           this.success = result;
-          console.log(this.success);
           this.popUpMessage = 'Votre lot vous sera envoyé !';
           this.reloadCurrentRoute();
         },
         error => {
           this.errors = error.error.message;
-          console.log('Hello ' + error.error.message);
           this.popUpMessage = this.errors;
         },
         () => {
@@ -172,6 +169,7 @@ export class ReclamerComponent implements OnInit {
     }
     this.isFormSubmitted = true;
   }
+
 }
 
 

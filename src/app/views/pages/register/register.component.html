@@ -198,10 +198,10 @@
             <div class="form-check mb-1">
               <input type="checkbox"
                      class="form-check-input"
-                     formControlName="major"
-                     id="major">
-              <label class="form-check-label" for="major">J'atteste avoir au moins 18 ans ou avoir la permission de mes parents pour participer à ce jeu de concours.</label>
-              <div *ngIf="isForm3Submitted && form3.major.errors?.required"
+                     formControlName="canLegalyPlay"
+                     id="canLegalyPlay">
+              <label class="form-check-label" for="canLegalyPlay">J'atteste avoir au moins 18 ans ou avoir la permission de mes parents pour participer à ce jeu de concours.</label>
+              <div *ngIf="isForm3Submitted && form3.canLegalyPlay.errors?.required"
                    class="invalid-feedback">
                 Requis
               </div>
@@ -262,11 +262,11 @@
       </div>
 
       <div class="d-flex">
-        <button class="login-rs google btn btn-white border w-50 py-3 mr-2 mb-2 mb-md-0">
+        <button type="button" (click)="RegisterWithGoogle()" class="login-rs google btn btn-white border w-50 py-3 mr-2 mb-2 mb-md-0">
           <i class="fab fa-google mr-1"></i>
           Google
         </button>
-        <button class="login-rs facebook btn btn-white border w-50 py-3 mb-2 mb-md-0">
+        <button type="button" (click)="RegisterWithFacebook()" class="login-rs facebook btn btn-white border w-50 py-3 mb-2 mb-md-0">
           <i class="fab fa-facebook mr-1"></i>
           Facebook
         </button>
@@ -274,7 +274,6 @@
 
       <a class="d-block mt-3 text-muted text-right" routerLink="/login">Vous êtes inscrit ? <span
         class="text-lipton">Se connecter</span></a>
-
 
     </div>
 

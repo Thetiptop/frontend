@@ -28,7 +28,8 @@ export class HistoriqueComponent implements OnInit {
   historique: any;
   error: any;
   posts: any;
-  private popUpMessage: any;
+
+  popUpMessage: any;
 
   constructor(
     private titleService: Title,
@@ -102,13 +103,12 @@ export class HistoriqueComponent implements OnInit {
         // tslint:disable-next-line:no-conditional-assignment
         this.popUpMessage = 'Veuillez vous reconnecter.';
         this.openNotification();
-       // this.authService.onLogout(event);
+        this.authService.onLogout();
       });
 
     this.historiqueService.historique().subscribe(
       data => {
         this.historique = data.historical;
-        console.log(this.historique);
         this.dtTrigger.next();
       }
     );

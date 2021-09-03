@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { FelicitationsComponent } from '../../components/felicitations/felicitations.component';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PlayService } from '../../../core/play/play.service';
-import { AuthService } from '../../../core/authentification/auth.service';
-import { AuthStateService } from '../../../core/authentification/auth-state.service';
-import { HowToPlayComponent } from '../../components/how-to-play/how-to-play.component';
+import {Component, OnInit} from '@angular/core';
+import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import {Meta, Title} from '@angular/platform-browser';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {FelicitationsComponent} from '../../components/felicitations/felicitations.component';
+import {PlayService} from '../../../core/play/play.service';
+import {AuthService} from '../../../core/authentification/auth.service';
+import {AuthStateService} from '../../../core/authentification/auth-state.service';
+import {HowToPlayComponent} from '../../components/how-to-play/how-to-play.component';
+
 
 @Component({
   selector: 'app-play',
@@ -61,7 +62,7 @@ export class PlayComponent implements OnInit {
       this.isSignedIn = val;
     });
 
-    if (this.isSignedIn){
+    if (this.isSignedIn) {
       this.authService.profileUser().subscribe(
         data => {
           this.UserProfile = data.detail;
@@ -69,7 +70,7 @@ export class PlayComponent implements OnInit {
         },
         err => {
           this.error = err.status;
-          this.authService.onLogout(event);
+          this.authService.onLogout();
         });
     }
 
@@ -80,7 +81,7 @@ export class PlayComponent implements OnInit {
   }
 
   open(): void {
-    this.modalRef = this.modalService.open(FelicitationsComponent, {centered: true, size: 'xl'} );
+    this.modalRef = this.modalService.open(FelicitationsComponent, {centered: true, size: 'xl'});
     this.modalRef.componentInstance.message = this.popUpMessage;
     this.modalRef.componentInstance.lotName = this.lotName;
     this.modalRef.componentInstance.lotId = this.lotId;
@@ -88,7 +89,7 @@ export class PlayComponent implements OnInit {
   }
 
   open2(): void {
-    this.modalRef = this.modalService.open(HowToPlayComponent, {centered: true} );
+    this.modalRef = this.modalService.open(HowToPlayComponent, {centered: true});
   }
 
   onSubmit(): void {

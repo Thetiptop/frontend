@@ -4,9 +4,10 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { AuthStateService } from './auth-state.service';
+import {SocialAuthService, SocialUser} from "angularx-social-login";
 
-// User interface
-export class User {
+// Interface
+export interface User {
   id: number;
   name: string;
   email: string;
@@ -19,6 +20,21 @@ export class User {
   password_confirmation: string;
 }
 
+export interface UserSocialLogin {
+  id: number;
+  name: string;
+  email: string;
+  provider: string;
+}
+
+export interface UserSocialRegister {
+  id: number;
+  name: string;
+  email: string;
+  provider: string;
+  canLegalyPlay: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,11 +43,14 @@ export class AuthService {
   activeUrl: any;
   isSignedIn: boolean;
   error: any;
+  user: SocialUser;
+  loggedInWithSocial: boolean;
 
   constructor(
     private http: HttpClient,
     private authstate: AuthStateService,
     private router: Router,
+    private authService: SocialAuthService
   ) { }
 
   protected  baseUrl: string = environment.apiURL;
@@ -46,14 +65,30 @@ export class AuthService {
     return this.http.post<any>(this.loginBaseUrl, user);
   }
 
-  onLogout(e): void {
-    e.preventDefault();
-    this.authstate.setAuthState(false);
-    localStorage.removeItem('access_token');
+  socialAuthLogin(User: FormData): Observable<any> {
+    return this.http.post<any>(this.baseUrl + '/login_with_socialite', User);
+  }
 
-    if (!localStorage.getItem('access_token')) {
-      this.router.navigate(['/']);
+  socialAuthRegister(User: FormData): Observable<any> {
+    return this.http.post<any>(this.baseUrl + '/register_with_socialite', User);
+  }
+
+  onLogout(): void {
+    this.authstate.setAuthState(false);
+
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedInWithSocial = (user != null);
+    });
+
+    if(this.user !== null) {
+      this.authService.signOut(true);
+      sessionStorage.clear();
     }
+
+    window.location.reload();
+   // this.router.navigate(['/']);
+    localStorage.removeItem('access_token');
   }
 
   profileUser(): Observable<any> {
