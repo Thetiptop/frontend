@@ -7,8 +7,8 @@ import {AuthService} from '../../../core/authentification/auth.service';
 import {TokenService} from '../../../core/authentification/token.service';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
 import {Meta, Title} from '@angular/platform-browser';
-import {NotificationComponent} from "../../components/notification/notification.component";
 import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
+import {SocialRegisterComponent} from "../../components/social-register/social-register.component";
 
 @Component({
   selector: 'app-login',
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
   }
 
   open() {
-    const modalRef = this.modalService.open(NotificationComponent, {centered: true, size: 'lg'});
+    const modalRef = this.modalService.open(SocialRegisterComponent, {centered: true, size: 'lg'});
     modalRef.componentInstance.message = this.popUpMessage;
   }
 
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
 
     this.isFormSubmitted = false;
 
-    this.socialAuthService.authState.subscribe(
+    /*this.socialAuthService.authState.subscribe(
       (user) => {
         this.socialUser = user;
         const formData = new FormData();
@@ -105,7 +105,7 @@ export class LoginComponent implements OnInit {
       (err) => {
         console.log(err)
       }
-    );
+    );*/
   }
 
   onSubmit(): void {

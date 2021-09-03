@@ -48,6 +48,7 @@ export class ReclamerComponent implements OnInit {
   @Input() ville;
   showForm: boolean;
   wantToChangeAddress: boolean;
+
   reclamerForm: FormGroup;
   isFormSubmitted: boolean;
   formData: any;
