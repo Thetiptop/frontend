@@ -91,8 +91,4 @@ export class SocialRegisterComponent implements OnInit {
     // window.location.reload();
   }
 
-  clearSessionStorage() {
-    this.authService.onLogout();
-    // window.location.reload();
-  }
 }
