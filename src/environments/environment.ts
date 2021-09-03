@@ -8,8 +8,8 @@ export const environment = {
   loginApiURL : 'http://127.0.0.1:8000/api/login',
   registerApiUrl: 'http://127.0.0.1:8000/api/register',
   cookieDomain: 'http://127.0.0.1:8000',
-  googleIss: 'http://127.0.0.1:8000/api/login_with_socialite',
-  googleIss2: 'http://127.0.0.1:8000/api/register_with_socialite',
+  socialLogin: 'http://127.0.0.1:8000/api/login_with_socialite',
+  socialRegister: 'http://127.0.0.1:8000/api/register_with_socialite',
   title: 'ThéTipTop',
 };
 
