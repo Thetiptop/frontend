@@ -33,6 +33,9 @@ export class LoginComponent implements OnInit {
   socialError: any;
 
   popUpMessage: any;
+  wantToRegisterWithGoogle: boolean;
+  wantToRegisterWithFacebook: boolean;
+  modalRef: any;
 
   constructor(
     private titleService: Title,
@@ -54,12 +57,6 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-  open() {
-    const modalRef = this.modalService.open(SocialRegisterComponent, {centered: true, size: 'lg'});
-    modalRef.componentInstance.message = this.popUpMessage;
-  }
-
-
   ngOnInit(): void {
     // SEO
     this.titleService.setTitle(this.title);
@@ -76,36 +73,6 @@ export class LoginComponent implements OnInit {
 
     this.isFormSubmitted = false;
 
-    /*this.socialAuthService.authState.subscribe(
-      (user) => {
-        this.socialUser = user;
-        const formData = new FormData();
-        formData.append('name', this.socialUser.name);
-        formData.append('email', this.socialUser.email);
-        formData.append('id', this.socialUser.id);
-        formData.append('provider', this.socialUser.provider);
-
-        this.authService.socialAuthLogin(formData).subscribe(
-          (res) => {
-            this.socialResult = res;
-            console.log(res);
-            this.token.handleData(this.socialResult.token);
-            this.authState.setAuthState(true);
-            this.router.navigate(['/play']);
-          },(err) => {
-            console.log(err);
-            this.socialError = err;
-            this.popUpMessage =
-              "<p>Compte inexistant. Veuillez vous identifiez avec Google/Facebook sur la page d'inscription</p>" +
-              "<p><u><a href='/register'>Aller à la page d'inscription</a></u></p>";
-            this.open()
-          }
-        );
-      },
-      (err) => {
-        console.log(err)
-      }
-    );*/
   }
 
   onSubmit(): void {
@@ -134,6 +101,77 @@ export class LoginComponent implements OnInit {
 
   loginWithFaceBook(): void {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  RegisterWithGoogle() {
+
+    this.loginWithGoogle()
+
+    this.socialAuthService.authState.subscribe(
+      (user) => {
+        this.socialUser = user;
+        const formData = new FormData();
+        formData.append('name', this.socialUser.name);
+        formData.append('email', this.socialUser.email);
+        formData.append('id', this.socialUser.id);
+        formData.append('provider', this.socialUser.provider);
+
+        this.authService.socialAuthLogin(formData).subscribe(
+          (res) => {
+            this.socialResult = res;
+            this.authState.setAuthState(true);
+            this.token.handleData(this.socialResult.token);
+            this.router.navigate(['/accueil']);
+          },
+          (err) => {
+            this.socialResult = err;
+            this.wantToRegisterWithGoogle = true;
+            this.openSocialRegister()
+          }
+        );
+      },
+      (err)=> {
+        console.log(err)
+      });
+
+  }
+
+  RegisterWithFacebook() {
+
+    this.loginWithFaceBook();
+
+    this.socialAuthService.authState.subscribe(
+      (user) => {
+        this.socialUser = user;
+        const formData = new FormData();
+        formData.append('name', this.socialUser.name);
+        formData.append('email', this.socialUser.email);
+        formData.append('id', this.socialUser.id);
+        formData.append('provider', this.socialUser.provider);
+
+        this.authService.socialAuthLogin(formData).subscribe(
+          (res) => {
+            this.socialResult = res;
+            this.authState.setAuthState(true);
+            this.token.handleData(this.socialResult.token);
+            this.router.navigate(['/accueil']);
+          },
+          (err) => {
+            this.socialResult = err;
+            this.wantToRegisterWithFacebook = true;
+            this.openSocialRegister()
+          }
+        );
+      },
+      (err)=> {
+        console.log(err)
+      });
+  }
+
+  openSocialRegister() {
+    this.modalRef = this.modalService.open(SocialRegisterComponent, {centered: true, size: 'lg'});
+    this.modalRef.componentInstance.wantToRegisterWithFacebook = this.wantToRegisterWithFacebook;
+    this.modalRef.componentInstance.wantToRegisterWithGoogle = this.wantToRegisterWithGoogle;
   }
 
 }
