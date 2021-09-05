@@ -114,6 +114,15 @@
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .uk-offcanvas {
+    display: block;
+    position: initial;
+  }
   .uk-offcanvas-close {
     display: none;
   }
@@ -130,10 +139,6 @@
     z-index: 999;
   }
 
-  .uk-offcanvas {
-    display: block;
-    position: initial;
-  }
 
   .uk-offcanvas-bar {
     position: initial;
@@ -142,10 +147,6 @@
     padding: 0;
     background: none;
   }
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
 }
 
 

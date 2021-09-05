@@ -8,16 +8,17 @@
 
 #content {
   width: 100%;
+  padding-top: 100px;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 .navbar {
-  padding: 15px 10px;
-  background: #fff;
+  padding: 1rem 3rem 1rem 3rem;
+  background: transparent;
   border: none;
+  z-index: 2;
   border-radius: 0;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-btn {
@@ -36,13 +37,14 @@
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
   .mobile-navbar {
     display: none;
   }
-
-  /*#content {
-    min-width: 83vw;
-  }*/
 
   #content {
     min-height: 100vh;
@@ -53,7 +55,9 @@
     flex-direction: column;
     transition: margin .1s ease,width .1s ease;
   }
-}
 
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { }
+  #content {
+    padding-top: 0;
+  }
+
+}

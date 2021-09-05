@@ -13,7 +13,7 @@ COPY ./ /usr/local/app/
 RUN npm install --legacy-peer-deps
 
 # Generate the build of the application
-# npm run build --prod
+
 RUN npm run prerender
 
 # Stage 2: Serve app with nginx server
@@ -22,7 +22,6 @@ RUN npm run prerender
 FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents.
-#COPY --from=build /usr/local/app/dist/thetiptop/ /usr/share/nginx/html
 COPY --from=build /usr/local/app/dist/thetiptop/browser /usr/share/nginx/html
 
 # Expose port 80
