@@ -16,10 +16,11 @@
                id="fullName"
                placeholder="Nom et Prénom"
                type="text">
-        <div *ngIf="isFormSubmitted && form.name.errors?.required"
+        <div *ngIf="isFormSubmitted && form.name.errors"
              [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
              class="invalid-feedback">
-          Requis
+          <span *ngIf="form.name.status">Champ invalide</span>
+          <span *ngIf="form.name.errors?.required"> | Requis</span>
         </div>
       </div>
 
