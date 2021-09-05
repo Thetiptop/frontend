@@ -127,12 +127,6 @@ app-play{
   background: #f5f6f8 url('/assets/images/asian-tea.jpg') no-repeat;
 }
 
-.home{
-  background-position-x: right !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background: linear-gradient(90deg, rgba(255,255,255,0.88) 38%, rgba(0,0,0,0.2) 70%),url('/assets/images/mango-bg.jpg');
-}
 
 // Popover "Veuillez-vous connecter"
 #ngb-popover-0, #ngb-popover-1 {
