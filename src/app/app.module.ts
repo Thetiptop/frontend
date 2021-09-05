@@ -34,6 +34,7 @@ import {ReclamerModule} from "./views/components/reclamer/reclamer.module";
 import {CommonModule} from "@angular/common";
 import {SocialRegisterModule} from "./views/components/social-register/social-register.module";
 import {NewsletterModule} from "./views/components/newsletter/newsletter-module";
+import { RulesComponent } from './views/pages/rules/rules.component';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -76,6 +77,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     FelicitationsComponent,
     ErrorPageComponent,
     HowToPlayComponent,
+    RulesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

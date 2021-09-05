@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from "./views/pages/home/home.component";
 import {ErrorPageComponent} from "./views/pages/error-page/error-page.component";
+import { RulesComponent } from './views/pages/rules/rules.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
     path : 'about',
     loadChildren: () => import('./views/pages/about/about.module')
       .then(m => m.AboutModule)
+  },
+  {
+    path : 'rules',
+    component: RulesComponent
   },
   { path: 'error',
     component: ErrorPageComponent,
