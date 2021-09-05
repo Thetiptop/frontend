@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "e8dc02b0-f0f9-4a59-8a96-f21178d5ba47"
+    "analytics": false
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TTT": {
+    "thetiptop": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/TTT/browser",
+            "outputPath": "dist/thetiptop/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -47,60 +47,57 @@
               "node_modules/jquery/dist/jquery.js",
               "node_modules/datatables.net/js/jquery.dataTables.js",
               "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"
-            ],
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
+            ]
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
                 }
-              ]
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
-          "defaultConfiguration": ""
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "TTT:build"
-          },
           "configurations": {
             "production": {
-              "browserTarget": "TTT:build:production"
+              "browserTarget": "thetiptop:build:production"
+            },
+            "development": {
+              "browserTarget": "thetiptop:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "TTT:build"
+            "browserTarget": "thetiptop:build"
           }
         },
         "test": {
@@ -110,6 +107,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -137,23 +135,21 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "TTT:serve"
+            "devServerTarget": "thetiptop:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "TTT:serve:production"
+              "devServerTarget": "thetiptop:serve:production"
             }
           }
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/TTT/server",
+            "outputPath": "dist/thetiptop/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
-            "optimization": false,
-            "sourceMap": true,
-            "extractLicenses": false
+            "inlineStyleLanguage": "scss"
           },
           "configurations": {
             "production": {
@@ -163,10 +159,12 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
-              ],
-              "optimization": true,
-              "sourceMap": false,
-              "extractLicenses": true
+              ]
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false
             }
           },
           "defaultConfiguration": "production"
@@ -175,12 +173,12 @@
           "builder": "@nguniversal/builders:ssr-dev-server",
           "configurations": {
             "development": {
-              "browserTarget": "TTT:build:development",
-              "serverTarget": "TTT:server:development"
+              "browserTarget": "thetiptop:build:development",
+              "serverTarget": "thetiptop:server:development"
             },
             "production": {
-              "browserTarget": "TTT:build:production",
-              "serverTarget": "TTT:server:production"
+              "browserTarget": "thetiptop:build:production",
+              "serverTarget": "thetiptop:server:production"
             }
           },
           "defaultConfiguration": "development"
@@ -194,12 +192,12 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "TTT:build:production",
-              "serverTarget": "TTT:server:production"
+              "browserTarget": "thetiptop:build:production",
+              "serverTarget": "thetiptop:server:production"
             },
             "development": {
-              "browserTarget": "TTT:build:development",
-              "serverTarget": "TTT:server:development"
+              "browserTarget": "thetiptop:build:development",
+              "serverTarget": "thetiptop:server:development"
             }
           },
           "defaultConfiguration": "production"
@@ -207,5 +205,5 @@
       }
     }
   },
-  "defaultProject": "TTT"
+  "defaultProject": "thetiptop"
 }

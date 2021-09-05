@@ -45,7 +45,7 @@ export class ProfilComponent implements OnInit {
     },
     {
       title: 'Modifer le Profil',
-      fragment: 'edit-profile',
+      fragment: 'modifier-informations',
       icon: 'fas fa-user-edit'
     },
     {
@@ -59,7 +59,6 @@ export class ProfilComponent implements OnInit {
   constructor(public route: ActivatedRoute
   ) {
     route.url.subscribe(() => {
-      // @ts-ignore
       this.activeUrl = route.snapshot.firstChild.url[0].path;
     });
   }

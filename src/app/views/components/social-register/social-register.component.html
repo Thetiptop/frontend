@@ -1,0 +1,46 @@
+<div class="modal-header">
+  <h4 class="modal-title">Ceci est votre première connexion. Veuillez confirmer avent de continuer</h4>
+  <button (click)="clearSocialData(); activeModal.dismiss('Cross click')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="SocialRegisterForm">
+  <div class="modal-body">
+
+    <div class="form-check mb-1">
+      <input type="checkbox"
+             class="form-check-input"
+             formControlName="canLegalyPlay"
+             id="canLegalyPlay">
+      <label class="form-check-label" for="canLegalyPlay">
+        J'atteste avoir au moins 18 ans ou avoir la permission de mes parents pour participer à ce jeu de concours.
+      </label>
+      <div *ngIf="isFormSubmitted && form.canLegalyPlay.errors?.required"
+           [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
+           class="invalid-feedback">
+        Requis
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+
+    <button (click)="clearSocialData(); activeModal.close('Close click')" class="btn btn-outline-dark" type="button">Annuler</button>
+
+    <ng-container *ngIf="wantToRegisterWithFacebook">
+      <button class="btn btn-lipton"
+              type="submit">
+        Confirmer
+      </button>
+    </ng-container>
+
+    <ng-container *ngIf="wantToRegisterWithGoogle">
+      <button  class="btn btn-lipton" type="submit">
+        Confirmer
+      </button>
+    </ng-container>
+
+  </div>
+</form>
+

@@ -6,10 +6,7 @@ import {
   transition,
   style,
   query,
-  // group,
-  // animateChild,
   animate,
-  // keyframes,
 } from '@angular/animations';
 
 
@@ -67,9 +64,8 @@ export class AboutComponent implements OnInit {
 
   constructor(public route: ActivatedRoute) {
     route.url.subscribe(() => {
-      // @ts-ignore
       this.activeUrl = route.snapshot.firstChild.url[0].path;
-      });
+    });
   }
 
   ngOnInit(): void {

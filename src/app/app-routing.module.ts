@@ -1,72 +1,70 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './views/pages/home/home.component';
-import { LoginComponent } from './views/pages/login/login.component';
-import { RegisterComponent } from './views/pages/register/register.component';
-import { PlayComponent } from './views/pages/play/play.component';
-import { BaseComponent } from './views/components/base/base.component';
-import { AuthGuard } from './core/authentification/auth.guard';
-import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
-import { ResetPasswordComponent } from './views/pages/reset-password/reset-password.component';
-import {HowToPlayComponent} from './views/components/how-to-play/how-to-play.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from "./views/pages/home/home.component";
+import {ErrorPageComponent} from "./views/pages/error-page/error-page.component";
+import { RulesComponent } from './views/pages/rules/rules.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: BaseComponent,
-    children: [
-      {
-        path : '',
-        redirectTo: 'accueil',
-        pathMatch: 'full'
-      },
-      {
-        path: 'profile',
-        loadChildren: () => import('./views/pages/profil/profil.module').then(m => m.AboutModule)
-      },
-      {
-        path : 'accueil',
-        component : HomeComponent
-      },
-      {
-        path : 'login',
-        component : LoginComponent
-      },
-      {
-        path : 'register',
-        component : RegisterComponent
-      },
-      {
-        path : 'reset-password',
-        component : ResetPasswordComponent
-      },
-      {
-        path : 'about',
-        loadChildren: () => import('./views/pages/about/about.module').then(m => m.AboutModule)
-      },
-      {
-        path : 'play',
-        canActivate: [AuthGuard],
-        component : PlayComponent
-      },
-    ]
+    redirectTo: 'accueil',
+    pathMatch: 'full'
+  },
+  {
+    path: 'accueil',
+    component: HomeComponent
+  },
+  {
+    path : 'reset-password',
+    loadChildren: () => import('./views/pages/reset-password/reset-password-module')
+      .then(mod => mod.ResetPasswordModule)
+  },
+  {
+    path: 'profil',
+    loadChildren: () => import('./views/pages/profil/profil.module')
+      .then(mod => mod.ProfilModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./views/pages/register/register.module')
+      .then(mod => mod.RegisterModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./views/pages/login/login.module')
+      .then(mod => mod.LoginModule)
+  },
+  {
+    path: 'play',
+    loadChildren: () => import('./views/pages/play/play.module')
+      .then(mod => mod.PlayModule)
+  },
+  {
+    path : 'about',
+    loadChildren: () => import('./views/pages/about/about.module')
+      .then(m => m.AboutModule)
+  },
+  {
+    path : 'rules',
+    component: RulesComponent
   },
   { path: 'error',
     component: ErrorPageComponent,
     data: {
       type: 404,
-      title: 'Page Not Found',
-      desc: 'Oopps!! The page you were looking for doesn\'t exist.'
+      title: 'Page Non Trouvé',
+      desc: 'Oups!! La page que vous cherchez n\'existe pas'
     }
   },
   { path: 'error/:type', component: ErrorPageComponent },
   { path: '**', redirectTo: 'error', pathMatch: 'full' }
-];
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     initialNavigation: 'enabled'
-})],
+  })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

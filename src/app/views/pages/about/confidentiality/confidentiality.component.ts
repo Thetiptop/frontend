@@ -18,7 +18,7 @@ export class ConfidentialityComponent implements OnInit {
     // SEO
     this.titleService.setTitle(this.title);
     this.metaTagService.updateTag(
-      { name: 'description', content: 'Description' }
+      { name: 'description', content: 'Politique de confidentialité du site jeu concours ThéTipTop' }
     );
   }
 

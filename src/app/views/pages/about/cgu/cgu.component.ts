@@ -18,7 +18,7 @@ export class CguComponent implements OnInit {
     // SEO
     this.titleService.setTitle(this.title);
     this.metaTagService.updateTag(
-      { name: 'description', content: 'Description' }
+      { name: 'description', content: 'Réglementer de l’utilisation du site concours ThéTipTop' }
     );
   }
 

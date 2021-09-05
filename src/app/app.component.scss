@@ -1,14 +1,63 @@
-// Cookies Card
-.cc-window.cc-floating {
-  max-width: 20em !important;
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
 }
 
-.cc-theme-classic .cc-btn:last-child {
-  min-width: 100% !important;
+#content {
+  width: 100%;
+  padding-top: 100px;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-.callhttp {
-  position: absolute;
-  top:0;
-  z-index: 99999999;
+.navbar {
+  padding: 1rem 2rem 1rem 2rem;
+  background: transparent;
+  border: none;
+  z-index: 2;
+  border-radius: 0;
+}
+
+.navbar-btn {
+  box-shadow: none;
+  outline: none !important;
+  border: none;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .mobile-navbar {
+    display: none;
+  }
+
+  #content {
+    min-height: 100vh;
+    background: #f9fafb;
+    width: calc(100% - 250px);
+    margin-left: 250px;
+    display: flex;
+    flex-direction: column;
+    transition: margin .1s ease,width .1s ease;
+  }
+
+  #content {
+    padding-top: 0;
+  }
+
 }

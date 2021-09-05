@@ -7,6 +7,8 @@ import { environment } from '../../../../../environments/environment';
 import { NotificationComponent } from '../../../components/notification/notification.component';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import {Meta, Title} from '@angular/platform-browser';
+import {Router} from "@angular/router";
+import { DeleteConfirmComponent } from 'src/app/views/components/delete-confirm/delete-confirm.component';
 
 @Component({
   selector: 'app-modifier-informations',
@@ -26,11 +28,14 @@ export class ModifierInformationsComponent implements OnInit {
   error: any;
   protected  baseUrl: string = environment.apiURL;
   popUpMessage: string;
+  modalRef: any;
+  id_user: any;
 
   constructor(
     private titleService: Title,
     private metaTagService: Meta,
     private http: HttpClient,
+    private router: Router,
     private authService: AuthService,
     private authState: AuthStateService,
     config: NgbModalConfig,
@@ -45,6 +50,12 @@ export class ModifierInformationsComponent implements OnInit {
     modalRef.componentInstance.message = this.popUpMessage;
   }
 
+  open2(): void {
+    this.modalRef = this.modalService.open(DeleteConfirmComponent, {centered: true} );
+    this.modalRef.componentInstance.id_user = this.id_user;
+  }
+
+
   get form(): any {
     return this.modifierProfileForm.controls;
   }
@@ -53,7 +64,7 @@ export class ModifierInformationsComponent implements OnInit {
     // SEO
     this.titleService.setTitle(this.title);
     this.metaTagService.updateTag(
-      {name: 'description', content: 'Description'}
+      {name: 'description', content: 'Mise à jour des informations personnelles de l\'utilisateur'}
     );
 
     this.authState.userAuthState.subscribe(val => {
@@ -63,6 +74,7 @@ export class ModifierInformationsComponent implements OnInit {
     if (this.isSignedIn){
       this.authService.profileUser().subscribe(
         data => {
+          this.id_user = data.detail.id;
           this.UserProfile = data.detail;
           this.modifierProfileForm.patchValue({
             name: this.UserProfile.name,
@@ -75,7 +87,7 @@ export class ModifierInformationsComponent implements OnInit {
         },
         err => {
           this.error = err.status;
-          this.authService.onLogout(event);
+          this.authService.onLogout();
         });
     }
 
@@ -83,7 +95,7 @@ export class ModifierInformationsComponent implements OnInit {
       name: new FormControl(null, Validators.required),
       telephone: new FormControl(null, [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]),
       address: new FormControl(null, Validators.required),
-      additional_address: new FormControl(null, Validators.required),
+      additional_address: new FormControl(null),
       postal_code: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{5}$')]),
       ville: new FormControl(null),
     });

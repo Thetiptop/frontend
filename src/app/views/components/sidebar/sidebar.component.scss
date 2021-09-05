@@ -77,7 +77,7 @@
     width: 100%;
     height: auto;
     transition: background .6s ease;
-    padding: 20px 20px 20px 20px;
+    padding: 20px 20px 30px 20px;
 
     a {
       color: #fff;
@@ -114,6 +114,21 @@
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
+
+}
+
+@media (max-width: 1199.98px) {
+  .profile-menu-wrapper .wrapper {
+      margin-bottom: 5rem;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .uk-offcanvas {
+    display: block;
+    position: initial;
+  }
   .uk-offcanvas-close {
     display: none;
   }
@@ -130,10 +145,6 @@
     z-index: 999;
   }
 
-  .uk-offcanvas {
-    display: block;
-    position: initial;
-  }
 
   .uk-offcanvas-bar {
     position: initial;
@@ -142,10 +153,6 @@
     padding: 0;
     background: none;
   }
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
 }
 
 

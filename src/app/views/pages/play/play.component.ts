@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { FelicitationsComponent } from '../../components/felicitations/felicitations.component';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PlayService } from '../../../core/play/play.service';
-import { AuthService } from '../../../core/authentification/auth.service';
-import { AuthStateService } from '../../../core/authentification/auth-state.service';
-import { HowToPlayComponent } from '../../components/how-to-play/how-to-play.component';
+import {Component, OnInit} from '@angular/core';
+import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import {Meta, Title} from '@angular/platform-browser';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {FelicitationsComponent} from '../../components/felicitations/felicitations.component';
+import {PlayService} from '../../../core/play/play.service';
+import {AuthService} from '../../../core/authentification/auth.service';
+import {AuthStateService} from '../../../core/authentification/auth-state.service';
+import {HowToPlayComponent} from '../../components/how-to-play/how-to-play.component';
+import {CanonicalService} from "../../../core/shared/canonical.service";
+
 
 @Component({
   selector: 'app-play',
@@ -16,7 +18,7 @@ import {Router} from '@angular/router';
 })
 export class PlayComponent implements OnInit {
   title = 'Jouer - ThéTipTop';
-  description: string;
+  description= 'Tentez vos changes de gagner un infuseur à thé, un thé detox, un thé signature ou un coffret découverte !';
 
   isSignedIn: any;
   error: any;
@@ -39,6 +41,8 @@ export class PlayComponent implements OnInit {
               private authState: AuthStateService,
               private modalService: NgbModal,
               private playService: PlayService,
+              private canonicalService: CanonicalService,
+
   ) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -57,11 +61,14 @@ export class PlayComponent implements OnInit {
     this.metaTagService.updateTag({property: 'og:image', content: '/assets/mango-bg-.jpg'});
     this.metaTagService.updateTag({property: 'og:image:alt', content: this.title});
 
+    this.canonicalService.setCanonicalURL();
+
+
     this.authState.userAuthState.subscribe(val => {
       this.isSignedIn = val;
     });
 
-    if (this.isSignedIn){
+    if (this.isSignedIn) {
       this.authService.profileUser().subscribe(
         data => {
           this.UserProfile = data.detail;
@@ -69,7 +76,7 @@ export class PlayComponent implements OnInit {
         },
         err => {
           this.error = err.status;
-          this.authService.onLogout(event);
+          this.authService.onLogout();
         });
     }
 
@@ -80,7 +87,7 @@ export class PlayComponent implements OnInit {
   }
 
   open(): void {
-    this.modalRef = this.modalService.open(FelicitationsComponent, {centered: true, size: 'xl'} );
+    this.modalRef = this.modalService.open(FelicitationsComponent, {centered: true, size: 'xl'});
     this.modalRef.componentInstance.message = this.popUpMessage;
     this.modalRef.componentInstance.lotName = this.lotName;
     this.modalRef.componentInstance.lotId = this.lotId;
@@ -88,7 +95,7 @@ export class PlayComponent implements OnInit {
   }
 
   open2(): void {
-    this.modalRef = this.modalService.open(HowToPlayComponent, {centered: true} );
+    this.modalRef = this.modalService.open(HowToPlayComponent, {centered: true});
   }
 
   onSubmit(): void {

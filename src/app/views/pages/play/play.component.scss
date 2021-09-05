@@ -1,35 +1,19 @@
 app-play{
-    background: #d98300 !important;
-  }
+  background: #d98300 !important;
+}
 
 #play-page{
-    width: 100%;
-}
-
-.play-page .form-container {
-  margin: initial;
-}
-
-.form-container {
-    background: #fff;
-    min-height: 400px;
-    max-height: 500px;
-    margin: auto;
-    max-width: 450px;
+  width: 100%;
 }
 
 .play-btn{
-    background-color: chocolate;
+  background-color: chocolate;
 }
-
-
 
 #play-form{
-    max-width: 50% ;
-    padding: 3rem 8rem 0 8rem
+  max-width: 50% ;
+  padding: 3rem 8rem 0 8rem
 }
-
-
 
 
 // Small devices (landscape phones, 576px and up)
@@ -51,8 +35,48 @@ app-play{
 
 }
 
+@media (max-width: 1199.98px) {
+  .responsive-bg-img {
+    background-image: url('/assets/images/asian-tea.jpg');
+    background-position: center;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    padding: 3rem;
+    border: none;
+    border-radius: 0;
+    height: 250px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .form-container {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 3rem;
+    border-radius: 5rem 5rem 0 0;
+    border: 2px solid #eaeaea85;
+  }
+}
+
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
+
+  .auth-form-wrapper {
+    width: 75%;
+  }
+
+  .form-container {
+    background: #fff;
+    min-height: 400px;
+    max-height: 500px;
+    max-width: 500px;
+    margin: auto;
+    padding: 3rem;
+  }
+
 
 }
 

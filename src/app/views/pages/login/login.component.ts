@@ -7,6 +7,8 @@ import {AuthService} from '../../../core/authentification/auth.service';
 import {TokenService} from '../../../core/authentification/token.service';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
 import {Meta, Title} from '@angular/platform-browser';
+import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
+import {SocialRegisterComponent} from "../../components/social-register/social-register.component";
 
 @Component({
   selector: 'app-login',
@@ -16,14 +18,24 @@ import {Meta, Title} from '@angular/platform-browser';
 export class LoginComponent implements OnInit {
   // SEO variables
   title = 'Connexion - ThéTipTop';
+  description = 'Connectez-vous à votre compte ThéTipTop et jouez pour gagner des cadeaux à coup sûrs !';
 
   loginForm: FormGroup;
   success: any;
   errors: any;
   isFormSubmitted: boolean;
+
+  isLoggedin: any;
+
+  socilaLoginForm: FormGroup;
   socialUser: SocialUser;
-  isLoggedin: boolean;
-  description = 'Connectez-vous à votre compte ThéTipTop et jouez pour gagner des cadeaux à coup sûrs !';
+  socialResult: any;
+  socialError: any;
+
+  popUpMessage: any;
+  wantToRegisterWithGoogle: boolean;
+  wantToRegisterWithFacebook: boolean;
+  modalRef: any;
 
   constructor(
     private titleService: Title,
@@ -33,8 +45,12 @@ export class LoginComponent implements OnInit {
     public authService: AuthService,
     private token: TokenService,
     private authState: AuthStateService,
-    private socialAuthService: SocialAuthService
+    private socialAuthService: SocialAuthService,
+    config: NgbModalConfig,
+    private modalService: NgbModal
   ) {
+    config.backdrop = 'static';
+    config.keyboard = false;
   }
 
   get form(): any {
@@ -57,19 +73,6 @@ export class LoginComponent implements OnInit {
 
     this.isFormSubmitted = false;
 
-    this.socialAuthService.authState.subscribe(
-      (user) => {
-        this.socialUser = user;
-        /*this.loginForm.patchValue({
-          email: this.socialUser.name,
-          socialToken: this.socialUser.authToken,
-         });*/
-        this.isLoggedin = (user != null);
-        console.log(this.socialUser);
-        // this.authState.setAuthState(true);
-        this.token.handleData(this.socialUser.idToken);
-        // this.router.navigate(['/accueil']);
-      });
   }
 
   onSubmit(): void {
@@ -79,13 +82,13 @@ export class LoginComponent implements OnInit {
           this.success = result;
           this.token.handleData(result.access_token);
           this.authState.setAuthState(true);
+          this.router.navigate(['/play']);
         },
         error => {
           this.errors = error.error.error;
         },
         () => {
           this.loginForm.reset();
-          this.goToPlay();
         }
       );
     }
@@ -100,8 +103,75 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
-  goToPlay(): void {
-    this.router.navigate(['/play']);
+  RegisterWithGoogle() {
+
+    this.loginWithGoogle()
+
+    this.socialAuthService.authState.subscribe(
+      (user) => {
+        this.socialUser = user;
+        const formData = new FormData();
+        formData.append('name', this.socialUser.name);
+        formData.append('email', this.socialUser.email);
+        formData.append('id', this.socialUser.id);
+        formData.append('provider', this.socialUser.provider);
+
+        this.authService.socialAuthLogin(formData).subscribe(
+          (res) => {
+            this.socialResult = res;
+            this.authState.setAuthState(true);
+            this.token.handleData(this.socialResult.token);
+            this.router.navigate(['/accueil']);
+          },
+          (err) => {
+            this.socialResult = err;
+            this.wantToRegisterWithGoogle = true;
+            this.openSocialRegister()
+          }
+        );
+      },
+      (err)=> {
+        console.log(err)
+      });
+
+  }
+
+  RegisterWithFacebook() {
+
+    this.loginWithFaceBook();
+
+    this.socialAuthService.authState.subscribe(
+      (user) => {
+        this.socialUser = user;
+        const formData = new FormData();
+        formData.append('name', this.socialUser.name);
+        formData.append('email', this.socialUser.email);
+        formData.append('id', this.socialUser.id);
+        formData.append('provider', this.socialUser.provider);
+
+        this.authService.socialAuthLogin(formData).subscribe(
+          (res) => {
+            this.socialResult = res;
+            this.authState.setAuthState(true);
+            this.token.handleData(this.socialResult.token);
+            this.router.navigate(['/accueil']);
+          },
+          (err) => {
+            this.socialResult = err;
+            this.wantToRegisterWithFacebook = true;
+            this.openSocialRegister()
+          }
+        );
+      },
+      (err)=> {
+        console.log(err)
+      });
+  }
+
+  openSocialRegister() {
+    this.modalRef = this.modalService.open(SocialRegisterComponent, {centered: true, size: 'lg'});
+    this.modalRef.componentInstance.wantToRegisterWithFacebook = this.wantToRegisterWithFacebook;
+    this.modalRef.componentInstance.wantToRegisterWithGoogle = this.wantToRegisterWithGoogle;
   }
 
 }

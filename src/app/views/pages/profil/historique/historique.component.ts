@@ -7,6 +7,8 @@ import {ReclamerComponent} from '../../../components/reclamer/reclamer.component
 import {Subject} from 'rxjs';
 import {NotificationComponent} from '../../../components/notification/notification.component';
 import {Meta, Title} from '@angular/platform-browser';
+import {HowToPlayComponent} from "../../../components/how-to-play/how-to-play.component";
+import {NewsletterComponent} from "../../../components/newsletter/newsletter.component";
 
 @Component({
   selector: 'app-historique',
@@ -16,6 +18,7 @@ import {Meta, Title} from '@angular/platform-browser';
 
 export class HistoriqueComponent implements OnInit {
   title = 'Hisorique des gains - ThéTipTop';
+  description = 'Retouvez ici la liste des tickets que vous avez gagné';
 
   modalRef: any;
   dtOptions: DataTables.Settings = {};
@@ -27,8 +30,8 @@ export class HistoriqueComponent implements OnInit {
   historique: any;
   error: any;
   posts: any;
-  private popUpMessage: any;
-  description: string;
+
+  popUpMessage: any;
 
   constructor(
     private titleService: Title,
@@ -61,6 +64,10 @@ export class HistoriqueComponent implements OnInit {
   openNotification(): void {
     const modalRef = this.modalService.open(NotificationComponent, {centered: true});
     modalRef.componentInstance.message = this.popUpMessage;
+  }
+
+  openNewsletter(): void {
+    this.modalRef = this.modalService.open(NewsletterComponent, {centered: true});
   }
 
   ngOnInit(): void {
@@ -99,18 +106,14 @@ export class HistoriqueComponent implements OnInit {
       },
       err => {
         this.error = err;
-        // tslint:disable-next-line:no-conditional-assignment
-        if (this.error.status = 401) {
-          this.popUpMessage = 'Veuillez vous reconnecter.';
-          this.openNotification();
-        }
-        this.authService.onLogout(event);
+        this.popUpMessage = 'Veuillez vous reconnecter.';
+        this.openNotification();
+        this.authService.onLogout();
       });
 
     this.historiqueService.historique().subscribe(
       data => {
         this.historique = data.historical;
-        console.log(this.historique);
         this.dtTrigger.next();
       }
     );
@@ -120,6 +123,5 @@ export class HistoriqueComponent implements OnInit {
   // If User address = null ? Afficher text
   // "Veuillez ajouter votre addresse pouvoir réclamer. Nous avons besoin de votre addresse pour vous le faire parvenir
   // and afficher just below that "Ajouter votre adresse" button that redirectionner sur "Modifier Profil Component
-  //
   // add variale haveAddress: boolean
 }

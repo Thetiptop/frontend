@@ -18,7 +18,7 @@ export class MentionsLegalesComponent implements OnInit {
     // SEO
     this.titleService.setTitle(this.title);
     this.metaTagService.updateTag(
-      { name: 'description', content: 'Description' }
+      { name: 'description', content: 'Informations sur le traitement des données de l\'utilisateur' }
     );
   }
 
