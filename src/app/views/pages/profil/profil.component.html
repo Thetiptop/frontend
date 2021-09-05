@@ -1,28 +1,35 @@
-<div id="profile__page" class="row p-page" [@myAnimation]="o.isActivated ? o.activatedRoute : ''">
+<div id="profile__page" class="profile-page" [@myAnimation]="o.isActivated ? o.activatedRoute : ''">
 
-  <div class="d-flex flex-wrap mb-5">
-    <div>
-      <h1 class="text-uppercase page-title text-chocolate mb-0">{{title}}</h1>
+  <div class="responsive-bg-img">
+    <!---->
+  </div>
+
+  <div class="responsive-content w-100">
+    <div class="d-flex flex-column flex-xl-row flex-wrap mb-5">
+      <div>
+        <h1 class="text-uppercase page-title text-chocolate mb-0">{{title}}</h1>
+      </div>
+      <div class="d-flex ml-xl-4 align-content-center justify-content-center">
+        <hr class="page-title__ligne mr-auto m-xl-auto">
+      </div>
     </div>
-    <div class="d-flex ml-4 align-content-center justify-content-center">
-      <hr class="page-title__ligne m-auto">
+
+    <ul ngbNav [activeId]="activeUrl" class="nav-tabs">
+      <li [ngbNavItem]="link.fragment" *ngFor="let link of links" class="nav2__li py-2 py-xl-0">
+        <a class="btn btn-outline-primary border btn-block rounded px-2 px-xl-5 py-3"
+           ngbNavLink [routerLink]="link.fragment">
+          <i class="{{link.icon}} mr-2"></i>
+          {{ link.title }}
+        </a>
+      </li>
+    </ul>
+
+    <!-- outlet -->
+    <div class="col-12 p-0">
+      <router-outlet #o="outlet"></router-outlet>
     </div>
   </div>
 
-  <ul ngbNav [activeId]="activeUrl" class="nav-tabs">
-    <li [ngbNavItem]="link.fragment" *ngFor="let link of links" class="nav2__li py-2 py-xl-0">
-      <a class="btn btn-outline-primary border btn-block rounded px-2 px-xl-5 py-3"
-         ngbNavLink [routerLink]="link.fragment">
-        <i class="{{link.icon}} mr-2"></i>
-        {{ link.title }}
-      </a>
-    </li>
-  </ul>
-
-  <!-- outlet -->
-  <div class="col-12 p-0">
-    <router-outlet #o="outlet"></router-outlet>
-  </div>
 
 </div>
 
