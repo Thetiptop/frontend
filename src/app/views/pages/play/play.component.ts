@@ -8,6 +8,7 @@ import {PlayService} from '../../../core/play/play.service';
 import {AuthService} from '../../../core/authentification/auth.service';
 import {AuthStateService} from '../../../core/authentification/auth-state.service';
 import {HowToPlayComponent} from '../../components/how-to-play/how-to-play.component';
+import {CanonicalService} from "../../../core/shared/canonical.service";
 
 
 @Component({
@@ -40,6 +41,8 @@ export class PlayComponent implements OnInit {
               private authState: AuthStateService,
               private modalService: NgbModal,
               private playService: PlayService,
+              private canonicalService: CanonicalService,
+
   ) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -57,6 +60,9 @@ export class PlayComponent implements OnInit {
     this.metaTagService.updateTag({name: 'og:description', content: this.description});
     this.metaTagService.updateTag({property: 'og:image', content: '/assets/mango-bg-.jpg'});
     this.metaTagService.updateTag({property: 'og:image:alt', content: this.title});
+
+    this.canonicalService.setCanonicalURL();
+
 
     this.authState.userAuthState.subscribe(val => {
       this.isSignedIn = val;

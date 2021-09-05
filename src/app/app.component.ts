@@ -45,14 +45,24 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // SEO
     this.metaTagService.addTags([
-      {name: 'keywords', content: 'Jeu concours, jeu, thé, ThéTipTop'},
+      {
+        name: 'keywords', content: 'Jeu concours,' +
+          ' jeu, thé, ThéTipTop,recettes de thés détox, ' +
+          'thés détox bio, thés détox zelda, ' +
+          'thés détox intestin, thés blancs, ' +
+          'les meilleurs thés blancs, meilleurs thés blancs, sortes de thés blancs,' +
+          ' infusion,infusion thym, infusion gingembre, infusion de thym, infusion romarin,' +
+          ' infusion menthe, infusion queue de cerise, infusion gingembre citron, ' +
+          'infusion camomille, infusion sauge, infusion verveine, infusion hibiscus, ' +
+          'infusion tilleul, infusion elephant, infusion detox'
+      },
       {name: 'robots', content: 'index, follow'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
       {charset: 'UTF-8'},
       {name: 'description', content: this.description},
       {property: 'og:title', content: this.title},
       {name: 'og:description', content: this.description},
-      {property: 'og:image', content: '/assets/mango-bg-.jpg'},
+      {property: 'og:image', content: '/assets/mango-bg.jpg'},
       {property: 'og:image:alt', content: this.title}
     ]);
     this.canonicalService.setCanonicalURL();
