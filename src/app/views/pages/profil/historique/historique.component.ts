@@ -7,6 +7,8 @@ import {ReclamerComponent} from '../../../components/reclamer/reclamer.component
 import {Subject} from 'rxjs';
 import {NotificationComponent} from '../../../components/notification/notification.component';
 import {Meta, Title} from '@angular/platform-browser';
+import {HowToPlayComponent} from "../../../components/how-to-play/how-to-play.component";
+import {NewsletterComponent} from "../../../components/newsletter/newsletter.component";
 
 @Component({
   selector: 'app-historique',
@@ -64,6 +66,10 @@ export class HistoriqueComponent implements OnInit {
     modalRef.componentInstance.message = this.popUpMessage;
   }
 
+  openNewsletter(): void {
+    this.modalRef = this.modalService.open(NewsletterComponent, {centered: true});
+  }
+
   ngOnInit(): void {
     // SEO
     this.titleService.setTitle(this.title);
@@ -118,6 +124,5 @@ export class HistoriqueComponent implements OnInit {
   // If User address = null ? Afficher text
   // "Veuillez ajouter votre addresse pouvoir réclamer. Nous avons besoin de votre addresse pour vous le faire parvenir
   // and afficher just below that "Ajouter votre adresse" button that redirectionner sur "Modifier Profil Component
-  //
   // add variale haveAddress: boolean
 }

@@ -32,8 +32,8 @@ import {ErrorPageComponent} from './views/pages/error-page/error-page.component'
 import {HowToPlayComponent} from './views/components/how-to-play/how-to-play.component';
 import {ReclamerModule} from "./views/components/reclamer/reclamer.module";
 import {CommonModule} from "@angular/common";
-import { SocialRegisterComponent } from './views/components/social-register/social-register.component';
 import {SocialRegisterModule} from "./views/components/social-register/social-register.module";
+import {NewsletterModule} from "./views/components/newsletter/newsletter-module";
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -94,7 +94,8 @@ const cookieConfig: NgcCookieConsentConfig = {
     DataTablesModule,
     SocialLoginModule,
     ReclamerModule,
-    SocialRegisterModule
+    SocialRegisterModule,
+    NewsletterModule
   ],
   providers: [
     {

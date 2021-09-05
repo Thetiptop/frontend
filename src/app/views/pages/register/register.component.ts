@@ -152,7 +152,7 @@ export class RegisterComponent implements OnInit {
       );
     }
 
-    /* Mailchimp */
+    /** Mailchimp **/
     if (this.validationForm1.valid && this.validationForm3.value.newsletter === true) {
       this.errors = '';
       const params = new HttpParams()
