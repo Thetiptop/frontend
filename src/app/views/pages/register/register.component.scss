@@ -1,6 +1,10 @@
 // Extra small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 .bg-img-register {
+  background-image: url('/assets/images/tea-cup.jpg');
+  background-position: center;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
   padding: 3rem;
   border: none;
   border-radius: 0;
@@ -9,10 +13,6 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-position: center;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-image: url('/assets/images/tea-cup.jpg');
 }
 
 .form-container {
