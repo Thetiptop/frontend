@@ -117,6 +117,12 @@
 
 }
 
+@media (max-width: 1199.98px) {
+  .profile-menu-wrapper .wrapper {
+      margin-bottom: 5rem;
+    }
+}
+
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .uk-offcanvas {
