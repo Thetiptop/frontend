@@ -1,0 +1,17 @@
+<div class="modal-body card-body text-center py-5">
+    <div class="text-center">
+        <h2 class="text-chocolate text-center mb-4">Confirmation suppression compte</h2>
+        <p class="text-center">Vous êtes sûr de vouloir supprimer votre compte et toutes ses données ? <br/>Vous serez également désabonné de la newsletter.</p>
+      </div>
+
+      <div class="col text-center">
+        <button (click)="activeModal.close('Close click')" class="btn btn-white border border-lipton text-chocolate mx-1" type="button">Annuler
+        </button>
+        <button (click)="deleteAccount()" class="btn btn-lipton text-center mx-1">
+          Supprimer
+        </button>
+      </div>
+      
+ <div class="invalid-feedback text-center mt-3" [ngStyle]="{'display': errors ? 'block' : 'none'}">{{errors}}</div>
+
+</div>

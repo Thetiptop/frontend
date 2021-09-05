@@ -54,7 +54,6 @@ export class NewsletterComponent implements OnInit {
 
   onSubmit(): void {
     /** Mailchimp **/
-    console.log(this.newsletterForm);
     if (this.newsletterForm.valid) {
       this.error = '';
       const params = new HttpParams()

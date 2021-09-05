@@ -67,12 +67,10 @@ export class SocialRegisterComponent implements OnInit {
             this.authService.socialAuthRegister(this.formData).subscribe(
               (res) => {
                 this.socialResult = res;
-                console.log(res);
                 this.token.handleData(this.socialResult.token);
                 this.authState.setAuthState(true);
                 this.router.navigate(['/play']);
               }, (err) => {
-                console.log(err);
                 this.socialError = err;
               }
             );

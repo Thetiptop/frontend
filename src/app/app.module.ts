@@ -35,6 +35,8 @@ import {CommonModule} from "@angular/common";
 import {SocialRegisterModule} from "./views/components/social-register/social-register.module";
 import {NewsletterModule} from "./views/components/newsletter/newsletter-module";
 import { RulesComponent } from './views/pages/rules/rules.component';
+import { DeleteConfirmComponent } from './views/components/delete-confirm/delete-confirm.component';
+import { DeleteConfirmModule } from './views/components/delete-confirm/delete-confirm.module';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -97,7 +99,8 @@ const cookieConfig: NgcCookieConsentConfig = {
     SocialLoginModule,
     ReclamerModule,
     SocialRegisterModule,
-    NewsletterModule
+    NewsletterModule,
+    DeleteConfirmModule
   ],
   providers: [
     {

@@ -8,6 +8,7 @@ import { NotificationComponent } from '../../../components/notification/notifica
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import {Meta, Title} from '@angular/platform-browser';
 import {Router} from "@angular/router";
+import { DeleteConfirmComponent } from 'src/app/views/components/delete-confirm/delete-confirm.component';
 
 @Component({
   selector: 'app-modifier-informations',
@@ -27,6 +28,8 @@ export class ModifierInformationsComponent implements OnInit {
   error: any;
   protected  baseUrl: string = environment.apiURL;
   popUpMessage: string;
+  modalRef: any;
+  id_user: any;
 
   constructor(
     private titleService: Title,
@@ -47,6 +50,12 @@ export class ModifierInformationsComponent implements OnInit {
     modalRef.componentInstance.message = this.popUpMessage;
   }
 
+  open2(): void {
+    this.modalRef = this.modalService.open(DeleteConfirmComponent, {centered: true} );
+    this.modalRef.componentInstance.id_user = this.id_user;
+  }
+
+
   get form(): any {
     return this.modifierProfileForm.controls;
   }
@@ -65,6 +74,7 @@ export class ModifierInformationsComponent implements OnInit {
     if (this.isSignedIn){
       this.authService.profileUser().subscribe(
         data => {
+          this.id_user = data.detail.id;
           this.UserProfile = data.detail;
           this.modifierProfileForm.patchValue({
             name: this.UserProfile.name,
