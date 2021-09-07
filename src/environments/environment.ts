@@ -4,14 +4,15 @@
 
 export const environment = {
   production: false,
-  apiURL: 'http://127.0.0.1:8000/api',
-  loginApiURL : 'http://127.0.0.1:8000/api/login',
-  registerApiUrl: 'http://127.0.0.1:8000/api/register',
-  cookieDomain: 'http://127.0.0.1:8000',
-  googleIss: 'http://127.0.0.1:8000/api/login_with_socialite',
-  googleIss2: 'http://127.0.0.1:8000/api/register_with_socialite',
+  apiURL: 'https://prod-admin.dsp-archiwebo20-mt-ma-ca-fd.fr/api',
+  loginApiURL : 'https://prod-admin.dsp-archiwebo20-mt-ma-ca-fd.fr/api/login',
+  registerApiUrl: 'https://prod-admin.dsp-archiwebo20-mt-ma-ca-fd.fr/api/register',
+  cookieDomain: 'https://prod-admin.dsp-archiwebo20-mt-ma-ca-fd.fr',
+  socialLogin: 'https://prod-admin.dsp-archiwebo20-mt-ma-ca-fd.fr/api/login_with_socialite',
+  socialRegister: 'https://prod-admin.dsp-archiwebo20-mt-ma-ca-fd.fr/api/register_with_socialite',
   title: 'ThéTipTop',
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
