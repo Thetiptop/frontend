@@ -33,11 +33,11 @@ export class ResetPasswordComponent implements OnInit {
   ngOnInit(): void {
     // SEO
     this.titleService.setTitle(this.title);
-    this.metaTagService.updateTag({name: 'description', content: this.description});
     this.metaTagService.updateTag({property: 'og:title', content: this.title});
-    this.metaTagService.updateTag({name: 'og:description', content: this.description});
+    this.metaTagService.updateTag({property: 'og:description', content: this.description});
     this.metaTagService.updateTag({property: 'og:image', content: '/assets/images/mango-bg.jpg'});
     this.metaTagService.updateTag({property: 'og:image:alt', content: this.title});
+    this.metaTagService.updateTag({name: 'description', content: this.description});
 
     this.resetForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]),

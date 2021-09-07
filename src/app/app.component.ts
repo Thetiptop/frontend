@@ -33,8 +33,8 @@ import {CanonicalService} from "./core/shared/canonical.service";
   ])]
 })
 export class AppComponent implements OnInit, OnDestroy {
-  description: 'Vous aussi vous pouvez gagner ! Gagnez un infuseur à thé, un thé detox, un thé signature ou un coffret découverte! 1 500 000 tickets disponibles!';
   title: 'Jeu Concours - ThéTipTop';
+  description: 'Vous aussi vous pouvez gagner ! Gagnez un infuseur à thé, un thé detox, un thé signature ou un coffret découverte! 1 500 000 tickets disponibles!';
 
   constructor(private ccService: NgcCookieConsentService,
               private metaTagService: Meta,
@@ -58,14 +58,12 @@ export class AppComponent implements OnInit, OnDestroy {
       },
       {name: 'robots', content: 'index, follow'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-      {charset: 'UTF-8'},
-      {name: 'description', content: this.description},
-
-      {property: 'description', content: this.description},
       {property: 'og:title', content: this.title},
       {property: 'og:description', content: this.description},
       {property: 'og:image', content: '/assets/images/mango-bg.jpg'},
-      {property: 'og:image:alt', content: this.title}
+      {property: 'og:image:alt', content: this.title},
+     // {name: 'description', content: this.description},
+
     ]);
     this.canonicalService.setCanonicalURL();
 
