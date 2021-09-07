@@ -85,8 +85,8 @@ export class ReclamerComponent implements OnInit {
     this.reclamerForm = new FormGroup({
       name: new FormControl(null, Validators.required),
       telephone: new FormControl(null, [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]),
-      address: new FormControl(null, Validators.required),
-      complement_address: new FormControl(null),
+      address: new FormControl(null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9À-ÿ\s,]+(([',. -][a-zA-Z0-9À-ÿ\s,])?[a-zA-Z0-9À-ÿ\s,]*)*$/)]),
+      complement_address: new FormControl(null, Validators.pattern(/^[a-zA-Z0-9À-ÿ\s,]+(([',. -][a-zA-Z0-9À-ÿ\s,])?[a-zA-Z0-9À-ÿ\s,]*)*$/)),
       code_postal: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{5}$')]),
       ville: new FormControl(null, Validators.required),
     });

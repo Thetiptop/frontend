@@ -18,14 +18,17 @@
         <div *ngIf="errors?.email" class="alert alert-danger mt-3">
           {{ errors.email }}
         </div>
+        <div *ngIf="errors?.email === 'La valeur de ce champ est déjà utilisée.'" class="alert alert-danger mt-3">
+          L'email est déjà utilisée.
+        </div>
+        <div *ngIf="errors?.additional_address" class="alert alert-danger mt-3">
+          {{ errors?.additional_address }}
+        </div>
         <div *ngIf="errors?.password" class="alert alert-danger mt-3">
           {{ errors?.password }}
         </div>
         <div *ngIf="errors?.password_confirmation" class="alert alert-danger mt-3">
           {{ errors?.password_confirmation }}
-        </div>
-        <div *ngIf="errors" class="alert alert-danger mt-3">
-          {{ errors }}
         </div>
       </div>
 
@@ -213,7 +216,7 @@
                      class="form-check-input"
                      formControlName="cgu"
                      id="cgu">
-              <label class="form-check-label" for="cgu">J'accepte les <a class="text-underline" target="_blank" routerLink="/about/cgu">conditions dénérales d'utilisations</a></label>
+              <label class="form-check-label" for="cgu">J'accepte les <a class="text-underline" target="_blank" routerLink="/about/cgu">conditions générales d'utilisations</a></label>
               <div *ngIf="isForm3Submitted && form3.cgu.errors?.required"
                    class="invalid-feedback">
                 Requis

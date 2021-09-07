@@ -98,7 +98,7 @@ export class RegisterComponent implements OnInit {
     /** form2 value validation */
     this.validationForm2 = this.formBuilder.group({
       address: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9À-ÿ\s,]+(([',. -][a-zA-Z0-9À-ÿ\s,])?[a-zA-Z0-9À-ÿ\s,]*)*$/)]],
-      additional_address: ['', [Validators.pattern(/^[a-zA-Z0-9À-ÿ\s,]+(([',. -][a-zA-Z0-9À-ÿ\s,])?[a-zA-Z0-9À-ÿ\s,]*)*$/)]],
+      additional_address: ['', Validators.pattern(/^[a-zA-Z0-9À-ÿ\s,]+(([',. -][a-zA-Z0-9À-ÿ\s,])?[a-zA-Z0-9À-ÿ\s,]*)*$/)],
       postal_code: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
       ville: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ]+(([',. -][a-zA-ZÀ-ÿ])?[a-zA-ZÀ-ÿ]*)*$/)]]
     });
@@ -137,6 +137,7 @@ export class RegisterComponent implements OnInit {
 
   /** Go to register while form 3 value is valid */
   form3Submit(): void {
+    console.log(this.validationForm3);
     if (this.validationForm3.valid) {
       this.authService.register(this.getData()).subscribe(
         result => {
@@ -145,7 +146,8 @@ export class RegisterComponent implements OnInit {
           this.wizardForm.goToNextStep();
         },
         error => {
-          this.errors = error.error.error;
+          console.log(error);
+          this.errors = error.error;
         }
       );
     }
