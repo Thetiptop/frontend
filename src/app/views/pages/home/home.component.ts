@@ -16,7 +16,7 @@ import { PLATFORM_ID } from "@angular/core";
 
 export class HomeComponent implements OnInit {
   // SEO variables
-  title = 'Jeu Concours - ThéTipTop';
+  title = 'Jeu Concours - ThéTipTop - Accueil';
   description = 'Un jeu de concours auquel tout le monde est gagnant ! 1 500 000 cadeaux vous attends: des infuseurs à thé, thé détox ou infusion, thé signature, ou des coffrets découverte.';
   
   modalRef: any;
@@ -42,11 +42,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // SEO
     this.titleService.setTitle(this.title);
-    this.metaTagService.updateTag({name: 'description', content: this.description});
+    this.metaTagService.updateTag({property: 'og:description', content: this.description});
     this.metaTagService.updateTag({property: 'og:title', content: this.title});
-    this.metaTagService.updateTag({name: 'og:description', content: this.description});
-    this.metaTagService.updateTag({property: 'og:image', content: '/assets/mango-bg-.jpg'});
-    this.metaTagService.updateTag({property: 'og:image:alt', content: this.title});
+    this.metaTagService.updateTag({name: 'description', content: this.description});
 
     // User authentification state
     this.authState.userAuthState.subscribe(val => {

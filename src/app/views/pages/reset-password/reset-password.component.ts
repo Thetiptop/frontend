@@ -16,7 +16,7 @@ export class ResetPasswordComponent implements OnInit {
   display = true;
   isFormSubmitted: boolean;
   title = 'Mise à jour mot de passe - ThéTipTop';
-  description = 'Vous avez oublier votre mot de passe ? Rien n\'est pas perdu ! Reinitialisez-le en cliquant sur le lien';
+  description = 'Vous avez oublié votre mot de passe ? Reinitialisez-le en cliquant sur le lien';
 
   constructor(
     public formBuilder: FormBuilder,
@@ -33,11 +33,9 @@ export class ResetPasswordComponent implements OnInit {
   ngOnInit(): void {
     // SEO
     this.titleService.setTitle(this.title);
-    this.metaTagService.updateTag({name: 'description', content: this.description});
     this.metaTagService.updateTag({property: 'og:title', content: this.title});
-    this.metaTagService.updateTag({name: 'og:description', content: this.description});
-    this.metaTagService.updateTag({property: 'og:image', content: '/assets/mango-bg-.jpg'});
-    this.metaTagService.updateTag({property: 'og:image:alt', content: this.title});
+    this.metaTagService.updateTag({property: 'og:description', content: this.description});
+    this.metaTagService.updateTag({name: 'description', content: this.description});
 
     this.resetForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]),

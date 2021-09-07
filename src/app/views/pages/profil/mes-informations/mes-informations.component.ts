@@ -11,7 +11,7 @@ import {Meta, Title} from '@angular/platform-browser';
 export class MesInformationsComponent implements OnInit {
   // SEO variables
   title = 'Mes informations - ThéTipTop';
-
+  description = 'Retrouvez ici vos coordonées';
   isSignedIn: any;
   UserProfile: any;
   error: any;
@@ -26,9 +26,10 @@ export class MesInformationsComponent implements OnInit {
   ngOnInit(): void {
     // SEO
     this.titleService.setTitle(this.title);
-    this.metaTagService.updateTag(
-      {name: 'description', content: 'Retrouvez ici vos coordonées'}
-    );
+    this.metaTagService.updateTag({property: 'og:title', content: this.title});
+    this.metaTagService.updateTag({property: 'og:description', content: this.description});
+    this.metaTagService.updateTag({name: 'description', content: this.description});
+    
 
     this.authState.userAuthState.subscribe(val => {
       this.isSignedIn = val;

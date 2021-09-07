@@ -33,8 +33,6 @@ import {CanonicalService} from "./core/shared/canonical.service";
   ])]
 })
 export class AppComponent implements OnInit, OnDestroy {
-  description: 'Tentez vos chances et gagnez un infuseur à thé, un thé detox, un thé signature ou un coffret découverte! 1 500 000 tickets disponibles!';
-  title: 'Jeu Concours - ThéTipTop';
 
   constructor(private ccService: NgcCookieConsentService,
               private metaTagService: Meta,
@@ -47,23 +45,20 @@ export class AppComponent implements OnInit, OnDestroy {
     this.metaTagService.addTags([
       {
         name: 'keywords', content: 'Jeu concours,' +
-          ' jeu, thé, ThéTipTop,recettes de thés détox, ' +
+          ' jeu, thé, ThéTipTop,recettes de thés détox,' +
           'thés détox bio, thés détox zelda, ' +
           'thés détox intestin, thés blancs, ' +
           'les meilleurs thés blancs, meilleurs thés blancs, sortes de thés blancs,' +
           ' infusion,infusion thym, infusion gingembre, infusion de thym, infusion romarin,' +
-          ' infusion menthe, infusion queue de cerise, infusion gingembre citron, ' +
-          'infusion camomille, infusion sauge, infusion verveine, infusion hibiscus, ' +
+          ' infusion menthe, infusion queue de cerise, infusion gingembre citron,' +
+          'infusion camomille, infusion sauge, infusion verveine, infusion hibiscus,' +
           'infusion tilleul, infusion elephant, infusion detox'
       },
       {name: 'robots', content: 'index, follow'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-      {charset: 'UTF-8'},
-      {name: 'description', content: this.description},
-      {property: 'og:title', content: this.title},
-      {name: 'og:description', content: this.description},
-      {property: 'og:image', content: '/assets/mango-bg.jpg'},
-      {property: 'og:image:alt', content: this.title}
+      {property: 'og:image', content: '/assets/images/mango-bg.jpg'},
+      {property: 'og:image:alt', content: 'Deux verres de thé'},
+      {charset: 'UTF-8'}
     ]);
     this.canonicalService.setCanonicalURL();
 

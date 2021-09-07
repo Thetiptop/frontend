@@ -60,11 +60,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     // SEO
     this.titleService.setTitle(this.title);
-    this.metaTagService.updateTag({name: 'description', content: this.description});
+    this.metaTagService.updateTag({property: 'og:description', content: this.description});
     this.metaTagService.updateTag({property: 'og:title', content: this.title});
-    this.metaTagService.updateTag({name: 'og:description', content: this.description});
-    this.metaTagService.updateTag({property: 'og:image', content: '/assets/mango-bg-.jpg'});
-    this.metaTagService.updateTag({property: 'og:image:alt', content: this.title});
+    this.metaTagService.updateTag({name: 'description', content: this.description});
 
     this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]),
@@ -80,15 +78,13 @@ export class LoginComponent implements OnInit {
       this.authService.signin(this.loginForm.value).subscribe(
         result => {
           this.success = result;
+          this.loginForm.reset();
           this.token.handleData(result.access_token);
           this.authState.setAuthState(true);
-          this.router.navigate(['/play']);
+          window.location.assign('/play');
         },
         error => {
           this.errors = error.error.error;
-        },
-        () => {
-          this.loginForm.reset();
         }
       );
     }

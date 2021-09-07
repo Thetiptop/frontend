@@ -87,7 +87,6 @@ export class AuthService {
     }
 
     window.location.reload();
-   // this.router.navigate(['/']);
     localStorage.removeItem('access_token');
   }
 

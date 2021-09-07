@@ -10,6 +10,7 @@
   <url>
     <loc>https://dsp-archiwebo20-mt-ma-ca-fd.fr/</loc>
     <lastmod>2021-09-05T20:29:49+00:00</lastmod>
+    <priority>1.00</priority>
   </url>
   <url>
     <loc>https://dsp-archiwebo20-mt-ma-ca-fd.fr/</loc>
@@ -31,12 +32,14 @@
   </url>
   <url>
     <loc>https://dsp-archiwebo20-mt-ma-ca-fd.fr/about/cgu</loc>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://dsp-archiwebo20-mt-ma-ca-fd.fr/about/mentions-legales</loc>
   </url>
   <url>
     <loc>https://dsp-archiwebo20-mt-ma-ca-fd.fr/rules</loc>
+    <priority>0.90</priority>
   </url>
   <url>
     <loc>https://dsp-archiwebo20-mt-ma-ca-fd.fr/reset-password</loc>
@@ -56,6 +59,5 @@
   <url>
     <loc>https://dsp-archiwebo20-mt-ma-ca-fd.fr/mentions-legales</loc>
   </url>
-
 
 </urlset>
