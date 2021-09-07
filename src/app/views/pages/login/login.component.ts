@@ -117,7 +117,7 @@ export class LoginComponent implements OnInit {
             this.socialResult = res;
             this.authState.setAuthState(true);
             this.token.handleData(this.socialResult.token);
-            this.router.navigate(['/accueil']);
+            window.location.assign('/play');
           },
           (err) => {
             this.socialResult = err;
@@ -150,7 +150,7 @@ export class LoginComponent implements OnInit {
             this.socialResult = res;
             this.authState.setAuthState(true);
             this.token.handleData(this.socialResult.token);
-            this.router.navigate(['/accueil']);
+            window.location.assign('/play');
           },
           (err) => {
             this.socialResult = err;
