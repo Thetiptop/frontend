@@ -97,8 +97,8 @@ export class RegisterComponent implements OnInit {
 
     /** form2 value validation */
     this.validationForm2 = this.formBuilder.group({
-      address: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9À-ÿ]+(([',. -][a-zA-Z0-9À-ÿ])?[a-zA-Z0-9À-ÿ]*)*$/)]],
-      additional_address: ['', [Validators.pattern(/^[a-zA-Z0-9À-ÿ]+(([',. -][a-zA-Z0-9À-ÿ])?[a-zA-Z0-9À-ÿ]*)*$/)]],
+      address: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9À-ÿ\s,]+(([',. -][a-zA-Z0-9À-ÿ\s,])?[a-zA-Z0-9À-ÿ\s,]*)*$/)]],
+      additional_address: ['', [Validators.pattern(/^[a-zA-Z0-9À-ÿ\s,]+(([',. -][a-zA-Z0-9À-ÿ\s,])?[a-zA-Z0-9À-ÿ\s,]*)*$/)]],
       postal_code: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
       ville: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ]+(([',. -][a-zA-ZÀ-ÿ])?[a-zA-ZÀ-ÿ]*)*$/)]]
     });

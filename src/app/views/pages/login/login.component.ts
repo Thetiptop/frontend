@@ -78,8 +78,9 @@ export class LoginComponent implements OnInit {
       this.authService.signin(this.loginForm.value).subscribe(
         result => {
           this.success = result;
-          this.loginForm.reset();
           this.token.handleData(result.access_token);
+          this.loginForm.reset();
+
           this.authState.setAuthState(true);
           window.location.assign('/play');
         },
