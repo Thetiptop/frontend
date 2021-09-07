@@ -33,8 +33,6 @@ import {CanonicalService} from "./core/shared/canonical.service";
   ])]
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title: 'Jeu Concours - ThéTipTop';
-  description: 'Vous aussi vous pouvez gagner ! Gagnez un infuseur à thé, un thé detox, un thé signature ou un coffret découverte! 1 500 000 tickets disponibles!';
 
   constructor(private ccService: NgcCookieConsentService,
               private metaTagService: Meta,
@@ -58,9 +56,9 @@ export class AppComponent implements OnInit, OnDestroy {
       },
       {name: 'robots', content: 'index, follow'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-      { charset: 'UTF-8' }
-
-
+      {property: 'og:image', content: '/assets/images/mango-bg.jpg'},
+      {property: 'og:image:alt', content: 'Deux verres de thé'},
+      {charset: 'UTF-8'}
     ]);
     this.canonicalService.setCanonicalURL();
 
