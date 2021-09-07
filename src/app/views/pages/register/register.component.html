@@ -13,22 +13,19 @@
       <div *ngIf="display">
         <!-- Errors -->
         <div *ngIf="errors?.name" class="alert alert-danger mt-3">
-          {{ errors?.name }}
+         Nom et Prénom : {{ errors?.name }}
         </div>
         <div *ngIf="errors?.email" class="alert alert-danger mt-3">
-          {{ errors.email }}
-        </div>
-        <div *ngIf="errors?.email === 'La valeur de ce champ est déjà utilisée.'" class="alert alert-danger mt-3">
-          L'email est déjà utilisé.
+          Email : {{ errors.email }}
         </div>
         <div *ngIf="errors?.additional_address" class="alert alert-danger mt-3">
-          {{ errors?.additional_address }}
+          Complément d'adresse :  {{ errors?.additional_address }}
         </div>
         <div *ngIf="errors?.password" class="alert alert-danger mt-3">
-          {{ errors?.password }}
+          Mot de passe :{{ errors?.password }}
         </div>
         <div *ngIf="errors?.password_confirmation" class="alert alert-danger mt-3">
-          {{ errors?.password_confirmation }}
+         Confirmation du mot de passe : {{ errors?.password_confirmation }}
         </div>
       </div>
 
