@@ -16,7 +16,7 @@ import { PLATFORM_ID } from "@angular/core";
 
 export class HomeComponent implements OnInit {
   // SEO variables
-  title = 'Jeu Concours - ThéTipTop';
+  title = 'Jeu Concours - ThéTipTop - Accueil';
   description = 'Un jeu de concours auquel tout le monde est gagnant ! 1 500 000 cadeaux vous attends: des infuseurs à thé, thé détox ou infusion, thé signature, ou des coffrets découverte.';
   
   modalRef: any;
