@@ -87,7 +87,7 @@ export class RegisterComponent implements OnInit {
     this.metaTagService.updateTag({name: 'description', content: this.description});
     this.metaTagService.updateTag({property: 'og:title', content: this.title});
     this.metaTagService.updateTag({name: 'og:description', content: this.description});
-    this.metaTagService.updateTag({property: 'og:image', content: '/assets/mango-bg-.jpg'});
+    this.metaTagService.updateTag({property: 'og:image', content: '/assets/mango-bg.jpg'});
     this.metaTagService.updateTag({property: 'og:image:alt', content: this.title});
 
     /** form1 value validation */
