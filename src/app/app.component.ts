@@ -62,7 +62,7 @@ export class AppComponent implements OnInit, OnDestroy {
       {name: 'description', content: this.description},
       {property: 'og:title', content: this.title},
       {property: 'og:description', content: this.description},
-      {property: 'og:image', content: '/assets/mango-bg.jpg'},
+      {property: 'og:image', content: '/assets/images/mango-bg.jpg'},
       {property: 'og:image:alt', content: this.title}
     ]);
     this.canonicalService.setCanonicalURL();
