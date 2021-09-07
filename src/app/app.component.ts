@@ -33,6 +33,7 @@ import {CanonicalService} from "./core/shared/canonical.service";
   ])]
 })
 export class AppComponent implements OnInit, OnDestroy {
+  title = 'ThéTipTop;'
 
   constructor(private ccService: NgcCookieConsentService,
               private metaTagService: Meta,
