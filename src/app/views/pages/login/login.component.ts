@@ -17,6 +17,7 @@ import {SocialRegisterComponent} from "../../components/social-register/social-r
 })
 export class LoginComponent implements OnInit {
   // SEO variables
+  title = 'Connexion - ThéTipTop';
 
   loginForm: FormGroup;
   success: any;
@@ -57,10 +58,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     // SEO
-    this.titleService.setTitle('Connexion - ThéTipTop');
     this.metaTagService.updateTag({name: 'description', content: 'Connectez-vous à votre compte ThéTipTop et jouez pour gagner des cadeaux à coup sûrs !'});
     this.metaTagService.updateTag({property: 'og:description', content: 'Connectez-vous à votre compte ThéTipTop et jouez pour gagner des cadeaux à coup sûrs !'});
-    this.metaTagService.updateTag({property: 'og:title', content: 'Connexion - ThéTipTop'});
+    this.metaTagService.updateTag({property: 'og:title', content: this.title});
+
     this.metaTagService.updateTag({property: 'og:image', content: '/assets/images/tea-cups.jpg'});
     this.metaTagService.updateTag({property: 'og:image:alt', content: 'Connexion - ThéTipTop'});
 
