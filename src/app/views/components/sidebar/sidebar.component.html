@@ -9,72 +9,73 @@
 
     <ul class="list-unstyled components">
       <li>
-        <a uk-toggle="target: #sidebar"
-           routerLink="/accueil"
-           routerLinkActive="active">
+        <a routerLink="/accueil"
+           routerLinkActive="active"
+           uk-toggle="target: #sidebar">
           Accueil
         </a>
       </li>
       <li>
-        <a uk-toggle="target: #sidebar"
-           [className]="isSignedIn ? '' : 'text-muted'"
+        <a [className]="isSignedIn ? '' : 'text-muted'"
            [ngbPopover]="isSignedIn ? '' : 'Veuillez vous identifier'"
            placement="right"
            routerLink="/play"
-           routerLinkActive="active">
+           routerLinkActive="active"
+           uk-toggle="target: #sidebar">
           Jouer
         </a>
       </li>
       <li>
-        <a uk-toggle="target: #sidebar"
-           [className]="isSignedIn ? '' : 'text-muted'"
+        <a [className]="isSignedIn ? '' : 'text-muted'"
            [ngbPopover]="isSignedIn ? '' : 'Veuillez vous identifier'"
            placement="right"
            routerLink='/profil'
-           routerLinkActive="active">
+           routerLinkActive="active"
+           uk-toggle="target: #sidebar">
           Profil
         </a>
       </li>
       <li>
-        <a uk-toggle="target: #sidebar"
-           class="/profile"
+        <a class="/profile"
            routerLink="/about"
-           routerLinkActive="active">
+           routerLinkActive="active"
+           uk-toggle="target: #sidebar">
           A Propos
         </a>
       </li>
       <li>
         <a class="/profile"
-        routerLink="/rules"
-        routerLinkActive="active">
-        Règlement de jeu
-      </a>
+           routerLink="/rules"
+           routerLinkActive="active"
+           uk-toggle="target: #sidebar">
+          Règlement de jeu
+        </a>
       </li>
     </ul>
 
     <div class="profile-menu-wrapper">
       <div class="wrapper">
 
-        <a uk-toggle="target: #sidebar"
-           *ngIf="!isSignedIn"
+        <a *ngIf="!isSignedIn"
            class="btn btn-block btn-primary rounded mb-2"
-           routerLink="/register">
+           routerLink="/register"
+           uk-toggle="target: #sidebar">
           S'inscrire
           <i class="fas fa-user-plus ml-2"></i>
         </a>
 
-        <a uk-toggle="target: #sidebar"
-           *ngIf="!isSignedIn"
+        <a *ngIf="!isSignedIn"
            class="btn btn-block rounded btn-primary"
-           routerLink="/login">
+           routerLink="/login"
+           uk-toggle="target: #sidebar">
           S'identifier
           <i class="fas fa-sign-in-alt ml-2"></i>
         </a>
 
-        <a uk-toggle="target: #sidebar"
-           (click)="onLogout()"
+        <a (click)="onLogout()"
            *ngIf="isSignedIn"
-           class="btn btn-block rounded btn-primary">
+           class="btn btn-block rounded btn-primary"
+           uk-toggle="target: #sidebar">
           Se déconnecter
           <i class="fas fa-power-off ml-2"></i>
         </a>

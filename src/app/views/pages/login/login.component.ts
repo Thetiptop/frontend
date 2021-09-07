@@ -78,15 +78,13 @@ export class LoginComponent implements OnInit {
       this.authService.signin(this.loginForm.value).subscribe(
         result => {
           this.success = result;
+          this.loginForm.reset();
           this.token.handleData(result.access_token);
           this.authState.setAuthState(true);
-          this.router.navigate(['/play']);
+          window.location.assign('/play');
         },
         error => {
           this.errors = error.error.error;
-        },
-        () => {
-          this.loginForm.reset();
         }
       );
     }
