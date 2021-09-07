@@ -2,8 +2,7 @@
   background-position-x: right !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
-  background: linear-gradient(90deg, rgba(255,255,255,0.88) 38%, rgba(0,0,0,0.2) 70%),
-  url('/assets/images/mango-bg.jpg');
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.85) 30%, rgba(0, 0, 0, 0.2) 70%), url('/assets/images/mango-bg.jpg');
   min-height: calc(100vh);
   z-index: 1;
   position: relative;
@@ -18,13 +17,13 @@
   width: 100%;
 }
 
-.title{
+.title {
   color: #683C11;
   margin-top: 15px;
   line-height: 1;
 }
 
-.btn-block{
+.btn-block {
   display: block;
   width: 200px;
 }
@@ -40,7 +39,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 100% ;
+  border-radius: 100%;
 }
 
 @media (max-width: 1199.98px) {
@@ -63,7 +62,7 @@
     height: 65px;
   }
 
-  .responsive-content  {
+  .responsive-content {
     position: relative;
     z-index: 2;
     margin: 0;
