@@ -17,9 +17,6 @@ export class RulesComponent implements OnInit {
   ngOnInit(): void {
     // SEO
     this.titleService.setTitle(this.title);
-    this.metaTagService.updateTag(
-      { name: 'description', content: 'Description' }
-    );
   }
 
 }
