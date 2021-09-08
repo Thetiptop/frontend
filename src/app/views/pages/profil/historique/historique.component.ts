@@ -64,7 +64,7 @@ export class HistoriqueComponent implements OnInit {
     else {
       const modalRef = this.modalService.open(NotificationComponent, {centered: true, size: 'lg'});
       this.popUpMessage =
-        "<p>Veuillez renseignez votre addresse complète et votre numero de téléphone avant de pouvoir réclamer votre gain.</p>" +
+        "<p>Veuillez renseignez votre adresse complète et votre numero de téléphone avant de pouvoir réclamer votre gain.</p>" +
         "<p><u><a href='/profil/modifier-informations'>Modifier mes informations</a></u></p>";
       modalRef.componentInstance.message = this.popUpMessage;
     }
@@ -130,7 +130,7 @@ export class HistoriqueComponent implements OnInit {
 
 
   // If User address = null ? Afficher text
-  // "Veuillez ajouter votre addresse pouvoir réclamer. Nous avons besoin de votre addresse pour vous le faire parvenir
+  // "Veuillez ajouter votre adresse pouvoir réclamer. Nous avons besoin de votre adresse pour vous le faire parvenir
   // and afficher just below that "Ajouter votre adresse" button that redirectionner sur "Modifier Profil Component
   // add variale haveAddress: boolean
 }

@@ -101,8 +101,8 @@ export class ReclamerComponent implements OnInit {
         this.formData.append('history_id', this.lotId);
         this.formData.append('phone', this.reclamerForm.value.telephone);
         this.formData.append('lieu_livraison',
-            'Addresse = ' + this.reclamerForm.value.address + '?' +
-            'Complément addresse = ' + this.reclamerForm.value.complement_address + '?' +
+            'Adresse = ' + this.reclamerForm.value.address + '?' +
+            'Complément adresse = ' + this.reclamerForm.value.complement_address + '?' +
             'Code postal = ' + this.reclamerForm.value.postal_code + '?' +
             'Ville =' + this.reclamerForm.value.ville
         );
@@ -113,8 +113,8 @@ export class ReclamerComponent implements OnInit {
       this.formData.append('history_id', this.lotId);
       this.formData.append('phone', this.phone);
       this.formData.append('lieu_livraison',
-        'Addresse = ' + this.address + '?' +
-        'Complément addresse = ' + this.additionalAddress + '?' +
+        'Adresse = ' + this.address + '?' +
+        'Complément adresse = ' + this.additionalAddress + '?' +
         'Code postal = ' + this.postalCode + '?' +
         'Ville = ' + this.ville
       );

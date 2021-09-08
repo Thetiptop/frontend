@@ -7,7 +7,7 @@
 
 <form [formGroup]="reclamerForm" (ngSubmit)="onSubmit()">
   <div class="modal-body">
-    <p>Votre Lot "{{lotName}}" sera livré cette addresse suivante :</p>
+    <p>Votre Lot "{{lotName}}" sera livré cette adresse suivante :</p>
 
     <div *ngIf="!wantToChangeAddress" class="text-bold">
       <!--User Address-->
@@ -67,10 +67,10 @@
       </div>
 
       <div class="form-group">
-        <label>Complément d'addresse</label>
+        <label>Complément d'adresse</label>
         <input class="form-control"
                formControlName="complement_address"
-               placeholder="Complément d'addresse"
+               placeholder="Complément d'adresse"
                type="text">
         <div *ngIf="isFormSubmitted && form.complement_address.errors?.required"
              [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
@@ -110,7 +110,7 @@
     </div>
 
     <a (click)=toggleDisplay() class="text-underline text-muted d-block my-3">
-      <span *ngIf="!showForm">Envoyer à une autre addresse</span>
+      <span *ngIf="!showForm">Envoyer à une autre adresse</span>
       <span *ngIf="showForm">Annuler la modification</span>
     </a>
 
