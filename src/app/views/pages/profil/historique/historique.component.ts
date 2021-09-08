@@ -108,6 +108,7 @@ export class HistoriqueComponent implements OnInit {
 
     this.authService.profileUser().subscribe(
       data => {
+        console.log(data);
         this.UserProfile = data.detail;
         this.UserAddress = this.UserProfile.address;
       },

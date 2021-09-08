@@ -1,9 +1,9 @@
-import {Injectable, OnInit} from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
-import { Router } from '@angular/router';
-import { AuthStateService } from './auth-state.service';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
+import {Router} from '@angular/router';
+import {AuthStateService} from './auth-state.service';
 import {SocialAuthService, SocialUser} from "angularx-social-login";
 
 // Interface
@@ -45,17 +45,17 @@ export class AuthService {
   error: any;
   user: SocialUser;
   loggedInWithSocial: boolean;
+  protected baseUrl: string = environment.apiURL;
+  protected loginBaseUrl: string = environment.loginApiURL;
+  protected registerApiUrl: string = environment.registerApiUrl;
 
   constructor(
     private http: HttpClient,
     private authstate: AuthStateService,
     private router: Router,
     private authService: SocialAuthService
-  ) { }
-
-  protected  baseUrl: string = environment.apiURL;
-  protected  loginBaseUrl: string = environment.loginApiURL;
-  protected  registerApiUrl: string = environment.registerApiUrl;
+  ) {
+  }
 
   register(user: User): Observable<any> {
     return this.http.post(this.registerApiUrl, user);
@@ -81,7 +81,7 @@ export class AuthService {
       this.loggedInWithSocial = (user != null);
     });
 
-    if(this.user !== null) {
+    if (this.user !== null) {
       this.authService.signOut(true);
       sessionStorage.clear();
     }

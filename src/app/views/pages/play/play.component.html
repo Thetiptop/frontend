@@ -13,7 +13,7 @@
         {{ errors }}
       </div>
 
-      <form [formGroup]="playForm" (click)="onSubmit()" class="forms-sample">
+      <form (ngSubmit)="onSubmit()" [formGroup]="playForm">
         <div class="form-group">
           <label for="numberTicket">Numéro de ticket</label>
           <input class="form-control"
@@ -23,8 +23,8 @@
                  type="text">
 
           <div *ngIf="isFormSubmitted && form.numberTicket.errors"
-               class="invalid-feedback"
-               [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}">
+               [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
+               class="invalid-feedback">
             <span *ngIf="form.numberTicket.status">Champs invalide</span>
             <span *ngIf="form.numberTicket.errors?.required"> | Requis</span>
           </div>
@@ -32,10 +32,13 @@
         </div>
         <button class="btn btn-lipton btn-block btn-lg" type="submit">Valider</button>
       </form>
+
       <div class="d-flex flex-column flex-xl-row justify-content-xl-between mt-3">
         <p class="mb-0"><a (click)="open2()" class="text-chocolate text-underline text-b-600">Comment jouer ?</a></p>
-        <p class=""><a routerLink="/profil/historique" class="text-chocolate text-underline text-b-600">Mes gains</a></p>
+        <p class=""><a class="text-chocolate text-underline text-b-600" routerLink="/profil/historique">Mes gains</a>
+        </p>
       </div>
+
     </div>
   </div>
 

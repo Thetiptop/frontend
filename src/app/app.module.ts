@@ -8,7 +8,12 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {NgcCookieConsentConfig, NgcCookieConsentModule} from 'ngx-cookieconsent';
 import {DataTablesModule} from 'angular-datatables';
-import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthServiceConfig,
+  SocialLoginModule
+} from 'angularx-social-login';
 import {ArchwizardModule} from 'angular-archwizard';
 import {NgParticlesModule} from 'ng-particles';
 
@@ -34,9 +39,8 @@ import {ReclamerModule} from "./views/components/reclamer/reclamer.module";
 import {CommonModule} from "@angular/common";
 import {SocialRegisterModule} from "./views/components/social-register/social-register.module";
 import {NewsletterModule} from "./views/components/newsletter/newsletter-module";
-import { RulesComponent } from './views/pages/rules/rules.component';
-import { DeleteConfirmComponent } from './views/components/delete-confirm/delete-confirm.component';
-import { DeleteConfirmModule } from './views/components/delete-confirm/delete-confirm.module';
+import {RulesComponent} from './views/pages/rules/rules.component';
+import {DeleteConfirmModule} from './views/components/delete-confirm/delete-confirm.module';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -82,7 +86,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     RulesComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
     NgcCookieConsentModule.forRoot(cookieConfig),
     CommonModule,
     FormsModule,

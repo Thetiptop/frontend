@@ -1,17 +1,18 @@
-import { Injectable } from '@angular/core';
-import {Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree} from '@angular/router';
-import { TokenService } from './token.service';
-import { AuthStateService } from './auth-state.service';
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
+import {TokenService} from './token.service';
+import {AuthStateService} from './auth-state.service';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class AuthGuard implements CanActivate {
   constructor(
     private token: TokenService,
     private router: Router,
     private authenticationService: AuthStateService
-  ) {}
+  ) {
+  }
 
   canActivate(route: ActivatedRouteSnapshot,
               state: RouterStateSnapshot):

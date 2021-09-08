@@ -94,6 +94,10 @@ table.dataTable {
   text-align: center;
 }
 
+.dataTables_empty {
+  color: #dc3545 !important;
+}
+
 .table {
   th,
   td {
