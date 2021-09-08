@@ -94,6 +94,7 @@ export class HistoriqueComponent implements OnInit {
         processing: 'Chargement...',
         lengthMenu: 'Afficher _MENU_ éléments',
         info: 'Affichage de _START_ à _END_ de _TOTAL_ éléments',
+        infoEmpty: 'Affichage de 0 à 0 sur 0 entrées',
         emptyTable: 'Aucun lot gagné.',
         paginate: {
           first: 'Premier',
