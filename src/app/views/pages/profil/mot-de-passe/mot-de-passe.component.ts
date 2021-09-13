@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConfirmedValidator } from '../../../../core/authentification/confirm-validator';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
@@ -33,7 +33,9 @@ export class MotDePasseComponent implements OnInit {
     private metaTagService: Meta,
     private http: HttpClient,
     private changePasswordService: ChangePasswordService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private formBuilder: FormBuilder
+
   ) { }
 
   get form(): any {
@@ -53,12 +55,11 @@ export class MotDePasseComponent implements OnInit {
     this.metaTagService.updateTag({property: 'og:description', content: this.description});
     this.metaTagService.updateTag({name: 'description', content: 'Mise à jour du mot de passe de l\'utilisateur' });
 
-    this.modifierMotdepasseForm = new FormGroup({
+    this.modifierMotdepasseForm = this.formBuilder.group({
       old_password: new FormControl(null, Validators.required),
-      new_password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      new_password: new FormControl(null, [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/)]),
       new_password_confirmation: new FormControl(null, Validators.required),
     }, {
-      // @ts-ignore
       validator: ConfirmedValidator('new_password', 'new_password_confirmation')
     });
     this.isFormSubmitted = false;
@@ -74,7 +75,7 @@ export class MotDePasseComponent implements OnInit {
         },
         error => {
           this.errors = error;
-          this.popUpMessage = this.errors.error.message;
+          this.popUpMessage = this.errors.error.message || "Ancien mot de passe : " + this.errors.error.old_password;
           this.open();
         }
       );

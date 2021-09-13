@@ -31,10 +31,11 @@
                id="fullName"
                placeholder="Nom et Prénom"
                type="text">
-        <div *ngIf="isFormSubmitted && form.name.errors?.required"
+        <div *ngIf="isFormSubmitted && form.name.errors"
              [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
              class="invalid-feedback">
-          Requis
+             <span *ngIf="form.name.status">Champ invalide</span>
+             <span *ngIf="form.name.errors?.required"> | Requis</span>
         </div>
       </div>
 
@@ -48,7 +49,7 @@
         <div *ngIf="isFormSubmitted && form.telephone.errors"
              [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
              class="invalid-feedback">
-          <span *ngIf="form.telephone.status">Champs invalide</span>
+          <span *ngIf="form.telephone.status">Champ invalide</span>
           <span *ngIf="form.telephone.errors?.required"> | Requis</span>
         </div>
       </div>
@@ -89,7 +90,7 @@
           <div *ngIf="isFormSubmitted && form.code_postal.errors"
                [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
                class="invalid-feedback">
-            <span *ngIf="form.code_postal.status">Champs invalide</span>
+            <span *ngIf="form.code_postal.status">Champ invalide</span>
             <span *ngIf="form.code_postal.errors?.required"> | Requis</span>
           </div>
         </div>
@@ -100,10 +101,11 @@
                  formControlName="ville"
                  placeholder="Ville"
                  type="text">
-          <div *ngIf="isFormSubmitted && form.ville.errors?.required"
+          <div *ngIf="isFormSubmitted && form.ville.errors"
                [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
                class="invalid-feedback">
-            Requis
+               <span *ngIf="form.ville.status">Champ invalide</span>
+               <span *ngIf="form.ville.errors?.required"> | Requis</span>
           </div>
         </div>
       </div>

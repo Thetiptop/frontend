@@ -44,7 +44,7 @@
                      placeholder="Nom et Prénom"
                      type="text">
               <div *ngIf="isForm1Submitted && form1.name.errors" class="invalid-feedback">
-                <span *ngIf="form1.name.status">Champs invalide</span>
+                <span *ngIf="form1.name.status">Champ invalide</span>
                 <span *ngIf="form1.name.errors?.required"> | Requis</span>
               </div>
             </div>
@@ -174,11 +174,11 @@
                      placeholder="Mot de passe"
                      type="password">
               <div class="small text-secondary mt-2">
-                * Minimum 6 charactères
+                * Minimum 6 charactères, pas de charactères spéciaux, au moins un numéro et une majuscule
               </div>
               <div *ngIf="isForm3Submitted && form3.password.errors" class="invalid-feedback">
-                <span *ngIf="form3.password.status">Champs invalide</span>
-                <span *ngIf="form3.password.errors?.minlength"> | Minimum 6 charactères</span>
+                <span *ngIf="form3.password.status || form3.password.errors?.pattern?.requiredPattern" >Champ invalide</span>
+                
                 <span *ngIf="form3.password.errors?.required"> | Requis</span>
               </div>
 
@@ -190,7 +190,7 @@
                      placeholder="Confirmation du mot de passe"
                      type="password">
               <div *ngIf="isForm3Submitted && form3.password_confirmation.errors" class="invalid-feedback">
-                <span *ngIf="form3.password_confirmation.status">Champs invalid</span>
+                <span *ngIf="form3.password_confirmation.status">Champ invalide</span>
                 <span *ngIf="form3.password_confirmation.errors?.required"> | Requis</span>
                 <span *ngIf="form3.password_confirmation.errors?.confirmedValidator"> | Les mots de passe de correspondent pas</span>
               </div>

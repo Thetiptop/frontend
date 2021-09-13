@@ -93,12 +93,12 @@ export class ModifierInformationsComponent implements OnInit {
     }
 
     this.modifierProfileForm = new FormGroup({
-      name: new FormControl(null, Validators.required),
+      name: new FormControl(null, [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ]+(([',. -][a-zA-ZÀ-ÿ])?[a-zA-ZÀ-ÿ]*)*$/)]),
       telephone: new FormControl(null, [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]),
-      address: new FormControl(null, Validators.required),
-      additional_address: new FormControl(null),
+      address: new FormControl(null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9À-ÿ\s,]+(([',. -][a-zA-Z0-9À-ÿ\s,])?[a-zA-Z0-9À-ÿ\s,]*)*$/)]),
+      additional_address: new FormControl(null, Validators.pattern(/^[a-zA-Z0-9À-ÿ\s,]+(([',. -][a-zA-Z0-9À-ÿ\s,])?[a-zA-Z0-9À-ÿ\s,]*)*$/)),
       postal_code: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{5}$')]),
-      ville: new FormControl(null),
+      ville: new FormControl(null, Validators.pattern(/^[a-zA-ZÀ-ÿ]+(([',. -][a-zA-ZÀ-ÿ])?[a-zA-ZÀ-ÿ]*)*$/)),
     });
     this.isFormSubmitted = false;
   }

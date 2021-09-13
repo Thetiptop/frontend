@@ -31,7 +31,7 @@
           <div *ngIf="isFormSubmitted && form.email.errors"
                class="invalid-feedback"
                [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}">
-            <span *ngIf="form.email.status">Champs invalide</span>
+            <span *ngIf="form.email.status">Champ invalide</span>
             <span *ngIf="form.email.errors?.required"> | Requis</span>
           </div>
 

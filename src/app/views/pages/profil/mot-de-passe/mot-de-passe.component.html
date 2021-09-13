@@ -17,7 +17,7 @@
               <div *ngIf="isFormSubmitted && form.old_password.errors"
                    [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
                    class="invalid-feedback">
-                <span *ngIf="form.old_password.status">Champs invalide</span>
+                <span *ngIf="form.old_password.status">Champ invalide</span>
                 <span *ngIf="form.old_password.errors?.required"> | Requis</span>
               </div>
             </div>
@@ -30,10 +30,13 @@
                      formControlName="new_password"
                      placeholder="Entrer le nouveau mot de passe"
                      type="password">
+                     <div class="small text-secondary mt-2">
+                      * Minimum 6 charactères, pas de charactères spéciaux, au moins un numéro et une majuscule
+                    </div>
               <div *ngIf="isFormSubmitted && form.new_password.errors"
                    [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
                    class="invalid-feedback">
-                <span *ngIf="form.new_password.status">Champs invalide</span>
+                <span *ngIf="form.new_password.status || form.new_password.errors?.pattern?.requiredPattern">Champ invalide</span>
                 <span *ngIf="form.new_password.errors?.required"> | Requis</span>
               </div>
             </div>
@@ -48,7 +51,8 @@
               <div *ngIf="isFormSubmitted && form.new_password_confirmation.errors"
                    [ngStyle]="{'display': isFormSubmitted ? 'block' : 'none'}"
                    class="invalid-feedback">
-                <span *ngIf="form.new_password_confirmation.status">Champs invalide</span>
+                <span *ngIf="form.new_password_confirmation.status">Champ invalide</span>
+                <span *ngIf="form.new_password_confirmation.errors?.confirmedValidator"> | Les mots de passe de correspondent pas</span>
                 <span *ngIf="form.new_password_confirmation.errors?.required"> | Requis</span>
               </div>
             </div>

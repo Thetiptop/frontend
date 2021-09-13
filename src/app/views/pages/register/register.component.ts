@@ -105,7 +105,7 @@ export class RegisterComponent implements OnInit {
 
     /** form3 value validation */
     this.validationForm3 = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/)]],
       password_confirmation: ['', Validators.required],
       cgu: [false, Validators.requiredTrue],
       canLegalyPlay: [false, Validators.requiredTrue],
@@ -137,7 +137,7 @@ export class RegisterComponent implements OnInit {
 
   /** Go to register while form 3 value is valid */
   form3Submit(): void {
-    console.log(this.validationForm3);
+    console.log("test error register mp", this.validationForm3);
     if (this.validationForm3.valid) {
       this.authService.register(this.getData()).subscribe(
         result => {
@@ -146,7 +146,7 @@ export class RegisterComponent implements OnInit {
           this.wizardForm.goToNextStep();
         },
         error => {
-          console.log(error);
+          console.log("errormp", error);
           this.errors = error.error;
         }
       );
