@@ -57,21 +57,21 @@ export class PlayComponent implements OnInit {
     this.metaTagService.updateTag({name: 'description', content: this.description});
 
 
-    this.authState.userAuthState.subscribe(val => {
-      this.isSignedIn = val;
-    });
+    // this.authState.userAuthState.subscribe(val => {
+    //   this.isSignedIn = val;
+    // });
 
-    if (this.isSignedIn) {
-      this.authService.profileUser().subscribe(
-        data => {
-          this.UserProfile = data.detail;
-          this.userName = this.UserProfile.name;
-        },
-        err => {
-          this.error = err.status;
-          this.authService.onLogout();
-        });
-    }
+    // if (this.isSignedIn) {
+    //   this.authService.profileUser().subscribe(
+    //     data => {
+    //       this.UserProfile = data.detail;
+    //       this.userName = this.UserProfile.name;
+    //     },
+    //     err => {
+    //       this.error = err.status;
+    //       this.authService.onLogout();
+    //     });
+    // }
 
     this.playForm = new FormGroup({
       numberTicket: new FormControl(null, [Validators.required])

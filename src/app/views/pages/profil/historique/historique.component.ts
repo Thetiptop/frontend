@@ -107,25 +107,25 @@ export class HistoriqueComponent implements OnInit {
       pageLength: 3,
     };
 
-    this.authService.profileUser().subscribe(
-      data => {
-        console.log(data);
-        this.UserProfile = data.detail;
-        this.UserAddress = this.UserProfile.address;
-      },
-      err => {
-        this.error = err;
-        this.popUpMessage = 'Veuillez vous reconnecter.';
-        this.openNotification();
-        this.authService.onLogout();
-      });
+    // this.authService.profileUser().subscribe(
+    //   data => {
+    //     console.log(data);
+    //     this.UserProfile = data.detail;
+    //     this.UserAddress = this.UserProfile.address;
+    //   },
+    //   err => {
+    //     this.error = err;
+    //     this.popUpMessage = 'Veuillez vous reconnecter.';
+    //     this.openNotification();
+    //     this.authService.onLogout();
+    //   });
 
-    this.historiqueService.historique().subscribe(
-      data => {
-        this.historique = data.historical;
-        this.dtTrigger.next();
-      }
-    );
+    // this.historiqueService.historique().subscribe(
+    //   data => {
+    //     this.historique = data.historical;
+    //     this.dtTrigger.next();
+    //   }
+    // );
   }
 
 

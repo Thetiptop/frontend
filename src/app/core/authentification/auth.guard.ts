@@ -20,7 +20,8 @@ export class AuthGuard implements CanActivate {
 
     return this.authenticationService.userAuthState
       .pipe(
-        map(userAuthState => userAuthState ? true : this.router.parseUrl('/login')));
+        map(userAuthState => true // userAuthState ? true : this.router.parseUrl('/login')
+        ));
 
   }
 }

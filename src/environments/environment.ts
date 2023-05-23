@@ -3,13 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
-  apiURL: 'https://prod-admin.dsp-archiwebo20-mt-ma-ca-fd.fr/api',
-  loginApiURL : 'https://prod-admin.dsp-archiwebo20-mt-ma-ca-fd.fr/api/login',
-  registerApiUrl: 'https://prod-admin.dsp-archiwebo20-mt-ma-ca-fd.fr/api/register',
-  cookieDomain: 'https://prod-admin.dsp-archiwebo20-mt-ma-ca-fd.fr',
-  socialLogin: 'https://prod-admin.dsp-archiwebo20-mt-ma-ca-fd.fr/api/login_with_socialite',
-  socialRegister: 'https://prod-admin.dsp-archiwebo20-mt-ma-ca-fd.fr/api/register_with_socialite',
+  production: false,
+  apiURL: 'http://localhost:8000/api',
+  loginApiURL : 'http://localhost:8000/api/login',
+  registerApiUrl: 'http://localhost:8000/api/register',
+  cookieDomain: 'http://localhost:8000',
+  socialLogin: 'http://localhost:8000/api/login_with_socialite',
+  socialRegister: 'http://localhost:8000/api/register_with_socialite',
   title: 'ThéTipTop',
 };
 
